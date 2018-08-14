@@ -6,9 +6,7 @@ var data = null;
 request.onload = function () {
   data = JSON.parse(this.response);
   if (request.status >= 200 && request.status < 400) {
-    data.forEach(d => {
-
-    });
+    console.log("OK!");
   } else {
     const errorMessage = document.createElement('marquee');
     errorMessage.textContent = `Gah, it's not working!`;
@@ -17,3 +15,5 @@ request.onload = function () {
 }
 
 request.send();
+
+console.log(data);

@@ -45,7 +45,7 @@ def stringToData(inputStr):
         nodeNumber = inputStr[2: inputStr.find('=') - 1]
         return {'dataType': 'PS', 'data': inputStr[len('PS' + nodeNumber + ' = '):], 'nodeNumber': nodeNumber}
 
-    # 'PhR10 = 100' Pump Status
+    # 'PhR10 = 100' PhotoResistor
     elif inputStr[0:3] == 'PhR':
         nodeNumber = inputStr[3: inputStr.find('=') - 1]
         return {'dataType': 'PhR', 'data': inputStr[len('PhR' + nodeNumber + ' = '):], 'nodeNumber': nodeNumber}
