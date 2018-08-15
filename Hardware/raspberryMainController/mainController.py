@@ -4,17 +4,20 @@ from flask import Flask
 from flask_restful import Api, Resource, reqparse
 import serial
 import requests
+import RPi.GPIO as GPIO 
 
 
 class Pump(Resource):
     def get(self, status):
         if status == 'on':
             print("Pump Turned on By API")
-            ser.write(b'1')
+            # ser.write(b'1')
+            GPIO.output(pumpPin, 0)
             return "Pump ON", 200
         elif status == 'off':
             print("Pump Turned off By API")
-            ser.write(b'0')
+            # ser.write(b'0')
+            GPIO.output(pumpPin, 1)
             return "Pump OFF", 200
         return "NOT FOUND", 404
 
@@ -94,6 +97,10 @@ ser = serial.Serial(
     bytesize=serial.EIGHTBITS,
     timeout=1
 )
+
+GPIO.setmode(GPIO.BOARD)
+pumpPin = 40
+GPIO.setup(pumpPin, GPIO.OUT, initial = 1)
 
 app = Flask(__name__)
 api = Api(app)
