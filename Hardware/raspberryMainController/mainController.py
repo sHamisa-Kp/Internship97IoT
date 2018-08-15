@@ -87,7 +87,7 @@ apiKeys = {'T': ['G7KHR97UPN9OC5AC'],
            'PhR': ['B1JQYWFKX2PCRBYF']}
 
 ser = serial.Serial(
-    port='/dev/ttyACM1',
+    port='/dev/ttyAMA0',
     baudrate=9600,
     parity=serial.PARITY_NONE,
     stopbits=serial.STOPBITS_ONE,
@@ -102,5 +102,5 @@ thread.start()
 
 api.add_resource(Pump, "/pump/<string:status>")
 
-app.run()
+app.run(host="0.0.0.0")
 thread.join()
