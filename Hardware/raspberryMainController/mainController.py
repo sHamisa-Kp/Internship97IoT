@@ -31,27 +31,27 @@ def stringToData(inputStr):
     # 'T10 = 23' (Temperature)
     if inputStr[0] == 'T':
         nodeNumber = inputStr[1: inputStr.find('=') - 1]
-        return {'dataType': 'T', 'data': inputStr[len('T' + nodeNumber + ' = '):], 'nodeNumber': nodeNumber}
+        return {'dataType': 'T', 'data': inputStr[len('T' + nodeNumber + ' = '):-2], 'nodeNumber': nodeNumber}
 
     # 'H10 = 100' (Humidity)
     elif inputStr[0] == 'H':
         nodeNumber = inputStr[1: inputStr.find('=') - 1]
-        return {'dataType': 'H', 'data': inputStr[len('H' + nodeNumber + ' = '):], 'nodeNumber': nodeNumber}
+        return {'dataType': 'H', 'data': inputStr[len('H' + nodeNumber + ' = '):-2], 'nodeNumber': nodeNumber}
 
     # 'SM10 = 100' (Soil Moisture)
     elif inputStr[0:2] == 'SM':
         nodeNumber = inputStr[2: inputStr.find('=') - 1]
-        return {'dataType': 'SM', 'data': inputStr[len('SM' + nodeNumber + ' = '):], 'nodeNumber': nodeNumber}
+        return {'dataType': 'SM', 'data': inputStr[len('SM' + nodeNumber + ' = '):-2], 'nodeNumber': nodeNumber}
 
     # 'PS0 = 1' Pump Status
     elif inputStr[0:2] == 'PS':
         nodeNumber = inputStr[2: inputStr.find('=') - 1]
-        return {'dataType': 'PS', 'data': inputStr[len('PS' + nodeNumber + ' = '):], 'nodeNumber': nodeNumber}
+        return {'dataType': 'PS', 'data': inputStr[len('PS' + nodeNumber + ' = '):-2], 'nodeNumber': nodeNumber}
 
     # 'PhR10 = 100' PhotoResistor
     elif inputStr[0:3] == 'PhR':
         nodeNumber = inputStr[3: inputStr.find('=') - 1]
-        return {'dataType': 'PhR', 'data': inputStr[len('PhR' + nodeNumber + ' = '):], 'nodeNumber': nodeNumber}
+        return {'dataType': 'PhR', 'data': inputStr[len('PhR' + nodeNumber + ' = '):-2], 'nodeNumber': nodeNumber}
 
     else:
         print("ERROR: Wrong data format.")
@@ -64,6 +64,7 @@ def sendData(inputData):
     print("Data sent! ")
     print(r.status_code, r.reason)
     print("r.text: " + r.text)
+    print("----------")
     if r.status_code == 200 and r.text != '-1':
         return True
     return False
@@ -74,11 +75,12 @@ def serialReadThread():
     while True:
         if ser.inWaiting() > 0:
             inputBin = ser.readline()
-            print("inputBin: " + inputBin)
+           
             inputStr = zigbeeDataToString(inputBin)
             print("inputStr: " + inputStr)
             inputData = stringToData(inputStr)
-            print("inputData: " + inputData)
+            print("inputData: ")
+            print(inputData)
             sendData(inputData)
 
         ### TEST THREAD WORKING ###
