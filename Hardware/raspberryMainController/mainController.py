@@ -13,11 +13,13 @@ class Pump(Resource):
             print("Pump Turned on By API")
             # ser.write(b'1')
             GPIO.output(pumpPin, 0)
+            sendData(stringToData('PS0 = 1\r\n'))
             return "Pump ON", 200
         elif status == 'off':
             print("Pump Turned off By API")
             # ser.write(b'0')
             GPIO.output(pumpPin, 1)
+            sendData(stringToData('PS0 = 0\r\n'))
             return "Pump OFF", 200
         return "NOT FOUND", 404
 
