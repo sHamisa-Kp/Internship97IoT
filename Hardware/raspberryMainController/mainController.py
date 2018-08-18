@@ -1,27 +1,29 @@
 from threading import Thread
-from time import sleep
+# from time import sleep
 from flask import Flask
-from flask_restful import Api, Resource, reqparse
+# from flask_restful import Api, Resource
 import serial
 import requests
 import RPi.GPIO as GPIO
 
+app = Flask(__name__)
 
-class Pump(Resource):
-    def get(self, status):
-        if status == 'on':
-            print("Pump Turned on By API")
-            # ser.write(b'1')
-            GPIO.output(pumpPin, 0)
-            sendData(stringToData('PS0 = 1\r\n'))
-            return "Pump ON", 200
-        elif status == 'off':
-            print("Pump Turned off By API")
-            # ser.write(b'0')
-            GPIO.output(pumpPin, 1)
-            sendData(stringToData('PS0 = 0\r\n'))
-            return "Pump OFF", 200
-        return "NOT FOUND", 404
+
+@app.route("/pump/<status>")
+def auto_water(status):
+    if status == 'on':
+        print("Pump Turned on By API")
+        # ser.write(b'1')
+        GPIO.output(pumpPin, GPIO.LOW)
+        sendData(stringToData('PS0 = 1\r\n'))
+        return "Pump ON", 200
+    elif status == 'off':
+        print("Pump Turned off By API")
+        # ser.write(b'0')
+        GPIO.output(pumpPin, GPIO.HIGH)
+        sendData(stringToData('PS0 = 0\r\n'))
+        return "Pump OFF", 200
+    return "NOT FOUND", 404
 
 
 def zigbeeDataToString(inputBin):
@@ -77,7 +79,7 @@ def serialReadThread():
     while True:
         if ser.inWaiting() > 0:
             inputBin = ser.readline()
-           
+
             inputStr = zigbeeDataToString(inputBin)
             print("inputStr: " + inputStr)
             inputData = stringToData(inputStr)
@@ -108,15 +110,12 @@ ser = serial.Serial(
 
 GPIO.setmode(GPIO.BOARD)
 pumpPin = 40
-GPIO.setup(pumpPin, GPIO.OUT, initial=1)
-
-app = Flask(__name__)
-api = Api(app)
+GPIO.setup(pumpPin, GPIO.OUT)
+GPIO.output(pumpPin, GPIO.HIGH)
 
 thread = Thread(target=serialReadThread)
 thread.start()
 
-api.add_resource(Pump, "/pump/<string:status>")
+app.run(host='0.0.0.0', port=5050, debug=False)
 
-app.run(host="0.0.0.0")
 thread.join()
