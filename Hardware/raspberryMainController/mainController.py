@@ -61,20 +61,24 @@ def sendData(inputData):
     payload = {'api_key': apiKeys[inputData["dataType"]][int(inputData["nodeNumber"])],
                'field1': inputData["data"]}
     r = requests.post("http://thingtalk.ir/update", data=payload)
-    # print(r.status_code, r.reason)
-    # print(r.text)
+    print("Data sent! ")
+    print(r.status_code, r.reason)
+    print("r.text: " + r.text)
     if r.status_code == 200 and r.text != '-1':
         return True
     return False
 
 
 def serialReadThread():
+    print("Now I am waiting :)")
     while True:
         if ser.inWaiting() > 0:
             inputBin = ser.readline()
-            # print("inputBin: " + inputBin)
+            print("inputBin: " + inputBin)
             inputStr = zigbeeDataToString(inputBin)
+            print("inputStr: " + inputStr)
             inputData = stringToData(inputStr)
+            print("inputData: " + inputData)
             sendData(inputData)
 
         ### TEST THREAD WORKING ###
@@ -91,7 +95,7 @@ apiKeys = {'T': ['G7KHR97UPN9OC5AC'],
 
 ser = serial.Serial(
     port='/dev/ttyAMA0',
-    baudrate=9600,
+    baudrate=38400,
     parity=serial.PARITY_NONE,
     stopbits=serial.STOPBITS_ONE,
     bytesize=serial.EIGHTBITS,

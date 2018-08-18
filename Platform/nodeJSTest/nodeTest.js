@@ -28,15 +28,16 @@ function getRequestToThingTalk(channel, key) {
                 body.feeds.forEach(function (elem) {
                     dataArray.push([String(elem.entry_id), parseInt(elem.field1)])
                 });
-                console.log(dataArray);
                 data = {"subtitle": "Subtitle", "description": "Description", "series_list": [dataArray]};
                 formData = {'tile': "line_chart", 'key': "IoTLineChart", 'data': JSON.stringify(data)};
+                myDATA00 = formData;
+
                 postRequestToTipboard(formData);
             }
             else {
                 console.log("Thingtalk connection: " + err);
             }
-	});	
+	});
 }
 
 function doIt() {
@@ -44,7 +45,7 @@ function doIt() {
 	getRequestToThingTalk('629', 'G7KHR97UPN9OC5AC');
 }
 /* Text */
-// formData = {'tile': "text", 'key': "IoTTextId", 'data': JSON.stringify({"text": "SALAM SHAMISIA! :("})}
+// formData = {'tile': "text", 'key': "IoTTextId", 'data': JSON.stringify({"text": "HEY THERE! :("})}
 // postRequestToTipboard(formData)
 
 /* Chart */
@@ -53,4 +54,4 @@ function doIt() {
 // postRequestToTipboard(formData);
 
 setInterval(doIt, 2000);
-doIt();
+// getRequestToThingTalk('629', 'G7KHR97UPN9OC5AC');
