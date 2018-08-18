@@ -4,7 +4,7 @@ from flask import Flask
 from flask_restful import Api, Resource, reqparse
 import serial
 import requests
-import RPi.GPIO as GPIO 
+import RPi.GPIO as GPIO
 
 
 class Pump(Resource):
@@ -100,10 +100,11 @@ ser = serial.Serial(
 
 GPIO.setmode(GPIO.BOARD)
 pumpPin = 40
-GPIO.setup(pumpPin, GPIO.OUT, initial = 1)
+GPIO.setup(pumpPin, GPIO.OUT, initial=1)
 
 app = Flask(__name__)
 api = Api(app)
+
 thread = Thread(target=serialReadThread)
 thread.start()
 
