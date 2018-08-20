@@ -1,5 +1,3 @@
-#include <Printers.h>
-#include <XBee.h>
 #include <dht.h>
 
 #define dhtPin A0
@@ -61,5 +59,5 @@ delay(55000); //rest between Sending Data
   Serial.print(Count[0]);
   Serial.print(" = ");
   Serial.println(analogRead(LightPin));
-  Serial.println("END OF LOOP\n\n");
+  
 }//end "loop()"
