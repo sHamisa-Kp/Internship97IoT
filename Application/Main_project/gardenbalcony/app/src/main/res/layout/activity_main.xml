@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ir.iotacademy.gardenbalcony.MainActivity">
+
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/login"
+        android:layout_marginBottom="161dp"
+        android:background="@null"
+
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text=""
+        android:hint="User Name"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:layout_above="@+id/editText"
+        android:layout_alignLeft="@+id/editText"
+        android:layout_alignStart="@+id/editText" />
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="Password"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:layout_marginBottom="102dp"
+        android:layout_above="@+id/imageButton4"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>
