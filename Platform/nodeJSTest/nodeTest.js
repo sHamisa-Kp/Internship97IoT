@@ -29,7 +29,7 @@ function getRequestToThingTalk(channel, key) {
                     dataArray.push([String(elem.entry_id), parseInt(elem.field1)])
                 });
                 data = {"subtitle": "Subtitle", "description": "Description", "series_list": [dataArray]};
-                formData = {'tile': "line_chart", 'key': "IoTLineChart", 'data': JSON.stringify(data)};
+                formData = {'tile': "line_chart", 'key': "IoTLineChart2", 'data': JSON.stringify(data)};
                 myDATA00 = formData;
 
                 postRequestToTipboard(formData);
