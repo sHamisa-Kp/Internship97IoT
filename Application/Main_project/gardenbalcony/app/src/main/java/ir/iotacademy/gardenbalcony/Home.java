@@ -37,20 +37,27 @@ public class Home extends AppCompatActivity {
         tv= (TextView) findViewById(R.id.textView);
 
 
+
         clouds.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
+
             public void onClick(View v) {
                 GetTemprature();
 
-                if (SerialClass.Temprature == null) {
+                if (SerialClass.Temperature == null) {
                     tv.setText(error);
+
                    // Toast.makeText(this, "No internet access",Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    tv.setText(SerialClass.Temprature);
+                    tv.setText(SerialClass.Temperature);
                 }
             }
         });
+
+
 
         sun.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,10 +85,10 @@ public class Home extends AppCompatActivity {
             // Temprature.setText(json);
             if(json != null) {
                 String num = getSerial(json);
-                SerialClass.Temprature = num;
+                SerialClass.Temperature = num;
             }
             else{
-                SerialClass.Temprature = null;
+                SerialClass.Temperature = null;
             }
 
         } catch (InterruptedException e) {
@@ -89,6 +96,7 @@ public class Home extends AppCompatActivity {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+        Toast.makeText(this, SerialClass.Temperature, Toast.LENGTH_SHORT).show();
     }
 
     public void GetLight() {
@@ -100,7 +108,8 @@ public class Home extends AppCompatActivity {
             if (json != null) {
                 String num = getSerial(json);
                 SerialClass.Light = num;
-            } else {
+            }
+            else {
                 SerialClass.Light = null;
             }
 
@@ -124,8 +133,7 @@ public class Home extends AppCompatActivity {
                 serial = serial.substring(0, serial.indexOf('.'));
             }
             int num = Integer.parseInt(serial)+1;
-            String url = "http://thingtalk.ir/update?key=8NZECX1M7Y8WUMLU&field1="+String.valueOf(num);
-            //  new HttpPostRequest().execute(url).get();
+
             return serial;
 
 
