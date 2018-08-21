@@ -8,9 +8,23 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+
 /**
  * Created by Nazgol on 8/19/2018.
  */
+
+import android.os.AsyncTask;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.concurrent.ExecutionException;
 
 public class HttpGetRequest extends AsyncTask<String, Void, String> {
     public static final String REQUEST_METHOD = "GET";
@@ -70,6 +84,8 @@ public class HttpGetRequest extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String result){
         super.onPostExecute(result);
     }
+
+
 
     //checking connectivity
 }

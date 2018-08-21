@@ -9,5 +9,5 @@ class SerialClass {
     public static String Humedity ;
     public static String Light ;
     public static String Moisture ;
-
+    public static String Pomp ;
 }
