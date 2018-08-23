@@ -1,3 +1,4 @@
+"use strict";
 const request = require('request');
 
 const tipBoardAPIKey = 'a500a57d8d1b4a5b9bb88c2d35108352';
@@ -61,6 +62,33 @@ function updateCharts() {
     data = {"subtitle": "Photo Resistor", "description": "", "series_list": []};
     formData = {'tile': "line_chart", 'key': "photoResistorChart", 'data': ''};
     getChartRequestToThingTalk(channel.PhR[0].id, channel.PhR[0].apiKey, data, formData);
+    
 }
 
 setInterval(updateCharts, 3000);
+
+/*request for just value*/
+function getValueRequestToThingTalk(channel, key,key2,title) {
+    request('http://thingtalk.ir/channels/' + channel + '/feeds/last.json?key=' + key,
+    { json: true }, (err, res, body) => {
+        if(!err && res.statusCode == 200) {
+            let value =0;
+            value=parseInt(body.field1);
+            console.log(value);
+            let data = {"title": title, "description": "", "just-value": value};
+            let formData = {'tile': "just_value", 'key':key2 , 'data': JSON.stringify(data)};
+            //console.log(formData);
+            postRequestToTipboard(formData);
+        }
+        else {console.log("ERROR: \n" + err);}
+    });
+}   
+
+function doIt() {
+    getValueRequestToThingTalk(channel.T[0].id, channel.T[0].apiKey,'temperature','Temperature');
+    getValueRequestToThingTalk(channel.SM[0].id, channel.SM[0].apiKey,'soilMoisture','SoilMoisture');
+    getValueRequestToThingTalk(channel.PhR[0].id, channel.PhR[0].apiKey,'photoResistor','PhotoResistor');
+    getValueRequestToThingTalk(channel.H[0].id, channel.H[0].apiKey,'humidity','Humidity');
+    getValueRequestToThingTalk(channel.PS[0].id, channel.PS[0].apiKey,'pumpStatus','PumpStatus');
+   }
+setInterval(doIt, 3000);
