@@ -4,6 +4,7 @@
 #define MoisturePin A1
 #define LightPin A2
 
+unsigned long minute = 60 * 1000L;
 int Count[20];
 int MsensorValue;
 int light;
@@ -20,13 +21,9 @@ void setup(){
 }//end "setup()"
 
 void loop(){
-<<<<<<< HEAD
-delay(15000); //rest between Sending Data
-/*Soil Moistur*/ 
-=======
-delay(55000); //rest between Sending Data
+delay(2 * minute); //rest between Sending Data
+
 /*Soil Moisture*/ 
->>>>>>> master
   digitalWrite(7, HIGH);
   delay(1000); // Rest till Voltage is Valid
     MsensorValue = analogRead(MoisturePin);
