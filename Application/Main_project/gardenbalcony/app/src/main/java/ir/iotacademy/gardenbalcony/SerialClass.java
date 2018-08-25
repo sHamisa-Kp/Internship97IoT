@@ -5,9 +5,9 @@ package ir.iotacademy.gardenbalcony;
  */
 
 class SerialClass {
-    public static String Temprature ;
+    public static String Temperature ;
     public static String Humedity ;
     public static String Light ;
     public static String Moisture ;
-
+    public static String Pomp ;
 }

@@ -1,0 +1,34 @@
+details:
+    page_title: last value
+layout:
+    - row_1_of_2:
+        - col_1_of_2:
+            - tile_template: just_value
+              tile_id: temperatureID
+              title: Temperature
+              classes:
+        - col_1_of_2:
+            - tile_template: just_value
+              tile_id: soilMoistureID
+              title: SoilMoisture
+              classes:
+
+        
+    - row_1_of_2:
+        - col_1_of_3:
+            - tile_template: just_value
+              tile_id: humidityID
+              title: Humidity
+              classes:
+        - col_1_of_3:
+            - tile_template: just_value
+              tile_id: photoResistorID
+              title: PhotoResistor
+              classes:
+        - col_1_of_3:
+            - tile_template: toggle
+              tile_id: toggleID
+              title: PumpStatus
+              classes:
+
+    
