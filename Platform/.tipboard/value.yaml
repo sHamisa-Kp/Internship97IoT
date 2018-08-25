@@ -26,8 +26,8 @@ layout:
               title: PhotoResistor
               classes:
         - col_1_of_3:
-            - tile_template: just_value
-              tile_id: pumpStatus
+            - tile_template: toggle
+              tile_id: toggleID
               title: PumpStatus
               classes:
 
