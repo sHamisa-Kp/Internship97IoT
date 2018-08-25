@@ -22,7 +22,7 @@ function httpGetToRpi(urlAddress){
 	xmlHttp.send();
 	xmlHttp.onreadystatechange = function(){
 		if(this.readyState == 4 && this.status == 200) {
-
+      console.log('send!');
 		}
 		else{
 	  console.log("ERR: \n");
@@ -49,6 +49,7 @@ function httpGetToRpi(urlAddress){
           document.querySelector("#toggleID > div.tile-content > div").classList.remove("off");
           document.querySelector("#toggleID > div.tile-content > div").classList.remove("btn-default");
           document.querySelector("#toggleID > div.tile-content > div").classList.add("btn-primary");
+          httpGetToRpi('http://10.1.248.33:5050/pump/on');
         }
         else if(pumpStatus === '0') {
           console.log('This is 0');
@@ -56,6 +57,7 @@ function httpGetToRpi(urlAddress){
           document.querySelector("#toggleID > div.tile-content > div").classList.add("off");
           document.querySelector("#toggleID > div.tile-content > div").classList.add("btn-default");
           document.querySelector("#toggleID > div.tile-content > div").classList.remove("btn-primary");
+          httpGetToRpi('http://10.1.248.33:5050/pump/off');
         }
 
     }   else{
