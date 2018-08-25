@@ -1,5 +1,3 @@
-
-
   function toggleOnByInput() {
     //$('#toggleID > div.tile-content > div').prop('checked', true).change();
     document.querySelector("#toggleID > div.tile-content > div").classList.remove("off");
@@ -35,14 +33,14 @@ function httpGetToRpi(urlAddress){
 
   function httpGet(urlAddress) {
   var xmlHttp = new XMLHttpRequest();
-  xmlHttp.open("GET", 'http://thingtalk.ir/channels/683/feed/last.json?key=5LKBQQ9VAATCJFNB');
+  xmlHttp.open("GET", 'http://thingtalk.ir/channels/671/feed/last.json?key=XAKAVEUUJQ9GZGMT');
   xmlHttp.send();
   xmlHttp.onreadystatechange = function() {
   	if(this.readyState == 4 && this.status == 200) {
   	  console.log(JSON.parse(xmlHttp.responseText));
   	  var pumpStatus = JSON.parse(xmlHttp.responseText).field1;
   	  console.log(JSON.parse(xmlHttp.responseText).field1);
-
+  	  
       // var toggle = document.querySelector("#toggle-trigger");
 
         if(pumpStatus === '1'){
@@ -67,8 +65,8 @@ function httpGetToRpi(urlAddress){
   }
 }
 
-  function doIt() {
+function doIt() {
   /* Thing talk */
-  httpGet('http://thingtalk.ir/channels/683/feed/last.json?key=5LKBQQ9VAATCJFNB');
-  }
-  setInterval(doIt, 5000);
+  httpGet('http://thingtalk.ir/channels/671/feed/last.json?key=XAKAVEUUJQ9GZGMT');
+ }
+  setInterval(doIt, 3000);
