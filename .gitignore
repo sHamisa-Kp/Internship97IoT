@@ -1,4 +1,10 @@
 **/.idea
 **/__pycache__
-Platform/nodeJSTest/node_modules/
 .swp
+
+Platform/dashboardApplication/node_modules/
+Platform/nodeJSTest/node_modules/
+
+Platform/tb-env/*
+!Platform/tb-env/lib/python2.7/site-packages/tipboard/*
+

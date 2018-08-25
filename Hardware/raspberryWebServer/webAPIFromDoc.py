@@ -1,16 +1,13 @@
 # FLASK_APP=hello.py flask run
 
 from flask import Flask
-import time
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def hello():
-    return 'Hello, World!'
+    return 'Hello IoT'
 
-#
-# while True:
-#     print("I am HERE")
-#     time.sleep(2)
+
+app.run(host='0.0.0.0', port=5050, debug=False)

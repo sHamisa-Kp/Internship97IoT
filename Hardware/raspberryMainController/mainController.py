@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 
 @app.route("/pump/<status>")
-def auto_water(status):
+def pumpControl(status):
     if status == 'on':
         print("Pump Turned on By API")
         # ser.write(b'1')
@@ -69,7 +69,7 @@ def sendData(inputData):
     print(r.status_code, r.reason)
     print("r.text: " + r.text)
     print("----------")
-    if r.status_code == 200 and r.text != '-1':
+    if r.status_code == 200 and r.text != '0':
         return True
     return False
 
