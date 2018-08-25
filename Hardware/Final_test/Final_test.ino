@@ -21,7 +21,7 @@ void setup(){
 
 void loop(){
 delay(55000); //rest between Sending Data
-/*Soil Moistur*/ 
+/*Soil Moisture*/ 
   digitalWrite(7, HIGH);
   delay(1000); // Rest till Voltage is Valid
     MsensorValue = analogRead(MoisturePin);

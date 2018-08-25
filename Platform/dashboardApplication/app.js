@@ -29,10 +29,12 @@ function getChartRequestToThingTalk(channel, key, data, formData) {
 	{ json: true }, (err, res, body) => {
             if (!err && res.statusCode === 200) {
                 let dataArray = [];
-                body.feeds.forEach(function(elem) {
-                    dataArray.push([String(elem.entry_id), parseInt(elem.field1)])
+                const maxNum = 15;
+                const length = Math.min(maxNum, body.feeds.length);
+                let tempArray = body.feeds.slice(body.feeds.length - length, body.feeds.length);
+                tempArray.forEach(function(elem) {
+                    dataArray.push([String(elem.entry_id), parseInt(elem.field1)]);
                 });
-
                 data.series_list = [dataArray];
                 formData.data = JSON.stringify(data);
                 postRequestToTipboard(formData);
