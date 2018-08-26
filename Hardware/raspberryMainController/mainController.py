@@ -5,6 +5,7 @@ from flask import Flask
 import serial
 import requests
 import RPi.GPIO as GPIO
+import datetime
 
 app = Flask(__name__)
 
@@ -68,16 +69,17 @@ def sendData(inputData):
     print("Data sent! ")
     print(r.status_code, r.reason)
     print("r.text: " + r.text)
-    print("----------")
+    print("--------------------------------------------------")
     if r.status_code == 200 and r.text != '0':
         return True
     return False
 
 
 def serialReadThread():
-    print("Now I am waiting :)")
+    print("Now Raspberry pi is ready :)")
     while True:
         if ser.inWaiting() > 0:
+            print(datetime.datetime.now())
             inputBin = ser.readline()
 
             inputStr = zigbeeDataToString(inputBin)
