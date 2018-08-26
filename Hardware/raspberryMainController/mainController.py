@@ -63,9 +63,8 @@ def stringToData(inputStr):
 
 
 def sendData(inputData):
-    payload = {'api_key': apiKeys[inputData["dataType"]][int(inputData["nodeNumber"])],
-               'field1': inputData["data"]}
     try:
+        payload = {'api_key': apiKeys[inputData["dataType"]][int(inputData["nodeNumber"])], 'field1': inputData["data"]}
         r = requests.post("http://thingtalk.ir/update", data=payload)
         print("Data sent! ")
         print(r.status_code, r.reason)
