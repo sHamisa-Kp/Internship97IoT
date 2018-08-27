@@ -63,6 +63,6 @@ void loop(){
   Serial.print(" = ");
   Serial.println(analogRead(LightPin));
   
-//  delay(2 * minute); //rest between Sending Data
-  delay(5000);
+  delay(5 * minute); //rest between Sending Data
+//  delay(5000);
 }//end "loop()"
