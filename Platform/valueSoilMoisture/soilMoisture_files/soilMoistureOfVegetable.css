@@ -1,0 +1,35 @@
+p {
+    font-size: 3.5em;
+}
+
+.imgHolder {
+    height: 120px;
+    margin-bottom: 8px;
+}
+
+.centerDiv {
+    text-align: center;
+}
+
+.vegetableStatus {
+    display: block;
+    margin: 0 auto;
+    height: 100%;
+
+}
+
+.pumpStatus {
+    float: left;
+    margin-left: 10px;
+    height: 25px;
+}
+
+.dangerStatus {
+    float: right;
+    margin-right: 10px;
+    height: 25px;
+}
+
+.valueText {
+    display: inline;
+}
