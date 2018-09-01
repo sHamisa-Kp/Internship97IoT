@@ -31,6 +31,7 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        Toast.makeText(this,"welcome!",Toast.LENGTH_SHORT).show();
 
         clouds = (ImageButton) findViewById(R.id.imagebutton3);
         grass = (ImageButton) findViewById(R.id.imagebutton1);
@@ -127,7 +128,7 @@ public class Home extends AppCompatActivity {
 
                     // Toast.makeText(this, "No internet access",Toast.LENGTH_SHORT).show();
                 } else
-                    tv.setText(SerialClass.Temperature);
+                    tv.setText(SerialClass.Temperature+" °C");
             }
 
         });
@@ -281,7 +282,7 @@ public class Home extends AppCompatActivity {
     }
 
     public void GetLight() {
-        String url = "http://thingtalk.ir/channels/671/feed.json?key=XAKAVEUUJQ9GZGMT&results=1";
+        String url = "http://thingtalk.ir/channels/672/feed.json?key=B1JQYWFKX2PCRBYF&results=1";
         HttpGetRequest get = new HttpGetRequest();
         try {
             String json = get.execute(url).get();

@@ -25,14 +25,16 @@ function postRequestToTipboard(formData) {
 }
 
 function getChartRequestToThingTalk(channel, key, data, formData) {
-	request('http://thingtalk.ir/channels/' + channel + '/feed.json?key=' + key,
+    const maxNum = 20;
+	request('http://thingtalk.ir/channels/' + channel + '/feed.json?key=' + key + '&results=' + maxNum,
 	{ json: true }, (err, res, body) => {
             if (!err && res.statusCode === 200) {
                 let dataArray = [];
+                // const length = Math.min(maxNum, body.feeds.length);
+                // let tempArray = body.feeds.slice(body.feeds.length - length, body.feeds.length);
                 body.feeds.forEach(function(elem) {
-                    dataArray.push([String(elem.entry_id), parseInt(elem.field1)])
+                    dataArray.push([String(elem.entry_id), parseInt(elem.field1)]);
                 });
-
                 data.series_list = [dataArray];
                 formData.data = JSON.stringify(data);
                 postRequestToTipboard(formData);

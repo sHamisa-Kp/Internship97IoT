@@ -5,6 +5,7 @@ from flask import Flask
 import serial
 import requests
 import RPi.GPIO as GPIO
+import datetime
 
 app = Flask(__name__)
 
@@ -62,22 +63,26 @@ def stringToData(inputStr):
 
 
 def sendData(inputData):
-    payload = {'api_key': apiKeys[inputData["dataType"]][int(inputData["nodeNumber"])],
-               'field1': inputData["data"]}
-    r = requests.post("http://thingtalk.ir/update", data=payload)
-    print("Data sent! ")
-    print(r.status_code, r.reason)
-    print("r.text: " + r.text)
-    print("----------")
-    if r.status_code == 200 and r.text != '0':
-        return True
-    return False
+    try:
+        payload = {'api_key': apiKeys[inputData["dataType"]][int(inputData["nodeNumber"])], 'field1': inputData["data"]}
+        r = requests.post("http://thingtalk.ir/update", data=payload)
+        print("Data sent! ")
+        print(r.status_code, r.reason)
+        print("r.text: " + r.text)
+        print("--------------------------------------------------")
+        if r.status_code == 200 and r.text != '0':
+            return True
+        return False
+    except:
+        print("Connection Error... Thingtalk is kidding us :(")
+        return False
 
 
 def serialReadThread():
-    print("Now I am waiting :)")
+    print("Now Raspberry pi is ready :)")
     while True:
         if ser.inWaiting() > 0:
+            print(datetime.datetime.now())
             inputBin = ser.readline()
 
             inputStr = zigbeeDataToString(inputBin)
