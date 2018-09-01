@@ -4,12 +4,12 @@ layout:
     - row_1_of_2:
         - col_1_of_2:
             - tile_template: just_value
-              tile_id: temperatureID
+              tile_id: temperature
               title: Temperature
               classes:
         - col_1_of_2:
             - tile_template: just_value
-              tile_id: soilMoistureID
+              tile_id: soilMoisture
               title: SoilMoisture
               classes:
 
@@ -17,12 +17,12 @@ layout:
     - row_1_of_2:
         - col_1_of_3:
             - tile_template: just_value
-              tile_id: humidityID
+              tile_id: humidity
               title: Humidity
               classes:
         - col_1_of_3:
             - tile_template: just_value
-              tile_id: photoResistorID
+              tile_id: photoResistor
               title: PhotoResistor
               classes:
         - col_1_of_3:
