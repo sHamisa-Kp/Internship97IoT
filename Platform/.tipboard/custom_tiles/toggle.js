@@ -1,17 +1,17 @@
   function toggleOnByInput() {
     //$('#toggleID > div.tile-content > div').prop('checked', true).change();
-    document.querySelector("#toggleID > div.tile-content > div").classList.remove("off");
-    document.querySelector("#toggleID > div.tile-content > div").classList.remove("btn-default");
-    document.querySelector("#toggleID > div.tile-content > div").classList.add("btn-primary");
+    // document.querySelector("#toggleID > div.tile-content > div").classList.remove("off");
+    // document.querySelector("#toggleID > div.tile-content > div").classList.remove("btn-default");
+    // document.querySelector("#toggleID > div.tile-content > div").classList.add("btn-primary");
 
     httpGetToRpi('http://10.1.248.33:5050/pump/on');
   }
   function toggleOffByInput() {
     console.log('halle!');
     //$('#toggleID > div.tile-content > div').prop('checked', false).change();
-    document.querySelector("#toggleID > div.tile-content > div").classList.add("off");
-    document.querySelector("#toggleID > div.tile-content > div").classList.add("btn-default");
-    document.querySelector("#toggleID > div.tile-content > div").classList.remove("btn-primary");
+    // document.querySelector("#toggleID > div.tile-content > div").classList.add("off");
+    // document.querySelector("#toggleID > div.tile-content > div").classList.add("btn-default");
+    // document.querySelector("#toggleID > div.tile-content > div").classList.remove("btn-primary");
 
     httpGetToRpi('http://10.1.248.33:5050/pump/off');
   }
