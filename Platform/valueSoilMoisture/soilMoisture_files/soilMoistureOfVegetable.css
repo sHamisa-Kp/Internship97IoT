@@ -2,31 +2,36 @@ p {
     font-size: 3.5em;
 }
 
-.imgHolder {
-    height: 120px;
-    margin-bottom: 8px;
+.row_1_of_3 {
+    min-height: 250px; 
 }
 
-.centerDiv {
+.imgHolder {
+    height: 140px;
+    margin-bottom: 10px;
+}
+
+.imgAndTextContainer {
     text-align: center;
+/*    margin-right: 10px;
+    margin-left: 10px;*/
 }
 
 .vegetableStatus {
     display: block;
     margin: 0 auto;
     height: 100%;
-
 }
 
 .pumpStatus {
     float: left;
-    margin-left: 10px;
+/*    margin-left: 10px;*/
     height: 25px;
 }
 
 .dangerStatus {
     float: right;
-    margin-right: 10px;
+/*    margin-right: 10px;*/
     height: 25px;
 }
 
