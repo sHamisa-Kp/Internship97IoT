@@ -1,5 +1,5 @@
 const channel = {
-	// SoilMoisture (Vegetables: 0-7, Flowers: 8-17)
+  // SoilMoisture (Vegetables: 0-7, Flowers: 8-17)
     'SM': [{'id': '670', 'apiKey': 'LUJ9D21E177HESAW'},
        	   {'id': '700', 'apiKey': 'Q2JH4OBED4QQAA74'},
        	   {'id': '701', 'apiKey': 'P6LY6LV7CPYYSJUP'},
@@ -23,7 +23,7 @@ const channel = {
     'T': [{'id': '671', 'apiKey': 'XAKAVEUUJQ9GZGMT'},
           {'id': '720', 'apiKey': '6P4WUZHZZDR6U0TX'}],
 
-    // Humidity
+  // Humidity
     'H': [{'id': '672', 'apiKey': 'B1JQYWFKX2PCRBYF'},
     	    {'id': '721', 'apiKey': 'YV8JRH910ZJZQN1I'}],
 	
@@ -31,7 +31,7 @@ const channel = {
    	'FH': [{'id': '722', 'apiKey': '3ZIOUDCBO1X4W0B7'}, 
    	       {'id': '723', 'apiKey': 'IG7Z0OW1NR2LVGSW'}],
 
-   	// pH (Vegetables: 0-7, Flowers: 8-17)
+  // pH (Vegetables: 0-7, Flowers: 8-17)
    	'PH': [{'id': '724', 'apiKey': 'A7SC0GJKQAFJZWAO'},
      		   {'id': '725', 'apiKey': 'THRJGRI2XUH1YZIO'},
      		   {'id': '726', 'apiKey': 'E8QFCI9OYGTOZIMT'},
@@ -51,33 +51,33 @@ const channel = {
      		   {'id': '740', 'apiKey': 'AGOE4BOV5662UOQF'},
      		   {'id': '741', 'apiKey': '29LLHTWCLAZONUOS'}],
 
-    // Water Level
+  // Water Level
    	'WL': [{'id': '742', 'apiKey': 'WGWJ660WN7V9394D'}],
 
-   	// Photo Resistor
+  // Photo Resistor
    	'PhR': [{'id': '672', 'apiKey': 'B1JQYWFKX2PCRBYF'},
    	        {'id': '743', 'apiKey': 'ZH7OQMKALAPRZXQJ'}],
 
-   	// Pump Status (Vegetables, Flowers, TOP)
+  // Pump Status (Vegetables, Flowers, TOP)
    	'PS': [{'id': '671', 'apiKey': 'XAKAVEUUJQ9GZGMT'},
    	 	     {'id': '744', 'apiKey': 'PD74MGJ9RFR4YMHK'},
    	 	     {'id': '750', 'apiKey': 'FGGX36CLKXBW2BN4'}],
 
-   	// Light Bulb Status
+  // Light Bulb Status
    	'LBS': [{'id': '745', 'apiKey': '2ZRJZIFPTQF79NOH'},
    	        {'id': '746', 'apiKey': '17J1AKN992YL3HUX'}],
 
-   	// Gas Sensor
+  // Gas Sensor
    	'G': [{'id': '747', 'apiKey': '65ZJD9TRET64FJ03'},
    	      {'id': '751', 'apiKey': '05VOPP6KT2NA1AZ5'}],
 
-   	// Tap Status (Water Tap)
+  // Tap Status (Water Tap)
    	'TS': [{'id': '748', 'apiKey': 'A1079N4WNZESIRFC'}],
 
-   	// Motion Detector
+  // Motion Detector
    	'MD': [{'id': '749', 'apiKey': 'V197BB4SL21A2IKG'},
    	       {'id': '752', 'apiKey': 'ZCLT56CFVCG7DU50'}],
 
-   	// WattMeter
+  // WattMeter
    	'WM': [{'id': '753', 'apiKey': 'OUAV3VIB076Y5UO0'}]
 };
