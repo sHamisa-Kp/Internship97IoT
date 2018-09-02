@@ -82,6 +82,7 @@ const channel = {
    	'WM': [{'id': '753', 'apiKey': 'OUAV3VIB076Y5UO0'}]
 };
 
+const numberOfVegetables = 8;
 const updateInterval = 3000; // ms
 
 function updateVegetableTile(i, value) {
@@ -89,18 +90,18 @@ function updateVegetableTile(i, value) {
 
     let vegetableStatus = document.getElementById('vegetableStatus' + i);
 	if(value < 33) {
-		vegetableStatus.setAttribute("src", "./soilMoisture_files/img/vegetableYellow.png");
+		vegetableStatus.setAttribute("src", "./img/vegetableYellow.png");
 	}	else if(value < 67) {
-		vegetableStatus.setAttribute("src", "./soilMoisture_files/img/vegetableGreenYellow.png");
+		vegetableStatus.setAttribute("src", "./img/vegetableGreenYellow.png");
 	}	else if(value <= 100) {
-		vegetableStatus.setAttribute("src", "./soilMoisture_files/img/vegetableGreen.png");
+		vegetableStatus.setAttribute("src", "./img/vegetableGreen.png");
 	}
 
     let dangerStatus = document.getElementById('dangerStatus' + i);
 	if(value >= 50 && value <= 85) {
-		dangerStatus.style.display = "none";
+		dangerStatus.style.visibility = "hidden";
 	}	else {
-		dangerStatus.setAttribute("src", "./soilMoisture_files/img/error.png");
+		dangerStatus.setAttribute("src", "./img/error.png");
 		
 	}
 }
@@ -108,9 +109,9 @@ function updateVegetableTile(i, value) {
 function updatePumpStatus(i, pS) {
     let pumpStatus = document.getElementById('pumpStatus' + i);
 	if(pS === 0) {
-		pumpStatus.setAttribute("src", "./soilMoisture_files/img/pumpOff.png");
+		pumpStatus.setAttribute("src", "./img/pumpOff.png");
 	}	else if(pS === 1) {
-		pumpStatus.setAttribute("src", "./soilMoisture_files/img/pumpOn.png");
+		pumpStatus.setAttribute("src", "./img/pumpOn.png");
 	}
 }
 
@@ -128,7 +129,7 @@ function httpGetAsync(theUrl, callback, i) {
 }
 
 function updateThePage() {
-	for(let i = 0; i < channel.SM.length; i++) {
+	for(let i = 0; i < numberOfVegetables; i++) {
 		httpGetAsync("http://thingtalk.ir/channels/" + channel.SM[i].id + 
 			"/feeds/last.json?key=" + channel.SM[i].apiKey, updateVegetableTile, i);
 
@@ -148,20 +149,20 @@ function createTile(i) {
 
 			<div class="tile-content">
 				<div class="imgHolder">
-					<img class="vegetableStatus" id="vegetableStatus`+i+`" src="./soilMoisture_files/img/vegetableYellow.png">
+					<img class="vegetableStatus" id="vegetableStatus`+i+`" src="./img/vegetableYellow.png">
 				</div>
 
 				<div class="imgAndTextContainer">
 					<span class="pumpImgHolder">
-						<img class="pumpStatus" id="pumpStatus`+i+`" src="./soilMoisture_files/img/pumpOff.png">
+						<img class="pumpStatus" id="pumpStatus`+i+`" src="./img/pumpOff.png">
 					</span>
 
 					<span class="textHolder">
-						<p class="valueText" id="valueText`+i+`">100</p>
+						<p class="valueText" id="valueText`+i+`"></p>
 					</span>
 
 					<span class="dangerHolder">
-						<img class="dangerStatus" id="dangerStatus`+i+`" src="./soilMoisture_files/img/error.png">
+						<img class="dangerStatus" id="dangerStatus`+i+`" src="./img/error.png">
 					</span>
 				</div>
 			</div>
@@ -186,6 +187,8 @@ function createTilesInHTML() {
 		HTMLText += createTile(i);
 	}	
 	row.innerHTML = HTMLText;
+
+	updateThePage();
 }
 
 createTilesInHTML();
