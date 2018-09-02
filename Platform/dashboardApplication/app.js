@@ -90,7 +90,7 @@ function updateJustValues() {
     getValueRequestToThingTalk(channel.SM[0].id, channel.SM[0].apiKey, 'soilMoisture', 'SoilMoisture', "");
     getValueRequestToThingTalk(channel.PhR[0].id, channel.PhR[0].apiKey, 'photoResistor', 'PhotoResistor', "");
     getValueRequestToThingTalk(channel.H[0].id, channel.H[0].apiKey, 'humidity', 'Humidity', "");
-    getValueRequestToThingTalk(channel.PS[0].id, channel.PS[0].apiKey, 'pumpStatus', 'PumpStatus', "");
+    //getValueRequestToThingTalk(channel.PS[0].id, channel.PS[0].apiKey, 'pumpStatus', 'PumpStatus', "");
 }
 
 

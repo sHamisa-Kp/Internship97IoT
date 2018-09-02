@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+             xmlns:local="clr-namespace:App3"
+             x:Class="App3.MainPage">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem 	
+			Text="Light"
+			Order="Primary"
+			Activated="ToolbarItem_Activated"
+						>
+		<ToolbarItem.Icon>
+				<OnPlatform x:TypeArguments="FileImageSource"
+					iOS="edit.png"
+					Android="sun2.png"
+					WinPhone="Images/edit.png" />
+			</ToolbarItem.Icon>
+		</ToolbarItem>
+
+		<ToolbarItem
+			Text="Moisture"
+			Order="Primary"
+			Clicked="ToolbarItem_Clicked"
+			>
+			<ToolbarItem.Icon>
+				<OnPlatform x:TypeArguments="FileImageSource"
+					iOS="edit.png"
+					Android="wateringcan.png"
+					WinPhone="Images/edit.png" />
+			</ToolbarItem.Icon>
+
+		</ToolbarItem>
+	</ContentPage.ToolbarItems>
+		
+	<StackLayout		Margin="5, 5, 5, 5"
+		BackgroundColor="#e1eee7">
+		<Image Margin="30">
+			<Image.Source>
+				<OnPlatform x:TypeArguments="ImageSource"
+				Android="flowers.png"/>
+
+			</Image.Source>
+			<Image.GestureRecognizers>
+				<TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+			</Image.GestureRecognizers>
+		</Image>
+
+
+		<!-- Place new controls here -->
+		<Entry
+			Placeholder="First Name"
+			PlaceholderColor="DarkCyan"
+			/>
+		<Entry
+			Placeholder="Last Name"
+			PlaceholderColor="DarkCyan"
+			/>
+
+		<Button Text="Click Here"
+				TextColor="DarkCyan"
+				BackgroundColor="Beige"
+				Clicked="Button_Clicked"
+				Margin="50"/>
+	</StackLayout>
+
+
+</ContentPage>

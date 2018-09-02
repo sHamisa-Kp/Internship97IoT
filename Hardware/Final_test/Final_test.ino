@@ -1,10 +1,11 @@
+#include <Printers.h>
+#include <XBee.h>
 #include <dht.h>
 
 #define dhtPin A0
 #define MoisturePin A1
 #define LightPin A2
 
-unsigned long minute = 60 * 1000L;
 int Count[20];
 int MsensorValue;
 int light;
@@ -18,51 +19,47 @@ void setup(){
   digitalWrite(7, LOW);
   for(size_t i=0 ; i < 20 ; i++)
     Count[i] = i;
-  delay(3000); //Being ready
 }//end "setup()"
 
 void loop(){
-  
-  /*Soil Moisture*/ 
+delay(100); //rest between Sending Data
+/*Soil Moistur*/ 
   digitalWrite(7, HIGH);
   delay(1000); // Rest till Voltage is Valid
-  MsensorValue = analogRead(MoisturePin);
-  //260 is Moisture of pure water
+    MsensorValue = analogRead(MoisturePin);
+    //260 is Moisture of pure water
   if(MsensorValue <= 260)
     MsensorValue = 260;
-  //1002 is Moisture of air 
+    //1002 is Moisture of air 
   if(MsensorValue >= 1002)
-    MsensorValue = 1002;
-  //mapping 
+      MsensorValue = 1002;
+      //mapping 
   MsensorValue = (1002 - MsensorValue)/7.42;
-  digitalWrite(7, LOW);
-  Serial.print("SM");
-  Serial.print(Count[0]);
-  Serial.print(" = ");
-  Serial.println(MsensorValue);
-  DHT.read11(dhtPin);  //ReadTemperature&Humidity
-  delay(1000);
-  
+    digitalWrite(7, LOW);
+    Serial.print("SM");
+    Serial.print(Count[0]);
+    Serial.print(" = ");
+    Serial.println(MsensorValue);
+    DHT.read11(dhtPin);  //ReadTemperature&Humidity
+    delay(1000);
   /* Humidity */
-  Serial.print("H");
-  Serial.print(Count[0]);
-  Serial.print(" = ");
-  Serial.println(DHT.humidity);
-  delay(1000); 
-  
+   Serial.print("H");
+   Serial.print(Count[0]);
+   Serial.print(" = ");
+   Serial.println(DHT.humidity);
+   delay(1000); 
+
   /* Temperature */
-  Serial.print("T");
-  Serial.print(Count[0]);
-  Serial.print(" = ");
-  Serial.println(DHT.temperature);
-  delay(1000);
-  
-  /*photoResistor*/
+   Serial.print("T");
+   Serial.print(Count[0]);
+   Serial.print(" = ");
+   Serial.println(DHT.temperature);
+   delay(1000);
+   
+ /*photoResistor*/
   Serial.print("PhR");
   Serial.print(Count[0]);
   Serial.print(" = ");
   Serial.println(analogRead(LightPin));
-  
-//  delay(2 * minute); //rest between Sending Data
-  delay(5000);
+  Serial.println("END OF LOOP\n\n");
 }//end "loop()"
