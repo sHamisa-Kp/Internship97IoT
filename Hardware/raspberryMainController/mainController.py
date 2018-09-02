@@ -1,25 +1,30 @@
 from threading import Thread
-from time import sleep
+# from time import sleep
 from flask import Flask
-from flask_restful import Api, Resource, reqparse
+# from flask_restful import Api, Resource
 import serial
 import requests
-import RPi.GPIO as GPIO 
+import RPi.GPIO as GPIO
+import datetime
+
+app = Flask(__name__)
 
 
-class Pump(Resource):
-    def get(self, status):
-        if status == 'on':
-            print("Pump Turned on By API")
-            # ser.write(b'1')
-            GPIO.output(pumpPin, 0)
-            return "Pump ON", 200
-        elif status == 'off':
-            print("Pump Turned off By API")
-            # ser.write(b'0')
-            GPIO.output(pumpPin, 1)
-            return "Pump OFF", 200
-        return "NOT FOUND", 404
+@app.route("/pump/<status>")
+def pumpControl(status):
+    if status == 'on':
+        print("Pump Turned on By API")
+        # ser.write(b'1')
+        GPIO.output(pumpPin, GPIO.LOW)
+        sendData(stringToData('PS0 = 1\r\n'))
+        return "Pump ON", 200
+    elif status == 'off':
+        print("Pump Turned off By API")
+        # ser.write(b'0')
+        GPIO.output(pumpPin, GPIO.HIGH)
+        sendData(stringToData('PS0 = 0\r\n'))
+        return "Pump OFF", 200
+    return "NOT FOUND", 404
 
 
 def zigbeeDataToString(inputBin):
@@ -31,50 +36,60 @@ def stringToData(inputStr):
     # 'T10 = 23' (Temperature)
     if inputStr[0] == 'T':
         nodeNumber = inputStr[1: inputStr.find('=') - 1]
-        return {'dataType': 'T', 'data': inputStr[len('T' + nodeNumber + ' = '):], 'nodeNumber': nodeNumber}
+        return {'dataType': 'T', 'data': inputStr[len('T' + nodeNumber + ' = '):-2], 'nodeNumber': nodeNumber}
 
     # 'H10 = 100' (Humidity)
     elif inputStr[0] == 'H':
         nodeNumber = inputStr[1: inputStr.find('=') - 1]
-        return {'dataType': 'H', 'data': inputStr[len('H' + nodeNumber + ' = '):], 'nodeNumber': nodeNumber}
+        return {'dataType': 'H', 'data': inputStr[len('H' + nodeNumber + ' = '):-2], 'nodeNumber': nodeNumber}
 
     # 'SM10 = 100' (Soil Moisture)
     elif inputStr[0:2] == 'SM':
         nodeNumber = inputStr[2: inputStr.find('=') - 1]
-        return {'dataType': 'SM', 'data': inputStr[len('SM' + nodeNumber + ' = '):], 'nodeNumber': nodeNumber}
+        return {'dataType': 'SM', 'data': inputStr[len('SM' + nodeNumber + ' = '):-2], 'nodeNumber': nodeNumber}
 
     # 'PS0 = 1' Pump Status
     elif inputStr[0:2] == 'PS':
         nodeNumber = inputStr[2: inputStr.find('=') - 1]
-        return {'dataType': 'PS', 'data': inputStr[len('PS' + nodeNumber + ' = '):], 'nodeNumber': nodeNumber}
+        return {'dataType': 'PS', 'data': inputStr[len('PS' + nodeNumber + ' = '):-2], 'nodeNumber': nodeNumber}
 
     # 'PhR10 = 100' PhotoResistor
     elif inputStr[0:3] == 'PhR':
         nodeNumber = inputStr[3: inputStr.find('=') - 1]
-        return {'dataType': 'PhR', 'data': inputStr[len('PhR' + nodeNumber + ' = '):], 'nodeNumber': nodeNumber}
+        return {'dataType': 'PhR', 'data': inputStr[len('PhR' + nodeNumber + ' = '):-2], 'nodeNumber': nodeNumber}
 
     else:
         print("ERROR: Wrong data format.")
 
 
 def sendData(inputData):
-    payload = {'api_key': apiKeys[inputData["dataType"]][int(inputData["nodeNumber"])],
-               'field1': inputData["data"]}
-    r = requests.post("http://thingtalk.ir/update", data=payload)
-    # print(r.status_code, r.reason)
-    # print(r.text)
-    if r.status_code == 200 and r.text != '-1':
-        return True
-    return False
+    try:
+        payload = {'api_key': apiKeys[inputData["dataType"]][int(inputData["nodeNumber"])], 'field1': inputData["data"]}
+        r = requests.post("http://thingtalk.ir/update", data=payload)
+        print("Data sent! ")
+        print(r.status_code, r.reason)
+        print("r.text: " + r.text)
+        print("--------------------------------------------------")
+        if r.status_code == 200 and r.text != '0':
+            return True
+        return False
+    except:
+        print("Connection Error... Thingtalk is kidding us :(")
+        return False
 
 
 def serialReadThread():
+    print("Now Raspberry pi is ready :)")
     while True:
         if ser.inWaiting() > 0:
+            print(datetime.datetime.now())
             inputBin = ser.readline()
-            # print("inputBin: " + inputBin)
+
             inputStr = zigbeeDataToString(inputBin)
+            print("inputStr: " + inputStr)
             inputData = stringToData(inputStr)
+            print("inputData: ")
+            print(inputData)
             sendData(inputData)
 
         ### TEST THREAD WORKING ###
@@ -91,7 +106,7 @@ apiKeys = {'T': ['G7KHR97UPN9OC5AC'],
 
 ser = serial.Serial(
     port='/dev/ttyAMA0',
-    baudrate=9600,
+    baudrate=38400,
     parity=serial.PARITY_NONE,
     stopbits=serial.STOPBITS_ONE,
     bytesize=serial.EIGHTBITS,
@@ -100,14 +115,12 @@ ser = serial.Serial(
 
 GPIO.setmode(GPIO.BOARD)
 pumpPin = 40
-GPIO.setup(pumpPin, GPIO.OUT, initial = 1)
+GPIO.setup(pumpPin, GPIO.OUT)
+GPIO.output(pumpPin, GPIO.HIGH)
 
-app = Flask(__name__)
-api = Api(app)
 thread = Thread(target=serialReadThread)
 thread.start()
 
-api.add_resource(Pump, "/pump/<string:status>")
+app.run(host='0.0.0.0', port=5050, debug=False)
 
-app.run(host="0.0.0.0")
 thread.join()

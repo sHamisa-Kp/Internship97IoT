@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    tools:context="ir.iotacademy.gardenbalcony.Home">
+
+    <RelativeLayout
+        android:layout_width="400dp"
+        android:layout_height="510dp"
+
+        android:id="@+id/relativeLayout"
+
+        android:layout_centerInParent="true" >
+
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#148c07"
+            android:textSize="20dp"
+            android:text="Hi ;)"
+            android:layout_above="@+id/imageButton"
+            android:layout_alignRight="@+id/imagebutton2"
+            android:layout_alignEnd="@+id/imagebutton2"
+            android:layout_marginRight="33dp"
+            android:layout_marginEnd="33dp"
+            android:layout_marginBottom="78dp" />
+
+        <ImageButton
+            android:id="@+id/imagebutton1"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:background="@null"
+            app:srcCompat="@drawable/greenplant"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            />
+
+        <ImageButton
+            android:id="@+id/imagebutton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            app:srcCompat="@drawable/sunny"
+            android:layout_marginTop="38dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/imagebutton3"
+            android:layout_toEndOf="@+id/imagebutton3" />
+
+        <ImageButton
+            android:id="@+id/imagebutton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            app:srcCompat="@drawable/drop"
+            android:layout_alignTop="@+id/textView"
+            android:layout_toLeftOf="@+id/imageButton"
+            android:layout_toStartOf="@+id/imageButton"
+            android:layout_marginRight="39dp"
+            android:layout_marginEnd="39dp" />
+
+        <ImageButton
+            android:id="@+id/imagebutton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            app:srcCompat="@drawable/clouds"
+            android:layout_above="@+id/imagebutton4"
+            android:layout_alignLeft="@+id/imagebutton4"
+            android:layout_alignStart="@+id/imagebutton4"
+            android:layout_marginLeft="13dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginBottom="20dp" />
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/sprinkler"
+            android:background="@null"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="60dp" />
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
