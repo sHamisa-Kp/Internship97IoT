@@ -17,7 +17,7 @@ const updateInterval = 3000; // ms
 function updateVegetableTile(i, value) {
 	document.getElementById('valueText' + i).innerText = value;
 
-	vegetableStatus = document.getElementById('vegetableStatus' + i);
+    let vegetableStatus = document.getElementById('vegetableStatus' + i);
 	if(value < 33) {
 		vegetableStatus.setAttribute("src", "./soilMoisture_files/img/vegetableYellow.png");
 	}	else if(value < 67) {
@@ -26,7 +26,7 @@ function updateVegetableTile(i, value) {
 		vegetableStatus.setAttribute("src", "./soilMoisture_files/img/vegetableGreen.png");
 	}
 
-	dangerStatus = document.getElementById('dangerStatus' + i);
+    let dangerStatus = document.getElementById('dangerStatus' + i);
 	if(value >= 50 && value <= 85) {
 		dangerStatus.style.display = "none";
 	}	else {
@@ -36,29 +36,23 @@ function updateVegetableTile(i, value) {
 }
 
 function updatePumpStatus(i, pS) {
-	console.log("I am updatePumpStatus");
-	pumpStatus = document.getElementById('pumpStatus' + i);
+    let pumpStatus = document.getElementById('pumpStatus' + i);
 	if(pS === 0) {
-		console.log("PS is zero!");
 		pumpStatus.setAttribute("src", "./soilMoisture_files/img/pumpOff.png");
 	}	else if(pS === 1) {
-		console.log("PS is one!");
 		pumpStatus.setAttribute("src", "./soilMoisture_files/img/pumpOn.png");
 	}
 }
 
 function httpGetAsync(theUrl, callback, i) {
-    var xmlHttp = new XMLHttpRequest();
+    let xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() { 
-        if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+        if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
             // callback(xmlHttp.responseText);
             let text = JSON.parse(xmlHttp.responseText).field1;
-            console.log("i+1: ", i+1);
-            console.log("text: ", text);
             callback(i+1, parseInt(text));
         }
-
-    }
+    };
     xmlHttp.open("GET", theUrl, true); // true for asynchronous 
     xmlHttp.send(null);
 }
@@ -119,7 +113,7 @@ function createTilesInHTML() {
 	row = document.querySelector('body > div:nth-child(2)');
 	HTMLText = '';
 	for(let i = 5; i<= 8; i++) {
-		HTMLText += createTile(i);;
+		HTMLText += createTile(i);
 	}	
 	row.innerHTML = HTMLText;
 }
