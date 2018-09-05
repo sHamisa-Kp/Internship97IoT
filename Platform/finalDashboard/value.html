@@ -79,12 +79,13 @@
 
 	<script src="./js/lib/tipboard.js"></script>
 
-	<script src="./js/averageOfSM-veg.js"></script>
+<!-- 	<script src="./js/averageOfSM-veg.js"></script> -->
 
 	<link href="./css/lib/empty.css" rel="stylesheet" media="screen">
 
 	<link href="./css/value.css" rel="stylesheet" media="screen">
-
+	
+	<script src="js/lib/gauge.min.js"></script>
 </head>
 <body data-gr-c-s-loaded="true">
 
@@ -103,17 +104,20 @@
 			</div>
 		</div>
 
+		<!-- Temperature -->
 		<div class="col col_1_of_4">
-			<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px; top: 10px; left: 10px;">
+			<div class="tile highlighter-tile" id="temperatureTile" style="width: 138px; height: 115px; top: 10px; left: 10px;">
 				<div class="tile-header">
-					<h3>Title Default</h3>
+					<h3 class="tileHeading">Temperature</h3>
+					<img id="temperatureErrorImage" src="img/error.png">
 				</div>
 
-				<div class="tile-content">
-					<div>
-						
-					</div>	
+				<div class="tile-content" id="temperatureBackGroundImage">
+					<canvas id ="temperatureGauge"></canvas>
+					<p id="temperatureText">25°C</p>
+
 				</div>
+
 			</div>
 		</div>
 
@@ -271,6 +275,6 @@
 		</div>
 	</div>
 
-<!-- <script src="./js/soilMoistureOfVegetable.js"></script> -->
+	<script src="./js/valueN.js"></script>
 </body>
 </html>

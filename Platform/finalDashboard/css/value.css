@@ -6,6 +6,38 @@ p {
     min-height: 250px; 
 }
 */
+
+/*.tile-content {
+height: 100%;
+width: 100%;
+}*/
+
+#temperatureBackGroundImage {
+    background-image: url("../img/hotTemperature.jpg");
+    height: 100%;
+}
+
+#temperatureText {
+    float: right;
+    color: black;
+    font-size: 6em;
+}
+
+#temperatureGauge {
+/*    margin: auto 0;*/
+}
+
+#temperatureErrorImage {
+    height: 30px;
+    float: right;
+    visibility: hidden;
+}
+
+.tileHeading {
+    display: inline;
+
+}
+
 .imgHolder {
     height: 140px;
     margin-bottom: 10px;
