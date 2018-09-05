@@ -13,8 +13,8 @@ p {
 
 .imgAndTextContainer {
     text-align: center;
-/*    margin-right: 10px;
-    margin-left: 10px;*/
+/*    margin-right: 5px;
+    margin-left: 5px;*/
 }
 
 .vegetableStatus {
@@ -25,13 +25,11 @@ p {
 
 .pumpStatus {
     float: left;
-/*    margin-left: 10px;*/
     height: 25px;
 }
 
 .dangerStatus {
     float: right;
-/*    margin-right: 10px;*/
     height: 25px;
 }
 
