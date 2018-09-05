@@ -1,14 +1,18 @@
 package ir.iotacademy.gardenbalcony;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.concurrent.ExecutionException;
 
 public class Home extends AppCompatActivity {
@@ -163,7 +167,9 @@ public class Home extends AppCompatActivity {
             //Perform the doInBackground method, passing in our url
             try {
                String js= get.execute(myUrl).get();
-            } catch (InterruptedException | ExecutionException e) {
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
                 e.printStackTrace();
             }
         }
@@ -179,7 +185,9 @@ public class Home extends AppCompatActivity {
             //Perform the doInBackground method, passing in our url
             try {
                String js= get.execute(myUrl).get();
-            } catch (InterruptedException | ExecutionException e) {
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
                 e.printStackTrace();
             }
         }
@@ -193,12 +201,15 @@ public class Home extends AppCompatActivity {
             String json = get.execute(url).get();
             // Temprature.setText(json);
             if (json != null) {
-                SerialClass.Pomp = getSerial(json);
+                String num = getSerial(json);
+                SerialClass.Pomp = num;
             } else {
                 SerialClass.Pomp= null;
             }
 
-        } catch (InterruptedException | ExecutionException e) {
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
             e.printStackTrace();
         }
     }
@@ -211,12 +222,15 @@ public class Home extends AppCompatActivity {
             String json = get.execute(url).get();
             // Temprature.setText(json);
             if (json != null) {
-                SerialClass.Humedity = getSerial(json);
+                String num = getSerial(json);
+                SerialClass.Humedity = num;
             } else {
                 SerialClass.Humedity = null;
             }
 
-        } catch (InterruptedException | ExecutionException e) {
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
             e.printStackTrace();
         }
     }
@@ -230,12 +244,15 @@ public class Home extends AppCompatActivity {
             String json = get.execute(url).get();
             // Temprature.setText(json);
             if (json != null) {
-                SerialClass.Moisture = getSerial(json);
+                String num = getSerial(json);
+                SerialClass.Moisture = num;
             } else {
                 SerialClass.Moisture = null;
             }
 
-        } catch (InterruptedException | ExecutionException e) {
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
             e.printStackTrace();
         }
     }
@@ -256,7 +273,9 @@ public class Home extends AppCompatActivity {
                 SerialClass.Temperature = null;
             }
 
-        } catch (InterruptedException | ExecutionException e) {
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
             e.printStackTrace();
         }
 
@@ -276,7 +295,9 @@ public class Home extends AppCompatActivity {
                 SerialClass.Light = null;
             }
 
-        } catch (InterruptedException | ExecutionException e) {
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
             e.printStackTrace();
         }
     }
@@ -293,7 +314,7 @@ public class Home extends AppCompatActivity {
             {
                 serial = serial.substring(0, serial.indexOf('.'));
             }
-            //int num = Integer.parseInt(serial)+1;
+            int num = Integer.parseInt(serial)+1;
 
             return serial;
 
@@ -302,7 +323,10 @@ public class Home extends AppCompatActivity {
         }
         catch (JSONException e) {
             e.printStackTrace();
+
         }
         return null;
+
     }
+
 }
