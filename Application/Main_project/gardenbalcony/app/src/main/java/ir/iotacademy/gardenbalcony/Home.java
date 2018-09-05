@@ -88,7 +88,7 @@ public class Home extends AppCompatActivity {
 
                     // Toast.makeText(this, "No internet access",Toast.LENGTH_SHORT).show();
                 } else
-                    tv.setText(SerialClass.Humedity);
+                    tv.setText(SerialClass.Humedity+" %");
             }
 
         });
@@ -156,8 +156,8 @@ public class Home extends AppCompatActivity {
 
         if(status.equals("1")) {
 
-            String myUrl = "http://thingtalk.ir/update?key=XAKAVEUUJQ9GZGMT&field1=0";
-
+            String myUrl = "http://10.1.248.33:5050/pump/off";
+            HttpGetRequest get=new HttpGetRequest();
             //String to place our result in
             // String result;
 
@@ -166,7 +166,7 @@ public class Home extends AppCompatActivity {
 
             //Perform the doInBackground method, passing in our url
             try {
-                new HttpPostRequest().execute(myUrl).get();
+               String js= get.execute(myUrl).get();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
@@ -174,8 +174,8 @@ public class Home extends AppCompatActivity {
             }
         }
         else if (status.equals("0")){
-            String myUrl = "http://thingtalk.ir/update?key=XAKAVEUUJQ9GZGMT&field1=1";
-
+            String myUrl = "http://10.1.248.33:5050/pump/on";
+            HttpGetRequest get=new HttpGetRequest();
             //String to place our result in
             // String result;
 
@@ -184,7 +184,7 @@ public class Home extends AppCompatActivity {
 
             //Perform the doInBackground method, passing in our url
             try {
-                new HttpPostRequest().execute(myUrl).get();
+               String js= get.execute(myUrl).get();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {

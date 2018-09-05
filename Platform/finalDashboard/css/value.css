@@ -36,3 +36,40 @@ p {
 .valueText {
     display: inline;
 }
+.font{
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color: green;
+}
+#chartHolder{
+    height: 120px;
+    margin-bottom: 8px;
+}
+.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 70%;
+    height: 20%;
+}
+#drySoil{
+    background: url(../img/drySoil.jpg);
+    background-size: cover;
+}
+#normalSoil{
+    background: url(../img/normalSoil2.jpg);
+    background-size: cover;
+}
+#wetSoil{
+    background: url(../img/wetSoil.jpg);
+    background-size: cover;
+}
+/*meter::-webkit-meter-bar {
+  box-shadow: 0 5px 5px -5px #333 inset;
+  angel:;
+}*/
+/*meter::-webkit-meter-optimum-value {
+  background: red;
+}*/
