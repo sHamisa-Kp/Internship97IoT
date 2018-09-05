@@ -35,10 +35,10 @@ function doIt() {
     num = 0;
     sum = 0;
     console.log(avrge);
-    var averageValue = document.querySelector("#vegAveragevalue");
+    var averageValue = document.querySelector("#flwrAveragevalue");
     averageValue.textContent = JSON.stringify(avrge);
     averageValue.classList.add("font");
-    var meterValue = document.querySelector("#myVegSmMeter");
+    var meterValue = document.querySelector("#myFlwrSmMeter");
     meterValue.value = avrge;
     if(avrge < 20) {
         var pic = document.querySelector(".pic");
