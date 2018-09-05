@@ -79,6 +79,8 @@
 
 	<script src="./js/lib/tipboard.js"></script>
 
+	<script src="./js/averageOfSM-veg.js"></script>
+
 	<link href="./css/lib/empty.css" rel="stylesheet" media="screen">
 
 	<link href="./css/value.css" rel="stylesheet" media="screen">
@@ -116,17 +118,26 @@
 		</div>
 
 		<div class="col col_1_of_4">
-			<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px; top: 10px; left: 10px;">
+			<div class="tile pic" id="drySoil" style="width: 308px; height: 184px; top: 10px; left: 10px;">
 				<div class="tile-header">
-					<h3>Title Default</h3>
+					<h3>SoilMoistureTEST</h3>
 				</div>
-
-				<div class="tile-content">
+				<div class="tile-content" style="height: 154px;">
+					<span class="text-container"></span>
+					<div class="center" id='chartHolder'>
+						<meter id="myMeter" class="center" value="0" min="0" max="100">21%</meter>
+						<!--img src="./last value_files/lettuce.svg" height="70" width="70" class="center"-->
+					</div>
 					<div>
-						
-					</div>	
+						<span>
+							<p id="averagevalue" class="font" class="center"></p>
+						</span>	
+					</div>
 				</div>
 			</div>
+
+			<input id="soilMoisture-lastModified" type="hidden" name="modified" value="2018-09-01T14:41:05+04:50">
+			<input id="soilMoisture-timeout" type="hidden" name="timeout" value="">
 		</div>
 
 		<div class="col col_1_of_4">
