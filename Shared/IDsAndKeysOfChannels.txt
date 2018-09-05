@@ -20,7 +20,7 @@ const channel = {
   		     {'id': '719', 'apiKey': 'OTSO6GP0GO9XUAU3'}],
 
 	// Temperature
-    'T': [{'id': '671', 'apiKey': 'XAKAVEUUJQ9GZGMT'},
+    'T': [{'id': '671', 'apiKey': 'G7KHR97UPN9OC5AC'},
           {'id': '720', 'apiKey': '6P4WUZHZZDR6U0TX'}],
 
   // Humidity
