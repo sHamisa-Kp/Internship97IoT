@@ -79,10 +79,6 @@
 
 	<script src="./js/lib/tipboard.js"></script>
 
-<!-- 	<script src="./js/averageOfSM-veg.js"></script> -->
-
-	<script src="./js/averageOfSM-flwr.js"></script>
-
 	<link href="./css/lib/empty.css" rel="stylesheet" media="screen">
 
 	<link href="./css/value.css" rel="stylesheet" media="screen">
@@ -91,7 +87,7 @@
 </head>
 <body data-gr-c-s-loaded="true">
 
-	<div class="row row_1_of_3">
+	<div class="row row_1_of_3">  <!-- first row -->
 		<div class="col col_1_of_4">
 			<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px; top: 10px; left: 10px;">
 				<div class="tile-header">
@@ -107,7 +103,7 @@
 		</div>
 
 		<!-- Temperature -->
-		<div class="col col_1_of_4">
+		<div class="col col_1_of_4"> <!-- first row, second column -->
 			<div class="tile highlighter-tile" id="temperatureTile" style="width: 138px; height: 115px; top: 10px; left: 10px;">
 				<div class="tile-header">
 					<h3 class="tileHeading">Temperature</h3>
@@ -123,15 +119,18 @@
 			</div>
 		</div>
 
+		<!-- Soilmoisture Of Vegetables -->
 		<div class="col col_1_of_4"> <!-- first row, third column -->
 			<div class="tile" style="width: 308px; height: 184px; top: 10px; left: 10px;">
 				<div class="tile-header">
-					<h3>SoilMoisture of vegetables</h3>
+					<h3 class="tileHeading">SoilMoisture of vegetables</h3>
+					<img id="soilmoistureVegErrorImage" src="img/error.png">
 				</div>
-				<div class="tile-content pic" id="drySoil" style="height: 184px;">
+
+				<div class="tile-content pic" id="drySoil">
 					<span class="text-container"></span>
 					<div class="center" id='chartHolder'>
-						<meter id="myVegSmMeter" class="center meterabsolute" value="0" min="0" max="100">21%</meter>
+						<meter id="myVegSmMeter" class="center meterabsolute" value="0" min="0" max="100" align="left">21%</meter>
 					</div>
 					<div>
 						<span>
@@ -145,20 +144,22 @@
 			<input id="soilMoisture-timeout" type="hidden" name="timeout" value="">
 		</div>
 
+		<!-- Soilmoisture Of Flowers -->
 		<div class="col col_1_of_4"> <!-- first row, fourth column -->
-			<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px; top: 10px; left: 10px;">
+			<div class="tile highlighter-tile" id="" style="width: 308px; height: 184px; top: 10px; left: 10px;">
 				<div class="tile-header">
-					<h3>SoilMoisture of Flowers</h3>
+					<h3 class="tileHeading">SoilMoisture of Flowers</h3>
+					<img id="soilmoistureFlwrErrorImage" src="img/error.png">
 				</div>
 
-				<div class="tile-content" style="height: 184px;" id="SMofFlwr">
+				<div class="tile-content" style="height: 100%;" id="SMofFlwr">
 					<span class="text-container"></span>
 					<div class="center" id='chartHolder'>
 						<meter id="myFlwrSmMeter" class="center meterabsolute" value="0" min="0" max="100" align="left">21%</meter>
 					</div>
 					<div>
 						<span>
-							<p id="flwrAveragevalue" class="font textabsolute" class="center" align="right">%29</p>
+							<p id="flwrAveragevalue" class="font textabsolute" class="center" align="right"></p>
 						</span>	
 					</div>
 				</div>
@@ -283,5 +284,9 @@
 	</div>
 
 	<script src="./js/valueN.js"></script>
+
+	<script src="./js/averageOfSM-veg.js"></script>
+
+	<script src="./js/averageOfSM-flwr.js"></script>
 </body>
 </html>

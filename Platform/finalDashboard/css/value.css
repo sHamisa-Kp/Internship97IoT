@@ -89,14 +89,17 @@ width: 100%;
 #drySoil{
     background: url(../img/drySoil.jpg);
     background-size: cover;
+    height: 100%;
 }
 #normalSoil{
     background: url(../img/normalSoil2.jpg);
     background-size: cover;
+    height: 100%;
 }
 #wetSoil{
     background: url(../img/wetSoil.jpg);
     background-size: cover;
+    height: 100%;
 }
 #SMofFlwr{
     background: url(../img/SMoFflwr.jpg);
@@ -114,6 +117,16 @@ width: 100%;
     position: absolute;
     top: 85px;
     right: 170px;
+}
+#soilmoistureVegErrorImage {
+    height: 30px;
+    float: right;
+    visibility: hidden;
+}
+#soilmoistureFlwrErrorImage {
+    height: 30px;
+    float: right;
+    visibility: hidden;
 }
 
 /*meter::-webkit-meter-bar {
