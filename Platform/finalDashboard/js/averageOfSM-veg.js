@@ -84,7 +84,7 @@ function smVegUpdateSoilmoistureTile(average) {
 
 let soilmoistureArray = [];
 let soilmoistureError = [];
-for(let i = 0; i < channel.T.length; i++) {
+for(let i = 0; i < smVegChannel.SM.length; i++) {
     soilmoistureError.push(false);
 }
 

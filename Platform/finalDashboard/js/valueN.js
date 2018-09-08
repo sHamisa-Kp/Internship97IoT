@@ -83,7 +83,7 @@ const channel = {
    };
 
 const errorValue = {
-	'T': {'min': 20, 'max': 30}
+	'T': {'min': 20, 'max': 30} 
 };
 
 const updateInterval = 3000; // ms

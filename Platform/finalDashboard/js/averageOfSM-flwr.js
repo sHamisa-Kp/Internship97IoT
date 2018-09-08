@@ -86,7 +86,7 @@ function smFlwrUpdateSoilmoistureTile(average) {
 
 let flwrsoilmoistureArray = [];
 let flwrsoilmoistureError = [];
-for(let i = 0; i < channel.T.length; i++) {
+for(let i = 0; i < smFlwrChannel.SM.length; i++) {
     flwrsoilmoistureError.push(false);
 }
 
