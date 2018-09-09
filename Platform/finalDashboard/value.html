@@ -84,6 +84,10 @@
 	<link href="./css/value.css" rel="stylesheet" media="screen">
 	
 	<script src="js/lib/gauge.min.js"></script>
+
+    <script src="./js/lib/d3.v3.min.js" language="JavaScript"></script>
+
+    <script src="./js/lib/liquidFillGauge.js" language="JavaScript"></script>
 </head>
 <body data-gr-c-s-loaded="true">
 
@@ -186,14 +190,29 @@
 				</div>
 
 				<div class="tile-content" id="waterLevelBackGroundImage">
-					<div class="center" id="chartHolder">
-						<meter id="myVegSmMeter" class="center meterabsolute" value="0" min="0" max="100" align="left">21%</meter>
+					<div class="svgcenter">
+						<svg id="fillgauge2" width="200" height="200"></svg>
 					</div>
-					<div>
-						<span>
-							<p id="waterLevelAveragevalue" class="font textabsolute"></p>
-						</span>
-					</div>
+						<script language="JavaScript">
+
+						    var config1 = liquidFillGaugeDefaultSettings();
+						    config1.circleColor = "#081caf";
+						    config1.textColor = "#9f03ad";
+						    config1.waveTextColor = "#490177";
+						    config1.waveColor = "#5ebcf2";
+						    config1.circleThickness = 0.09;
+						    config1.textVertPosition = 0.2;
+						    config1.waveAnimateTime = 1000;
+						    var gauge2= loadLiquidFillGauge("fillgauge2", 28, config1);
+
+						    function NewValue(){
+						        if(Math.random() > .5){
+						            return Math.round(Math.random()*100);
+						        } else {
+						            return (Math.random()*100).toFixed(1);
+						        }
+						    }
+						</script>
 				</div>
 			</div>
 		</div>
@@ -327,5 +346,6 @@
 	<script src="./js/averageOfPH-veg.js"></script>
 
 	<script src="./js/averageOfPH-flwr.js"></script>
+
 </body>
 </html>

@@ -11,7 +11,11 @@
 height: 100%;
 width: 100%;
 }*/
-
+    
+.liquidFillGaugeText { 
+    font-family: Helvetica; font-weight: bold; 
+}
+    
 #temperatureBackGroundImage {
     background-image: url("../img/hotTemperature.jpg");
     height: 100%;
@@ -167,6 +171,14 @@ width: 100%;
     background-image: url(../img/phFlwr.jpg);
     background-size: cover;
     height: 100%;
+    /*opacity: 0.5;*/
+}
+.svgcenter{
+    display: block;
+    margin-left: 50px;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 /*meter::-webkit-meter-bar {
   box-shadow: 0 5px 5px -5px #333 inset;
