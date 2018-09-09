@@ -1,20 +1,22 @@
 package ir.iotacademy.gardenbalcony;
+
 import android.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
-//import com.gjiazhe.panoramaimageview.GyroscopeObserver;
-//import com.gjiazhe.panoramaimageview.PanoramaImageView;
 public class GraphicalView extends AppCompatActivity {
-
+    Button test;
     // private GyroscopeObserver gyroscopeObserver;
     //View decorView = getWindow().getDecorView();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graphical_view);
+        test = (Button) findViewById(R.id.button5);
         // Initialize GyroscopeObserver.
         // Set the maximum radian the device should rotate to show image's bounds.
         // It should be set between 0 and π/2.
@@ -30,6 +32,12 @@ public class GraphicalView extends AppCompatActivity {
 // status bar is hidden, so hide that too if necessary.
         // ActionBar actionBar = getActionBar();
         //actionBar.hide();
+        test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(GraphicalView.this, "ok", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
