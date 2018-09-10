@@ -193,8 +193,9 @@
 					<div class="svgcenter">
 						<svg id="fillgauge2" width="200" height="200"></svg>
 					</div>
-						<script language="JavaScript">
-
+<!-- 						<script language="JavaScript">
+							// var myValue = document.querySelector(".gaugeValue");
+							var result = waterLevelCalculateAverage();
 						    var config1 = liquidFillGaugeDefaultSettings();
 						    config1.circleColor = "#081caf";
 						    config1.textColor = "#9f03ad";
@@ -203,7 +204,7 @@
 						    config1.circleThickness = 0.09;
 						    config1.textVertPosition = 0.2;
 						    config1.waveAnimateTime = 1000;
-						    var gauge2= loadLiquidFillGauge("fillgauge2", 28, config1);
+						    var gauge2= loadLiquidFillGauge("fillgauge2", result, config1);
 
 						    function NewValue(){
 						        if(Math.random() > .5){
@@ -212,7 +213,7 @@
 						            return (Math.random()*100).toFixed(1);
 						        }
 						    }
-						</script>
+						</script> -->
 				</div>
 			</div>
 		</div>

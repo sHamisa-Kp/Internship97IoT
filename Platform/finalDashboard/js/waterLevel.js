@@ -1,10 +1,17 @@
 const waterLevelChannel = {
 	'WL': [{'id': '742', 'apiKey': 'WGWJ660WN7V9394D'}]
 };
-
+console.log(waterLevelChannel.WL.length);
 const waterLevelErrorValue = {
 	'WL': {'min': 20, 'max': 99}
 };
+
+var result = 0;
+let waterLevelArray = [];
+let waterLevelError = [];
+for(let i = 0; i < waterLevelChannel.WL.length; i++) {
+    waterLevelError.push(false);
+}
 
 function waterLevelHttpGetAsync(theUrl, callback, i) {
 	let xmlHttp = new XMLHttpRequest();
@@ -19,6 +26,9 @@ function waterLevelHttpGetAsync(theUrl, callback, i) {
             } else {
             	waterLevelError[i] = false;
             }
+            if (i === (waterLevelChannel.WL.length) - 1) {
+                waterLevelCalculateAverage(waterLevelArray);
+            }
         }
     };
     xmlHttp.open("GET", theUrl, true); // true for asynchronous 
@@ -32,23 +42,44 @@ function waterLevelUpdateThePage() {
 	}
 }
 
-function waterLevelCalculateAverage() {
+function waterLevelCalculateAverage(waterLevelArray) {
     let sum = 0;
-    humidityArray.forEach(function(elem) {
-        sum += elem;
-    });
-    let average = sum / humidityArray.length;
-    console.log(average);
-    console.log(humidityArray.length);
-    console.log(sum);
+    // if (waterLevelArray.length > 0) {
+        waterLevelArray.forEach(function(elem) {
+            sum += elem;
+        });
+        var average = sum / waterLevelArray.length;
+        console.log(average);
+        console.log(waterLevelArray.length);
+        console.log(sum);
 
-    updateWaterLevelTile(average);
+        updateWaterLevelTile(average);
+    // else {
+    //     console.log("average is not ready yet!")
+    // }
+ 
+// }
 }
-
 function updateWaterLevelTile(average) {
-
-    // var guageValue = document.querySelector("#fillgauge2");
-    // guageValue.values = average;
+    
+        result = average;
+        var config1 = liquidFillGaugeDefaultSettings();
+        config1.circleColor = "#081caf";
+        config1.textColor = "#9f03ad";
+        config1.waveTextColor = "#490177";
+        config1.waveColor = "#5ebcf2";
+        config1.circleThickness = 0.09;
+        config1.textVertPosition = 0.2;
+        config1.waveAnimateTime = 1000;
+        var gauge2= loadLiquidFillGauge("fillgauge2", result, config1);
+        
+        function NewValue(){
+            if(Math.random() > .5){
+                return Math.round(Math.random()*100);
+            } else {
+                return (Math.random()*100).toFixed(1);
+            }
+        }
 
     waterLevelErrorImage = document.getElementById('waterLevelErrorImage');
     let thereIsAtLeastOneDanger = false;
@@ -64,11 +95,7 @@ function updateWaterLevelTile(average) {
     }
 }
 
-let waterLevelArray = [];
-let waterLevelError = [];
-for(let i = 0; i < waterLevelChannel.WL.length; i++) {
-	humidityError.push(false);
-}
 
 setInterval(waterLevelUpdateThePage, 3000);
-setInterval(waterLevelCalculateAverage, 3000);
+// setInterval(waterLevelCalculateAverage, 3000);
+
