@@ -6,12 +6,21 @@ const waterLevelErrorValue = {
 	'WL': {'min': 20, 'max': 99}
 };
 
-var result = 0;
 let waterLevelArray = [];
 let waterLevelError = [];
 for(let i = 0; i < waterLevelChannel.WL.length; i++) {
     waterLevelError.push(false);
 }
+
+var config1 = liquidFillGaugeDefaultSettings();
+config1.circleColor = "#081caf";
+config1.textColor = "#9f03ad";
+config1.waveTextColor = "#490177";
+config1.waveColor = "#5ebcf2";
+config1.circleThickness = 0.09;
+config1.textVertPosition = 0.2;
+config1.waveAnimateTime = 1000;
+var gauge2= loadLiquidFillGauge("fillgauge2", 0, config1);
 
 function waterLevelHttpGetAsync(theUrl, callback, i) {
 	let xmlHttp = new XMLHttpRequest();
@@ -62,24 +71,7 @@ function waterLevelCalculateAverage(waterLevelArray) {
 }
 function updateWaterLevelTile(average) {
     
-        result = average;
-        var config1 = liquidFillGaugeDefaultSettings();
-        config1.circleColor = "#081caf";
-        config1.textColor = "#9f03ad";
-        config1.waveTextColor = "#490177";
-        config1.waveColor = "#5ebcf2";
-        config1.circleThickness = 0.09;
-        config1.textVertPosition = 0.2;
-        config1.waveAnimateTime = 1000;
-        var gauge2= loadLiquidFillGauge("fillgauge2", result, config1);
-        
-        function NewValue(){
-            if(Math.random() > .5){
-                return Math.round(Math.random()*100);
-            } else {
-                return (Math.random()*100).toFixed(1);
-            }
-        }
+    gauge2.update(average);
 
     waterLevelErrorImage = document.getElementById('waterLevelErrorImage');
     let thereIsAtLeastOneDanger = false;
@@ -97,5 +89,4 @@ function updateWaterLevelTile(average) {
 
 
 setInterval(waterLevelUpdateThePage, 3000);
-// setInterval(waterLevelCalculateAverage, 3000);
 
