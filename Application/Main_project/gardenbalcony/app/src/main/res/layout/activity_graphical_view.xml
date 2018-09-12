@@ -18,8 +18,8 @@
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:background="@drawable/balcony"
                 android:layout_height="wrap_content"
+                android:background="@drawable/balcony"
                 android:gravity="top">
 
                 <!--<ImageView-->
@@ -33,6 +33,7 @@
                     android:layout_width="100dp"
                     android:layout_height="40dp"
                     android:text="Button" />
+
             </LinearLayout>
         </HorizontalScrollView>
     </ScrollView>

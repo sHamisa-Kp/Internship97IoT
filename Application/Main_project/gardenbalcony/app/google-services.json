@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "848079662458",
+    "firebase_url": "https://gardenbalcony-87072.firebaseio.com",
+    "project_id": "gardenbalcony-87072",
+    "storage_bucket": "gardenbalcony-87072.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:848079662458:android:19385de466c50468",
+        "android_client_info": {
+          "package_name": "ir.iotacademy.gardenbalcony"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "848079662458-ok2ej5hfukbcgqi9sacei5f9441movs1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ir.iotacademy.gardenbalcony",
+            "certificate_hash": "cc401f4fb64c7a5c7e014f5247b78339419bb306"
+          }
+        },
+        {
+          "client_id": "848079662458-jv7c876dtjpeapaofo17rbenfrvktpbs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFrsDD5oY6y59CXMPFE8hcdmyOk-soC-M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "848079662458-jv7c876dtjpeapaofo17rbenfrvktpbs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
