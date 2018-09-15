@@ -74,10 +74,10 @@ public class MainActivity extends AppCompatActivity  {
         go_for_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              /*  Intent intent = new Intent(MainActivity.this, Main2Activity.class);
-                startActivity(intent);*/
+                Intent intent = new Intent(MainActivity.this, GraphicalView.class);
+                startActivity(intent);
 
-              startSignUp();
+             // startSignUp();
             }
         });
 
@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity  {
         else {
 
 
-            Toast.makeText(MainActivity.this, "else", Toast.LENGTH_SHORT).show();
+
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this,new OnCompleteListener<AuthResult>() {
 
@@ -188,6 +188,7 @@ public class MainActivity extends AppCompatActivity  {
 
                     }
                     else{
+                        Toast.makeText(MainActivity.this, "else", Toast.LENGTH_SHORT).show();
                         //Log.d(TAG, "signInWithEmail:success");
                         FirebaseUser user = mAuth.getCurrentUser();
                         updateUI(user);

@@ -28,7 +28,7 @@
         <activity android:name=".Home" />
 
 
-            android:name=".GraphicalView"
+           <activity android:name=".GraphicalView"
             android:label="@string/title_activity_graphical_view" />
         <activity
             android:name=".JustValue"
