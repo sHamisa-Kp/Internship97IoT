@@ -4,7 +4,7 @@ const humidityChannel = {
 };
 
 const humidityErrorValue = {
-	'H': {'min': 20, 'max': 30}
+	'H': {'min': 30, 'max': 60}
 };
 
 function humidityHttpGetAsync(theUrl, callback, i) {
