@@ -19,12 +19,14 @@ width: 100%;
 #temperatureBackGroundImage {
     background-image: url("../img/hotTemperature.jpg");
     height: 100%;
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 #temperatureText {
     float: right;
     color: black;
-    font-size: 6em;
+    /*font-size: 6em;*/
 }
 
 #temperatureGauge {
@@ -92,22 +94,22 @@ width: 100%;
 }
 #drySoil{
     background: url(../img/drySoil.jpg);
-    background-size: cover;
+    background-size: 100%;
     height: 100%;
 }
 #normalSoil{
     background: url(../img/normalSoil2.jpg);
-    background-size: cover;
+    background-size: 100%;
     height: 100%;
 }
 #wetSoil{
     background: url(../img/wetSoil.jpg);
-    background-size: cover;
+    background-size: 100%;
     height: 100%;
 }
-#SMofFlwr{
+#SMofFlwrBackgroundImage{
     background: url(../img/SMoFflwr.jpg);
-    background-size: cover;
+    background-size: 100%;
     height: 100%;
 }
 .textabsolute{
@@ -138,7 +140,7 @@ width: 100%;
     visibility: hidden;
 }
 #humidityBackGroundImage {
-    background-image: url(../img/highHumidity2.jpg);
+    background-image: url(../img/highHumidity3.jpg);
     background-size: cover;
     height: 100%;
 }
@@ -148,8 +150,8 @@ width: 100%;
     visibility: hidden;
 }
 #waterLevelBackGroundImage{
-    background-image: url(../img/highHumidity2.jpg);
-    background-size: cover;
+    background-image: url(../img/wl1.jpeg);
+    background-size: 100%;
     height: 100%;
 }
 #PhVegErrorImage{
@@ -159,7 +161,7 @@ width: 100%;
 }
 #phVegBackGroundImage{
     background-image: url(../img/ph3.jpg);
-    background-size: cover;
+    background-size: 100%;
     height: 100%;
 }
 #PhFlwrErrorImage{
@@ -169,7 +171,7 @@ width: 100%;
 }
 #phFlwrBackGroundImage{
     background-image: url(../img/phFlwr.jpg);
-    background-size: cover;
+    background-size: 100%;
     height: 100%;
     /*opacity: 0.5;*/
 }
@@ -193,12 +195,16 @@ width: 100%;
     height: 30px;
     float: right;
     visibility: visible;
+    position: relative;
+    top: 130px;
 }
 
 #pumpStatusOfFlwrs {
     height: 30px;
     float: right;
     visibility: visible;
+    position: relative;
+    top: 130px;
 }
 
 #waterTopStatus {

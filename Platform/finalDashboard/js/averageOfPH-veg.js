@@ -25,6 +25,9 @@ function phVegHttpGetAsync(theUrl, callback, i) {
 			} else {
 				phVegError[i] = false;
 			}
+            if (i === (phVegChannel.PH.length) - 1) {
+              phVegCalculateAverage(phVegArray);  
+            }
 		}
 	};
 	xmlHttp.open("GET", theUrl, true); //True for asynchronous
@@ -37,7 +40,7 @@ function phVegUpdateThePage(){
 	}
 }
 
-function phVegCalculateAverage(){
+function phVegCalculateAverage(phVegArray){
 	let sum = 0;
 	phVegArray.forEach(function(elem){
 		sum += elem;
