@@ -297,6 +297,24 @@ width: 100%;
     height: 100%;
 }
 
+.highcharts-background {
+    fill: none;
+}
+
+
+.highcharts-button {
+    pointer-events: none;
+    display: none;
+} 
+
+.highcharts-contextbutton {
+
+} 
+
+.highcharts-button-normal {
+
+}
+
 /*meter::-webkit-meter-bar {
   box-shadow: 0 5px 5px -5px #333 inset;
   angel:;
