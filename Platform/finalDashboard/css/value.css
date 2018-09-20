@@ -19,12 +19,14 @@ width: 100%;
 #temperatureBackGroundImage {
     background-image: url("../img/hotTemperature.jpg");
     height: 100%;
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 #temperatureText {
     float: right;
     color: black;
-    font-size: 6em;
+    /*font-size: 6em;*/
 }
 
 #temperatureGauge {
@@ -77,10 +79,10 @@ width: 100%;
     font-weight: bolder;
     color: black;
 }
-#chartHolder{
+/*#chartHolder{
     height: 120px;
     margin-bottom: 8px;
-}
+}*/
 .center{
     display: block;
     margin-left: auto;
@@ -92,22 +94,22 @@ width: 100%;
 }
 #drySoil{
     background: url(../img/drySoil.jpg);
-    background-size: cover;
+    background-size: 100%;
     height: 100%;
 }
 #normalSoil{
     background: url(../img/normalSoil2.jpg);
-    background-size: cover;
+    background-size: 100%;
     height: 100%;
 }
 #wetSoil{
     background: url(../img/wetSoil.jpg);
-    background-size: cover;
+    background-size: 100%;
     height: 100%;
 }
-#SMofFlwr{
+#SMofFlwrBackgroundImage{
     background: url(../img/SMoFflwr.jpg);
-    background-size: cover;
+    background-size: 100%;
     height: 100%;
 }
 .textabsolute{
@@ -128,7 +130,7 @@ width: 100%;
     visibility: hidden;
 }
 #soilmoistureFlwrErrorImage {
-    height: 30px;
+    height: 30px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
     float: right;
     visibility: hidden;
 }
@@ -138,7 +140,7 @@ width: 100%;
     visibility: hidden;
 }
 #humidityBackGroundImage {
-    background-image: url(../img/highHumidity2.jpg);
+    background-image: url(../img/highHumidity3.jpg);
     background-size: cover;
     height: 100%;
 }
@@ -148,8 +150,8 @@ width: 100%;
     visibility: hidden;
 }
 #waterLevelBackGroundImage{
-    background-image: url(../img/highHumidity2.jpg);
-    background-size: cover;
+    background-image: url(../img/wl1.jpeg);
+    background-size: 100%;
     height: 100%;
 }
 #PhVegErrorImage{
@@ -159,7 +161,7 @@ width: 100%;
 }
 #phVegBackGroundImage{
     background-image: url(../img/ph3.jpg);
-    background-size: cover;
+    background-size: 100%;
     height: 100%;
 }
 #PhFlwrErrorImage{
@@ -169,7 +171,7 @@ width: 100%;
 }
 #phFlwrBackGroundImage{
     background-image: url(../img/phFlwr.jpg);
-    background-size: cover;
+    background-size: 100%;
     height: 100%;
     /*opacity: 0.5;*/
 }
@@ -180,6 +182,121 @@ width: 100%;
     margin-top: auto;
     margin-bottom: auto;
 }
+
+#foggNozzleStatus {
+    height: 30px;
+    float: right;
+    visibility: visible;
+    position: relative;
+    top: 130px;  
+}
+
+#pumpStatusOfVegs {
+    height: 30px;
+    float: right;
+    visibility: visible;
+    position: relative;
+    top: 130px;
+}
+
+#pumpStatusOfFlwrs {
+    height: 30px;
+    float: right;
+    visibility: visible;
+    position: relative;
+    top: 130px;
+}
+
+#waterTopStatus {
+    height: 40px;
+    float: right;
+    visibility: visible;
+    position: relative;
+    bottom: 50px;
+}
+
+#photoresistorBackGroundImage {
+    background-image: url(../img/phFlwr.jpg);
+    background-size: cover;
+    height: 100%;
+}
+
+#lightbulbStatus1 { /*lightbulbStatus1 is for Dr's balconey*/
+    height: 30px;
+    float: right;
+    visibility: visible;
+    position: relative;
+    top: 25px;
+}
+
+#lightbulbStatus2 { /*lightbulbStatus2 is for conferenceroom's balconey*/
+    height: 30px;
+    float: left;
+    visibility: visible;
+    position: relative;
+    top: 25px;
+}
+
+#mdBackgroundImage {
+    background-image: url(../img/phFlwr.jpg);
+    background-size: cover;
+    height: 100%;
+}
+
+#mdStatus1 { /*lightbulbStatus2 is for conferenceroom's balconey*/
+    height: 30px;
+    float: left;
+    visibility: visible;
+    position: relative;
+    top: 95px;
+}
+
+#mdStatus2 { /*lightbulbStatus2 is for conferenceroom's balconey*/
+    height: 40px;
+    float: left;
+    visibility: visible;
+    position: relative;
+    top: 95px;
+}
+
+#wattmeterErrorImage {
+    height: 30px;
+    float: right;
+    visibility: hidden;
+}
+
+#rainSensorBackgroundImage {
+    background-image: url(../img/phFlwr.jpg);
+    background-size: cover;
+    height: 100%;
+}
+
+#rainSensorErrorImage{
+    height: 30px;
+    float: right;
+    visibility: hidden;
+}
+
+#rainStatus {
+    height: 30px;
+    float: left;
+    visibility: visible;
+    position: relative;
+    top: 95px;
+}
+
+#GasErrorImage {
+    height: 30px;
+    float: right;
+    visibility: hidden;
+}
+
+#GasBackgroundImage {
+    background-image: url(../img/phFlwr.jpg);
+    background-size: cover;
+    height: 100%;
+}
+
 /*meter::-webkit-meter-bar {
   box-shadow: 0 5px 5px -5px #333 inset;
   angel:;

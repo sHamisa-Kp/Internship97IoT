@@ -101,6 +101,9 @@ function httpGetAsync(theUrl, callback, i) {
             } else {
             	temperatureError[i] = false;
             }
+            if (i === (channel.T.length) - 1) {
+            	calculateAverage(temperatureArray);
+            }
         }
     };
     xmlHttp.open("GET", theUrl, true); // true for asynchronous 
@@ -114,7 +117,7 @@ function updateThePage() {
 	}
 }
 
-function calculateAverage() {
+function calculateAverage(temperatureArray) {
 	let sum = 0;
 	temperatureArray.forEach(function(elem) {
 		sum += elem;
@@ -131,17 +134,17 @@ function updateTemperatureTile(average) {
 
 	let backgroundImage = document.getElementById('temperatureBackGroundImage');
 	if(average < 0) {
-		backgroundImage.style.backgroundImage = 'url("img/veryColdTemperature.jpg")';
-		// console.log("average < 0");
+		backgroundImage.style.backgroundImage = 'url("img/veryCold.jpg")';
+		
 	} else if(average >= 0 && average < 20) {
-		backgroundImage.style.backgroundImage = 'url("img/coldTemperature.jpg")';
-		// console.log('average > 0 && average < 20');
+		backgroundImage.style.backgroundImage = 'url("img/coldTemp.jpg.jpg")';
+		
 	} else if(average >= 20 && average < 30) {
-		backgroundImage.style.backgroundImage = 'url("img/balancedTemperature.jpg")';
-		// console.log('average > 20 && average < 30');
+		backgroundImage.style.backgroundImage = 'url("img/normTemp.jpg")';
+		
 	} else if(average >= 30) {
-		backgroundImage.style.backgroundImage = 'url("img/hotTemperature.jpg")';
-		// console.log('average > 30');
+		backgroundImage.style.backgroundImage = 'url("img/hotWeather2.jpg")';
+	
 	}
 
 	temperatureErrorImage = document.getElementById('temperatureErrorImage');
@@ -186,4 +189,3 @@ temperatureGauge = new LinearGauge({
 }).draw();
 
 setInterval(updateThePage, updateInterval);
-setInterval(calculateAverage, updateInterval);

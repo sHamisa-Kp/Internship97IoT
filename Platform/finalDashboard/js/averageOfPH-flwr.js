@@ -27,6 +27,9 @@ function phFlwrHttpGetAsync(theUrl, callback, i) {
 			} else {
 				phFlwrError[i] = false;
 			}
+            if (i === (phFlwrChannel.PH.length) - 1) {
+              phFlwrCalculateAverage(phFlwrArray);  
+            }
 		}
 	};
 	xmlHttp.open("GET", theUrl, true); //True for asynchronous
@@ -39,7 +42,7 @@ function phFlwrUpdateThePage() {
 	}
 }
 
-function phFlwrCalculateAverage() {
+function phFlwrCalculateAverage(phFlwrArray) {
 	let sum = 0;
 	phFlwrArray.forEach(function(elem){
 		sum += elem;
@@ -80,4 +83,3 @@ for(let i = 8; i < phFlwrChannel.PH.length; i++) {
 }
 
 setInterval(phFlwrUpdateThePage, 3000);
-setInterval(phFlwrCalculateAverage, 3000);
