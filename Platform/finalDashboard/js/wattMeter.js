@@ -9,7 +9,7 @@
 							},
 
 							title: {
-								text: 'WATT METER'
+								text: null
 							},
 
 							pane: {
@@ -104,7 +104,7 @@
     },
 
     series: [{
-    	name: 'Speed',
+    	name: 'watt meter',
     	data: [80],
     	tooltip: {
     		valueSuffix: 'KW'

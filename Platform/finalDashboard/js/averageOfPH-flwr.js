@@ -82,4 +82,74 @@ for(let i = 8; i < phFlwrChannel.PH.length; i++) {
 	phFlwrError.push(false);
 }
 
+{
+  "type":"gauge",
+  "scale-r":{
+    "aperture":200,
+    "values":"0:100:20",
+    "center":{
+      "size":12,
+      "background-color":"#66CCFF #FFCCFF",
+      "border-color":"none"
+    },
+    "ring":{
+      "size":10,
+      "rules":[
+        {
+          "rule":"%v >= 0 && %v <= 20",
+          "background-color":"red"
+        },
+        {
+          "rule":"%v >= 20 && %v <= 40",
+          "background-color":"orange"
+        },
+        {
+          "rule":"%v >= 40 && %v <= 60",
+          "background-color":"yellow"
+        },
+        {
+          "rule":"%v >= 60 && %v <= 80",
+          "background-color":"green"
+        },
+        {
+          "rule":"%v >= 80 && %v <=100",
+          "background-color":"blue"
+        }
+      ]
+    },
+    "guide":{
+      "background-color":"#66CCFF #FFCCFF",
+      "alpha":0.2
+    },
+    "tick":{
+      "line-color":"#66CCFF",
+      "line-style":"solid",
+      "line-width":3,
+      "size":15,
+      "placement":"inner"
+    },
+    "minor-ticks":4,
+    "minor-tick":{
+      "line-color":"#FFFFFF",
+      "line-style":"solid",
+      "line-width":2,
+      "size":10,
+      "placement":"inner"
+    }
+  },
+  "plot":{
+    "csize":"5%",
+    "size":"80%",
+    "background-color":"#000000",
+    "value-box":{ //Value Boxes
+      "placement":"center",  //Specify placement at "center", "tip", or "edge".
+      "text":"%v",
+      "font-color":"blue"
+    }
+  },
+  "series":[
+    {"values":[87]}
+  ]
+}
+
 setInterval(phFlwrUpdateThePage, 3000);

@@ -126,7 +126,7 @@ var gaugeOptions = {
             [0.9, '#DF5353'] // red
         ],
         lineWidth: 0,
-        minorTickInterval: null,
+        minorTickInterval: 1,
         tickAmount: 2,
         title: {
             y: -70
@@ -178,4 +178,3 @@ var chartSpeed = Highcharts.chart('container-speed', Highcharts.merge(gaugeOptio
 
 
 setInterval(phVegUpdateThePage, 3000);
-setInterval(phVegCalculateAverage, 3000);
