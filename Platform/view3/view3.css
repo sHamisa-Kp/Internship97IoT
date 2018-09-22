@@ -1,0 +1,241 @@
+html, body {
+    height: 100%;
+    font-size: 62.5%;
+}
+
+body {
+    background: #1c1d1f;
+    color: #c7cbd2;
+    font-family:'misolight',"Trebuchet MS", Arial, sans-serif;
+    min-width: 600px;
+    width: 100%;
+    min-height: 100%;
+    margin: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+h2 {
+    font-size: 2.4rem;
+    font-weight: normal;
+    line-height: 1.2em;
+    margin-bottom: 0.5em;
+    color: #fff;
+}
+
+h3 {
+    font-size: 1.2rem;
+    font-weight: normal; 	
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 300px auto auto auto 300px;
+  grid-template-rows: 180px 180px 150px 180px 150px 180px;
+  grid-gap: 10px;
+  background-color: #1c1d1f;;
+  padding: 10px;
+}
+
+.grid-container > div {
+  background-color: #25282d;
+  /*text-align: center;*/
+  padding: 11px 0;
+
+}
+
+.tile-header {
+    height: 10px;
+    line-height: 10px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #4a4d52;
+    padding: 0 10px;
+    margin: 0 0 0 0;
+}
+
+.tileHeading {
+    display: inline;
+}
+
+#chartHolder{
+    height: 90px;
+    margin-bottom: 0px;
+ 	display: inline;
+}
+.center{
+    display: block;
+    padding-left: 10px;
+    margin-right: auto;
+	padding-top: 10px;
+    margin-bottom: auto;
+    width: 50%;
+    height: 20%;
+}
+.font{
+    font-size: 3rem;
+    font-weight: bolder;
+    color: black;
+}
+.textabsolute{
+    position: relative;
+    bottom: 60px;
+    left: 80px;
+    width: 200px;
+    height: 25px;
+}
+
+/*.meterabsolute{
+    position: absolute;
+    top: 85px;
+    right: 170px;
+}*/
+
+#humidityBackGroundImage {
+    background-image: url(../mygit/Internship97IoT/Platform/finalDashboard/img/highHumidity2.jpg);
+    background-size: cover;
+    height: 100%;
+}
+
+#humidityErrorImage {
+	position: relative;
+    height: 20px;
+    float: right;
+    bottom: 10px;
+    visibility: hidden;
+}
+
+#temperatureBackGroundImage {
+    background-image: url("../mygit/Internship97IoT/Platform/finalDashboard/img/hotTemperature.jpg");
+    background-size: cover;
+    height: 100%;
+}
+
+#temperatureText {
+    float: right;
+    color: black;
+    font-size: 6em;
+}
+
+#temperatureGauge {
+/*    margin: auto 0;*/
+}
+
+#temperatureErrorImage {
+	position: relative;
+    height: 20px;
+    float: right;
+    bottom: 10px;
+    visibility: hidden;
+}
+
+#drySoil {
+    background: url(../mygit/Internship97IoT/Platform/finalDashboard/img/drySoil.jpg);
+    background-size: cover;
+    height: 100%;
+}
+
+#normalSoil{
+    background: url(../mygit/Internship97IoT/Platform/finalDashboard/img/normalSoil2.jpg);
+    background-size: cover;
+    height: 100%;
+}
+#wetSoil{
+    background: url(../mygit/Internship97IoT/Platform/finalDashboard/img/wetSoil.jpg);
+    background-size: cover;
+    height: 100%;
+}
+
+#soilmoistureVegErrorImage {
+	position: relative;
+    height: 20px;
+    float: right;
+    bottom: 10px;    
+    visibility: hidden;
+}
+
+#SMofFlwr {
+    background: url(../mygit/Internship97IoT/Platform/finalDashboard/img/SMoFflwr.jpg);
+    background-size: cover;
+    height: 100%;
+
+}
+
+#soilmoistureFlwrErrorImage {
+	position: relative;
+    height: 20px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+    float: right;
+    bottom: 10px;
+    visibility: hidden;
+}
+
+#waterLevelErrorImage {
+	position: relative;
+    height: 20px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+    float: right;
+    bottom: 10px;
+    visibility: hidden;
+}
+
+.svgcenter{
+    display: block;
+    margin-left: 90px;
+    margin-right: auto;
+    margin-top: 1.2px;
+    margin-bottom: auto;
+}
+
+#phVegBackGroundImage {
+    background-image: url(../mygit/Internship97IoT/Platform/finalDashboard/img/ph3.jpg);
+    background-size: cover;
+    height: 100%;
+}
+
+#PhVegErrorImage{
+	position: relative;
+    height: 20px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+    float: right;
+    bottom: 10px;
+    visibility: hidden;
+}
+
+#phFlwrBackGroundImage {
+    background-image: url(../mygit/Internship97IoT/Platform/finalDashboard/img/phFlwr.jpg);
+    background-size: cover;
+    height: 100%;
+    /*opacity: 0.5;*/
+}
+
+#PhFlwrErrorImage{
+	position: relative;
+    height: 20px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+    float: right;
+    bottom: 10px;
+    visibility: hidden;
+}
+
+#chartBackgroundImage {
+
+}
+
+.item8 {
+  grid-area: 1 / 2 / 7 / 5;
+}
+
+.item1 {
+   /* background: url(../mygit/Internship97IoT/Platform/finalDashboard/img/SMoFflwr.jpg);*/
+    background-size: cover;
+}
+
+.item2 {
+/*    background: url(../mygit/Internship97IoT/Platform/finalDashboard/img/ph3.jpg);*/
+    background-size: cover;
+}
+	
+.item3 {
+/*    background: url(../mygit/Internship97IoT/Platform/finalDashboard/img/phFlwr.jpg);*/
+    background-size: cover;
+}
+
+.item4 {
+    /*background: url(../mygit/Internship97IoT/Platform/finalDashboard/img/normalSoil2.jpg);*/
+    background-size: cover;
+}
