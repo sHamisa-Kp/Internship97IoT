@@ -12,8 +12,8 @@ import android.widget.Toast;
 
 public class GraphicalView extends AppCompatActivity {
     Button test;
-    ImageView onlamp,offlamp;
-    ImageButton onswitch,offswitch;
+    ImageView onlamp,offlamp,mist;
+    ImageButton onswitch,offswitch,mistbtn;
     // private GyroscopeObserver gyroscopeObserver;
     //View decorView = getWindow().getDecorView();
     @Override
@@ -68,6 +68,37 @@ public class GraphicalView extends AppCompatActivity {
 
             }
         });
+
+        mist= (ImageView) findViewById(R.id.mist);
+        mistbtn= (ImageButton) findViewById(R.id.mist_btn);
+
+        mistbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mist.getVisibility()==View.INVISIBLE){
+                    mist.setVisibility(View.VISIBLE);
+                    mist.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            ((AnimationDrawable)mist.getBackground()).start();
+                        }
+                    });
+
+                }
+                else {
+                    mist.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            ((AnimationDrawable)mist.getBackground()).stop();
+                        }
+                    });
+                    mist.setVisibility(View.INVISIBLE);
+
+                }
+            }
+        });
+
+
 
         //test = (Button) findViewById(R.id.button5);
         // Initialize GyroscopeObserver.
