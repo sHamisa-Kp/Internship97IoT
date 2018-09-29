@@ -7,11 +7,27 @@
 }
 */
 
-/*.tile-content {
-height: 100%;
-width: 100%;
-}*/
-    
+.tile-content {
+    text-align: center;
+}
+
+#motionDetectionStatus1, #motionDetectionStatus2 {
+    width: 40%;
+    margin-top: 20%;
+}
+
+.errorImage {
+    height: 30px;
+    float: right;
+    visibility: hidden;
+}
+
+.rightDownIMG {
+    margin-top: 30%;
+    display:inline-block;
+    float: right;
+}
+
 .liquidFillGaugeText { 
     font-family: Helvetica; font-weight: bold; 
 }
@@ -19,8 +35,6 @@ width: 100%;
 #temperatureBackGroundImage {
     background-image: url("../img/hotTemperature.jpg");
     height: 100%;
-    background-size: 100%;
-    background-repeat: no-repeat;
 }
 
 #temperatureText {
@@ -31,12 +45,7 @@ width: 100%;
 
 #temperatureGauge {
 /*    margin: auto 0;*/
-}
-
-#temperatureErrorImage {
-    height: 30px;
-    float: right;
-    visibility: hidden;
+float: left;
 }
 
 .tileHeading {
@@ -54,6 +63,7 @@ width: 100%;
 /*    margin-right: 5px;
     margin-left: 5px;*/
 }
+
 
 .vegetableStatus {
     display: block;
@@ -216,8 +226,7 @@ width: 100%;
 }
 
 #photoresistorBackGroundImage {
-    background-image: url(../img/phFlwr.jpg);
-    background-size: cover;
+    background-image: url(../img/normalPhR.jpg);
     height: 100%;
 }
 
@@ -238,8 +247,7 @@ width: 100%;
 }
 
 #mdBackgroundImage {
-    background-image: url(../img/phFlwr.jpg);
-    background-size: cover;
+    background-image: url(../img/md.jpg);
     height: 100%;
 }
 
@@ -266,8 +274,7 @@ width: 100%;
 }
 
 #rainSensorBackgroundImage {
-    background-image: url(../img/phFlwr.jpg);
-    background-size: cover;
+    background-image: url(../img/dryWood.jpg);
     height: 100%;
 }
 
@@ -277,26 +284,53 @@ width: 100%;
     visibility: hidden;
 }
 
-#rainStatus {
+/*#rainStatus {
     height: 30px;
     float: left;
     visibility: visible;
     position: relative;
     top: 95px;
-}
+}*/
 
-#GasErrorImage {
+#gasErrorImage {
     height: 30px;
     float: right;
     visibility: hidden;
 }
 
-#GasBackgroundImage {
-    background-image: url(../img/phFlwr.jpg);
-    background-size: cover;
+#gasBackgroundImage {
+    background-image: url('');
+    background-size: 100%;
+    background-color: black;
     height: 100%;
 }
 
+.highcharts-background {
+    fill: none;
+    margin: 0 auto;
+}
+
+
+.highcharts-button {
+    pointer-events: none;
+    display: none;
+} 
+
+.highcharts-contextbutton {
+
+} 
+
+.highcharts-button-normal {
+
+}
+
+.highcharts-axis-title {
+    
+}
+
+.highcharts-pane {
+    margin: 0 auto;
+}
 /*meter::-webkit-meter-bar {
   box-shadow: 0 5px 5px -5px #333 inset;
   angel:;

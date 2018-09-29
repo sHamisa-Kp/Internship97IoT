@@ -42,23 +42,62 @@
                         <!--android:layout_height="match_parent"-->
                         <!--android:background="@drawable/balcony" />-->
 
+                        <ImageButton
+                            android:id="@+id/mist_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/mist_off"
+                            android:background="@null"
+                            android:layout_marginTop="-10dp"
+                            android:layout_marginLeft="240dp"
+                            />
+                        <ImageView
+                            android:id="@+id/mist"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/animated_mist"
+                            android:layout_marginTop="-10dp"
+                            android:layout_marginLeft="-260dp"
+                            android:visibility="invisible"/>
 
                         <LinearLayout
                             android:layout_width="500dp"
                             android:layout_height="wrap_content"
 
+                            android:layout_marginLeft="-520dp"
+                            android:layout_marginTop="30dp"
                             android:orientation="vertical">
+
+
+                       
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/off_lamp"
+                                    android:id="@+id/offlamp"
+                                    android:layout_marginLeft="40dp"
+                                    android:layout_marginTop="80dp"/>
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/onlamp"
+                                    android:background="@drawable/animated_light"
+                                    android:layout_marginLeft="-103dp"
+                                    android:layout_marginTop="80dp"
+                                    android:visibility="invisible"/>
+                                
+                                
                                 <ImageButton
                                     android:id="@+id/flower1"
                                     android:layout_width="match_parent"
                                     android:layout_height="100dp"
-                                    android:layout_marginLeft="240dp"
+                                    android:layout_marginLeft="150dp"
                                     android:layout_marginTop="100dp"
                                     android:layout_weight="1"
                                     android:background="@null"
@@ -111,16 +150,34 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="-280dp"
-                            android:layout_marginTop="260dp"
+                            android:layout_marginLeft="-450dp"
+                            android:layout_marginTop="290dp"
                             android:orientation="vertical">
+
+
+                            <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:id="@+id/off_switch"
+                                app:srcCompat="@drawable/switch_off"
+                                />
+                            <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="-72dp"
+                                android:id="@+id/on_switch"
+                                android:visibility="invisible"
+                                app:srcCompat="@drawable/switch_on"
+
+                                />
 
                             <ImageButton
                                 android:id="@+id/flower3"
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
-                                android:layout_marginLeft="-20dp"
-                                android:layout_marginTop="10dp"
+                                android:layout_marginLeft="200dp"
+                                android:layout_marginTop="-40dp"
                                 android:layout_weight="1"
                                 android:background="@null"
                                 app:srcCompat="@drawable/sprout_flower" />
@@ -129,7 +186,7 @@
                                 android:id="@+id/textflower3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="0dp"
+                                android:layout_marginLeft="220dp"
                                 android:layout_weight="1"
                                 android:text="flower 3"
                                 android:textColor="#f3f63f"
@@ -138,9 +195,11 @@
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="110dp"
-                                android:layout_marginTop="-120dp"
+                                android:layout_marginLeft="320dp"
+                                android:layout_marginTop="-110dp"
                                 android:orientation="horizontal">
+                                
+
 
                                 <ImageButton
                                     android:id="@+id/flower4"
@@ -168,7 +227,7 @@
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="230dp"
+                                android:layout_marginLeft="400dp"
                                 android:layout_marginTop="-120dp"
                                 android:orientation="horizontal">
 
@@ -215,13 +274,31 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="160dp"
-                            android:layout_marginTop="320dp"
+                            android:layout_marginTop="-10dp"
                             android:orientation="vertical">
+
+                            <ImageButton
+                                android:id="@+id/mist_btn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:srcCompat="@drawable/mist_off"
+                                android:background="@null"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginLeft="230dp"/>
+                            <ImageView
+                                android:id="@+id/mist"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/animated_mist"
+                                android:layout_marginTop="-200dp"
+                                android:layout_marginLeft="230dp"
+                                android:visibility="invisible"
+                          />
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="90dp"
+                                android:layout_marginTop="200dp"
                                 android:orientation="horizontal">
 
 
@@ -253,6 +330,7 @@
                                 android:layout_marginTop="-100dp"
                                 android:layout_marginLeft="200dp"
                                 android:orientation="horizontal">
+
 
 
                                 <ImageButton
