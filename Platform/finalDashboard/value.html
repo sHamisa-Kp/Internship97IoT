@@ -85,21 +85,21 @@
 	
 	<script src="js/lib/gauge.min.js"></script>
 
-    <script src="./js/lib/d3.v3.min.js" language="JavaScript"></script>
+	<script src="./js/lib/d3.v3.min.js" language="JavaScript"></script>
 
-    <script src="./js/lib/liquidFillGauge.js" language="JavaScript"></script>
+	<script src="./js/lib/liquidFillGauge.js" language="JavaScript"></script>
 
     <!-- <script src="https://code.highcharts.com/highcharts.js"></script>
- -->
-	<script src="./Highcharts/code/highcharts.js"></script>
+    -->
+    <script src="./Highcharts/code/highcharts.js"></script>
 
-	<script src="./Highcharts/code/highcharts-more.js"></script>
+    <script src="./Highcharts/code/highcharts-more.js"></script>
 
-	<script src="./Highcharts/code/modules/exporting.js"></script>
+    <script src="./Highcharts/code/modules/exporting.js"></script>
 
-	<script src="./Highcharts/code/modules/export-data.js"></script>
+    <script src="./Highcharts/code/modules/export-data.js"></script>
 
-	<script src="./Highcharts/code/modules/solid-gauge.js"></script>
+    <script src="./Highcharts/code/modules/solid-gauge.js"></script>
 </head>
 <body data-gr-c-s-loaded="true">
 
@@ -137,13 +137,12 @@
 			<div class="tile highlighter-tile" id="temperatureTile" style="width: 138px; height: 115px; top: 10px; left: 10px;">
 				<div class="tile-header">
 					<h3 class="tileHeading">Temperature</h3>
-					<img id="temperatureErrorImage" src="img/error.png">
+					<img id="temperatureErrorImage" class="errorImage" src="img/error.png">
 				</div>
 
 				<div class="tile-content" id="temperatureBackGroundImage">
 					<canvas id ="temperatureGauge"></canvas>
 					<p id="temperatureText" class="font textabsolute" align="right">25°C</p>
-
 				</div>
 
 			</div>
@@ -169,7 +168,7 @@
 					</div>
 					<div>
 						<span>
-							<img id="pumpStatusOfVegs" src="img/X.png">
+<!-- 							<img id="pumpStatusOfVegs" src="img/X.png"> -->
 						</span>	
 					</div>					
 				</div>
@@ -199,7 +198,7 @@
 					</div>
 					<div>
 						<span>
-							<img id="pumpStatusOfFlwrs" src="img/X.png">
+<!-- 							<img id="pumpStatusOfFlwrs" src="img/X.png"> -->
 						</span>	
 					</div>					
 				</div>
@@ -248,175 +247,151 @@
 						        }
 						    }
 						</script> -->
-				</div>
-			</div>
-		</div>
-
-		<!-- photoresistor -->
-		<div class="col col_1_of_4"> <!-- second row second column -->
-			<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px; top: 10px; left: 10px;">
-				<div class="tile-header">
-					<h3>photoresistor</h3>
-					<!-- <img id="photoresistorErrorImage" src="img/error.png"> -->
-				</div>
-
-				<div class="tile-content" id="photoresistorBackGroundImage">
-					<div class="center" id='chartHolder'>
-						<meter id="photoresistorMeter" class="center meterabsolute" value="0" min="0" max="100" align="left">21%</meter>
-					</div>
-					<div>
-						<span>
-							<p id="photoresistorAveragevalue" class="font textabsolute" class="center" align="right"></p>
-						</span>	
-					</div>
-					<div>
-						<span>
-							<img id="lightbulbStatus1" src="img/X.png"> <!-- lightbulbStatus1 is for Dr's balconey -->
-							<img id="lightbulbStatus2" src="img/X.png"> <!-- lightbulbStatus2 is for conferenceroom's balconey -->
-						</span>	
-					</div>	
-				</div>
-			</div>
-		</div>
-
-		<!-- motion detector -->
-		<div class="col col_1_of_4"> <!-- second row third column -->
-			<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px; top: 10px; left: 10px;">
-				<div class="tile-header">
-					<h3>motion detector</h3>
-				</div>
-
-				<div class="tile-content" id="mdBackgroundImage">
-					<div class="center">
-						<span class="center">
-							<img id="mdStatus1" src="img/X.png"> <!-- mdStatus1 is for Dr's balconey -->
-							<img id="mdStatus2" src="img/X.png"> <!-- mdStatus2 is for conferenceroom's balconey -->
-						</span>							
-					</div>	
-				</div>
-			</div>
-		</div>
-
-		<!-- watt meter -->
-		<div class="col col_1_of_4"> <!-- second row fourth column -->
-			<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px; top: 10px; left: 10px;">
-				<div class="tile-header">
-					<h3 class="tileHeading">watt meter</h3>
-					<img id="wattmeterErrorImage" src="img/error.png">
-				</div>
-
-				<div class="tile-content" id="wattmeterBackgroundImage">
-					<div id="container" style="min-width: 410px; max-width: 500px; height: 250px; margin: 0 auto">						
 					</div>
 				</div>
 			</div>
-		</div>
-	</div> <!-- end of second row -->
 
-	<!-- third row -->
-	<div class="row row_1_of_3">
+			<!-- photoresistor -->
+			<div class="col col_1_of_4"> <!-- second row second column -->
+				<div class="tile highlighter-tile" id="photoresistorTile" style="width: 138px; height: 115px; top: 10px; left: 10px;">
+					<div class="tile-header">
+						<h3 class="tileHeading">Photoresistor</h3>
+						<img id="photoresistorErrorImage" class="errorImage" src="img/error.png">
+					</div>
 
-		<!-- rain sensor -->
-		<div class="col col_1_of_4"> <!-- third row first column -->
-			<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px; top: 10px; left: 10px;">
-				<div class="tile-header">
-					<h3 class="tileHeading">rain sensor</h3>
-					<img id="rainSensorErrorImage" src="img/error.png">
-				</div>
-
-				<div class="tile-content" id="rainSensorBackgroundImage">
-					<div class="center">
-						<span class="center">
-							<img id="rainStatus" src="img/X.png"> <!-- mdStatus1 is for Dr's balconey -->
-							<p id="floorStatus" class="font">WET</p>
-						</span>
-					</div>	
-				</div>
-			</div>
-		</div>
-
-		<!-- Gas -->
-		<div class="col col_1_of_4"> <!-- third row second column -->
-			<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px; top: 10px; left: 10px;">
-				<div class="tile-header">
-					<h3 class="tileHeading">Gas</h3>
-					<img id="GasErrorImage" src="img/error.png">
-				</div>
-
-				<div class="tile-content" id="GasBackgroundImage">
-					<div>
-						<span class="center">
-							<p id="floorStatus" class="font center" style="color: white;">Dirty</p>
-							<p id="floorStatus" class="font">1500ppm</p>
-						</span>	
-					</div>	
-				</div>
-			</div>
-		</div>
-
-		<!-- PH of vegetables -->
-		<div class="col col_1_of_4"> <!-- third row, third column -->
-			<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px; top: 10px; left: 10px;">
-				<div class="tile-header">
-					<h3 class="tileHeading">PH of vegetables</h3>
-					<img id="PhVegErrorImage" src="img/error.png">
-				</div>
-
-				<div class="tile-content" id="phVegBackGroundImage">
-					<div class="center" id="chartHolder" style="width: 600px; height: 400px; margin: 0 auto">
-						<!-- <meter id="phVegMeter" class="center meterabsolute" value="0" min="0" max="14" align="left"></meter> -->
-		    			<div id="container-speed" style="width: 300px; height: 200px; float: left;"></div>
-					</div>	
-					<div>
-						<span>
-							<p id="phVegAveragevalue" class="font textabsolute" class="center" align="right"></p>
-						</span>
+					<div class="tile-content" id="photoresistorBackGroundImage" style="height: 100%;">
+						<p id="photoresistorText" class="font" align="right">0%</p>
+						<div class="rightDownIMG">
+							<img id="lightbulb1" src="img/lightbulbOff.png" height="30px">
+							<img id="lightbulb2" src="img/lightbulbOff.png" height="30px">
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<!-- PH of flowers -->
-		<div class="col col_1_of_4"> <!-- third row, fourth column -->
-			<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px; top: 10px; left: 10px;">
-				<div class="tile-header">
-					<h3 class="tileHeading">PH of flowers</h3>
-					<img id="PhFlwrErrorImage" src="img/error.png">
+			<!-- motion detector -->
+			<div class="col col_1_of_4"> <!-- second row third column -->
+				<div class="tile highlighter-tile" style="width: 138px; height: 115px; top: 10px; left: 10px;">
+					<div class="tile-header">
+						<h3>motion detector</h3>
+					</div>
+
+					<div class="tile-content" id="mdBackgroundImage">
+						<img id="motionDetectionStatus1" src="img/motionOff.png">
+						<img id="motionDetectionStatus2" src="img/motionOff.png">						
+					</div>
 				</div>
+			</div>
 
-				<div class="tile-content" id="phFlwrBackGroundImage">
-					<div class="center" id="chartHolder">
-						<meter id="phFlwrMeter" class="center meterabsolute" value="0" min="0" max="14" align="left"></meter>
-					</div>	
-					<div>
-						<span>
-							<p id="phFlwrAveragevalue" class="font textabsolute" class="center" align="right"></p>
-						</span>
+			<!-- watt meter -->
+			<div class="col col_1_of_4"> <!-- second row fourth column -->
+				<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px; top: 10px; left: 10px;">
+					<div class="tile-header">
+						<h3 class="tileHeading">watt meter</h3>
+						<img id="wattmeterErrorImage" src="img/error.png">
+					</div>
+
+					<div class="tile-content" id="wattmeterBackgroundImage">
+						<div id="container" style="width: 220px; height:220px; margin: 0 auto"></div>
+					</div>
+				</div>
+			</div>
+		</div> <!-- end of second row -->
+
+		<!-- third row -->
+		<div class="row row_1_of_3">
+
+			<!-- rain sensor -->
+			<div class="col col_1_of_4"> <!-- third row first column -->
+				<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px; top: 10px; left: 10px;">
+					<div class="tile-header">
+						<h3 class="tileHeading">rain sensor</h3>
+						<img id="rainSensorErrorImage" src="img/error.png">
+					</div>
+
+					<div class="tile-content" id="rainSensorBackgroundImage">
+						<p id="rainSensorText" class="font">0%</p>
+						<img id="rainStatus" src="img/dryIcon.png" style="height: 80px;"> 
+					</div>
+				</div>
+			</div>
+
+			<!-- Gas -->
+			<div class="col col_1_of_4"> <!-- third row second column -->
+				<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px; top: 10px; left: 10px;">
+					<div class="tile-header">
+						<h3 class="tileHeading">Gas</h3>
+						<img id="gasErrorImage" src="img/error.png">
+					</div>
+
+					<div class="tile-content" id="gasBackgroundImage">
+						<p id="gasStatus" class="font" style="color: white;">Clean</p>
+						<p id="gasText" style="color: white;" class="font">0ppm</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- PH of vegetables -->
+			<div class="col col_1_of_4"> <!-- third row, third column -->
+				<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px; top: 10px; left: 10px;">
+					<div class="tile-header">
+						<h3 class="tileHeading">PH of vegetables</h3>
+						<img id="PhVegErrorImage" src="img/error.png">
+					</div>
+
+					<div class="tile-content" id="phVegBackGroundImage">
+						<div class="center" id="chartHolder" style="width: 600px; height: 400px; margin: 0 auto">
+							<!-- <meter id="phVegMeter" class="center meterabsolute" value="0" min="0" max="14" align="left"></meter> -->
+							<div id="container-speed" style="width: 300px; height: 200px; float: left;"></div>
+						</div>	
+						<div>
+							<span>
+								<p id="phVegAveragevalue" class="font textabsolute" class="center" align="right"></p>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- PH of flowers -->
+			<div class="col col_1_of_4"> <!-- third row, fourth column -->
+				<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px; top: 10px; left: 10px;">
+					<div class="tile-header">
+						<h3 class="tileHeading">PH of flowers</h3>
+						<img id="PhFlwrErrorImage" src="img/error.png">
+					</div>
+
+					<div class="tile-content" id="phFlwrBackGroundImage">
+						<div class="center" id="chartHolder">
+							<meter id="phFlwrMeter" class="center meterabsolute" value="0" min="0" max="14" align="left"></meter>
+						</div>	
+						<div>
+							<span>
+								<p id="phFlwrAveragevalue" class="font textabsolute" class="center" align="right"></p>
+							</span>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<script src="./js/humidity.js"></script>
+		<script src="./js/humidity.js"></script>
 
-	<script src="./js/valueN.js"></script>
+		<script src="./js/valueN.js"></script>
 
-	<script src="./js/averageOfSM-veg.js"></script>
+		<script src="./js/averageOfSM-veg.js"></script>
 
-	<script src="./js/averageOfSM-flwr.js"></script>
+		<script src="./js/averageOfSM-flwr.js"></script>
 
-	<script src="./js/waterLevel.js"></script>
+		<script src="./js/waterLevel.js"></script>
 
-	<script src="./js/photoresistor.js"></script>
+<!-- 		<script src="./js/photoresistor.js"></script> -->
 
-	<script src="./js/wattMeter.js"></script>
+		<script src="./js/averageOfPH-veg.js"></script>
 
-	<script src="./js/averageOfPH-veg.js"></script>
+		<script src="./js/averageOfPH-flwr.js"></script>
 
-	<script src="./js/averageOfPH-flwr.js"></script>
-
-	<script src="./js/status.js"></script>
+		<script src="./js/status.js"></script>
 
 </body>
 </html>

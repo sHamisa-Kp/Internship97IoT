@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list
+
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:drawable="@drawable/mist_7"
+        android:duration="200"></item>
+    <item
+        android:drawable="@drawable/mist_6"
+        android:duration="200"></item>
+    <item
+        android:drawable="@drawable/mist_5"
+        android:duration="200"></item>
+    <item
+        android:drawable="@drawable/mist_4"
+        android:duration="200"></item>
+    <item
+        android:drawable="@drawable/mist_3"
+        android:duration="200"></item>
+    <item
+        android:drawable="@drawable/mist_2"
+        android:duration="200"></item>
+    <item
+        android:drawable="@drawable/mist_1"
+        android:duration="200"></item>
+
+</animation-list>
