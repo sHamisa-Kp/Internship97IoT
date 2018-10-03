@@ -18,7 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".GraphicalView">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,10 +26,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Home" />
-
-
-           <activity android:name=".GraphicalView"
-            android:label="@string/title_activity_graphical_view" />
         <activity
             android:name=".JustValue"
             android:label="@string/title_activity_just_value" />
@@ -42,7 +38,7 @@
         <activity
             android:name=".Notifications"
             android:label="@string/title_activity_notifications" />
-        <activity android:name=".Main2Activity"></activity>
+        <activity android:name=".Main2Activity" />
     </application>
 
 </manifest>

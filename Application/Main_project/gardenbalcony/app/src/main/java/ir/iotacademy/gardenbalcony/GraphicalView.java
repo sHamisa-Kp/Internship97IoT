@@ -2,6 +2,8 @@ package ir.iotacademy.gardenbalcony;
 
 import android.app.ActionBar;
 import android.graphics.drawable.AnimationDrawable;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,10 +12,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import static ir.iotacademy.gardenbalcony.R.drawable.mist_off;
+
 public class GraphicalView extends AppCompatActivity {
     Button test;
     ImageView onlamp,offlamp,mist;
-    ImageButton onswitch,offswitch,mistbtn;
+    ImageButton onswitch,offswitch,mistbtn,mistbtn2;
     // private GyroscopeObserver gyroscopeObserver;
     //View decorView = getWindow().getDecorView();
     @Override
@@ -69,35 +73,96 @@ public class GraphicalView extends AppCompatActivity {
             }
         });
 
-        mist= (ImageView) findViewById(R.id.mist);
+
         mistbtn= (ImageButton) findViewById(R.id.mist_btn);
 
         mistbtn.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View v) {
-                if(mist.getVisibility()==View.INVISIBLE){
-                    mist.setVisibility(View.VISIBLE);
-                    mist.post(new Runnable() {
+                if(!(((AnimationDrawable)mistbtn.getBackground()).isRunning())&&!(((AnimationDrawable)mistbtn2.getBackground()).isRunning())){
+
+                    mistbtn.post(new Runnable() {
                         @Override
                         public void run() {
-                            ((AnimationDrawable)mist.getBackground()).start();
+                            ((AnimationDrawable)mistbtn.getBackground()).start();
+                        }
+                    });
+                    mistbtn2.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            ((AnimationDrawable)mistbtn2.getBackground()).start();
                         }
                     });
 
                 }
                 else {
-                    mist.post(new Runnable() {
+                    mistbtn.post(new Runnable() {
                         @Override
                         public void run() {
-                            ((AnimationDrawable)mist.getBackground()).stop();
+                            ((AnimationDrawable)mistbtn.getBackground()).stop();
                         }
                     });
-                    mist.setVisibility(View.INVISIBLE);
+                    mistbtn.setVisibility(View.INVISIBLE);
+                    mistbtn.setVisibility(View.VISIBLE);
+                    mistbtn2.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            ((AnimationDrawable)mistbtn2.getBackground()).stop();
+                        }
+                    });
+                    mistbtn2.setVisibility(View.INVISIBLE);
+                    mistbtn2.setVisibility(View.VISIBLE);
+
 
                 }
             }
         });
 
+        mistbtn2= (ImageButton) findViewById(R.id.mist_btn2);
+
+        mistbtn2.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+            @Override
+            public void onClick(View v) {
+                if(!(((AnimationDrawable)mistbtn.getBackground()).isRunning())&&!(((AnimationDrawable)mistbtn2.getBackground()).isRunning())){
+
+                    mistbtn.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            ((AnimationDrawable)mistbtn.getBackground()).start();
+                        }
+                    });
+                    mistbtn2.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            ((AnimationDrawable)mistbtn2.getBackground()).start();
+                        }
+                    });
+
+                }
+                else {
+                    mistbtn.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            ((AnimationDrawable)mistbtn.getBackground()).stop();
+                        }
+                    });
+                    mistbtn.setVisibility(View.INVISIBLE);
+                    mistbtn.setVisibility(View.VISIBLE);
+                    mistbtn2.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            ((AnimationDrawable)mistbtn2.getBackground()).stop();
+                        }
+                    });
+                    mistbtn2.setVisibility(View.INVISIBLE);
+                    mistbtn2.setVisibility(View.VISIBLE);
+
+
+                }
+            }
+        });
 
 
         //test = (Button) findViewById(R.id.button5);
