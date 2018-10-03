@@ -1,5 +1,3 @@
-
-// 'WL': [{'id': '742', 'apiKey': 'WGWJ660WN7V9394D'}],
 function doIt(){	
 	let chartdata=new Array;
 	let last=new Array;
@@ -21,7 +19,7 @@ function doIt(){
 						
 						
 					};
-					// console.log(chartdata);
+					
 					
 				};
 			};
@@ -43,7 +41,7 @@ function doIt(){
 	// var a=chartdata.length;
 	
 	
-	httpGetAsync("http://thingtalk.ir/channels/742/feed.json?key=WGWJ660WN7V9394D&results=20",j);
+	httpGetAsync("http://thingtalk.ir/channels/706/feed.json?key=WQFB2JIGRVXDIAR4&results=20",j);
 	// httpGetAsyncLast("http://thingtalk.ir/channels/"+FH.id+"/feeds/last.json?key="+FH.apiKey);
 	
 	setTimeout(function(){
@@ -64,12 +62,13 @@ function doIt(){
 				data:chartdata,
 				borderWidth: 1,
 				fill:false,
+				steppedLine:true,
 				borderColor:colors[1]
 			};
 			onechart.datasets.push(Data);
 
 			// console.log(onechart.datasets);
-			var ctx = document.getElementById("wl");
+			var ctx = document.getElementById("fh2");
 			Chart.defaults.global.defaultFontSize=10;
 			var myChart1 = new Chart(ctx, {
 				type: 'line',
@@ -84,6 +83,6 @@ function doIt(){
 					}
 				}
 			});
-		},2000);
+		},5000);
 };
-setInterval(doIt,5000);
+setInterval(doIt,6000);

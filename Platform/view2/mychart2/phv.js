@@ -1,19 +1,17 @@
 function doIt(){    
     let chartdata=new Array;
-    chartdata=[[],[],[],[],[],[],[],[],[],[]];
+    chartdata=[[],[],[],[],[],[],[],[]];
     let last=new Array;
-    last=[[],[],[],[],[],[],[],[],[],[]];
+    last=[[],[],[],[],[],[],[],[]];
     let j;
-    let PHF=[{'id': '732', 'apiKey': 'LG2G6VYVGRROA0O2'},
-         {'id': '733', 'apiKey': 'BQYNJJL4G8A5RCHJ'},
-         {'id': '734', 'apiKey': 'RZAEIWTMDVBOCNZS'},
-         {'id': '735', 'apiKey': '4NWVLGMJHDE8WDAJ'},
-         {'id': '736', 'apiKey': 'OW4B80VUEXJ38AG7'},
-         {'id': '737', 'apiKey': 'I7MAFZ8E11BHLD4T'},
-         {'id': '738', 'apiKey': '5WPKZ6PW9ZYCXC1T'},
-         {'id': '739', 'apiKey': 'TD2B6CE14BODBAU4'},
-         {'id': '740', 'apiKey': 'AGOE4BOV5662UOQF'},
-         {'id': '741', 'apiKey': '29LLHTWCLAZONUOS'}];
+    let PHV=[{'id': '724', 'apiKey': 'A7SC0GJKQAFJZWAO'},
+            {'id': '725', 'apiKey': 'THRJGRI2XUH1YZIO'},
+            {'id': '726', 'apiKey': 'E8QFCI9OYGTOZIMT'},
+            {'id': '727', 'apiKey': 'ATGVGAYRFPS4QCVO'},
+            {'id': '728', 'apiKey': 'Z4AXFJXQK1ZN33BQ'},
+            {'id': '729', 'apiKey': '61SF7VT52KJZJCPW'},
+            {'id': '730', 'apiKey': 'NF3K4HLNFZ0BE2XO'},
+            {'id': '731', 'apiKey': 'VAK0BLGBNXUDZMQB'}];
 
     function httpGetAsync(theUrl,j) {
      let xmlHttp = new XMLHttpRequest();
@@ -51,10 +49,9 @@ function doIt(){
     var a=chartdata.length;
     for(j=0;j<a;j++) 
     {
-        httpGetAsync("http://thingtalk.ir/channels/"+PHF[j].id+"/feed.json?key="+PHF[j].apiKey+"&results=20",j);
-        httpGetAsyncLast("http://thingtalk.ir/channels/"+PHF[j].id+"/feeds/last.json?key="+PHF[j].apiKey);
+        httpGetAsync("http://thingtalk.ir/channels/"+PHV[j].id+"/feed.json?key="+PHV[j].apiKey+"&results=20",j);
+        httpGetAsyncLast("http://thingtalk.ir/channels/"+PHV[j].id+"/feeds/last.json?key="+PHV[j].apiKey);
     };
-    console.log(last);
     setTimeout(function(){
         var onechart = 
         {
@@ -76,8 +73,7 @@ function doIt(){
             };
             onechart.datasets.push(Data);
         };
-        console.log(onechart.datasets);
-        var ctx = document.getElementById("phf");
+        var ctx = document.getElementById("phv");
         Chart.defaults.global.defaultFontSize=10;
         var myChart1 = new Chart(ctx, {
           type: 'line',
@@ -92,6 +88,6 @@ function doIt(){
             }
         }
     });
-    },2000);
+    },5000);
 };
-setInterval(doIt,5000);
+setInterval(doIt,6000);

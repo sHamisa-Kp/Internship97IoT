@@ -1,12 +1,19 @@
 function doIt(){	
 	let chartdata=new Array;
-	chartdata=[[],[]];
+	chartdata=[[],[],[],[],[],[],[],[],[],[]];
 	let last=new Array;
 	let j;
-	// let label=new Array;
 
-	let H=[{'id': '672', 'apiKey': 'B1JQYWFKX2PCRBYF'},
-			{'id': '721', 'apiKey': 'YV8JRH910ZJZQN1I'}];
+	let SMF=[{'id': '710', 'apiKey': 'FYMFZRW8E2YLIKUK'},
+			{'id': '711', 'apiKey': 'OXXNS5C338I0TCIR'},
+			{'id': '712', 'apiKey': 'MZEZGGZL09ZB48L1'},
+			{'id': '713', 'apiKey': '7R9CHM056LSY23ZO'},
+			{'id': '714', 'apiKey': 'ZPX8TF59L251UFVE'},
+			{'id': '715', 'apiKey': '3DMD11SS9G5B94I0'},
+			{'id': '716', 'apiKey': 'QLH9NDZ20RQNK96S'},
+			{'id': '717', 'apiKey': 'BVAC00J644INRNG7'},
+			{'id': '718', 'apiKey': 'T42SU8NKLQ4KYF5E'},
+			{'id': '719', 'apiKey': 'OTSO6GP0GO9XUAU3'}];
 
 
 	function httpGetAsync(theUrl,j) {
@@ -21,10 +28,9 @@ function doIt(){
 		 	        for(let i=0;i<=19;i++){
 		 	            // let chartdata=new Array;
 		 	            chartdata[j].push(parseInt(text[i].field1))
-		 	            // label.push(parseInt(text[i].entry_id))
+		 	           
 		 	        };
-		 	        // console.log(chartdata);
-		 	        // console.log(label	
+		 	        
 		 	    };
 		    };
 		 xmlHttp.open("GET", theUrl, true); // true for asynchronous 
@@ -36,21 +42,20 @@ function doIt(){
 			if (xmlHttp.readyState===4 && xmlHttp.status===200){
 				let text=JSON.parse(xmlHttp.responseText).field1;
 				last.push(parseInt(text));
-				// console.log(text);
+
+				
 			};
 		};
 		xmlHttp.open("GET",theUrl,true);
 		xmlHttp.send(null);
 	};
 	var a=chartdata.length;
-	
 	for(j=0;j<a;j++) 
 	{
-		
-
-	    httpGetAsync("http://thingtalk.ir/channels/"+H[j].id+"/feed.json?key="+H[j].apiKey+"&results=20",j);
-	    httpGetAsyncLast("http://thingtalk.ir/channels/"+H[j].id+"/feeds/last.json?key="+H[j].apiKey);
+	    httpGetAsync("http://thingtalk.ir/channels/"+SMF[j].id+"/feed.json?key="+SMF[j].apiKey+"&results=20",j);
+	    httpGetAsyncLast("http://thingtalk.ir/channels/"+SMF[j].id+"/feeds/last.json?key="+SMF[j].apiKey);
 	};
+	
 	setTimeout(function(){
 		var onechart = 
 			{
@@ -71,14 +76,10 @@ function doIt(){
 				borderColor:colors[i]
 			};
 			onechart.datasets.push(Data);
-			// console.log(last[i]);
-
 		};
-		console.log(onechart.datasets);
-		// var color='#3e95cd',
-		var ctx = document.getElementById("h");
+
+		var ctx = document.getElementById("smf");
 		Chart.defaults.global.defaultFontSize=10;
-		Chart.defaults.global.defaultFontColor='black';
 		var myChart1 = new Chart(ctx, {
 		  type: 'line',
 		  data:onechart,
@@ -92,6 +93,6 @@ function doIt(){
 		  	}
 		  }
 		});
-	},2000);
+	},5000);
 };
-setInterval(doIt,5000);
+setInterval(doIt,6000);

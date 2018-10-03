@@ -1,10 +1,10 @@
 function doIt(){
-        let chartdata2=new Array;
-        chartdata2=[[],[],[],[],[],[],[],[]];
-        let last2=new Array;
-    // let j2;
-    // let label=new Array;
-
+    let chartdata2=new Array;
+    chartdata2=[[],[],[],[],[],[],[],[]];
+    let last;
+    let color;
+    let min=10;
+    let max=70;
     let SMV= [{'id': '670', 'apiKey': 'LUJ9D21E177HESAW'},
     {'id': '700', 'apiKey': 'Q2JH4OBED4QQAA74'},
     {'id': '701', 'apiKey': 'P6LY6LV7CPYYSJUP'},
@@ -28,48 +28,82 @@ function doIt(){
                         chartdata2[j].push(parseInt(text[i].field1))
                         // label.push(parseInt(text[i].entry_id))
                     };
-                    // console.log(chartdata2);
-                    // console.log(label    
+                    let a=chartdata2[j][19];
+                    console.log(a);
+                    if(a<min || a>max){
+                        colors[j]='red';
+                        console.log(colors[j]);
+                    };
                 };
             };
          xmlHttp.open("GET", theUrl, true); // true for asynchronous 
          xmlHttp.send(null);
      };
-     function httpGetAsyncLast2(theUrl){
+     function httpGetAsyncLast(theUrl,i){
         let xmlHttp=new XMLHttpRequest();
         xmlHttp.onreadystatechange =function(){
             if (xmlHttp.readyState===4 && xmlHttp.status===200){
                 let text=JSON.parse(xmlHttp.responseText).field1;
-                last2.push(parseInt(text));
+                last=parseInt(text);
                 // console.log(text);
+                console.log(last);
             };
+            if(last<min||last>max){
+                colors[i]='red';
+                console.log(colors[i]);
+                console.log(chartdata2[i])
+            };
+            // 
         };
         xmlHttp.open("GET",theUrl,true);
         xmlHttp.send(null);
     };
+// function httpGetAsyncLast(theUrl){
+//     let xmlHttp=new XMLHttpRequest();
+//     xmlHttp.onreadystatechange =function(){
+//         if (xmlHttp.readyState===4 && xmlHttp.status===200){
+//             let text=JSON.parse(xmlHttp.responseText).field1;
+//             // last.push(parseInt(text));
+//             // console.log(last[i]);
+//             a=parseInt(text);
+            
+//         };
+//         if(a>max){
+//             i='red'
+
+//         }else {
+//             i='green'
+//         }
+        
+
+//     };
+//     xmlHttp.open("GET",theUrl,true);
+//     xmlHttp.send(null);
+// };
+
+
+
+
+    let colors=['#00ff00','#006400','#00c800','#2faf2f','#47b247','#64af64','#80b780','#156315','#3e6b3e','#003d00','#264c26','#435b43','#003000','#053505','#112811','#364736','#06d168','#2fbc73','#034f28'];
     for(j=0;j<=7;j++) 
     {
-        // console.log(SMV[j].id);
-        // console.log(SMV[j].apiKey);
-
         httpGetAsync("http://thingtalk.ir/channels/"+SMV[j].id+"/feed.json?key="+SMV[j].apiKey+"&results=20",j);
-        httpGetAsyncLast2("http://thingtalk.ir/channels/"+SMV[j].id+"/feeds/last2.json?key="+SMV[j].apiKey);
-        // console.log(last2.length);
     };
-
-    // console.log(chartdata2);
+    
+    // for(let i=0;i<=7;i++)
+    // {
+    //     httpGetAsyncLast("http://thingtalk.ir/channels/"+SMV[i].id+"/feeds/last.json?key="+SMV[i].apiKey,i);
+    // };
     setTimeout(function(){
         var onechart = 
         {
             labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14, 15, 16, 17, 18, 19, 20],
             datasets: []
         };
-        var colors=['#00ff00','#006400','#00c800','#2faf2f','#47b247','#64af64','#80b780','#156315','#3e6b3e','#003d00','#264c26','#435b43','#003000','#053505','#112811','#364736','#06d168','#2fbc73','#034f28'];
+       
         for(let i=0;i<=7;i++){
-            let color=colors[i];
-            if(last2[i]<20||last2[i]>90){
-                color='red';
-            };
+            // color=colors[i];
+            // httpGetAsyncLast("http://thingtalk.ir/channels/724/feeds/last.json?key=A7SC0GJKQAFJZWAO");
             var Data={
                 label:'sensor'+ (i+1),
                 data:chartdata2[i],
@@ -98,13 +132,9 @@ function doIt(){
                 }
             }
         });
-    },2000);
+    },5000);
 };
-setInterval(doIt,5000);
-
-
-
-// setInterval(doIt, 5000);
+setInterval(doIt,6000);
 
 
 // let SMF=[{'id': '710', 'apiKey': 'FYMFZRW8E2YLIKUK'},

@@ -5,8 +5,8 @@ function doIt(){
 	let j;
 	// let label=new Array;
 
-	let LBS=[{'id': '745', 'apiKey': '2ZRJZIFPTQF79NOH'},
-			{'id': '746', 'apiKey': '17J1AKN992YL3HUX'}];
+	let MD=[{'id': '749', 'apiKey': 'V197BB4SL21A2IKG'},
+			{'id': '752', 'apiKey': 'ZCLT56CFVCG7DU50'}];
 
 
 	function httpGetAsync(theUrl,j) {
@@ -46,8 +46,8 @@ function doIt(){
 	{
 	
 		//(T[j].apiKey);
-	    httpGetAsync("http://thingtalk.ir/channels/"+LBS[j].id+"/feed.json?key="+LBS[j].apiKey+"&results=20",j);
-	    httpGetAsyncLast("http://thingtalk.ir/channels/"+LBS[j].id+"/feeds/last.json?key="+LBS[j].apiKey);
+	    httpGetAsync("http://thingtalk.ir/channels/"+MD[j].id+"/feed.json?key="+MD[j].apiKey+"&results=20",j);
+	    // httpGetAsyncLast("http://thingtalk.ir/channels/"+MD[j].id+"/feeds/last.json?key="+MD[j].apiKey);
 	};
 
 	setTimeout(function(){
@@ -59,23 +59,23 @@ function doIt(){
 		var colors=['#00ff00','#006400','#00c800','#2faf2f','#47b247','#64af64','#80b780','#156315','#3e6b3e','#003d00','#264c26','#435b43','#003000','#053505','#112811','#364736','#06d168','#2fbc73','#034f28'];
 		for(let i=0;i<a;i++){
 			let color=colors[i];
-			if(last[i]<20||last[i]>90){
+			if(i==1){
 				color='red';
 			};
 			var Data={
 				label:'sensor'+(i+1),
 				data:chartdata[i],
-				fill:false,
 				borderWidth: 1,
-				borderColor:colors[i]
+				fill:false,
+				borderColor:color
 			};
 			onechart.datasets.push(Data);
 			;
 
 		};
-
+	
 		
-		var ctx = document.getElementById("lbs");
+		var ctx = document.getElementById("md");
 		Chart.defaults.global.defaultFontSize=10;
 		var myChart1 = new Chart(ctx, {
 		  type: 'line',
@@ -90,6 +90,7 @@ function doIt(){
 		  	}
 		  }
 		});
-	},2000);
+	},5000);
 };
-setInterval(doIt,5000);
+// doIt();
+setInterval(doIt,6000);

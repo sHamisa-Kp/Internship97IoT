@@ -1,5 +1,5 @@
 
-let FH=[{'id': '722', 'apiKey': '3ZIOUDCBO1X4W0B7'}];
+// 'WL': [{'id': '742', 'apiKey': 'WGWJ660WN7V9394D'}],
 function doIt(){	
 	let chartdata=new Array;
 	let last=new Array;
@@ -43,7 +43,7 @@ function doIt(){
 	// var a=chartdata.length;
 	
 	
-	httpGetAsync("http://thingtalk.ir/channels/723/feed.json?key=IG7Z0OW1NR2LVGSW&results=20",j);
+	httpGetAsync("http://thingtalk.ir/channels/742/feed.json?key=WGWJ660WN7V9394D&results=20",j);
 	// httpGetAsyncLast("http://thingtalk.ir/channels/"+FH.id+"/feeds/last.json?key="+FH.apiKey);
 	
 	setTimeout(function(){
@@ -64,13 +64,12 @@ function doIt(){
 				data:chartdata,
 				borderWidth: 1,
 				fill:false,
-				steppedLine:true,
 				borderColor:colors[1]
 			};
 			onechart.datasets.push(Data);
 
 			// console.log(onechart.datasets);
-			var ctx = document.getElementById("fh1");
+			var ctx = document.getElementById("wl");
 			Chart.defaults.global.defaultFontSize=10;
 			var myChart1 = new Chart(ctx, {
 				type: 'line',
@@ -85,6 +84,6 @@ function doIt(){
 					}
 				}
 			});
-		},2000);
+		},5000);
 };
-setInterval(doIt,5000);
+setInterval(doIt,6000);

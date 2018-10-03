@@ -5,8 +5,8 @@ function doIt(){
 	let j;
 	// let label=new Array;
 
-	let MD=[{'id': '749', 'apiKey': 'V197BB4SL21A2IKG'},
-			{'id': '752', 'apiKey': 'ZCLT56CFVCG7DU50'}];
+	let H=[{'id': '672', 'apiKey': 'B1JQYWFKX2PCRBYF'},
+			{'id': '721', 'apiKey': 'YV8JRH910ZJZQN1I'}];
 
 
 	function httpGetAsync(theUrl,j) {
@@ -22,7 +22,9 @@ function doIt(){
 		 	            // let chartdata=new Array;
 		 	            chartdata[j].push(parseInt(text[i].field1))
 		 	            // label.push(parseInt(text[i].entry_id))
-		 	        };	
+		 	        };
+		 	        // console.log(chartdata);
+		 	        // console.log(label	
 		 	    };
 		    };
 		 xmlHttp.open("GET", theUrl, true); // true for asynchronous 
@@ -34,22 +36,21 @@ function doIt(){
 			if (xmlHttp.readyState===4 && xmlHttp.status===200){
 				let text=JSON.parse(xmlHttp.responseText).field1;
 				last.push(parseInt(text));
-				
+				// console.log(text);
 			};
 		};
 		xmlHttp.open("GET",theUrl,true);
 		xmlHttp.send(null);
 	};
 	var a=chartdata.length;
-
+	
 	for(j=0;j<a;j++) 
 	{
-	
-		//(T[j].apiKey);
-	    httpGetAsync("http://thingtalk.ir/channels/"+MD[j].id+"/feed.json?key="+MD[j].apiKey+"&results=20",j);
-	    httpGetAsyncLast("http://thingtalk.ir/channels/"+MD[j].id+"/feeds/last.json?key="+MD[j].apiKey);
-	};
+		
 
+	    httpGetAsync("http://thingtalk.ir/channels/"+H[j].id+"/feed.json?key="+H[j].apiKey+"&results=20",j);
+	    httpGetAsyncLast("http://thingtalk.ir/channels/"+H[j].id+"/feeds/last.json?key="+H[j].apiKey);
+	};
 	setTimeout(function(){
 		var onechart = 
 			{
@@ -70,13 +71,13 @@ function doIt(){
 				borderColor:colors[i]
 			};
 			onechart.datasets.push(Data);
-			;
+			// console.log(last[i]);
 
 		};
-	
-		
-		var ctx = document.getElementById("md");
+		// var color='#3e95cd',
+		var ctx = document.getElementById("h");
 		Chart.defaults.global.defaultFontSize=10;
+		Chart.defaults.global.defaultFontColor='black';
 		var myChart1 = new Chart(ctx, {
 		  type: 'line',
 		  data:onechart,
@@ -90,7 +91,6 @@ function doIt(){
 		  	}
 		  }
 		});
-	},2000);
+	},5000);
 };
-// doIt();
-setInterval(doIt,5000);
+setInterval(doIt,6000);

@@ -5,8 +5,8 @@ function doIt(){
 	let j;
 	// let label=new Array;
 
-	let T=[{'id': '671', 'apiKey': 'XAKAVEUUJQ9GZGMT'},
-			{'id': '720','apikey': '6P4WUZHZZDR6U0TX'}];/*this channel(720) has a problem */
+	let PHR=[{'id': '672', 'apiKey': 'B1JQYWFKX2PCRBYF'},
+		   {'id': '743', 'apiKey': 'ZH7OQMKALAPRZXQJ'}];
 
 
 	function httpGetAsync(theUrl,j) {
@@ -46,8 +46,8 @@ function doIt(){
 	{
 	
 		//(T[j].apiKey);
-	    httpGetAsync("http://thingtalk.ir/channels/"+T[j].id+"/feed.json?key="+T[j].apiKey+"&results=20",j);
-	    httpGetAsyncLast("http://thingtalk.ir/channels/"+T[j].id+"/feeds/last.json?key="+T[j].apiKey);
+	    httpGetAsync("http://thingtalk.ir/channels/"+PHR[j].id+"/feed.json?key="+PHR[j].apiKey+"&results=20",j);
+	    httpGetAsyncLast("http://thingtalk.ir/channels/"+PHR[j].id+"/feeds/last.json?key="+PHR[j].apiKey);
 	};
 
 	setTimeout(function(){
@@ -65,6 +65,7 @@ function doIt(){
 			var Data={
 				label:'sensor'+(i+1),
 				data:chartdata[i],
+				fill:false,
 				borderWidth: 1,
 				borderColor:colors[i]
 			};
@@ -72,9 +73,9 @@ function doIt(){
 			;
 
 		};
-		console.log(onechart.datasets);
+	
 		
-		var ctx = document.getElementById("t");
+		var ctx = document.getElementById("phr");
 		Chart.defaults.global.defaultFontSize=10;
 		var myChart1 = new Chart(ctx, {
 		  type: 'line',
@@ -89,6 +90,6 @@ function doIt(){
 		  	}
 		  }
 		});
-	},2000);
+	},5000);
 };
-setInterval(doIt,5000);
+setInterval(doIt,6000);

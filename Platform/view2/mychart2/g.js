@@ -90,6 +90,6 @@ function doIt(){
 		  	}
 		  }
 		});
-	},2000);
+	},5000);
 };
-setInterval(doIt,5000);
+setInterval(doIt,6000);
