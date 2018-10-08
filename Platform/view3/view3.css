@@ -90,7 +90,7 @@ h3 {
 }*/
 
 #humidityBackGroundImage {
-    background-image: url(../mygit/Internship97IoT/Platform/finalDashboard/img/highHumidity2.jpg);
+    background-image: url(../finalDashboard/img/highHumidity3.jpg);
     background-size: cover;
     height: 100%;
 }
@@ -104,7 +104,7 @@ h3 {
 }
 
 #temperatureBackGroundImage {
-    background-image: url("../mygit/Internship97IoT/Platform/finalDashboard/img/hotTemperature.jpg");
+    background-image: url("../finalDashboard/img/hotTemperature.jpg");
     background-size: cover;
     height: 100%;
 }
@@ -128,18 +128,18 @@ h3 {
 }
 
 #drySoil {
-    background: url(../mygit/Internship97IoT/Platform/finalDashboard/img/drySoil.jpg);
+    background: url(../finalDashboard/img/drySoil.jpg);
     background-size: cover;
     height: 100%;
 }
 
 #normalSoil{
-    background: url(../mygit/Internship97IoT/Platform/finalDashboard/img/normalSoil2.jpg);
+    background: url(../finalDashboard/img/normalSoil2.jpg);
     background-size: cover;
     height: 100%;
 }
 #wetSoil{
-    background: url(../mygit/Internship97IoT/Platform/finalDashboard/img/wetSoil.jpg);
+    background: url(../finalDashboard/img/wetSoil.jpg);
     background-size: cover;
     height: 100%;
 }
@@ -153,7 +153,7 @@ h3 {
 }
 
 #SMofFlwr {
-    background: url(../mygit/Internship97IoT/Platform/finalDashboard/img/SMoFflwr.jpg);
+    background: url(../finalDashboard/img/SMoFflwr.jpg);
     background-size: cover;
     height: 100%;
 
@@ -165,6 +165,12 @@ h3 {
     float: right;
     bottom: 10px;
     visibility: hidden;
+}
+
+#waterLevelBackGroundImage {
+    background: url(../finalDashboard/img/wl1.jpeg);
+    background-size: cover;
+    height: 100%;
 }
 
 #waterLevelErrorImage {
@@ -184,7 +190,7 @@ h3 {
 }
 
 #phVegBackGroundImage {
-    background-image: url(../mygit/Internship97IoT/Platform/finalDashboard/img/ph3.jpg);
+    background-image: url(../finalDashboard/img/ph3.jpg);
     background-size: cover;
     height: 100%;
 }
@@ -198,7 +204,7 @@ h3 {
 }
 
 #phFlwrBackGroundImage {
-    background-image: url(../mygit/Internship97IoT/Platform/finalDashboard/img/phFlwr.jpg);
+    background-image: url(../finalDashboard/img/phFlwr.jpg);
     background-size: cover;
     height: 100%;
     /*opacity: 0.5;*/
