@@ -39,6 +39,7 @@
             android:name=".Notifications"
             android:label="@string/title_activity_notifications" />
         <activity android:name=".Main2Activity" />
+        <activity android:name=".GraphicalView2"></activity>
     </application>
 
 </manifest>
