@@ -1,29 +1,29 @@
 from threading import Thread
-# from time import sleep
+
 from flask import Flask
-# from flask_restful import Api, Resource
 import serial
 import requests
-import RPi.GPIO as GPIO
+# import RPi.GPIO as GPIO
 import datetime
 
 app = Flask(__name__)
 
 
-@app.route("/pump/<status>")
-def pumpControl(status):
-    if status == 'on':
-        print("Pump Turned on By API")
-        # ser.write(b'1')
-        GPIO.output(pumpPin, GPIO.LOW)
-        sendData(stringToData('PS0 = 1\r\n'))
-        return "Pump ON", 200
-    elif status == 'off':
-        print("Pump Turned off By API")
-        # ser.write(b'0')
-        GPIO.output(pumpPin, GPIO.HIGH)
-        sendData(stringToData('PS0 = 0\r\n'))
-        return "Pump OFF", 200
+@app.route("/actuators/<command>")
+def pumpControl(command):
+    if not command.startswith('set'):
+        return
+
+    dataTypes = ['PS', 'LBS', 'TS']
+
+    for dT in dataTypes:
+        if command[3:].startswith(dT):
+            if command[len(dT) + 1 + 3:] == 'ON' or command[len(dT) + 1 + 3:] == 'OFF':
+                if int(command[len(dT) + 3]) < len(apiKeys[dT]):
+                    ser.write(command.encode('ascii'))
+                    print("This Text has been sent to Arduino: ", command)
+                    return command
+
     return "NOT FOUND", 404
 
 
@@ -32,39 +32,25 @@ def zigbeeDataToString(inputBin):
     return inputStr
 
 
-def stringToData(inputStr):
-    # 'T10 = 23' (Temperature)
-    if inputStr[0] == 'T':
-        nodeNumber = inputStr[1: inputStr.find('=') - 1]
-        return {'dataType': 'T', 'data': inputStr[len('T' + nodeNumber + ' = '):-2], 'nodeNumber': nodeNumber}
+def stringToData(inputStr, dataType):
+    nodeNumber = inputStr[len(dataType): inputStr.find('=') - 1]
+    return {'dataType': dataType, 'data': inputStr[len(dataType + nodeNumber + ' = '):-2], 'nodeNumber': nodeNumber}
 
-    # 'H10 = 100' (Humidity)
-    elif inputStr[0] == 'H':
-        nodeNumber = inputStr[1: inputStr.find('=') - 1]
-        return {'dataType': 'H', 'data': inputStr[len('H' + nodeNumber + ' = '):-2], 'nodeNumber': nodeNumber}
 
-    # 'SM10 = 100' (Soil Moisture)
-    elif inputStr[0:2] == 'SM':
-        nodeNumber = inputStr[2: inputStr.find('=') - 1]
-        return {'dataType': 'SM', 'data': inputStr[len('SM' + nodeNumber + ' = '):-2], 'nodeNumber': nodeNumber}
+def stringToDataHandler(inputStr):
+    dataTypes = ['SM', 'T', 'H', 'FH', 'PH', 'WL', 'PhR', 'PS', 'LBS', 'G', 'TS', 'MD', 'WM']
 
-    # 'PS0 = 1' Pump Status
-    elif inputStr[0:2] == 'PS':
-        nodeNumber = inputStr[2: inputStr.find('=') - 1]
-        return {'dataType': 'PS', 'data': inputStr[len('PS' + nodeNumber + ' = '):-2], 'nodeNumber': nodeNumber}
+    for dT in dataTypes:
+        if inputStr.startswith(dT):
+            return stringToData(inputStr, dT)
 
-    # 'PhR10 = 100' PhotoResistor
-    elif inputStr[0:3] == 'PhR':
-        nodeNumber = inputStr[3: inputStr.find('=') - 1]
-        return {'dataType': 'PhR', 'data': inputStr[len('PhR' + nodeNumber + ' = '):-2], 'nodeNumber': nodeNumber}
-
-    else:
-        print("ERROR: Wrong data format.")
+    print("ERROR: Wrong data format.")
 
 
 def sendData(inputData):
     try:
-        payload = {'api_key': apiKeys[inputData["dataType"]][int(inputData["nodeNumber"])], 'field1': inputData["data"]}
+        payload = {'api_key': apiKeys[inputData["dataType"]][int(inputData["nodeNumber"])]['apiKey'],
+                   'field1': inputData["data"]}
         r = requests.post("http://thingtalk.ir/update", data=payload)
         print("Data sent! ")
         print(r.status_code, r.reason)
@@ -87,7 +73,7 @@ def serialReadThread():
 
             inputStr = zigbeeDataToString(inputBin)
             print("inputStr: " + inputStr)
-            inputData = stringToData(inputStr)
+            inputData = stringToDataHandler(inputStr)
             print("inputData: ")
             print(inputData)
             sendData(inputData)
@@ -98,11 +84,88 @@ def serialReadThread():
         # ser.write(num.encode('ascii'))
 
 
-apiKeys = {'T': ['G7KHR97UPN9OC5AC'],
-           'H': ['7TPW8OQOGN1EMURD'],
-           'SM': ['LUJ9D21E177HESAW'],
-           'PS': ['XAKAVEUUJQ9GZGMT'],
-           'PhR': ['B1JQYWFKX2PCRBYF']}
+apiKeys = {
+    # SoilMoisture (Vegetables: 0-7, Flowers: 8-17)
+    'SM': [{'id': '670', 'apiKey': 'LUJ9D21E177HESAW'},
+           {'id': '700', 'apiKey': 'Q2JH4OBED4QQAA74'},
+           {'id': '701', 'apiKey': 'P6LY6LV7CPYYSJUP'},
+           {'id': '702', 'apiKey': 'PVWFQI4XLXLWL9DL'},
+           {'id': '703', 'apiKey': '6W8DYBXG0HDA141O'},
+           {'id': '704', 'apiKey': 'HZ9VM1PH1Q6LQSLZ'},
+           {'id': '705', 'apiKey': 'RUB06UUHPX0K4DDS'},
+           {'id': '706', 'apiKey': 'WQFB2JIGRVXDIAR4'},
+           {'id': '710', 'apiKey': 'FYMFZRW8E2YLIKUK'},
+           {'id': '711', 'apiKey': 'OXXNS5C338I0TCIR'},
+           {'id': '712', 'apiKey': 'MZEZGGZL09ZB48L1'},
+           {'id': '713', 'apiKey': '7R9CHM056LSY23ZO'},
+           {'id': '714', 'apiKey': 'ZPX8TF59L251UFVE'},
+           {'id': '715', 'apiKey': '3DMD11SS9G5B94I0'},
+           {'id': '716', 'apiKey': 'QLH9NDZ20RQNK96S'},
+           {'id': '717', 'apiKey': 'BVAC00J644INRNG7'},
+           {'id': '718', 'apiKey': 'T42SU8NKLQ4KYF5E'},
+           {'id': '719', 'apiKey': 'OTSO6GP0GO9XUAU3'}],
+
+    # Temperature
+    'T': [{'id': '629', 'apiKey': 'G7KHR97UPN9OC5AC'},
+          {'id': '720', 'apiKey': '6P4WUZHZZDR6U0TX'}],
+
+    # Humidity
+    'H': [{'id': '672', 'apiKey': 'B1JQYWFKX2PCRBYF'},
+          {'id': '721', 'apiKey': 'YV8JRH910ZJZQN1I'}],
+
+    # Floor Humidity
+    'FH': [{'id': '722', 'apiKey': '3ZIOUDCBO1X4W0B7'},
+           {'id': '723', 'apiKey': 'IG7Z0OW1NR2LVGSW'}],
+
+    # pH (Vegetables: 0-7, Flowers: 8-17)
+    'PH': [{'id': '724', 'apiKey': 'A7SC0GJKQAFJZWAO'},
+           {'id': '725', 'apiKey': 'THRJGRI2XUH1YZIO'},
+           {'id': '726', 'apiKey': 'E8QFCI9OYGTOZIMT'},
+           {'id': '727', 'apiKey': 'ATGVGAYRFPS4QCVO'},
+           {'id': '728', 'apiKey': 'Z4AXFJXQK1ZN33BQ'},
+           {'id': '729', 'apiKey': '61SF7VT52KJZJCPW'},
+           {'id': '730', 'apiKey': 'NF3K4HLNFZ0BE2XO'},
+           {'id': '731', 'apiKey': 'VAK0BLGBNXUDZMQB'},
+           {'id': '732', 'apiKey': 'LG2G6VYVGRROA0O2'},
+           {'id': '733', 'apiKey': 'BQYNJJL4G8A5RCHJ'},
+           {'id': '734', 'apiKey': 'RZAEIWTMDVBOCNZS'},
+           {'id': '735', 'apiKey': '4NWVLGMJHDE8WDAJ'},
+           {'id': '736', 'apiKey': 'OW4B80VUEXJ38AG7'},
+           {'id': '737', 'apiKey': 'I7MAFZ8E11BHLD4T'},
+           {'id': '738', 'apiKey': '5WPKZ6PW9ZYCXC1T'},
+           {'id': '739', 'apiKey': 'TD2B6CE14BODBAU4'},
+           {'id': '740', 'apiKey': 'AGOE4BOV5662UOQF'},
+           {'id': '741', 'apiKey': '29LLHTWCLAZONUOS'}],
+
+    # Water Level
+    'WL': [{'id': '742', 'apiKey': 'WGWJ660WN7V9394D'}],
+
+    # Photo Resistor
+    'PhR': [{'id': '672', 'apiKey': 'B1JQYWFKX2PCRBYF'},
+            {'id': '743', 'apiKey': 'ZH7OQMKALAPRZXQJ'}],
+
+    # Pump Status (Vegetables, Flowers, TOP)
+    'PS': [{'id': '671', 'apiKey': 'XAKAVEUUJQ9GZGMT'},
+           {'id': '744', 'apiKey': 'PD74MGJ9RFR4YMHK'},
+           {'id': '750', 'apiKey': 'FGGX36CLKXBW2BN4'}],
+
+    # Light Bulb Status
+    'LBS': [{'id': '745', 'apiKey': '2ZRJZIFPTQF79NOH'},
+            {'id': '746', 'apiKey': '17J1AKN992YL3HUX'}],
+
+    # Gas Sensor
+    'G': [{'id': '747', 'apiKey': '65ZJD9TRET64FJ03'},
+          {'id': '751', 'apiKey': '05VOPP6KT2NA1AZ5'}],
+
+    # Tap Status (Water Tap)
+    'TS': [{'id': '748', 'apiKey': 'A1079N4WNZESIRFC'}],
+
+    # Motion Detector
+    'MD': [{'id': '749', 'apiKey': 'V197BB4SL21A2IKG'},
+           {'id': '752', 'apiKey': 'ZCLT56CFVCG7DU50'}],
+
+    # WattMeter
+    'WM': [{'id': '753', 'apiKey': 'OUAV3VIB076Y5UO0'}]}
 
 ser = serial.Serial(
     port='/dev/ttyAMA0',
@@ -113,10 +176,10 @@ ser = serial.Serial(
     timeout=1
 )
 
-GPIO.setmode(GPIO.BOARD)
-pumpPin = 40
-GPIO.setup(pumpPin, GPIO.OUT)
-GPIO.output(pumpPin, GPIO.HIGH)
+# GPIO.setmode(GPIO.BOARD)
+# pumpPin = 40
+# GPIO.setup(pumpPin, GPIO.OUT)
+# GPIO.output(pumpPin, GPIO.HIGH)
 
 thread = Thread(target=serialReadThread)
 thread.start()
