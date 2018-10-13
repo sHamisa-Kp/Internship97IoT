@@ -2,22 +2,30 @@ package ir.iotacademy.gardenbalcony;
 
 import android.app.ActionBar;
 import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import static ir.iotacademy.gardenbalcony.R.drawable.day;
+import static ir.iotacademy.gardenbalcony.R.drawable.drop;
 import static ir.iotacademy.gardenbalcony.R.drawable.mist_off;
 
 public class GraphicalView extends AppCompatActivity {
     Button test;
     ImageView onlamp,offlamp,mist;
-    ImageButton onswitch,offswitch,mistbtn,mistbtn2;
+    ImageButton onswitch,offswitch,mistbtn,mistbtn2,go_to_the_right_position;
+    ConstraintLayout background;
+    Drawable day;
     // private GyroscopeObserver gyroscopeObserver;
     //View decorView = getWindow().getDecorView();
     @Override
@@ -29,6 +37,7 @@ public class GraphicalView extends AppCompatActivity {
         offlamp= (ImageView) findViewById(R.id.offlamp);
         onswitch= (ImageButton) findViewById(R.id.on_switch);
         offswitch= (ImageButton) findViewById(R.id.off_switch);
+
 
         offswitch.setOnClickListener(new View.OnClickListener() {
 
@@ -164,6 +173,16 @@ public class GraphicalView extends AppCompatActivity {
             }
         });
 
+        go_to_the_right_position= (ImageButton) findViewById(R.id.go_right);
+        background= (ConstraintLayout) findViewById(R.id.backgounrd);
+
+        go_to_the_right_position.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                background.setBackgroundResource(R.drawable.night);
+            }
+        });
 
         //test = (Button) findViewById(R.id.button5);
         // Initialize GyroscopeObserver.
