@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity  {
         go_for_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, GraphicalView.class);
+                Intent intent = new Intent(MainActivity.this, JustValue.class);
                 startActivity(intent);
 
              // startSignUp();

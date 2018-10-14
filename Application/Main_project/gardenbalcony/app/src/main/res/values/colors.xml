@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#48b74a</color>
     <color name="colorPrimaryDark">#2a9641</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#86efb0</color>
     <color name="editTextBG">#dfdfdf</color>
     <color name="white">#FFFFFF</color>
     <color name="transparent">#ece8e8</color>
