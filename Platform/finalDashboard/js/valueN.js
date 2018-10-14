@@ -1,3 +1,5 @@
+/* Dashboard GUI - M.Naseri */
+
 const channel = {
 	// SoilMoisture (Vegetables: 0-7, Flowers: 8-17)
 	'SM': [{'id': '670', 'apiKey': 'LUJ9D21E177HESAW'},
