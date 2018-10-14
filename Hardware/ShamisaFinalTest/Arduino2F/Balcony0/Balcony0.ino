@@ -7,7 +7,7 @@ int G0{A2};
 int MD0{8};
 int relayInput{7};
 
-MQ2 mq2(G1);
+MQ2 mq2(G0);
 
 int Count[20];
 int MsensorValue;
@@ -40,44 +40,44 @@ void loop(){
 
   
   /* Soil Moisture */
-  soilMoisture(2, SM13);
+  soilMoisture(2, SM08);
   Serial.print("SM");
-  Serial.print(Count[13]);
+  Serial.print(Count[8]);
   Serial.print(" = ");
   Serial.println(MsensorValue);
   delay(100); 
 
-  soilMoisture(3, SM14);
+  soilMoisture(3, SM09);
   Serial.print("SM");
-  Serial.print(Count[14]);
+  Serial.print(Count[9]);
   Serial.print(" = ");
   Serial.println(MsensorValue);
    delay(100); 
 
   /* PH */
    Serial.print("PH");
-   Serial.print(Count[13]);
+   Serial.print(Count[8]);
    Serial.print(" = ");
    Serial.println(phConfig());
    delay(100);
 
    Serial.print("PH");
-   Serial.print(Count[14]);
+   Serial.print(Count[9]);
    Serial.print(" = ");
    Serial.println(phConfig());
    delay(100);
    
   /* Motion */
   Serial.print("MD");
-  Serial.print(Count[1]);
+  Serial.print(Count[0]);
   Serial.print(" = ");
-  Serial.println(motion(MD1));
+  Serial.println(motion(MD0));
 
   /* Smoke */
   Serial.print("G");
-  Serial.print(Count[1]);
+  Serial.print(Count[0]);
   Serial.print(" = ");
-  Serial.println(motion(MD1));
+  Serial.println(smoke());
   Serial.println("END OF LOOP\n\n");
 }//end "loop()"
 
@@ -113,5 +113,6 @@ int phConfig() {
   int pH{1};
   return pH;
 }
+
 
 
