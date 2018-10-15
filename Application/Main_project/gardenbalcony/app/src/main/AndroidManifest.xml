@@ -18,7 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GraphicalView">
+        <activity android:name=".GraphicalView2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,7 +39,7 @@
             android:name=".Notifications"
             android:label="@string/title_activity_notifications" />
         <activity android:name=".Main2Activity" />
-        <activity android:name=".GraphicalView2"></activity>
+        <activity android:name=".GraphicalView"></activity>
     </application>
 
 </manifest>
