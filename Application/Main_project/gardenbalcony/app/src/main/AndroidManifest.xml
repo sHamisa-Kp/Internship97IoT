@@ -18,7 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GraphicalView2">
+        <activity android:name=".ChartDashboard">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,7 +30,7 @@
             android:name=".JustValue"
             android:label="@string/title_activity_just_value" />
         <activity
-            android:name=".ChartDashboard"
+            android:name=".GraphicalView"
             android:label="@string/title_activity_chart_dashboard" />
         <activity
             android:name=".MixedDashboard"
@@ -39,7 +39,7 @@
             android:name=".Notifications"
             android:label="@string/title_activity_notifications" />
         <activity android:name=".Main2Activity" />
-        <activity android:name=".GraphicalView"></activity>
+        <activity android:name=".GraphicalView2"></activity>
     </application>
 
 </manifest>
