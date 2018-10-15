@@ -11,7 +11,7 @@ void loop() {
   Serial.print("Connect? (Y/N) ");
   
   while(!Serial.available()) {}
-  char ans = Serial.read();
+  String ans = Serial.read();
   if(ans == 'Y') {
     Serial.println("Y Received");
     digitalWrite(relay1Pin, LOW);
