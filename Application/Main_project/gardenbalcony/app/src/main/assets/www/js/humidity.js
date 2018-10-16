@@ -4,7 +4,7 @@ const humidityChannel = {
 };
 
 const humidityErrorValue = {
-	'H': {'min': 20, 'max': 30}
+	'H': {'min': 30, 'max': 55}
 };
 
 function humidityHttpGetAsync(theUrl, callback, i) {
@@ -20,6 +20,9 @@ function humidityHttpGetAsync(theUrl, callback, i) {
             } else {
             	humidityError[i] = false;
             }
+            if (i === (humidityChannel.H.length) - 1) {
+            	humidityCalculateAverage(humidityArray);
+            }
         }
     };
     xmlHttp.open("GET", theUrl, true); // true for asynchronous 
@@ -33,7 +36,7 @@ function humidityUpdateThePage() {
 	}
 }
 
-function humidityCalculateAverage() {
+function humidityCalculateAverage(humidityArray) {
 	let sum = 0;
 	humidityArray.forEach(function(elem) {
 		sum += elem;
@@ -53,18 +56,15 @@ function updateHumidityTile(average) {
     meterValue.value = average;
 
 	let backgroundImage = document.getElementById('humidityBackGroundImage');
-	if(average < 0) {
-		backgroundImage.style.backgroundImage = 'url("img/veryColdTemperature.jpg")';
-		// console.log("average < 0");
-	} else if(average >= 0 && average < 20) {
-		backgroundImage.style.backgroundImage = 'url("img/coldTemperature.jpg")';
-		// console.log('average > 0 && average < 20');
-	} else if(average >= 20 && average < 30) {
-		backgroundImage.style.backgroundImage = 'url("img/balancedTemperature.jpg")';
-		// console.log('average > 20 && average < 30');
-	} else if(average >= 30) {
-		backgroundImage.style.backgroundImage = 'url("img/hotTemperature.jpg")';
-		// console.log('average > 30');
+	if(average >= 0 && average < 30) { //DryWeather
+		backgroundImage.style.backgroundImage = 'url("img/lowHumidity.png")';
+		
+	} else if(average >= 30 && average <= 55) { //balancedHumidity-recommended
+		backgroundImage.style.backgroundImage = 'url("img/normalWeather2.jpg")';
+
+	} else if(average > 55 && average <= 100) { //highHumidity
+		backgroundImage.style.backgroundImage = 'url("img/highHumidity3.jpg")';
+
 	}
 
 	humidityErrorImage = document.getElementById('humidityErrorImage');
@@ -88,4 +88,3 @@ for(let i = 0; i < humidityChannel.H.length; i++) {
 }
 
 setInterval(humidityUpdateThePage, 3000);
-setInterval(humidityCalculateAverage, 3000);

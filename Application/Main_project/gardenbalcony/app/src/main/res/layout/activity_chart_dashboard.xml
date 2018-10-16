@@ -1,24 +1,18 @@
-<!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--xmlns:tools="http://schemas.android.com/tools"-->
-    <!--android:id="@+id/container"-->
-    <!--android:gravity="top"-->
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="fill_parent"-->
-    <!--android:orientation="vertical"-->
-    <!--tools:context="ir.iotacademy.gardenbalcony.ChartDashboard">-->
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:gravity="top"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context="ir.iotacademy.gardenbalcony.ChartDashboard">
 
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:orientation="vertical"
-        android:gravity="top"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
 
 
+<<<<<<< HEAD
         <ScrollView
             android:id="@+id/scrollView1"
             android:layout_width="fill_parent"
@@ -63,4 +57,6 @@
             </HorizontalScrollView>
         </ScrollView>
 
+=======
+>>>>>>> master
     </LinearLayout>
