@@ -401,12 +401,7 @@ android:layout_height="fill_parent"
                             app:layout_constraintTop_toTopOf="parent"
                             android:layout_marginLeft="1540dp"
                             android:layout_marginTop="300dp" />
-                        <ImageView
-                            android:id="@+id/day_background"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/day"
-                            android:visibility="invisible"/>
+
 
 
 

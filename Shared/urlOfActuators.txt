@@ -17,5 +17,5 @@ http://10.1.248.34:5050/
 	actuators/setLBS1ON
 -----------------------------------------
 	actuators/setTS0OFF
-	actuators/setTS0OFF
+	actuators/setTS0ON
 -----------------------------------------
