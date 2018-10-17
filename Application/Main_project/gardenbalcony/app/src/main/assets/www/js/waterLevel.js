@@ -1,10 +1,26 @@
 const waterLevelChannel = {
-'	WL': [{'id': '742', 'apiKey': 'WGWJ660WN7V9394D'}]
+	'WL': [{'id': '742', 'apiKey': 'WGWJ660WN7V9394D'}]
+};
+console.log(waterLevelChannel.WL.length);
+const waterLevelErrorValue = {
+	'WL': {'min': 20, 'max': 99}
 };
 
-const waterLevelErrorValue = {
-	'WL': {'min': 20, 'max': 30}
-};
+let waterLevelArray = [];
+let waterLevelError = [];
+for(let i = 0; i < waterLevelChannel.WL.length; i++) {
+    waterLevelError.push(false);
+}
+
+var config1 = liquidFillGaugeDefaultSettings();
+config1.circleColor = "#081caf";
+config1.textColor = "#9f03ad";
+config1.waveTextColor = "#490177";
+config1.waveColor = "#5ebcf2";
+config1.circleThickness = 0.09;
+config1.textVertPosition = 0.2;
+config1.waveAnimateTime = 1000;
+var gauge2= loadLiquidFillGauge("fillgauge2", 0, config1);
 
 function waterLevelHttpGetAsync(theUrl, callback, i) {
 	let xmlHttp = new XMLHttpRequest();
@@ -13,11 +29,14 @@ function waterLevelHttpGetAsync(theUrl, callback, i) {
             // callback(xmlHttp.responseText);
             let text = JSON.parse(xmlHttp.responseText).field1;
             let num = parseInt(text);
-            waterLeveArray[i] = num;
-            if(num < waterLeveErrorValue.H.min || num  > waterLeveErrorValue.H.max) {
+            waterLevelArray[i] = num;
+            if(num < waterLevelErrorValue.WL.min || num  > waterLevelErrorValue.WL.max) {
             	waterLevelError[i] = true;
             } else {
             	waterLevelError[i] = false;
+            }
+            if (i === (waterLevelChannel.WL.length) - 1) {
+                waterLevelCalculateAverage(waterLevelArray);
             }
         }
     };
@@ -32,11 +51,42 @@ function waterLevelUpdateThePage() {
 	}
 }
 
-let waterLevelArray = [];
-let waterLevelError = [];
-for(let i = 0; i < waterLevelChannel.WL.length; i++) {
-	humidityError.push(false);
+function waterLevelCalculateAverage(waterLevelArray) {
+    let sum = 0;
+    // if (waterLevelArray.length > 0) {
+        waterLevelArray.forEach(function(elem) {
+            sum += elem;
+        });
+        var average = sum / waterLevelArray.length;
+        console.log(average);
+        console.log(waterLevelArray.length);
+        console.log(sum);
+
+        updateWaterLevelTile(average);
+    // else {
+    //     console.log("average is not ready yet!")
+    // }
+ 
+// }
+}
+function updateWaterLevelTile(average) {
+    
+    gauge2.update(average);
+
+    waterLevelErrorImage = document.getElementById('waterLevelErrorImage');
+    let thereIsAtLeastOneDanger = false;
+    waterLevelError.forEach(function(elem) {
+        if(elem) {
+            thereIsAtLeastOneDanger = true;
+        }
+    });
+    if(thereIsAtLeastOneDanger) {
+        waterLevelErrorImage.style.visibility = 'visible';
+    } else {
+        waterLevelErrorImage.style.visibility = 'hidden';
+    }
 }
 
+
 setInterval(waterLevelUpdateThePage, 3000);
-setInterval(waterLevelCalculateAverage, 3000);
+

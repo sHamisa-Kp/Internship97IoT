@@ -37,9 +37,7 @@ public class Data {
         String json = null;
         try {
             json = get.execute(url+"&reuslts=1").get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
+        } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
 

@@ -38,7 +38,6 @@ public class Home extends AppCompatActivity {
         drop = (ImageButton) findViewById(R.id.imagebutton4);
         sun  = (ImageButton) findViewById(R.id.imagebutton2);
         sprinkler= (ImageButton) findViewById(R.id.imageButton);
-
         tv= (TextView) findViewById(R.id.textView);
 
 
