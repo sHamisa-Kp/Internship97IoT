@@ -1,7 +1,6 @@
 package ir.iotacademy.gardenbalcony;
 
 import android.app.ActionBar;
-import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -24,13 +23,9 @@ import static ir.iotacademy.gardenbalcony.R.drawable.mist_off;
 public class GraphicalView extends AppCompatActivity {
     Button test;
     ImageView onlamp,offlamp,mist;
-<<<<<<< HEAD
     ImageButton onswitch,offswitch,mistbtn,mistbtn2,go_to_the_right_position;
     ConstraintLayout background;
     Drawable day;
-=======
-    ImageButton onswitch,offswitch,mistbtn,mistbtn2,Flower;
->>>>>>> master
     // private GyroscopeObserver gyroscopeObserver;
     //View decorView = getWindow().getDecorView();
     @Override
@@ -42,7 +37,6 @@ public class GraphicalView extends AppCompatActivity {
         offlamp= (ImageView) findViewById(R.id.offlamp);
         onswitch= (ImageButton) findViewById(R.id.on_switch);
         offswitch= (ImageButton) findViewById(R.id.off_switch);
-        Flower = (ImageButton) findViewById(R.id.flower3);
 
 
         offswitch.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +66,7 @@ public class GraphicalView extends AppCompatActivity {
         onswitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 offswitch.setVisibility(View.VISIBLE);
                 onswitch.setVisibility(View.INVISIBLE);
                 onlamp.post(new Runnable() {
@@ -178,7 +173,6 @@ public class GraphicalView extends AppCompatActivity {
             }
         });
 
-<<<<<<< HEAD
         go_to_the_right_position= (ImageButton) findViewById(R.id.go_right);
         background= (ConstraintLayout) findViewById(R.id.backgounrd);
 
@@ -190,14 +184,6 @@ public class GraphicalView extends AppCompatActivity {
             }
         });
 
-=======
-    Flower.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(GraphicalView.this, GraphicalView2.class);
-        }
-    });
->>>>>>> master
         //test = (Button) findViewById(R.id.button5);
         // Initialize GyroscopeObserver.
         // Set the maximum radian the device should rotate to show image's bounds.
