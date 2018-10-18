@@ -1,0 +1,180 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:orientation="vertical"
+android:gravity="bottom"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+    >
+
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:id="@+id/scrollView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="top"
+                    android:orientation="horizontal">
+
+                    <!--<ImageView-->
+                    <!--android:id="@+id/imageViewObrazekGeometrie"-->
+                    <!--android:layout_width="1920dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:background="@drawable/balcony" />-->
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/Rightbackgounrd"
+                        android:layout_width="1920dp"
+                        android:layout_height="676dp"
+                        android:background="@drawable/rightbalcony">
+
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:id="@+id/go_middle_from_right"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/forwardarrow"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:background="@null"
+                            android:layout_marginLeft="168dp"
+                            android:layout_marginTop="380dp"
+                            android:rotation="-10"
+                            />
+                        <ImageButton
+                            android:id="@+id/RightFlower1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/sprout_flower"
+                            android:background="@null"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="1410dp"
+                            android:layout_marginTop="110dp"
+                            />
+
+                        <ImageButton
+                            android:id="@+id/RightFlower2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/sprout_flower"
+                            android:background="@null"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="1520dp"
+                            android:layout_marginTop="110dp"
+                            />
+
+                        <ImageButton
+                            android:id="@+id/RightFlower3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/sprout_flower"
+                            android:background="@null"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="1510dp"
+                            android:layout_marginTop="260dp"
+                            />
+
+                        <ImageButton
+                            android:id="@+id/RightFlower4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/sprout_flower"
+                            android:background="@null"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="1400dp"
+                            android:layout_marginTop="260dp"
+                            />
+
+                        <ImageButton
+                            android:id="@+id/RightFlower5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/sprout_flower"
+                            android:background="@null"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="1620dp"
+                            android:layout_marginTop="260dp"
+                            />
+
+                        <ImageButton
+                            android:id="@+id/RightVegtable1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/sprout_r"
+                            android:background="@null"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="440dp"
+                            android:layout_marginTop="400dp"
+                            />
+
+
+                        <ImageButton
+                            android:id="@+id/RightVegtable2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/sprout_r"
+                            android:background="@null"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="640dp"
+                            android:layout_marginTop="400dp"
+                            />
+
+                        <ImageButton
+                            android:id="@+id/RightVegtable3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/sprout_r"
+                            android:background="@null"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="840dp"
+                            android:layout_marginTop="400dp"
+                            />
+
+                        <ImageButton
+                            android:id="@+id/RightVegtable4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/sprout_r"
+                            android:background="@null"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="1040dp"
+                            android:layout_marginTop="400dp"
+                            />
+
+
+                    </android.support.constraint.ConstraintLayout>
+                    </LinearLayout>
+                </HorizontalScrollView>
+            </ScrollView>
+        </LinearLayout>
+    </ScrollView>
+    </LinearLayout>
