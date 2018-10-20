@@ -1,37 +1,32 @@
 body {
-  background-color:#25282d;
-  /*#666666*/
-  /*1c1d1f*/
+  background-color:#666666;
   background: '#919191';
   font-family: Helvetica Neue, Arial, sans-serif;
   text-align: center;
 }
 
 .wrapper {
-  border: 0px solid white;
-  background-color:#424242;
-  /*#25282d*/
-  float: left;
+  border: 1px solid white;
+  /*background-color:#666666;*/
+  float: right;
   max-width: 800px;
   margin: 50px auto;
   margin:5px 5px 5px 5px;
 }
 div {
-  background-color:#4a4d52;
   width: 48%;
-  border: 0px solid black;
-  border-radius: 3px;
+  border: 1px solid black;
+  border-radius: 5px;
   float: left;
   padding: 5px;
   margin-right: 5px;
   margin:5px 5px 5px 5px;
 }
 
-h4 {
-  font-size: 1rem;
-  font-weight:normal;
+h1 {
+  font-weight: 200;
+  font-size: 3em;
   margin: 0 0 0.1em 0;
-  color: black;
 }
 
 h2 {
