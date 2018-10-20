@@ -299,6 +299,22 @@ svg {
     visibility: hidden;
 }
 
+#gasBackgroundImage {
+    background-image: url('');
+    background-size: 100%;
+    background-color: black;
+    background-size: cover;
+    height: 100%;
+}
+
+#gasErrorImage {
+    position: relative;
+    height: 20px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+    float: right;
+    bottom: 10px;
+    visibility: hidden;
+}
+
 #phVegBackGroundImage {
     background-image: url(../img/ph3.jpg);
     background-size: cover;
