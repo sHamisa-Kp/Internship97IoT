@@ -5,10 +5,15 @@ function doIt(){
 	let min=5;
 	let max=40;
 	let a=chartdata.length;
-	let colors=['#00ff00','#006400','#00c800','#2faf2f','#47b247','#64af64','#80b780','#156315','#3e6b3e','#003d00','#264c26','#435b43','#003000','#053505','#112811','#364736','#06d168','#2fbc73','#034f28'];
+	// let colors=['#00ff00','#006400','#00c800','#2faf2f','#47b247','#64af64','#80b780','#156315','#3e6b3e','#003d00','#264c26','#435b43','#003000','#053505','#112811','#364736','#06d168','#2fbc73','#034f28'];
+    let colors=['#9505f2','#f285b2','#f78340','#8785f2','#85adf2','#85f2ea','#9cf285','#f00585','#f2b685','#f29585','#bcbbba'];
+	
 
 	let T=[{'id': '671', 'apiKey': 'XAKAVEUUJQ9GZGMT'},
 			{'id': '720','apikey': '6P4WUZHZZDR6U0TX'}];/*this channel(720) has a problem */
+
+	// {'id': '629', 'apiKey': 'G7KHR97UPN9OC5AC'},
+	//   {'id': '720', 'apiKey': '6P4WUZHZZDR6U0TX'}
 
 
 	function httpGetAsync(theUrl,j) {
