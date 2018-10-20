@@ -1,6 +1,7 @@
 package ir.iotacademy.gardenbalcony;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -15,6 +16,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+import java.util.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static ir.iotacademy.gardenbalcony.R.drawable.day;
 import static ir.iotacademy.gardenbalcony.R.drawable.drop;
@@ -26,6 +31,11 @@ public class GraphicalView extends AppCompatActivity {
     ImageButton onswitch,offswitch,mistbtn,mistbtn2,go_to_the_right_position;
     ConstraintLayout background;
     Drawable day;
+
+    String preUrl="http://thingtalk.ir/channels/";
+    String preip="http://10.1.248.33:5050/";
+    Map<String,String> map=new HashMap<String, String>();
+
     // private GyroscopeObserver gyroscopeObserver;
     //View decorView = getWindow().getDecorView();
     @Override
@@ -37,6 +47,7 @@ public class GraphicalView extends AppCompatActivity {
         offlamp= (ImageView) findViewById(R.id.offlamp);
         onswitch= (ImageButton) findViewById(R.id.on_switch);
         offswitch= (ImageButton) findViewById(R.id.off_switch);
+
 
 
         offswitch.setOnClickListener(new View.OnClickListener() {
@@ -181,33 +192,14 @@ public class GraphicalView extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 background.setBackgroundResource(R.drawable.night);
+                Intent intent = new Intent(GraphicalView.this, Middle_View.class);
+                startActivity(intent);
             }
         });
 
-        //test = (Button) findViewById(R.id.button5);
-        // Initialize GyroscopeObserver.
-        // Set the maximum radian the device should rotate to show image's bounds.
-        // It should be set between 0 and π/2.
-        // The default value is π/9.
 
-        // Set GyroscopeObserver for PanoramaImageView.
-        // panoramaImageView.setGyroscopeObserver(gyroscopeObserver);
-
-// Hide the status bar.
-        // int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-        // decorView.setSystemUiVisibility(uiOptions);
-// Remember that you should never show the action bar if the
-// status bar is hidden, so hide that too if necessary.
-        // ActionBar actionBar = getActionBar();
-        //actionBar.hide();
-        /*test.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(GraphicalView.this, "ok", Toast.LENGTH_SHORT).show();
-            }
-        });*/
+        map.put("T0",preUrl+"629/feed.json?key=G7KHR97UPN9OC5AC&results=1");
     }
-
 
 
 

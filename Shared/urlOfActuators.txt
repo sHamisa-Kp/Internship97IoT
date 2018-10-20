@@ -1,0 +1,21 @@
+GET 
+http://10.1.248.34:5050/
+-----------------------------------------
+	actuators/setPS0OFF
+	actuators/setPS0ON
+
+	actuators/setPS1OFF
+	actuators/setPS1ON
+
+	actuators/setPS2OFF
+	actuators/setPS2ON
+-----------------------------------------
+	actuators/setLBS0OFF
+	actuators/setLBS0ON
+
+	actuators/setLBS1OFF
+	actuators/setLBS1ON
+-----------------------------------------
+	actuators/setTS0OFF
+	actuators/setTS0ON
+-----------------------------------------
