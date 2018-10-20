@@ -43,9 +43,10 @@ function doIt(){
      };
      let label=new Array();
      let res=new Array();
-     httpGetAsyncLabel("http://thingtalk.ir/channels/706/feed.json?key=WQFB2JIGRVXDIAR4&results=20");
+     httpGetAsyncLabel("http://thingtalk.ir/channels/721/feed.json?key=YV8JRH910ZJZQN1I&results=20");
 
-	httpGetAsync("http://thingtalk.ir/channels/706/feed.json?key=WQFB2JIGRVXDIAR4&results=20");
+	httpGetAsync("http://thingtalk.ir/channels/721/feed.json?key=YV8JRH910ZJZQN1I&results=20");
+	// {'id': '721', 'apiKey': 'YV8JRH910ZJZQN1I'}
 	setTimeout(function(){
 		var onechart = 
 		{

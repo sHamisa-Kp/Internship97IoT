@@ -1,4 +1,3 @@
-// let FH=[{'id': '722', 'apiKey': '3ZIOUDCBO1X4W0B7'}];
 function doIt(){	
 	let chartdata=new Array;
 	// let colors=['#00ff00','#006400','#00c800','#2faf2f','#47b247','#64af64','#80b780','#156315','#3e6b3e','#003d00','#264c26','#435b43','#003000','#053505','#112811','#364736','#06d168','#2fbc73','#034f28'];	
@@ -43,10 +42,11 @@ function doIt(){
      };
      let label=new Array();
      let res=new Array();
-    httpGetAsyncLabel("http://thingtalk.ir/channels/723/feed.json?key=IG7Z0OW1NR2LVGSW&results=20");
+    httpGetAsyncLabel("http://thingtalk.ir/channels/672/feed.json?key=B1JQYWFKX2PCRBYF&results=20");
 
 
-	httpGetAsync("http://thingtalk.ir/channels/723/feed.json?key=IG7Z0OW1NR2LVGSW&results=20");	
+	httpGetAsync("http://thingtalk.ir/channels/672/feed.json?key=B1JQYWFKX2PCRBYF&results=20");	
+	// {'id': '672', 'apiKey': 'B1JQYWFKX2PCRBYF'}
 	setTimeout(function(){
 		var onechart = 
 		{
