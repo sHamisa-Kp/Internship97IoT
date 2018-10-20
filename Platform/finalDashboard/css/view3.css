@@ -29,8 +29,8 @@ h3 {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 300px auto auto auto 300px;
-  grid-template-rows: 180px 180px 150px 180px 150px 180px;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: 180px 180px 180px 180px;
   grid-gap: 10px;
   background-color: #1c1d1f;;
   padding: 10px;
@@ -41,6 +41,10 @@ h3 {
   /*text-align: center;*/
   padding: 11px 0;
 
+}
+
+.item6 {
+    grid-area: 2 / 2 / 4 / 4;
 }
 
 .tile-header {
@@ -78,7 +82,7 @@ h3 {
 .textabsolute{
     position: relative;
     bottom: 60px;
-    left: 80px;
+    left: 170px;
     width: 200px;
     height: 25px;
 }
@@ -90,7 +94,7 @@ h3 {
 }*/
 
 #humidityBackGroundImage {
-    background-image: url(../finalDashboard/img/highHumidity3.jpg);
+    background-image: url(../img/highHumidity3.jpg);
     background-size: cover;
     height: 100%;
 }
@@ -103,8 +107,17 @@ h3 {
     visibility: hidden;
 }
 
+#foggNozzleStatus {
+    height: 30px;
+    float: right;
+    visibility: visible;
+    position: relative;
+    bottom: 10px;  
+    right: 10px;
+}
+
 #temperatureBackGroundImage {
-    background-image: url("../finalDashboard/img/hotTemperature.jpg");
+    background-image: url("../img/normTemp.jpg");
     background-size: cover;
     height: 100%;
 }
@@ -112,7 +125,7 @@ h3 {
 #temperatureText {
     float: right;
     color: black;
-    font-size: 6em;
+    font-size: 6em; 
 }
 
 #temperatureGauge {
@@ -128,18 +141,18 @@ h3 {
 }
 
 #drySoil {
-    background: url(../finalDashboard/img/drySoil.jpg);
+    background: url(../img/drySoil.jpg);
     background-size: cover;
     height: 100%;
 }
 
 #normalSoil{
-    background: url(../finalDashboard/img/normalSoil2.jpg);
+    background: url(../img/normalSoil2.jpg);
     background-size: cover;
     height: 100%;
 }
 #wetSoil{
-    background: url(../finalDashboard/img/wetSoil.jpg);
+    background: url(../img/wetSoil.jpg);
     background-size: cover;
     height: 100%;
 }
@@ -153,7 +166,7 @@ h3 {
 }
 
 #SMofFlwr {
-    background: url(../finalDashboard/img/SMoFflwr.jpg);
+    background: url(../img/SMoFflwr.jpg);
     background-size: cover;
     height: 100%;
 
@@ -168,7 +181,7 @@ h3 {
 }
 
 #waterLevelBackGroundImage {
-    background: url(../finalDashboard/img/wl1.jpeg);
+    background: url(../img/wl1.jpeg);
     background-size: cover;
     height: 100%;
 }
@@ -183,19 +196,116 @@ h3 {
 
 .svgcenter{
     display: block;
-    margin-left: 90px;
+    margin-left: 120px;
     margin-right: auto;
     margin-top: 1.2px;
     margin-bottom: auto;
 }
 
-#phVegBackGroundImage {
-    background-image: url(../finalDashboard/img/ph3.jpg);
+#waterTapStatus {
+    height: 40px;
+    float: right;
+    visibility: visible;
+    position: relative;
+    bottom: 50px;
+    right: 10PX;
+}
+
+#photoresistorBackGroundImage {
+    background-image: url(../img/normalPhR.jpg);
+    background-size: cover;
+    /*height: 100%;*/
+}
+
+.rightDownIMG {
+    margin-top: 10%;
+    display:inline-block;
+    float: right;
+    position: relative;
+    right: 3%;
+}
+
+.errorImage { /*PhotoresistorErrorImage*/
+    position: relative;
+    height: 20px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+    float: right;
+    bottom: 10px;
+    visibility: hidden;
+}
+
+#mdBackgroundImage {
+    background-image: url(../img/md.jpg);
     background-size: cover;
     height: 100%;
 }
 
-#PhVegErrorImage{
+#motionDetectionStatus1, #motionDetectionStatus2 {
+  /*  width: 5%;
+    margin-top: 20%;*/
+    height: 80px;
+    width: 80px;
+    float: right;
+    visibility: visible;
+    position: relative;
+    top: 20%;
+    right: 25%;
+}
+
+#wattmeterErrorImage {
+    position: relative;
+    height: 20px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+    float: right;
+    bottom: 10px;
+    visibility: hidden;
+}
+
+svg {
+    width: 40%;
+    height: 40%
+}
+
+.highcharts-background { /*poshte tamame guage haye highchart background dare va baraye az beyn bordanesh in class ro qarar dadam*/
+    fill: none;
+    margin: 0 auto;
+}
+
+.highcharts-credits { /*payine gauge url e highchart b tore automatic namayesh dade mishod, ba in class kari krdm k dg namayesh dade nashe */
+    display: none;
+}
+
+.highcharts-button {
+    pointer-events: none;
+    display: none;
+}
+
+.gaugeHolder { /*vase ineke in gauge e vamoondaro biaram vasat*/
+    float: right;
+    visibility: visible;
+    position: relative;
+    margin-bottom: 50%;
+}
+
+#rainSensorBackgroundImage {
+    background-image: url(../img/dryWood.jpg);
+    background-size: cover;
+    height: 100%;
+}
+
+#rainSensorErrorImage{
+    position: relative;
+    height: 20px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+    float: right;
+    bottom: 10px;
+    visibility: hidden;
+}
+
+#phVegBackGroundImage {
+    background-image: url(../img/ph3.jpg);
+    background-size: cover;
+    height: 100%;
+}
+
+#PhVegErrorImage {
 	position: relative;
     height: 20px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
     float: right;
@@ -204,7 +314,7 @@ h3 {
 }
 
 #phFlwrBackGroundImage {
-    background-image: url(../finalDashboard/img/phFlwr.jpg);
+    background-image: url(../img/phFlwr.jpg);
     background-size: cover;
     height: 100%;
     /*opacity: 0.5;*/
@@ -220,28 +330,4 @@ h3 {
 
 #chartBackgroundImage {
 
-}
-
-.item8 {
-  grid-area: 1 / 2 / 7 / 5;
-}
-
-.item1 {
-   /* background: url(../mygit/Internship97IoT/Platform/finalDashboard/img/SMoFflwr.jpg);*/
-    background-size: cover;
-}
-
-.item2 {
-/*    background: url(../mygit/Internship97IoT/Platform/finalDashboard/img/ph3.jpg);*/
-    background-size: cover;
-}
-	
-.item3 {
-/*    background: url(../mygit/Internship97IoT/Platform/finalDashboard/img/phFlwr.jpg);*/
-    background-size: cover;
-}
-
-.item4 {
-    /*background: url(../mygit/Internship97IoT/Platform/finalDashboard/img/normalSoil2.jpg);*/
-    background-size: cover;
 }
