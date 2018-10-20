@@ -43,7 +43,8 @@ function doIt(){
                         res.push(label[i].slice(11,19));
                     }; console.log(res);
 
-                };
+                };in@1374
+                
             };
          xmlHttp.open("GET", theUrl, true);
          xmlHttp.send(null);

@@ -1,3 +1,5 @@
+/* Dashboard GUI - M.Naseri */
+
 const channel = {
 	// SoilMoisture (Vegetables: 0-7, Flowers: 8-17)
 	'SM': [{'id': '670', 'apiKey': 'LUJ9D21E177HESAW'},
@@ -183,7 +185,7 @@ function updateTemperatureTile(average) {
 		backgroundImage.style.backgroundImage = 'url("img/veryCold.jpg")';
 
 	} else if(average >= 0 && average < 20) {
-		backgroundImage.style.backgroundImage = 'url("img/coldTemp.jpg.jpg")';
+		backgroundImage.style.backgroundImage = 'url("img/coldTemp.jpg")';
 
 	} else if(average >= 20 && average < 30) {
 		backgroundImage.style.backgroundImage = 'url("img/normTemp.jpg")';

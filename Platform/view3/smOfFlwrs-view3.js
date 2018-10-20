@@ -59,16 +59,16 @@ function smFlwrUpdateSoilmoistureTile(average) {
     var meterValue = document.querySelector("#myFlwrSmMeter");
     meterValue.value = average;
 
-    // if(average < 20) {
-    //         var pic = document.querySelector(".pic");
-    //         pic.id = "drySoil";
+    var pic = document.querySelector("#SMofFlwrBackgroundImage");
+    if(average < 20) {  //dry          
+            pic.style.backgroundImage = 'url("img/dryFlwrSoil.jpg")';
             
-    //     }else if(20 <= average && average <= 30) {
-    //         document.querySelector(".pic").id = "normalSoil";
-    //     }
-    //     else if(average > 30) {
-    //         document.querySelector(".pic").id = "wetSoil";
-    //     }
+        }else if(20 <= average && average <= 30) { //normal
+            pic.style.backgroundImage = 'url("img/smOfFlwr3.jpg")';
+        }
+        else if(average > 30) { //wet
+            pic.style.backgroundImage = 'url("img/wetFlwr2.jpg")';
+        }
 
     soilmoistureFlwrErrorImage = document.getElementById('soilmoistureFlwrErrorImage');
     let thereIsAtLeastOneDanger = false;

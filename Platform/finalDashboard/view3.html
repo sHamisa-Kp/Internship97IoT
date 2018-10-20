@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>view 3</title>
+
+	<link rel="stylesheet" type="text/css" href="./css/view3.css">
+
+	<!-- <link href="./css/value.css" rel="stylesheet" media="screen"> -->
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+
+	<script src="./js/lib/gauge.min.js"></script>
+
+    <script src="./js/lib/d3.v3.min.js" language="JavaScript"></script>
+
+    <script src="./js/lib/liquidFillGauge.js" language="JavaScript"></script>
+
+ 	<script src="./Highcharts/code/highcharts.js"></script>
+
+    <script src="./Highcharts/code/highcharts-more.js"></script>
+
+    <script src="./Highcharts/code/modules/exporting.js"></script>
+
+    <script src="./Highcharts/code/modules/export-data.js"></script>
+
+    <script src="./Highcharts/code/modules/solid-gauge.js"></script>
+
+</head>
+<body>
+<div class="grid-container">
+
+	<div class="item1" style="width: 321.391px; height: 158px;">
+		<div class="tile-header" id="humidityChart">
+			<h3 class="tileHeading">Humidity</h3>
+			<img id="humidityErrorImage" src="../finalDashboard/img/error.png">
+		</div>
+		<div class="tile-content" id="humidityBackGroundImage">
+			<div class="center" id='chartHolder'>
+				<meter id="myHumidityMeter" class="center meterabsolute" value="0" min="0" max="100">21%</meter>
+			</div>
+			<span>
+				<p id="humidityAveragevalue" class="font textabsolute" class="center" align="right"></p>
+			</span>
+			<div>
+				<span>
+					<img id="foggNozzleStatus" src="img/fognozzle2-on.png">
+				</span>	
+			</div>	
+		</div>
+	</div>
+
+	<div class="item2" style="width: 320.797px; height: 158px;">
+		<div class="tile-header" id="temperatureChart">
+			<h3 class="tileHeading">Temperature</h3>
+			<img id="temperatureErrorImage" src="../finalDashboard/img/error.png">
+		</div>
+		<div class="tile-content" id="temperatureBackGroundImage">			
+			<canvas id ="temperatureGauge"></canvas>
+			<p id="temperatureText"></p>
+		</div>
+	</div>
+
+	<div class="item3" style="width: 321.391px; height: 158px;">
+		<div class="tile-header" id="smvChart">
+			<h3 class="tileHeading">SoilMoisture of vegetables</h3>
+			<img id="soilmoistureVegErrorImage" src="../finalDashboard/img/error.png">
+		</div>
+		<div class="tile-content pic" id="drySoil">
+			<div class="center" id='chartHolder'>
+				<meter id="myVegSmMeter" class="center meterabsolute" value="0" min="0" max="100"></meter>
+			</div>
+			<span>
+				<p id="vegAveragevalue" class="font textabsolute" class="center" align="right"></p>
+			</span>
+			<div>
+				<span>
+					<!-- <img id="pumpStatusOfVegs" src="img/X.png"> -->
+				</span>	
+			</div>
+		</div>
+		<input id="soilMoisture-lastModified" type="hidden" name="modified" value="2018-09-01T14:41:05+04:50">
+		<input id="soilMoisture-timeout" type="hidden" name="timeout" value="">
+	</div> 
+
+	<div class="item4" style="width: 321.391px; height: 158px;">
+		<div class="tile-header" id="smfChart">
+			<h3 class="tileHeading">SoilMoisture of Flowers</h3>
+			<img id="soilmoistureFlwrErrorImage" src="../finalDashboard/img/error.png">
+		</div>
+		<div class="tile-content" id="SMofFlwr">
+			<div class="center" id='chartHolder'>
+				<meter id="myFlwrSmMeter" class="center meterabsolute" value="0" min="0" max="100">21%</meter>
+			</div>
+			<span>
+				<p id="flwrAveragevalue" class="font textabsolute" class="center" align="right"></p>
+			</span>	
+			<div>
+				<span>
+					<!-- <img id="pumpStatusOfFlwrs" src="img/X.png"> -->
+				</span>	
+			</div>	
+		</div>
+	</div>
+
+	<div class="item5" style="width: 321.391px; height: 158px;">
+		<div class="tile-header" id="wlChart">
+			<h3 class="tileHeading">Water Level</h3>
+			<img id="waterLevelErrorImage" src="../img/error.png">
+		</div>
+		<div class="tile-content" id="waterLevelBackGroundImage">
+			<div class="svgcenter">
+				<svg id="fillgauge2" width="155" height="155"></svg>
+			</div>
+			<div>
+				<span>
+					<img id="waterTapStatus" src="img/watertap-on-v2.png">
+				</span>	
+			</div>
+		</div>		
+	</div>
+
+	<div class="item6" style="width: 652.188px; height: 348px;">
+		<div class="tile-header">
+			<h3 class="tileHeading">Chart</h3>
+		</div>
+		<div class="tile-content" id="chartBackgroundImage">
+			<canvas class="chartPlace" id="" width="" height=""></canvas>
+		</div>
+	</div>
+
+	<div class="item7" style="width: 321.391px; height: 158px;">
+		<div class="tile-header" id="phrChart">
+			<h3 class="tileHeading">PHOTORESISTOR</h3>
+			<img id="photoresistorErrorImage" class="errorImage" src="../finalDashboard/img/error.png">
+		</div>
+		<div class="tile-content" id="photoresistorBackGroundImage">
+			<p id="photoresistorText" class="font" align="right">0%</p>
+			<div class="rightDownIMG">
+				<img id="lightbulb1" src="img/lightbulbOff.png" height="30px">
+				<img id="lightbulb2" src="img/lightbulbOff.png" height="30px">
+			</div>
+		</div>		
+	</div>
+
+	<div class="item8" style="width: 321.391px; height: 158px;">
+		<div class="tile-header" id="mdChart">
+			<h3 class="tileHeading">MOTION DETECTOR</h3>
+		</div>
+		<div class="tile-content" id="mdBackgroundImage">
+			<img id="motionDetectionStatus1" src="img/motionOff.png">
+			<img id="motionDetectionStatus2" src="img/motionOff.png">
+		</div>
+	</div>
+
+	<div class="item9" style="width: 321.391px; height: 158px;">
+		<div class="tile-header" id="wmChart">
+			<h3 class="tileHeading">WATT METER</h3>
+			<img id="wattmeterErrorImage" src="img/error.png">
+		</div>
+		<div class="tile-content" id="wattmeterBackgroundImage">
+			<div id="container" class="gaugeHolder" style="width:400px; height:400px;"></div>
+		</div>
+	</div>
+
+	<div class="item10" style="width: 321.391px; height: 158px;">
+		<div class="tile-header" id="fhChart">
+			<h3 class="tileHeading">RAIN SENSOR</h3>
+			<img id="rainSensorErrorImage" src="img/error.png">
+		</div>
+		<div class="tile-content" id="rainSensorBackgroundImage">
+			<p id="rainSensorText" class="font textabsolute" class="center" align="right">0%</p>
+			<img id="rainStatus" src="img/dryIcon.png" style="height: 80px;">
+		</div>
+	</div>
+
+	<div class="item11" style="width: 320.797px; height: 158px;">
+		<div class="tile-header" id="gasChart">
+			<h3 class="tileHeading">GAS</h3>
+			<img id="gasErrorImage" src="img/error.png">
+		</div>
+		<div class="tile-content" id="gasBackgroundImage">
+			<p id="gasStatus" class="font" style="color: white;">Clean</p>
+			<p id="gasText" style="color: white;" class="font">0ppm</p>			
+		</div>
+	</div>
+
+	<div class="item12" style="width: 321.391px; height: 158px;">
+		<div class="tile-header" id="phvChart">
+			<h3 class="tileHeading">PH of vegetables</h3>
+			<img id="PhVegErrorImage" src="../finalDashboard/img/error.png">
+		</div>
+		<div class="tile-content" id="phVegBackGroundImage">
+			<div class="center" id='chartHolder'>
+				<meter id="phVegMeter" class="center meterabsolute" value="0" min="0" max="14">21%</meter>
+			</div>
+			<span>
+				<p id="phVegAveragevalue" class="font textabsolute" class="center" align="right"></p>
+			</span>	
+		</div>
+	</div>
+
+	<div class="item13" style="width: 321.391px; height: 158px;">
+		<div class="tile-header" id="phfChart">
+			<h3 class="tileHeading">PH of flowers</h3>
+			<img id="PhFlwrErrorImage" src="../finalDashboard/img/error.png">
+		</div>
+		<div class="tile-content" id="phFlwrBackGroundImage">
+			<div class="center" id='chartHolder'>
+				<meter id="phFlwrMeter" class="center meterabsolute" value="0" min="0" max="14">21%</meter>
+			</div>
+			<span>
+				<p id="phFlwrAveragevalue" class="font textabsolute" class="center" align="right"></p>
+			</span>	
+		</div>
+	</div>
+
+</div>
+
+<script src="./js/humidity.js"></script>
+
+<script src="./js/averageOfSM-veg.js"></script>
+
+<script src="./js/averageOfSM-flwr.js"></script>
+
+<script src="./js/waterLevel.js"></script>
+
+<script src="./js/valueN.js"></script>
+
+<script src="./js/averageOfPH-veg.js"></script>
+
+<script src="./js/averageOfPH-flwr.js"></script>
+
+<!-- <script src="./js/status.js"></script> -->
+
+<script src="./js/chart.js" type="text/javascript"></script>
+
+</body>
+</html>

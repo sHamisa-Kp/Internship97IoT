@@ -131,16 +131,16 @@ function updateTemperatureTile(average) {
 
 	let backgroundImage = document.getElementById('temperatureBackGroundImage');
 	if(average < 0) {
-		backgroundImage.style.backgroundImage = 'url("img/veryColdTemperature.jpg")';
+		backgroundImage.style.backgroundImage = 'url("img/veryCold.jpg")';
 		// console.log("average < 0");
 	} else if(average >= 0 && average < 20) {
-		backgroundImage.style.backgroundImage = 'url("img/coldTemperature.jpg")';
+		backgroundImage.style.backgroundImage = 'url("img/coldTemp.jpg")';
 		// console.log('average > 0 && average < 20');
 	} else if(average >= 20 && average < 30) {
-		backgroundImage.style.backgroundImage = 'url("img/balancedTemperature.jpg")';
+		backgroundImage.style.backgroundImage = 'url("img/normTemp.jpg")';
 		// console.log('average > 20 && average < 30');
 	} else if(average >= 30) {
-		backgroundImage.style.backgroundImage = 'url("img/hotTemperature.jpg")';
+		backgroundImage.style.backgroundImage = 'url("img/hotWeather2.jpg")';
 		// console.log('average > 30');
 	}
 
