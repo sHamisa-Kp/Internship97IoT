@@ -5,6 +5,8 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<link href="./css/lib/reset.css" rel="stylesheet" media="screen">
 
 	<link href="./css/lib/jquery.jqplot.css" rel="stylesheet" media="screen">
@@ -102,6 +104,28 @@
     <script src="./Highcharts/code/modules/solid-gauge.js"></script>
 </head>
 <body data-gr-c-s-loaded="true">
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="value.html">Graphical view</a>
+  <a href="../view2/mychart.html">Chart view</a>
+  <a href="../view3/view3.html">Combined view</a>
+  <a href="../View4/view4.html">Error view</a>
+    </div>
+
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
+
 
 	<!-- first row -->
 	<div class="row row_1_of_3">
@@ -223,7 +247,7 @@
 					</div>
 					<div>
 						<span>
-							<img id="waterTopStatus" src="img/watertap-on-v2.png">
+							<img id="waterTapStatus" src="img/watertap-on-v2.png">
 						</span>	
 					</div>					
 <!-- 						<script language="JavaScript">
@@ -385,13 +409,14 @@
 
 		<script src="./js/waterLevel.js"></script>
 
-<!-- 		<script src="./js/photoresistor.js"></script> -->
-
 		<script src="./js/averageOfPH-veg.js"></script>
 
 		<script src="./js/averageOfPH-flwr.js"></script>
 
 		<script src="./js/status.js"></script>
+
+
+  
 
 </body>
 </html>

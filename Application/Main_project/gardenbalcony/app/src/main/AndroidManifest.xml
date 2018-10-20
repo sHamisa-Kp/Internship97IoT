@@ -40,7 +40,8 @@
             android:label="@string/title_activity_notifications" />
         <activity android:name=".Main2Activity" />
         <activity android:name=".GraphicalView" />
-        <activity android:name=".Middle_View"></activity>
+        <activity android:name=".Middle_View" />
+        <activity android:name=".GraphicalViewRight"></activity>
     </application>
 
 </manifest>

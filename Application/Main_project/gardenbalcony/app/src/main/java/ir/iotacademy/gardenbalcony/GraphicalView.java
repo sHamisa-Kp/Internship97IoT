@@ -1,6 +1,7 @@
 package ir.iotacademy.gardenbalcony;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -653,6 +654,9 @@ public class GraphicalView extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                background.setBackgroundResource(R.drawable.night);
+                Intent intent = new Intent(GraphicalView.this, Middle_View.class);
+                startActivity(intent);
 
 
                 if (onlamp.getVisibility() == View.INVISIBLE && onswitch.getVisibility() == View.INVISIBLE ) {
