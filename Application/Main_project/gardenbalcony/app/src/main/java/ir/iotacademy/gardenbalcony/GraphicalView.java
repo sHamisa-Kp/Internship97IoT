@@ -54,7 +54,10 @@ public class GraphicalView extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                background.setBackgroundResource(R.drawable.day);
+
+                Intent intent = new Intent(GraphicalView.this, Middle_View.class);
+                startActivity(intent);
+
             }
         });
 
