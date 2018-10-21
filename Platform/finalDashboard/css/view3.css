@@ -87,7 +87,7 @@ h3 {
     height: 25px;
 }
 
-/*.meterabsolute{
+/*.meterabsolute {
     position: absolute;
     top: 85px;
     right: 170px;
@@ -288,10 +288,10 @@ svg {
 }
 
 .gaugeHolder { /*vase ineke in gauge e vamoondaro biaram vasat*/
-    float: right;
+/*    float: right;
     visibility: visible;
     position: relative;
-    margin-bottom: 50%;
+    margin-bottom: 50%;*/
 }
 
 #rainSensorBackgroundImage {
