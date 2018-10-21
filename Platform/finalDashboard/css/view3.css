@@ -82,7 +82,7 @@ h3 {
 .textabsolute{
     position: relative;
     bottom: 60px;
-    left: 170px;
+    left: 30%;
     width: 200px;
     height: 25px;
 }
@@ -111,9 +111,9 @@ h3 {
     height: 30px;
     float: right;
     visibility: visible;
-    position: relative;
-    bottom: 10px;  
-    right: 10px;
+    position: relative; 
+    right: 5%;
+    bottom: 10px;
 }
 
 #temperatureBackGroundImage {
@@ -128,8 +128,7 @@ h3 {
     font-size: 6em; 
 }
 
-#temperatureGauge {
-/*    margin: auto 0;*/
+#temperatureGauge {;
 }
 
 #temperatureErrorImage {
@@ -194,12 +193,22 @@ h3 {
     visibility: hidden;
 }
 
-.svgcenter{
+/*.svgcenter {
     display: block;
-    margin-left: 120px;
+    position: relative;
+    top: 10%;
+    left: 30%;
+}*/
+
+.svgcenter {
+    display: block;
+    margin-left: 50px;
     margin-right: auto;
-    margin-top: 1.2px;
+    margin-top: auto;
     margin-bottom: auto;
+    position: relative;
+    top: 15%;
+    left: 20%;
 }
 
 #waterTapStatus {
@@ -207,14 +216,14 @@ h3 {
     float: right;
     visibility: visible;
     position: relative;
-    bottom: 50px;
-    right: 10PX;
+    bottom: 10%;
+    right: 5%;
 }
 
 #photoresistorBackGroundImage {
     background-image: url(../img/normalPhR.jpg);
     background-size: cover;
-    /*height: 100%;*/
+    height: 100%;
 }
 
 .rightDownIMG {

@@ -39,7 +39,7 @@
 				<meter id="myHumidityMeter" class="center meterabsolute" value="0" min="0" max="100">21%</meter>
 			</div>
 			<span>
-				<p id="humidityAveragevalue" class="font textabsolute" class="center" align="right"></p>
+				<p id="humidityAveragevalue" class="font textabsolute" class="center" align="right">12</p>
 			</span>
 			<div>
 				<span>
@@ -109,7 +109,7 @@
 		</div>
 		<div class="tile-content" id="waterLevelBackGroundImage">
 			<div class="svgcenter">
-				<svg id="fillgauge2" width="155" height="155"></svg>
+				<svg id="fillgauge2" width="400" height="400"></svg>
 			</div>
 			<div>
 				<span>
@@ -133,8 +133,8 @@
 			<h3 class="tileHeading">PHOTORESISTOR</h3>
 			<img id="photoresistorErrorImage" class="errorImage" src="../finalDashboard/img/error.png">
 		</div>
-		<div class="tile-content" id="photoresistorBackGroundImage">
-			<p id="photoresistorText" class="font" align="right">0%</p>
+		<div class="tile-content" id="photoresistorBackGroundImage" style="width: 321.391px; height: 158px;">
+			<p id="photoresistorText" class="font" align="right" style="margin-top: 0;">0%</p>
 			<div class="rightDownIMG">
 				<img id="lightbulb1" src="img/lightbulbOff.png" height="30px">
 				<img id="lightbulb2" src="img/lightbulbOff.png" height="30px">
@@ -168,7 +168,7 @@
 			<img id="rainSensorErrorImage" src="img/error.png">
 		</div>
 		<div class="tile-content" id="rainSensorBackgroundImage">
-			<p id="rainSensorText" class="font textabsolute" class="center" align="right">0%</p>
+			<p id="rainSensorText" class="font center" style="margin-top: 0;">0%</p>
 			<img id="rainStatus" src="img/dryIcon.png" style="height: 80px;">
 		</div>
 	</div>
@@ -179,8 +179,10 @@
 			<img id="gasErrorImage" src="img/error.png">
 		</div>
 		<div class="tile-content" id="gasBackgroundImage">
-			<p id="gasStatus" class="font" style="color: white;">Clean</p>
-			<p id="gasText" style="color: white;" class="font">0ppm</p>			
+			<span>
+				<p id="gasStatus" class="font center" style="color: white; margin-top: 0;">Clean</p>
+				<p id="gasText" class="font center" style="color: white;">0ppm</p>
+			</span>
 		</div>
 	</div>
 

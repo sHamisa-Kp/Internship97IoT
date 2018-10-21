@@ -386,7 +386,7 @@ var wattmeterPoint; // wattmeterGauge
 temperatureGauge = new LinearGauge({
 	renderTo: 'temperatureGauge',
 	width: 70,
-	height: 210,
+	height: 158,
 
 	borderRadius: 5,
 	borders: 0,
