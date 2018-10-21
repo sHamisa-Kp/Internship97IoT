@@ -5,6 +5,8 @@
 
 	<link rel="stylesheet" type="text/css" href="./css/view3.css">
 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<!-- <link href="./css/value.css" rel="stylesheet" media="screen"> -->
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
@@ -27,6 +29,28 @@
 
 </head>
 <body>
+
+    <div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="../finalDashboard/value.html">Graphical view</a>
+  <a href="../view2/mychart.html">Chart view</a>
+  <a href="view3.html">Combined view</a>
+  <a href="../View4/view4.html">Error view</a>
+</div>
+
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
+
 <div class="grid-container">
 
 	<div class="item1" style="width: 321.391px; height: 158px;">
