@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list
+
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:drawable="@drawable/yellow_flowers"
+        android:duration="200"></item>
+    <item
+        android:drawable="@drawable/sprout_flower"
+        android:duration="200"></item>
+
+
+
+    </animation-list>

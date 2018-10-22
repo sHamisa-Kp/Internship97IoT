@@ -1,431 +1,753 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:gravity="top"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:orientation="vertical"
+android:gravity="bottom"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
     >
 
 
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <ScrollView
+            android:id="@+id/scrollView1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <ScrollView
-                android:id="@+id/scrollView1"
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
-                <HorizontalScrollView
-                    android:id="@+id/horizontalScrollView1"
+
+                <LinearLayout
+
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent"
+                    android:gravity="top"
+                    android:orientation="horizontal">
 
 
-                    <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:background="@drawable/balcony"
-                        android:gravity="top"
-                        android:orientation="horizontal">
-
-                        <!--<ImageView-->
-                        <!--android:id="@+id/imageViewObrazekGeometrie"-->
-                        <!--android:layout_width="1920dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:background="@drawable/balcony" />-->
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/backgounrd"
+                        android:layout_width="1920dp"
+                        android:layout_height="676dp"
+                        android:background="@drawable/balcony">
 
                         <ImageButton
                             android:id="@+id/mist_btn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:srcCompat="@drawable/mist_off"
+                            android:background="@drawable/animated_mist"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="222dp"
+                            android:layout_marginTop="0dp" />
+
+                        <ImageView
+                            android:id="@+id/mist1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/animated_mist"
+                            android:visibility="invisible"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="222dp"
+                            android:layout_marginTop="0dp" />
+
+
+                        <ImageView
+                            android:id="@+id/offlamp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/off_lamp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="38dp"
+                            android:layout_marginTop="132dp" />
+
+                        <ImageView
+                            android:id="@+id/onlamp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/animated_light"
+                            android:visibility="invisible"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="38dp"
+                            android:layout_marginTop="132dp" />
+
+                        <ImageButton
+                            android:id="@+id/on_switch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="invisible"
+                            app:srcCompat="@drawable/switch_on"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="48dp"
+                            android:layout_marginTop="250dp" />
+                        <ImageButton
+                            android:id="@+id/off_switch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/switch_off"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="48dp"
+                            android:layout_marginTop="250dp" />
+
+
+
+
+                        <ImageButton
+                            android:id="@+id/flower1"
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
                             android:background="@null"
-                            android:layout_marginTop="-10dp"
-                            android:layout_marginLeft="240dp"
+                            app:srcCompat="@drawable/sprout_flower"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="222dp"
+                            android:layout_marginTop="100dp" />
+
+                        <ImageView
+                            android:id="@+id/thirstyflower1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/thirsty_flower"
+                            android:visibility="invisible"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="222dp"
+                            android:layout_marginTop="100dp" />
+
+                        <ImageView
+                            android:id="@+id/waterf1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/watering"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="253dp"
+                            android:layout_marginTop="75dp" />
+
+                        <TextView
+                            android:id="@+id/textflower1"
+                            android:layout_width="79dp"
+                            android:layout_height="30dp"
+                            android:layout_weight="1"
+                            android:text="flower 1"
+                            android:textColor="#f3f63f"
+                            android:textSize="20dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="235dp"
+                            android:layout_marginTop="200dp" />
+
+
+                        <ImageButton
+                            android:id="@+id/flower2"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            app:srcCompat="@drawable/sprout_flower"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="383dp"
+                            android:layout_marginTop="100dp" />
+
+                        <ImageView
+                            android:id="@+id/thirstyflower2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/thirsty_flower"
+                            android:visibility="invisible"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="383dp"
+                            android:layout_marginTop="100dp" />
+
+                        <ImageView
+                            android:id="@+id/waterf2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/watering"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="414dp"
+                            android:layout_marginTop="75dp" />
+
+                        <TextView
+                            android:id="@+id/textflower2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="flower 2"
+                            android:textColor="#f3f63f"
+                            android:textSize="20dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="396dp"
+                            android:layout_marginTop="200dp" />
+
+
+                        <ImageButton
+                            android:id="@+id/flower3"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            app:srcCompat="@drawable/sprout_flower"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="188dp"
+                            android:layout_marginTop="271dp" />
+
+
+                        <ImageView
+                            android:id="@+id/thirstyflower3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/thirsty_flower"
+                            android:visibility="invisible"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="188dp"
+                            android:layout_marginTop="271dp" />
+
+                        <ImageView
+                            android:id="@+id/waterf3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/watering"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="219dp"
+                            android:layout_marginTop="246dp" />
+
+                        <TextView
+                            android:id="@+id/textflower3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="flower 3"
+                            android:textColor="#f3f63f"
+                            android:textSize="20dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="208dp"
+                            android:layout_marginTop="371dp" />
+
+
+                        <ImageButton
+                            android:id="@+id/flower4"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            app:srcCompat="@drawable/sprout_flower"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="320dp"
+                            android:layout_marginTop="268dp" />
+
+                        <ImageView
+                            android:id="@+id/thirstyflower4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/thirsty_flower"
+                            android:visibility="invisible"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="320dp"
+                            android:layout_marginTop="268dp" />
+
+                        <ImageView
+                            android:id="@+id/waterf4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/watering"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="351dp"
+                            android:layout_marginTop="243dp" />
+
+                        <TextView
+                            android:id="@+id/textflower4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="flower 4"
+                            android:textColor="#f3f63f"
+                            android:textSize="20dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="333dp"
+                            android:layout_marginTop="368dp"
                             />
+
+
+                        <ImageButton
+                            android:id="@+id/flower5"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            app:srcCompat="@drawable/sprout_flower"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="440dp"
+                            android:layout_marginTop="265dp" />
+
+                        <ImageView
+                            android:id="@+id/thirstyflower5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/thirsty_flower"
+                            android:visibility="invisible"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="440dp"
+                            android:layout_marginTop="265dp" />
+
+                        <ImageView
+                            android:id="@+id/waterf5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/watering"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="471dp"
+                            android:layout_marginTop="240dp" />
+
+                        <TextView
+                            android:id="@+id/textflower5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="flower 5"
+                            android:textColor="#f3f63f"
+                            android:textSize="20dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="453dp"
+                            android:layout_marginTop="365dp" />
+
+
+
+                        <ImageButton
+                            android:id="@+id/mist_btn2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/animated_mist"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="800dp"
+                            android:layout_marginTop="0dp" />
+
                         <ImageView
                             android:id="@+id/mist"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/animated_mist"
-                            android:layout_marginTop="-10dp"
-                            android:layout_marginLeft="-260dp"
-                            android:visibility="invisible"/>
-
-                        <LinearLayout
-                            android:layout_width="500dp"
-                            android:layout_height="wrap_content"
-
-                            android:layout_marginLeft="-520dp"
-                            android:layout_marginTop="30dp"
-                            android:orientation="vertical">
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="800dp"
+                            android:layout_marginTop="0dp"
+                            android:visibility="invisible" />
 
 
-                       
+                        <ImageButton
+                            android:id="@+id/veg1"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            app:srcCompat="@drawable/sprout_l"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="700dp"
+                            android:layout_marginTop="400dp" />
 
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/off_lamp"
-                                    android:id="@+id/offlamp"
-                                    android:layout_marginLeft="40dp"
-                                    android:layout_marginTop="80dp"/>
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/onlamp"
-                                    android:background="@drawable/animated_light"
-                                    android:layout_marginLeft="-103dp"
-                                    android:layout_marginTop="80dp"
-                                    android:visibility="invisible"/>
-                                
-                                
-                                <ImageButton
-                                    android:id="@+id/flower1"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="100dp"
-                                    android:layout_marginLeft="150dp"
-                                    android:layout_marginTop="100dp"
-                                    android:layout_weight="1"
-                                    android:background="@null"
-                                    app:srcCompat="@drawable/sprout_flower" />
-
-                                <TextView
-                                    android:id="@+id/textflower1"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="-80dp"
-                                    android:layout_marginTop="200dp"
-                                    android:layout_weight="1"
-                                    android:text="flower 1"
-                                    android:textColor="#f3f63f"
-                                    android:textSize="20dp" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="400dp"
-                                android:layout_marginTop="-130dp"
-                                android:layout_weight="1"
-                                android:orientation="horizontal">
-
-                                <ImageButton
-                                    android:id="@+id/flower2"
-                                    android:layout_width="100dp"
-                                    android:layout_height="100dp"
-                                    android:layout_weight="1"
-                                    android:background="@null"
-                                    app:srcCompat="@drawable/sprout_flower" />
-
-                                <TextView
-                                    android:id="@+id/textflower2"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="-85dp"
-                                    android:layout_marginTop="100dp"
-                                    android:layout_weight="1"
-                                    android:text="flower 2"
-                                    android:textColor="#f3f63f"
-                                    android:textSize="20dp" />
-                            </LinearLayout>
-
-
-                        </LinearLayout>
-
-                        <LinearLayout
+                        <ImageView
+                            android:id="@+id/thirstyveg1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="-450dp"
-                            android:layout_marginTop="290dp"
-                            android:orientation="vertical">
+                            android:background="@drawable/thirsty_grass"
+                            android:visibility="invisible"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="700dp"
+                            android:layout_marginTop="400dp" />
 
+                        <ImageView
+                            android:id="@+id/waterv1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/watering"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="720dp"
+                            android:layout_marginTop="365dp" />
 
-                            <ImageButton
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-
-                                android:id="@+id/off_switch"
-                                app:srcCompat="@drawable/switch_off"
-                                />
-                            <ImageButton
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="-72dp"
-                                android:id="@+id/on_switch"
-                                android:visibility="invisible"
-                                app:srcCompat="@drawable/switch_on"
-
-                                />
-
-                            <ImageButton
-                                android:id="@+id/flower3"
-                                android:layout_width="100dp"
-                                android:layout_height="100dp"
-                                android:layout_marginLeft="200dp"
-                                android:layout_marginTop="-40dp"
-                                android:layout_weight="1"
-                                android:background="@null"
-                                app:srcCompat="@drawable/sprout_flower" />
-
-                            <TextView
-                                android:id="@+id/textflower3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="220dp"
-                                android:layout_weight="1"
-                                android:text="flower 3"
-                                android:textColor="#f3f63f"
-                                android:textSize="20dp" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="320dp"
-                                android:layout_marginTop="-110dp"
-                                android:orientation="horizontal">
-                                
-
-
-                                <ImageButton
-                                    android:id="@+id/flower4"
-                                    android:layout_width="100dp"
-                                    android:layout_height="100dp"
-                                    android:layout_marginTop="-4dp"
-                                    android:layout_weight="1"
-                                    android:background="@null"
-                                    app:srcCompat="@drawable/sprout_flower" />
-
-                                <TextView
-                                    android:id="@+id/textflower4"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="-80dp"
-                                    android:layout_marginTop="90dp"
-                                    android:layout_weight="1"
-                                    android:text="flower 4"
-                                    android:textColor="#f3f63f"
-                                    android:textSize="20dp" />
-
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="400dp"
-                                android:layout_marginTop="-120dp"
-                                android:orientation="horizontal">
-
-
-                                <ImageButton
-                                    android:id="@+id/flower5"
-                                    android:layout_width="100dp"
-                                    android:layout_height="100dp"
-                                    android:layout_marginTop="-4dp"
-                                    android:layout_weight="1"
-                                    android:background="@null"
-                                    app:srcCompat="@drawable/sprout_flower" />
-
-                                <TextView
-                                    android:id="@+id/textflower5"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="-80dp"
-                                    android:layout_marginTop="90dp"
-                                    android:layout_weight="1"
-                                    android:text="flower 5"
-                                    android:textColor="#f3f63f"
-                                    android:textSize="20dp" />
-
-                            </LinearLayout>
-
-
-                            <!-- <TextView
-                            android:id="@+id/textflower1"
+                        <TextView
+                            android:id="@+id/textveg1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_marginLeft="-90dp"
-                            android:layout_marginTop="200dp"
-                            android:text="TextView"
+                            android:text="vegtable 1"
                             android:textColor="#f3f63f"
-                            android:textSize="20dp"/>
-                            -->
+                            android:textSize="20dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="700dp"
+                            android:layout_marginTop="500dp" />
 
 
-                        </LinearLayout>
+                        <ImageButton
+                            android:id="@+id/veg2"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            app:srcCompat="@drawable/sprout_l"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="820dp"
+                            android:layout_marginTop="420dp"/>
 
-                        <LinearLayout
+
+                        <ImageView
+                            android:id="@+id/thirstyveg2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="160dp"
-                            android:layout_marginTop="-10dp"
-                            android:orientation="vertical">
+                            android:background="@drawable/thirsty_grass"
+                            android:visibility="invisible"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="820dp"
+                            android:layout_marginTop="420dp" />
 
-                            <ImageButton
-                                android:id="@+id/mist_btn"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:srcCompat="@drawable/mist_off"
-                                android:background="@null"
-                                android:layout_marginTop="0dp"
-                                android:layout_marginLeft="230dp"/>
-                            <ImageView
-                                android:id="@+id/mist"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/animated_mist"
-                                android:layout_marginTop="-200dp"
-                                android:layout_marginLeft="230dp"
-                                android:visibility="invisible"
-                          />
+                        <ImageView
+                            android:id="@+id/waterv2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/watering"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="840dp"
+                            android:layout_marginTop="395dp" />
 
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="200dp"
-                                android:orientation="horizontal">
-
-
-                                <ImageButton
-                                    android:id="@+id/veg1"
-                                    android:layout_width="100dp"
-                                    android:layout_height="100dp"
-                                    android:layout_marginTop="-4dp"
-                                    android:layout_weight="1"
-                                    android:background="@null"
-                                    app:srcCompat="@drawable/sprout" />
-
-                                <TextView
-                                    android:id="@+id/textveg1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="-90dp"
-                                    android:layout_marginTop="90dp"
-                                    android:layout_weight="1"
-                                    android:text="vegtable 1"
-                                    android:textColor="#f3f63f"
-                                    android:textSize="20dp" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="-100dp"
-                                android:layout_marginLeft="200dp"
-                                android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/textveg2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="vegtable 2"
+                            android:textColor="#f3f63f"
+                            android:textSize="20dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="820dp"
+                            android:layout_marginTop="520dp" />
 
 
-
-                                <ImageButton
-                                    android:id="@+id/veg1"
-                                    android:layout_width="100dp"
-                                    android:layout_height="100dp"
-                                    android:layout_marginTop="-4dp"
-                                    android:layout_weight="1"
-                                    android:background="@null"
-                                    app:srcCompat="@drawable/sproutbig" />
-
-                                <TextView
-                                    android:id="@+id/textveg1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="-90dp"
-                                    android:layout_marginTop="90dp"
-                                    android:layout_weight="1"
-                                    android:text="vegtable 2"
-                                    android:textColor="#f3f63f"
-                                    android:textSize="20dp" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="-110dp"
-                                android:layout_marginLeft="440dp"
-                                android:orientation="horizontal">
+                        <ImageButton
+                            android:id="@+id/veg3"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            app:srcCompat="@drawable/sprout_l"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="940dp"
+                            android:layout_marginTop="430dp" />
 
 
-                                <ImageButton
-                                    android:id="@+id/veg1"
-                                    android:layout_width="100dp"
-                                    android:layout_height="100dp"
-                                    android:layout_marginTop="-4dp"
-                                    android:layout_weight="1"
-                                    android:background="@null"
-                                    app:srcCompat="@drawable/sproutbig" />
+                        <ImageView
+                            android:id="@+id/thirstyveg3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/thirsty_grass"
+                            android:visibility="invisible"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="940dp"
+                            android:layout_marginTop="430dp" />
 
-                                <TextView
-                                    android:id="@+id/textveg1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="-90dp"
-                                    android:layout_marginTop="90dp"
-                                    android:layout_weight="1"
-                                    android:text="vegtable 3"
-                                    android:textColor="#f3f63f"
-                                    android:textSize="20dp" />
+                        <ImageView
+                            android:id="@+id/waterv3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/watering"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="960dp"
+                            android:layout_marginTop="405dp" />
 
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="-135dp"
-                                android:layout_marginLeft="660dp"
-                                android:orientation="horizontal">
-
-
-                                <ImageButton
-                                    android:id="@+id/veg1"
-                                    android:layout_width="100dp"
-                                    android:layout_height="100dp"
-                                    android:layout_marginTop="-4dp"
-                                    android:layout_weight="1"
-                                    android:background="@null"
-                                    app:srcCompat="@drawable/sprout" />
-
-                                <TextView
-                                    android:id="@+id/textveg1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="-90dp"
-                                    android:layout_marginTop="90dp"
-                                    android:layout_weight="1"
-                                    android:text="vegtable 4"
-                                    android:textColor="#f3f63f"
-                                    android:textSize="20dp" />
-
-                            </LinearLayout>
+                        <TextView
+                            android:id="@+id/textveg3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="vegtable 3"
+                            android:textColor="#f3f63f"
+                            android:textSize="20dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="940dp"
+                            android:layout_marginTop="530dp" />
 
 
-                        </LinearLayout>
+                        <ImageButton
+                            android:id="@+id/veg4"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            app:srcCompat="@drawable/sprout_l"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="1060dp"
+                            android:layout_marginTop="435dp" />
 
-                    </LinearLayout>
-                </HorizontalScrollView>
-            </ScrollView>
-        </LinearLayout>
-    </ScrollView>
+                        <ImageView
+                            android:id="@+id/thirstyveg4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/thirsty_grass"
+                            android:visibility="invisible"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="1060dp"
+                            android:layout_marginTop="435dp" />
 
-    <ExpandableListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+                        <ImageView
+                            android:id="@+id/waterv4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/watering"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="1080dp"
+                            android:layout_marginTop="410dp" />
 
+                        <TextView
+                            android:id="@+id/textveg4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="vegtable 4"
+                            android:textColor="#f3f63f"
+                            android:textSize="20dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="1060dp"
+                            android:layout_marginTop="535dp" />
+
+
+                        <ImageButton
+                            android:id="@+id/go_right"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            app:srcCompat="@drawable/right_arrow"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="1540dp"
+                            android:layout_marginTop="300dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/temperature"
+                            android:text="temperature"
+                            android:textColor="#fcde8304"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="1680dp"
+                            android:layout_marginTop="90dp"
+                            android:textSize="20dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/humidity"
+                            android:text="humidity"
+                            android:textColor="#fcde8304"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="1680dp"
+                            android:layout_marginTop="110dp"
+                            android:textSize="20dp"/>
+
+                        <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/thermometer"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginLeft="1700dp"
+                        android:layout_marginTop="85dp"
+                        />
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/smoke"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="1645dp"
+                            android:layout_marginTop="150dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/textsmoke"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="sm"
+                            android:textColor="#fcde8304"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="1670dp"
+                            android:layout_marginTop="168dp"
+                            />
+
+
+                        <ImageView
+                            android:id="@+id/offmotion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/off"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="18dp"
+                            android:layout_marginTop="360dp"
+                            />
+
+                        <ImageView
+                            android:id="@+id/onmotion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/motion_detection"
+                            android:visibility="invisible"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="18dp"
+                            android:layout_marginTop="360dp" />
+
+                        <ImageView
+                            android:id="@+id/brightness"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/brightness"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="90dp"
+                            android:layout_marginTop="355dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/textbrightness"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="br"
+                            android:textColor="#000000"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="115dp"
+                            android:layout_marginTop="375dp"
+                            android:textSize="20dp"
+                            />
+
+
+                        <ImageView
+                            android:id="@+id/brightness"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/multimeter"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="-7dp"
+                            android:layout_marginTop="0dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/textwattmeter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="wa"
+                            android:textColor="#000000"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="12dp"
+                            android:textSize="15dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/textwattmeter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="w\na\nt\nt"
+                            android:textColor="#b1d6f2"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="58dp"
+                            android:layout_marginTop="-12dp"
+                            android:textSize="15dp"
+                            />
+
+                        <ImageView
+                            android:id="@+id/puddlewater"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/puddle"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="450dp"
+                            android:layout_marginTop="620dp"
+                            android:visibility="invisible"
+                            />
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/puddle_ok"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="450dp"
+                            android:layout_marginTop="620dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/textfloormoisture"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="fm"
+                            android:textColor="#b1d6f2"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="530dp"
+                            android:layout_marginTop="650dp"
+                            android:textSize="15dp"
+                            />
+
+
+                    </android.support.constraint.ConstraintLayout>
+                </LinearLayout>
+
+            </HorizontalScrollView>
+        </ScrollView>
+    </LinearLayout>
+</ScrollView>
 </LinearLayout>

@@ -28,6 +28,9 @@ function smFlwrHttpGetAsync(theUrl, callback, i) {
             } else {
                 flwrsoilmoistureError[i] = false;
             }
+            if (i === (smFlwrChannel.SM.length) - 1) {
+              smFlwrCalculateAverage(flwrsoilmoistureArray);  
+            }
         }
     };
     xmlHttp.open("GET", theUrl, true); // true for asynchronous 
@@ -41,7 +44,7 @@ function smFlwrUpdateThePage() {
     }
 }
 
-function smFlwrCalculateAverage() {
+function smFlwrCalculateAverage(flwrsoilmoistureArray) {
     let sum = 0;
     flwrsoilmoistureArray.forEach(function(elem) {
         sum += elem;
@@ -59,16 +62,16 @@ function smFlwrUpdateSoilmoistureTile(average) {
     var meterValue = document.querySelector("#myFlwrSmMeter");
     meterValue.value = average;
 
-    // if(average < 20) {
-    //         var pic = document.querySelector(".pic");
-    //         pic.id = "drySoil";
+    var pic = document.querySelector("#SMofFlwrBackgroundImage");
+    if(average < 20) {  //dry          
+            pic.style.backgroundImage = 'url("img/dryFlwrSoil.jpg")';
             
-    //     }else if(20 <= average && average <= 30) {
-    //         document.querySelector(".pic").id = "normalSoil";
-    //     }
-    //     else if(average > 30) {
-    //         document.querySelector(".pic").id = "wetSoil";
-    //     }
+        }else if(20 <= average && average <= 30) { //normal
+            pic.style.backgroundImage = 'url("img/smOfFlwr3.jpg")';
+        }
+        else if(average > 30) { //wet
+            pic.style.backgroundImage = 'url("img/wetFlwr2.jpg")';
+        }
 
     soilmoistureFlwrErrorImage = document.getElementById('soilmoistureFlwrErrorImage');
     let thereIsAtLeastOneDanger = false;
@@ -91,33 +94,3 @@ for(let i = 0; i < smFlwrChannel.SM.length; i++) {
 }
 
 setInterval(smFlwrUpdateThePage, updateInterval);
-setInterval(smFlwrCalculateAverage, updateInterval);
-
-// function doIt() {
-//     num = 0;
-//     sum = 0;
-//     console.log(avrge);
-//     var averageValue = document.querySelector("#flwrAveragevalue");
-//     averageValue.textContent = JSON.stringify(avrge);
-//     averageValue.classList.add("font");
-//     var meterValue = document.querySelector("#myFlwrSmMeter");
-//     meterValue.value = avrge;
-//     if(avrge < 20) {
-//         var pic = document.querySelector(".pic");
-//         pic.id = "drySoil";
-        
-//     }else if(20 <= avrge && avrge <= 30) {
-//         document.querySelector(".pic").id = "normalSoil";
-//     }
-//     else if(avrge > 30) {
-//         document.querySelector(".pic").id = "wetSoil";
-//     }
-//     getValueRequestToThingTalk('http://thingtalk.ir/channels/770/feed/last.json?key=98H1B5W1M798CW9X');
-//     getValueRequestToThingTalk('http://thingtalk.ir/channels/711/feed/last.json?key=NGPRWTEBE7J2D7OH');
-//     getValueRequestToThingTalk('http://thingtalk.ir/channels/712/feed/last.json?key=Q7KWNM5RV2L2NO9X');
-//     getValueRequestToThingTalk('http://thingtalk.ir/channels/713/feed/last.json?key=0KU9RHTC8SNQ1PIO');
-//     getValueRequestToThingTalk('http://thingtalk.ir/channels/714/feed/last.json?key=1PF7IY1S44DB62X1');
-//     getValueRequestToThingTalk('http://thingtalk.ir/channels/715/feed/last.json?key=WDYWY5XBON1X0I95');
-//     getValueRequestToThingTalk('http://thingtalk.ir/channels/716/feed/last.json?key=2FCB7CL5N85JF5T3');
-//     getValueRequestToThingTalk('http://thingtalk.ir/channels/717/feed/last.json?key=HMO5RPP5ZQMQZF8Z');
-//  }
