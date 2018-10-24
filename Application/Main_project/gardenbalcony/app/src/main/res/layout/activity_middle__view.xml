@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-   android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
     tools:context="ir.iotacademy.gardenbalcony.Middle_View">
     <android.support.constraint.ConstraintLayout
         android:id="@+id/backgounrd"
         android:layout_width="385dp"
         android:layout_height="570dp"
-        android:background="@drawable/middle">
+        android:background="@drawable/middle"
+        android:layout_centerInParent="true">
 
 
         <ImageView
@@ -46,4 +49,4 @@
 
     </android.support.constraint.ConstraintLayout>
 
-</LinearLayout>
+</RelativeLayout>
