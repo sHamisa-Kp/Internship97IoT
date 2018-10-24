@@ -41,7 +41,8 @@
         <activity android:name=".Main2Activity" />
         <activity android:name=".GraphicalView" />
         <activity android:name=".Middle_View" />
-        <activity android:name=".GraphicalViewRight"></activity>
+        <activity android:name=".GraphicalViewRight" />
+        <activity android:name=".ErrorDashboard"></activity>
     </application>
 
 </manifest>

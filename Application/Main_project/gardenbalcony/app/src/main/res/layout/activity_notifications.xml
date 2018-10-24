@@ -27,13 +27,14 @@
                     android:id="@+id/minlight"
                     android:layout_width="match_parent"
                     android:layout_height="125dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="14dp"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:background="#ffffd4"
-                    >
+                    android:layout_alignParentTop="true"
+                    android:layout_alignLeft="@+id/maxlight"
+                    android:layout_alignStart="@+id/maxlight"
+                    android:visibility="invisible">
 
                     <TextView
                         android:id="@+id/tvminlight"
@@ -57,7 +58,7 @@
                         android:layout_height="30dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="3dp"
-                        android:layout_marginLeft="320dp"
+                        android:layout_gravity="right"
                         android:src="@drawable/cancel"
                         android:background="#00ffffff"/>
 
@@ -80,10 +81,9 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
                     android:layout_below="@+id/minlight"
-                    >
+                    android:layout_alignLeft="@+id/minairhumidity"
+                    android:layout_alignStart="@+id/minairhumidity">
 
                     <TextView
                         android:id="@+id/tvmaxlight"
@@ -107,7 +107,7 @@
                         android:layout_height="30dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="3dp"
-                        android:layout_marginLeft="320dp"
+                        android:layout_gravity="right"
                         android:src="@drawable/cancel"
                         android:background="#00ffffff"/>
 
@@ -146,11 +146,11 @@
                         android:id="@+id/canselmaxairhumidity"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_gravity="right"
                         android:layout_marginRight="3dp"
-                        android:layout_marginLeft="320dp"
-                        android:src="@drawable/cancel"
-                        android:background="#00ffffff"/>
+                        android:layout_marginTop="5dp"
+                        android:background="#00ffffff"
+                        android:src="@drawable/cancel" />
 
                 </FrameLayout>
 
@@ -189,7 +189,7 @@
                         android:layout_height="30dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="3dp"
-                        android:layout_marginLeft="320dp"
+                        android:layout_gravity="right"
                         android:src="@drawable/cancel"
                         android:background="#00ffffff"/>
 
@@ -228,11 +228,11 @@
                         android:id="@+id/canselminsoilmoisture_flower"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_gravity="right"
                         android:layout_marginRight="3dp"
-                        android:layout_marginLeft="320dp"
-                        android:src="@drawable/cancel"
-                        android:background="#00ffffff"/>
+                        android:layout_marginTop="5dp"
+                        android:background="#00ffffff"
+                        android:src="@drawable/cancel" />
 
                 </FrameLayout>
 
@@ -271,7 +271,7 @@
                         android:layout_height="30dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="3dp"
-                        android:layout_marginLeft="320dp"
+                        android:layout_gravity="right"
                         android:src="@drawable/cancel"
                         android:background="#00ffffff"/>
 
@@ -312,7 +312,7 @@
                         android:layout_height="30dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="3dp"
-                        android:layout_marginLeft="320dp"
+                        android:layout_gravity="right"
                         android:src="@drawable/cancel"
                         android:background="#00ffffff"/>
 
@@ -353,7 +353,7 @@
                         android:layout_height="30dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="3dp"
-                        android:layout_marginLeft="320dp"
+                        android:layout_gravity="right"
                         android:src="@drawable/cancel"
                         android:background="#00ffffff"/>
 
@@ -394,7 +394,7 @@
                         android:layout_height="30dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="3dp"
-                        android:layout_marginLeft="320dp"
+                        android:layout_gravity="right"
                         android:src="@drawable/cancel"
                         android:background="#00ffffff"/>
 
@@ -435,7 +435,7 @@
                         android:layout_height="30dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="3dp"
-                        android:layout_marginLeft="320dp"
+                        android:layout_gravity="right"
                         android:src="@drawable/cancel"
                         android:background="#00ffffff"/>
 
@@ -476,7 +476,7 @@
                         android:layout_height="30dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="3dp"
-                        android:layout_marginLeft="320dp"
+                        android:layout_gravity="right"
                         android:src="@drawable/cancel"
                         android:background="#00ffffff"/>
 
@@ -518,7 +518,7 @@
                         android:layout_height="30dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="3dp"
-                        android:layout_marginLeft="320dp"
+                        android:layout_gravity="right"
                         android:src="@drawable/cancel"
                         android:background="#00ffffff"/>
 

@@ -96,14 +96,21 @@ public class GraphicalView extends AppCompatActivity {
         map.put("WM", preUrl + "753/feed.json?key=OUAV3VIB076Y5UO0&results=1");
         //water level
         map.put("WL", preUrl + "742/feed.json?key=WGWJ660WN7V9394D&results=1");
-        //T0
+
+
+        //Temperature
         data = (TextView) findViewById(R.id.temperature);
         GetSendData t0 = new GetSendData();
         data.setText(t0.GetData(map.get("T0")) + "°C");
-        //H0
+
+
+        //Humidity
         data = (TextView) findViewById(R.id.humidity);
         GetSendData h0 = new GetSendData();
         data.setText(h0.GetData(map.get("H0")) + "%");
+
+
+
         //Vegetables
         data = (TextView) findViewById(R.id.textveg1);
         GetSendData sm0 = new GetSendData();
