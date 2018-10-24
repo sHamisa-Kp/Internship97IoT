@@ -29,7 +29,6 @@ android:layout_height="fill_parent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-
                 <LinearLayout
 
                     android:layout_width="match_parent"
@@ -61,6 +60,7 @@ android:layout_height="fill_parent"
                             android:layout_marginTop="380dp"
                             android:rotation="-10"
                             />
+
                         <ImageButton
                             android:id="@+id/RightFlower1"
                             android:layout_width="wrap_content"
@@ -72,6 +72,19 @@ android:layout_height="fill_parent"
                             android:layout_marginLeft="1410dp"
                             android:layout_marginTop="110dp"
                             />
+
+                        <TextView
+                            android:id="@+id/RightTextFlower1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Flower 1"
+                            android:textColor="#f3f63f"
+                            android:textSize="20dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="1410dp"
+                            android:layout_marginTop="220dp" />
 
                         <ImageButton
                             android:id="@+id/RightFlower2"
@@ -85,6 +98,19 @@ android:layout_height="fill_parent"
                             android:layout_marginTop="110dp"
                             />
 
+                        <TextView
+                            android:id="@+id/RightTextFlower2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Flower 2"
+                            android:textColor="#f3f63f"
+                            android:textSize="20dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="1520dp"
+                            android:layout_marginTop="220dp" />
+
                         <ImageButton
                             android:id="@+id/RightFlower3"
                             android:layout_width="wrap_content"
@@ -96,6 +122,19 @@ android:layout_height="fill_parent"
                             android:layout_marginLeft="1510dp"
                             android:layout_marginTop="260dp"
                             />
+
+                        <TextView
+                            android:id="@+id/RightTextFlower3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Flower 3"
+                            android:textColor="#f3f63f"
+                            android:textSize="20dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="1510dp"
+                            android:layout_marginTop="360dp" />
 
                         <ImageButton
                             android:id="@+id/RightFlower4"
@@ -109,6 +148,19 @@ android:layout_height="fill_parent"
                             android:layout_marginTop="260dp"
                             />
 
+                        <TextView
+                            android:id="@+id/RightTextFlower4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Flower 4"
+                            android:textColor="#f3f63f"
+                            android:textSize="20dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="1400dp"
+                            android:layout_marginTop="360dp" />
+
                         <ImageButton
                             android:id="@+id/RightFlower5"
                             android:layout_width="wrap_content"
@@ -120,6 +172,19 @@ android:layout_height="fill_parent"
                             android:layout_marginLeft="1620dp"
                             android:layout_marginTop="260dp"
                             />
+
+                        <TextView
+                            android:id="@+id/RightTextFlower5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Flower 5"
+                            android:textColor="#f3f63f"
+                            android:textSize="20dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="1620dp"
+                            android:layout_marginTop="360dp" />
 
                         <ImageButton
                             android:id="@+id/RightVegtable1"
@@ -133,6 +198,18 @@ android:layout_height="fill_parent"
                             android:layout_marginTop="400dp"
                             />
 
+                        <TextView
+                            android:id="@+id/Righttextveg1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="vegtable 1"
+                            android:textColor="#f3f63f"
+                            android:textSize="20dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="440dp"
+                            android:layout_marginTop="550dp" />
 
                         <ImageButton
                             android:id="@+id/RightVegtable2"
@@ -146,6 +223,19 @@ android:layout_height="fill_parent"
                             android:layout_marginTop="400dp"
                             />
 
+                        <TextView
+                            android:id="@+id/Righttextveg2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="vegtable 2"
+                            android:textColor="#f3f63f"
+                            android:textSize="20dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="640dp"
+                            android:layout_marginTop="550dp" />
+
                         <ImageButton
                             android:id="@+id/RightVegtable3"
                             android:layout_width="wrap_content"
@@ -157,6 +247,19 @@ android:layout_height="fill_parent"
                             android:layout_marginLeft="840dp"
                             android:layout_marginTop="400dp"
                             />
+
+                        <TextView
+                            android:id="@+id/Righttextveg3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="vegtable 3"
+                            android:textColor="#f3f63f"
+                            android:textSize="20dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="840dp"
+                            android:layout_marginTop="550dp" />
 
                         <ImageButton
                             android:id="@+id/RightVegtable4"
@@ -170,6 +273,18 @@ android:layout_height="fill_parent"
                             android:layout_marginTop="400dp"
                             />
 
+                        <TextView
+                            android:id="@+id/Righttextveg4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="vegtable 4"
+                            android:textColor="#f3f63f"
+                            android:textSize="20dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="1040dp"
+                            android:layout_marginTop="550dp" />
 
                     </android.support.constraint.ConstraintLayout>
                     </LinearLayout>

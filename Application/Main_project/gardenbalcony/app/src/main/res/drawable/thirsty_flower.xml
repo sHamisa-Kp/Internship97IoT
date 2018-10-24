@@ -6,10 +6,10 @@
 
     <item
         android:drawable="@drawable/yellow_flowers"
-        android:duration="200"></item>
+        android:duration="400"></item>
     <item
         android:drawable="@drawable/sprout_flower"
-        android:duration="200"></item>
+        android:duration="400"></item>
 
 
 

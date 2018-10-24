@@ -6,13 +6,13 @@
 
     <item
         android:drawable="@drawable/on0_md"
-        android:duration="80"></item>
+        android:duration="500"></item>
     <item
         android:drawable="@drawable/on1_md"
-        android:duration="80"></item>
+        android:duration="500"></item>
     <item
         android:drawable="@drawable/on2_md"
-        android:duration="80"></item>
+        android:duration="500"></item>
 
 
 </animation-list>
