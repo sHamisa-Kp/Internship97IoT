@@ -543,11 +543,11 @@ public class GraphicalView extends AppCompatActivity {
         data = (TextView) findViewById(R.id.textfloormoisture);
         GetSendData fh = new GetSendData();
         d = fh.GetData(map.get("FH0"));
-        data.setText(d+"%");
+        data.setText("");
 
         puddle= (ImageView) findViewById(R.id.puddlewater);
 
-        if(Integer.parseInt(d)>20){
+        if(Integer.parseInt(d)==1){
             puddle.setVisibility(View.VISIBLE);
         }
         else
