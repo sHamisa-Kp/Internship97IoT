@@ -8,7 +8,7 @@
         android:drawable="@drawable/yellow_grass"
         android:duration="200"></item>
     <item
-        android:drawable="@drawable/sprout"
+        android:drawable="@drawable/sprout_l"
         android:duration="200"></item>
 
 
