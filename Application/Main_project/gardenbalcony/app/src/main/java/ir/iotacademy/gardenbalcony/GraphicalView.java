@@ -94,7 +94,8 @@ public class GraphicalView extends AppCompatActivity {
         map.put("MD", preUrl + "749/feed.json?key=V197BB4SL21A2IKG&results=1");
         //watt meter
         map.put("WM", preUrl + "753/feed.json?key=OUAV3VIB076Y5UO0&results=1");
-
+        //water level
+        map.put("WL", preUrl + "742/feed.json?key=WGWJ660WN7V9394D&results=1");
         //T0
         data = (TextView) findViewById(R.id.temperature);
         GetSendData t0 = new GetSendData();
@@ -374,7 +375,7 @@ public class GraphicalView extends AppCompatActivity {
 
         //watering
         GetSendData ts = new GetSendData();
-        d1 = pr.GetData(map.get("WM"));
+        d1 = pr.GetData(map.get("WL"));
 
         //flower
         GetSendData psf = new GetSendData();
@@ -469,7 +470,7 @@ public class GraphicalView extends AppCompatActivity {
         wv3 = (ImageView) findViewById(R.id.waterv3);
         wv4 = (ImageView) findViewById(R.id.waterv4);
 
-        if (d.equals("1") && d1.equals("1")) {
+        if (d.equals("1") && Integer.parseInt(d1)>5) {
             wv1.post(new Runnable() {
                 @Override
                 public void run() {
@@ -560,7 +561,7 @@ public class GraphicalView extends AppCompatActivity {
 
                 GetSendData pst = new GetSendData();
                 d = pst.GetData(map.get("PST"));
-                if (!(((AnimationDrawable) mistbtn.getBackground()).isRunning()) && !(((AnimationDrawable) mistbtn2.getBackground()).isRunning())) { //&&d1.equals("0")&&d.equals("0")
+                if (!(((AnimationDrawable) mistbtn.getBackground()).isRunning()) && !(((AnimationDrawable) mistbtn2.getBackground()).isRunning())&&Integer.parseInt(d1)>5&&Integer.parseInt(d)==0) {
 
 
                     pst.SetActuator(preip+"setPS2ON",d);
@@ -613,7 +614,7 @@ public class GraphicalView extends AppCompatActivity {
             public void onClick(View v) {
                 GetSendData pst = new GetSendData();
                 d = pst.GetData(map.get("PST"));
-                if (!(((AnimationDrawable) mistbtn.getBackground()).isRunning()) && !(((AnimationDrawable) mistbtn2.getBackground()).isRunning())) {//&&d1.equals("0")&&d.equals("0")
+                if (!(((AnimationDrawable) mistbtn.getBackground()).isRunning()) && !(((AnimationDrawable) mistbtn2.getBackground()).isRunning())&&Integer.parseInt(d1)>5&&Integer.parseInt(d)==0) {
 
                     pst.SetActuator(preip+"setPS2ON",d);
 
@@ -674,7 +675,7 @@ public class GraphicalView extends AppCompatActivity {
                 GetSendData lbs = new GetSendData();
                 d = lbs.GetData(map.get("LBS"));
 
-                if (onlamp.getVisibility() == View.INVISIBLE && onswitch.getVisibility() == View.INVISIBLE ) {
+                if (onlamp.getVisibility() == View.INVISIBLE && onswitch.getVisibility() == View.INVISIBLE&&Integer.parseInt(d)==0 ) {
 
                     lbs.SetActuator(preip+"setLBS0ON",d);
 
@@ -750,8 +751,8 @@ public class GraphicalView extends AppCompatActivity {
         data= (TextView) findViewById(R.id.textwattmeter);
 
         GetSendData wm = new GetSendData();
-        d = wm.GetData(map.get("MD"));
-        data.setText(d+"watt");
+        d = wm.GetData(map.get("WM"));
+        data.setText(d);
 
         //gas
         data= (TextView) findViewById(R.id.textsmoke);

@@ -6,13 +6,13 @@
 
     <item
         android:drawable="@drawable/water_drop0"
-        android:duration="200"></item>
+        android:duration="700"></item>
     <item
          android:drawable="@drawable/water_drop1"
-         android:duration="200"></item>
+         android:duration="700"></item>
     <item
         android:drawable="@drawable/water_drop2"
-        android:duration="200"></item>
+        android:duration="700"></item>
 
 
 
