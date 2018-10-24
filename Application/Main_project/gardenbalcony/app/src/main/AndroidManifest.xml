@@ -42,7 +42,7 @@
         <activity android:name=".GraphicalView" />
         <activity android:name=".Middle_View" />
         <activity android:name=".GraphicalViewRight" />
-        <activity android:name=".ErrorDashboard"></activity>
+        <activity android:name=".ErrorDashboard" />
     </application>
 
 </manifest>
