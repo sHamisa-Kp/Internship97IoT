@@ -54,7 +54,7 @@ String data;
                 String num = getSerial(json);
                 data= num;
             } else {
-                data= null;
+                data= "No";
             }
 
         } catch (InterruptedException e) {

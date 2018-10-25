@@ -45,8 +45,6 @@ public class GraphicalView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graphical_view);
 
-
-
         go_to_the_right_position = (ImageButton) findViewById(R.id.go_right);
 
 
@@ -755,7 +753,7 @@ public class GraphicalView extends AppCompatActivity {
         }
 
         //watt meter
-        data= (TextView) findViewById(R.id.textwattmeter);
+        data= (TextView) findViewById(R.id.textwattmeter1);
 
         GetSendData wm = new GetSendData();
         d = wm.GetData(map.get("WM"));
