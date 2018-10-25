@@ -74,8 +74,12 @@ public class MainActivity extends AppCompatActivity  {
         Hybrid_dashboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MixedDashboard.class);
-                startActivity(intent);
+//                Intent intent = new Intent(MainActivity.this, MixedDashboard.class);
+//                startActivity(intent);
+
+                Intent i = new Intent(MainActivity.this, MixedDashboard.class);
+                i.putExtra(MixedDashboard.WEBSITE_ADDRESS, "https://themesdesign.in/upcube/layouts/vertical/index.html");
+                startActivity(i);
             }
         });
 
