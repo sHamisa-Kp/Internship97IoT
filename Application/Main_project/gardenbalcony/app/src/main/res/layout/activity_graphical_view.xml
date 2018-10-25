@@ -370,14 +370,15 @@ android:layout_height="fill_parent"
 
                         <ImageButton
                             android:id="@+id/veg1"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@null"
                             app:srcCompat="@drawable/sprout_l"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            android:layout_marginLeft="700dp"
+                            android:layout_marginLeft="690dp"
+                            android:rotation="7"
                             android:layout_marginTop="400dp" />
 
                         <ImageView
@@ -388,7 +389,8 @@ android:layout_height="fill_parent"
                             android:visibility="invisible"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            android:layout_marginLeft="700dp"
+                            android:layout_marginLeft="690dp"
+                            android:rotation="7"
                             android:layout_marginTop="400dp" />
 
                         <ImageView
@@ -398,7 +400,8 @@ android:layout_height="fill_parent"
                             android:background="@drawable/watering"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            android:layout_marginLeft="720dp"
+                            android:layout_marginLeft="740dp"
+                            android:rotation="2"
                             android:layout_marginTop="365dp" />
 
                         <TextView
@@ -409,22 +412,24 @@ android:layout_height="fill_parent"
                             android:text="vegtable 1"
                             android:textColor="#f3f63f"
                             android:textSize="20dp"
+                            android:rotation="3"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            android:layout_marginLeft="700dp"
+                            android:layout_marginLeft="730dp"
                             android:layout_marginTop="500dp" />
 
 
                         <ImageButton
                             android:id="@+id/veg2"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@null"
                             app:srcCompat="@drawable/sprout_l"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            android:layout_marginLeft="820dp"
+                            android:layout_marginLeft="900dp"
+                            android:rotation="3"
                             android:layout_marginTop="420dp"/>
 
 
@@ -435,8 +440,9 @@ android:layout_height="fill_parent"
                             android:background="@drawable/thirsty_grass"
                             android:visibility="invisible"
                             app:layout_constraintLeft_toLeftOf="parent"
+                            android:rotation="3"
                             app:layout_constraintTop_toTopOf="parent"
-                            android:layout_marginLeft="820dp"
+                            android:layout_marginLeft="900dp"
                             android:layout_marginTop="420dp" />
 
                         <ImageView
@@ -446,7 +452,7 @@ android:layout_height="fill_parent"
                             android:background="@drawable/watering"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            android:layout_marginLeft="840dp"
+                            android:layout_marginLeft="967dp"
                             android:layout_marginTop="395dp" />
 
                         <TextView
@@ -457,23 +463,25 @@ android:layout_height="fill_parent"
                             android:text="vegtable 2"
                             android:textColor="#f3f63f"
                             android:textSize="20dp"
+                            android:rotation="3"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            android:layout_marginLeft="820dp"
+                            android:layout_marginLeft="930dp"
                             android:layout_marginTop="520dp" />
 
 
                         <ImageButton
                             android:id="@+id/veg3"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@null"
                             app:srcCompat="@drawable/sprout_l"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            android:layout_marginLeft="940dp"
-                            android:layout_marginTop="430dp" />
+                            android:layout_marginLeft="1130dp"
+                            android:rotation="-2"
+                            android:layout_marginTop="425dp" />
 
 
                         <ImageView
@@ -484,8 +492,9 @@ android:layout_height="fill_parent"
                             android:visibility="invisible"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            android:layout_marginLeft="940dp"
-                            android:layout_marginTop="430dp" />
+                            android:layout_marginLeft="1130dp"
+                            android:rotation="-2"
+                            android:layout_marginTop="425dp" />
 
                         <ImageView
                             android:id="@+id/waterv3"
@@ -494,7 +503,7 @@ android:layout_height="fill_parent"
                             android:background="@drawable/watering"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            android:layout_marginLeft="960dp"
+                            android:layout_marginLeft="1180dp"
                             android:layout_marginTop="405dp" />
 
                         <TextView
@@ -507,21 +516,21 @@ android:layout_height="fill_parent"
                             android:textSize="20dp"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            android:layout_marginLeft="940dp"
+                            android:layout_marginLeft="1170dp"
                             android:layout_marginTop="530dp" />
 
 
                         <ImageButton
                             android:id="@+id/veg4"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@null"
                             app:srcCompat="@drawable/sprout_l"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            android:layout_marginLeft="1060dp"
-                            android:layout_marginTop="435dp" />
+                            android:layout_marginLeft="1330dp"
+                            android:layout_marginTop="425dp" />
 
                         <ImageView
                             android:id="@+id/thirstyveg4"
@@ -531,8 +540,8 @@ android:layout_height="fill_parent"
                             android:visibility="invisible"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            android:layout_marginLeft="1060dp"
-                            android:layout_marginTop="435dp" />
+                            android:layout_marginLeft="1330dp"
+                            android:layout_marginTop="425dp" />
 
                         <ImageView
                             android:id="@+id/waterv4"
@@ -541,7 +550,7 @@ android:layout_height="fill_parent"
                             android:background="@drawable/watering"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            android:layout_marginLeft="1080dp"
+                            android:layout_marginLeft="1360dp"
                             android:layout_marginTop="410dp" />
 
                         <TextView
@@ -554,7 +563,7 @@ android:layout_height="fill_parent"
                             android:textSize="20dp"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            android:layout_marginLeft="1060dp"
+                            android:layout_marginLeft="1360dp"
                             android:layout_marginTop="535dp" />
 
 
@@ -647,7 +656,7 @@ android:layout_height="fill_parent"
                             android:layout_marginTop="360dp" />
 
                         <ImageView
-                            android:id="@+id/brightness"
+                            android:id="@+id/brightness1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/brightness"
@@ -683,7 +692,7 @@ android:layout_height="fill_parent"
                             />
 
                         <TextView
-                            android:id="@+id/textwattmeter"
+                            android:id="@+id/textwattmeter1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="wa"
@@ -696,7 +705,7 @@ android:layout_height="fill_parent"
                             />
 
                         <TextView
-                            android:id="@+id/textwattmeter"
+                            android:id="@+id/textwattmeter2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="w\na\nt\nt"
