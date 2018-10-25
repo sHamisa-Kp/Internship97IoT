@@ -39,6 +39,17 @@
 android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
         >
+<<<<<<< HEAD
+=======
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Graphical View"
+            android:layout_marginLeft="105dp"
+            android:layout_marginTop="30dp"
+            android:id="@+id/graphicalText"
+            android:textSize="25dp"/>
+>>>>>>> master
 
         <LinearLayout
             android:layout_width="match_parent"
