@@ -1,7 +1,10 @@
 package ir.iotacademy.gardenbalcony;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +12,7 @@ import android.support.v7.widget.CardView;
 
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +24,7 @@ public class MainActivity extends AppCompatActivity  {
 
     private CardView Graphical_view,chart_dashboard,Value_dashboard,Hybrid_dashboard,Error_dashboard;
     private ImageButton notif;
+    TextView NIC;
 
 
     String preUrl="http://thingtalk.ir/channels/";
@@ -33,6 +38,8 @@ public class MainActivity extends AppCompatActivity  {
 
         Graphical_view= (CardView) findViewById(R.id.graphical);
         final TextView Text = (TextView) findViewById(R.id.graphicalText);
+        LinearLayout background= (LinearLayout) findViewById(R.id.backgounrd);
+
         Graphical_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,12 +121,24 @@ public class MainActivity extends AppCompatActivity  {
         });
 
 
+        NIC= (TextView) findViewById(R.id.internet);
+
+        if(!isNetworkAvailable()){
+            background.setVisibility(View.GONE);
+            NIC.setVisibility(View.VISIBLE);
+
+        }
 
 
 
 
 
-
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
 

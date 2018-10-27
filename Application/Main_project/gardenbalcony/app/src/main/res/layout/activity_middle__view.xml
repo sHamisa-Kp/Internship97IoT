@@ -31,13 +31,66 @@
 
 
         <ImageView
+            android:id="@+id/source1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/source1"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginLeft="100dp"
-            android:layout_marginTop="190dp"/>
+            android:layout_marginTop="190dp"
+            android:visibility="invisible"/>
+            <ImageView
+                android:id="@+id/source2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/source2"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="190dp"
+                android:visibility="invisible"/>
+            <ImageView
+                android:id="@+id/source3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/source3"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="190dp"
+                android:visibility="invisible"/>
+            <ImageView
+                android:id="@+id/source4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/source4"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="190dp"
+                android:visibility="invisible"/>
+            <ImageView
+                android:id="@+id/source5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/source5"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="190dp"
+                android:visibility="invisible"/>
+            <ImageView
+                android:id="@+id/source6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/source"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="190dp"
+                android:visibility="invisible"/>
+
         <ImageButton
             android:id="@+id/go_left"
             android:layout_width="wrap_content"

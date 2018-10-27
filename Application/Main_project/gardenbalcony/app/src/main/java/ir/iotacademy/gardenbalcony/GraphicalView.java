@@ -555,9 +555,46 @@ public class GraphicalView extends AppCompatActivity {
 
         //top pump status
 
-
-
+        mistbtn2 = (ImageButton) findViewById(R.id.mist_btn2);
         mistbtn = (ImageButton) findViewById(R.id.mist_btn);
+        GetSendData pst = new GetSendData();
+        d = pst.GetData(map.get("PST"));
+
+        if(Integer.parseInt(d1)>5&&Integer.parseInt(d)==1){
+            mistbtn.post(new Runnable() {
+                @Override
+                public void run() {
+                    ((AnimationDrawable) mistbtn.getBackground()).start();
+                }
+            });
+            mistbtn2.post(new Runnable() {
+                @Override
+                public void run() {
+                    ((AnimationDrawable) mistbtn2.getBackground()).start();
+                }
+            });
+        }
+        if(Integer.parseInt(d1)<=5&&Integer.parseInt(d)==0){
+            mistbtn.post(new Runnable() {
+
+                @Override
+                public void run() {
+                    ((AnimationDrawable) mistbtn.getBackground()).stop();
+                }
+            });
+            mistbtn.setVisibility(View.INVISIBLE);
+            mistbtn.setVisibility(View.VISIBLE);
+            mistbtn2.post(new Runnable() {
+                @Override
+                public void run() {
+                    ((AnimationDrawable) mistbtn2.getBackground()).stop();
+                }
+            });
+            mistbtn2.setVisibility(View.INVISIBLE);
+            mistbtn2.setVisibility(View.VISIBLE);
+
+        }
+
 
         mistbtn.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -611,7 +648,7 @@ public class GraphicalView extends AppCompatActivity {
             }
         });
 
-        mistbtn2 = (ImageButton) findViewById(R.id.mist_btn2);
+
 
         mistbtn2.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -671,6 +708,35 @@ public class GraphicalView extends AppCompatActivity {
         onswitch = (ImageButton) findViewById(R.id.on_switch);
         offswitch = (ImageButton) findViewById(R.id.off_switch);
 
+        GetSendData lbs = new GetSendData();
+        d = lbs.GetData(map.get("LBS"));
+        if(Integer.parseInt(d)==1){
+
+            onswitch.setVisibility(View.VISIBLE);
+            offswitch.setVisibility(View.INVISIBLE);
+            onlamp.setVisibility(View.VISIBLE);
+            onlamp.post(new Runnable() {
+                @Override
+                public void run() {
+
+                    ((AnimationDrawable) onlamp.getBackground()).start();
+
+                }
+            });
+        }
+        if(Integer.parseInt(d)==0){
+            offswitch.setVisibility(View.VISIBLE);
+            onswitch.setVisibility(View.INVISIBLE);
+            onlamp.post(new Runnable() {
+                @Override
+                public void run() {
+
+                    ((AnimationDrawable) onlamp.getBackground()).stop();
+
+                }
+            });
+            onlamp.setVisibility(View.INVISIBLE);
+        }
 
         offswitch.setOnClickListener(new View.OnClickListener() {
 
