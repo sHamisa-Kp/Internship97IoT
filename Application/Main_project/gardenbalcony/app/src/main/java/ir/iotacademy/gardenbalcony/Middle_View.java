@@ -16,17 +16,23 @@ public class Middle_View extends AppCompatActivity {
         setContentView(R.layout.activity_middle__view);
         ImageButton goLeft,goRight;
         final ImageView source1,source2,source3,source4,source5,source6;
-        String wl;
+        int wl;
 
         goRight = (ImageButton) findViewById(R.id.go_right2);
         goLeft = (ImageButton) findViewById(R.id.go_left);
 
+        source6= (ImageView) findViewById(R.id.source6);
+        source5= (ImageView) findViewById(R.id.source5);
+        source4= (ImageView) findViewById(R.id.source4);
+        source3= (ImageView) findViewById(R.id.source3);
+        source2= (ImageView) findViewById(R.id.source2);
+        source1= (ImageView) findViewById(R.id.source1);
 
         GetSendData WL = new GetSendData();
-        wl=WL.GetData("http://thingtalk.ir/channels/742/feed.json?key=WGWJ660WN7V9394D&results=1");
+        wl=Integer.parseInt(WL.GetData("http://thingtalk.ir/channels/742/feed.json?key=WGWJ660WN7V9394D&results=1"));
 
-        source6= (ImageView) findViewById(R.id.source6);
-        if(Integer.parseInt(wl)==0){
+
+        if(wl<=5){
             source6.setVisibility(View.VISIBLE);
             source6.post(new Runnable() {
                 @Override
@@ -35,10 +41,68 @@ public class Middle_View extends AppCompatActivity {
                 }
             });
 
-            //plant.setVisibility(View.INVISIBLE);
+
+            source1.setVisibility(View.INVISIBLE);
+            source2.setVisibility(View.INVISIBLE);
+            source3.setVisibility(View.INVISIBLE);
+            source4.setVisibility(View.INVISIBLE);
+            source5.setVisibility(View.INVISIBLE);
 
         }
+        else {
+            source6.post(new Runnable() {
+                @Override
+                public void run() {
+                    ((AnimationDrawable) source6.getBackground()).stop();
+                }
+            });
 
+            if (wl <= 20 && wl > 5) {
+                source5.setVisibility(View.VISIBLE);
+                source1.setVisibility(View.INVISIBLE);
+                source2.setVisibility(View.INVISIBLE);
+                source3.setVisibility(View.INVISIBLE);
+                source4.setVisibility(View.INVISIBLE);
+                source6.setVisibility(View.INVISIBLE);
+
+            }
+            if (wl <= 40 && wl > 20) {
+                source4.setVisibility(View.VISIBLE);
+                source1.setVisibility(View.INVISIBLE);
+                source2.setVisibility(View.INVISIBLE);
+                source3.setVisibility(View.INVISIBLE);
+                source5.setVisibility(View.INVISIBLE);
+                source6.setVisibility(View.INVISIBLE);
+
+            }
+            if (wl <= 60 && wl > 40) {
+                source3.setVisibility(View.VISIBLE);
+                source1.setVisibility(View.INVISIBLE);
+                source2.setVisibility(View.INVISIBLE);
+                source5.setVisibility(View.INVISIBLE);
+                source4.setVisibility(View.INVISIBLE);
+                source6.setVisibility(View.INVISIBLE);
+
+            }
+            if (wl <= 80 && wl > 60) {
+                source2.setVisibility(View.VISIBLE);
+                source1.setVisibility(View.INVISIBLE);
+                source5.setVisibility(View.INVISIBLE);
+                source3.setVisibility(View.INVISIBLE);
+                source4.setVisibility(View.INVISIBLE);
+                source6.setVisibility(View.INVISIBLE);
+
+            }
+            if (wl <= 100 && wl > 80) {
+                source1.setVisibility(View.VISIBLE);
+                source5.setVisibility(View.INVISIBLE);
+                source2.setVisibility(View.INVISIBLE);
+                source3.setVisibility(View.INVISIBLE);
+                source4.setVisibility(View.INVISIBLE);
+                source6.setVisibility(View.INVISIBLE);
+
+            }
+        }
         goRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
