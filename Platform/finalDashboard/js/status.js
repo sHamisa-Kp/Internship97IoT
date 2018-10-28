@@ -1,5 +1,9 @@
 const statusChannel = {
+<<<<<<< Updated upstream
 	// Pump Status (Vegetables, Flowers, Fogg)
+=======
+	// Pump Status (Vegetables, Flowers, TOP(Fogg))
+>>>>>>> Stashed changes
    	'PS': [{'id': '671', 'apiKey': 'XAKAVEUUJQ9GZGMT'},
    	{'id': '744', 'apiKey': 'PD74MGJ9RFR4YMHK'},
    	{'id': '750', 'apiKey': 'FGGX36CLKXBW2BN4'}],
