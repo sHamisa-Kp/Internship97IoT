@@ -13,6 +13,7 @@ public class JustValue extends AppCompatActivity {
         setContentView(R.layout.activity_just_value);
         WebView dashboard = (WebView) findViewById(R.id.webdashboard);
         dashboard.getSettings().setJavaScriptEnabled(true);
+        dashboard.getSettings().setBuiltInZoomControls(true);
         dashboard.setWebChromeClient(new WebChromeClient());
         dashboard.loadUrl("file:///android_asset/www/value.html");
 

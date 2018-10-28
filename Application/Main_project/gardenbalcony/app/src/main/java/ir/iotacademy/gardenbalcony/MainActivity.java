@@ -9,6 +9,11 @@ import android.support.v7.widget.CardView;
 
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity  {
@@ -17,18 +22,30 @@ public class MainActivity extends AppCompatActivity  {
     private ImageButton notif;
 
 
+    String preUrl="http://thingtalk.ir/channels/";
+    String preip="http://10.1.248.34:5050/actuators/";
+    Map<String,String> map=new HashMap<String, String>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         Graphical_view= (CardView) findViewById(R.id.graphical);
-
+        final TextView Text = (TextView) findViewById(R.id.graphicalText);
         Graphical_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, GraphicalView.class);
-                startActivity(intent);
+                //GetSendData t0 = new GetSendData();
+                //map.put("T0", preUrl + "629/feed.json?key=G7KHR97UPN9OC5AC&results=1");
+                //if(t0.GetData(map.get("T0")) != "No") {
+                    Intent intent = new Intent(MainActivity.this, GraphicalView.class);
+                    startActivity(intent);
+                //}
+                //else {
+       //             Toast toast = Toast.makeText(MainActivity.this, "Can not access the sever", Toast.LENGTH_LONG);
+               // Text.setText("No internet access");
+                //}
             }
         });
 
@@ -57,8 +74,12 @@ public class MainActivity extends AppCompatActivity  {
         Hybrid_dashboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MixedDashboard.class);
-                startActivity(intent);
+//                Intent intent = new Intent(MainActivity.this, MixedDashboard.class);
+//                startActivity(intent);
+
+                Intent i = new Intent(MainActivity.this, MixedDashboard.class);
+                i.putExtra(MixedDashboard.WEBSITE_ADDRESS, "https://themesdesign.in/upcube/layouts/vertical/index.html");
+                startActivity(i);
             }
         });
 

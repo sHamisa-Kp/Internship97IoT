@@ -131,6 +131,7 @@ public class Notifications extends AppCompatActivity {
             createNotificationMaxAirHumidity();
         }
         if (minairhumidity<2){
+            
             createNotificationMinAirHumidity();
         }
         if (maxsoilmoisture_flower>2){

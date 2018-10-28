@@ -45,8 +45,6 @@ public class GraphicalView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graphical_view);
 
-
-
         go_to_the_right_position = (ImageButton) findViewById(R.id.go_right);
 
 
@@ -543,11 +541,11 @@ public class GraphicalView extends AppCompatActivity {
         data = (TextView) findViewById(R.id.textfloormoisture);
         GetSendData fh = new GetSendData();
         d = fh.GetData(map.get("FH0"));
-        data.setText(d+"%");
+        data.setText("");
 
         puddle= (ImageView) findViewById(R.id.puddlewater);
 
-        if(Integer.parseInt(d)>20){
+        if(Integer.parseInt(d)==1){
             puddle.setVisibility(View.VISIBLE);
         }
         else
@@ -755,7 +753,7 @@ public class GraphicalView extends AppCompatActivity {
         }
 
         //watt meter
-        data= (TextView) findViewById(R.id.textwattmeter);
+        data= (TextView) findViewById(R.id.textwattmeter1);
 
         GetSendData wm = new GetSendData();
         d = wm.GetData(map.get("WM"));
