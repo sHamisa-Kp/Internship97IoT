@@ -194,7 +194,7 @@ float: left;
 }
 
 #foggNozzleStatus {
-    height: 30px;
+    height: 45px;
     float: right;
     visibility: visible;
     position: relative;
@@ -202,7 +202,7 @@ float: left;
 }
 
 #pumpStatusOfVegs {
-    height: 30px;
+    height: 60px;
     float: right;
     visibility: visible;
     position: relative;
@@ -210,7 +210,7 @@ float: left;
 }
 
 #pumpStatusOfFlwrs {
-    height: 30px;
+    height: 60px;
     float: right;
     visibility: visible;
     position: relative;
