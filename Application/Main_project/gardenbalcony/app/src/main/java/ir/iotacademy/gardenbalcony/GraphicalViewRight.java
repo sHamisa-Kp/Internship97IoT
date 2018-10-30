@@ -2,6 +2,8 @@ package ir.iotacademy.gardenbalcony;
 
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -68,6 +70,26 @@ public class GraphicalViewRight extends AppCompatActivity {
         map.put("WM", preUrl + "753/feed.json?key=OUAV3VIB076Y5UO0&results=1");
         //water level
         map.put("WL", preUrl + "742/feed.json?key=WGWJ660WN7V9394D&results=1");
+
+
+        goMidd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GraphicalViewRight.this, Middle_View.class);
+                startActivity(intent);
+            }
+        });
+
+        Thread t = new Thread() {
+
+            @Override
+            public void run() {
+                try {
+                    while (!isInterrupted()) {
+                        Thread.sleep(6000);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
 
 
         //Temperature
@@ -508,12 +530,246 @@ public class GraphicalViewRight extends AppCompatActivity {
 
 
         }
-        goMidd.setOnClickListener(new View.OnClickListener() {
+
+        //floor humidity
+        data = (TextView) findViewById(R.id.Righttextfloormoisture);
+        GetSendData fh = new GetSendData();
+        d = fh.GetData(map.get("FH0"));
+        data.setText("");
+
+        puddle= (ImageView) findViewById(R.id.Rightpuddlewater);
+
+        if(Integer.parseInt(d)==1){
+            puddle.setVisibility(View.VISIBLE);
+        }
+        else
+            puddle.setVisibility(View.INVISIBLE);
+
+
+
+        //top pump status
+
+
+
+        mistbtn = (ImageButton) findViewById(R.id.Rightmist_btn);
+
+        mistbtn.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(GraphicalViewRight.this, Middle_View.class);
-                startActivity(intent);
+
+                GetSendData pst = new GetSendData();
+                d = pst.GetData(map.get("PST"));
+                if (!(((AnimationDrawable) mistbtn.getBackground()).isRunning()) && !(((AnimationDrawable) mistbtn2.getBackground()).isRunning())&&Integer.parseInt(d1)>5&&Integer.parseInt(d)==0) {
+
+
+                    pst.SetActuator(preip+"setPS2ON",d);
+
+                    mistbtn.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            ((AnimationDrawable) mistbtn.getBackground()).start();
+                        }
+                    });
+                    mistbtn2.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            ((AnimationDrawable) mistbtn2.getBackground()).start();
+                        }
+                    });
+
+                } else {
+
+
+                    pst.SetActuator(preip+"setPS2OFF",d);
+                    mistbtn.post(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            ((AnimationDrawable) mistbtn.getBackground()).stop();
+                        }
+                    });
+                    mistbtn.setVisibility(View.INVISIBLE);
+                    mistbtn.setVisibility(View.VISIBLE);
+                    mistbtn2.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            ((AnimationDrawable) mistbtn2.getBackground()).stop();
+                        }
+                    });
+                    mistbtn2.setVisibility(View.INVISIBLE);
+                    mistbtn2.setVisibility(View.VISIBLE);
+
+
+                }
             }
         });
+
+        mistbtn2 = (ImageButton) findViewById(R.id.Rightmist_btn2);
+
+        mistbtn2.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+            @Override
+            public void onClick(View v) {
+                GetSendData pst = new GetSendData();
+                d = pst.GetData(map.get("PST"));
+                if (!(((AnimationDrawable) mistbtn.getBackground()).isRunning()) && !(((AnimationDrawable) mistbtn2.getBackground()).isRunning())&&Integer.parseInt(d1)>5&&Integer.parseInt(d)==0) {
+
+                    pst.SetActuator(preip+"setPS2ON",d);
+
+                    mistbtn.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            ((AnimationDrawable) mistbtn.getBackground()).start();
+                        }
+                    });
+                    mistbtn2.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            ((AnimationDrawable) mistbtn2.getBackground()).start();
+                        }
+                    });
+
+                } else {
+
+                    pst.SetActuator(preip+"setPS2OFF",d);
+                    mistbtn.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            ((AnimationDrawable) mistbtn.getBackground()).stop();
+                        }
+                    });
+                    mistbtn.setVisibility(View.INVISIBLE);
+                    mistbtn.setVisibility(View.VISIBLE);
+                    mistbtn2.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            ((AnimationDrawable) mistbtn2.getBackground()).stop();
+                        }
+                    });
+                    mistbtn2.setVisibility(View.INVISIBLE);
+                    mistbtn2.setVisibility(View.VISIBLE);
+
+
+                }
+            }
+        });
+
+        //lamp status
+
+
+
+
+        onlamp = (ImageView) findViewById(R.id.Rightonlamp);
+        offlamp = (ImageView) findViewById(R.id.Rightofflamp);
+        onswitch = (ImageButton) findViewById(R.id.Righton_switch);
+        offswitch = (ImageButton) findViewById(R.id.Rightoff_switch);
+
+
+        offswitch.setOnClickListener(new View.OnClickListener() {
+
+
+            @Override
+            public void onClick(View v) {
+                GetSendData lbs = new GetSendData();
+                d = lbs.GetData(map.get("LBS"));
+
+                if (onlamp.getVisibility() == View.INVISIBLE && onswitch.getVisibility() == View.INVISIBLE&&Integer.parseInt(d)==0 ) {
+
+                    lbs.SetActuator(preip+"setLBS0ON",d);
+
+                    onswitch.setVisibility(View.VISIBLE);
+                    offswitch.setVisibility(View.INVISIBLE);
+                    onlamp.setVisibility(View.VISIBLE);
+                    onlamp.post(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            ((AnimationDrawable) onlamp.getBackground()).start();
+
+                        }
+                    });
+
+                }}
+
+        });
+        onswitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                GetSendData lbs = new GetSendData();
+                d = lbs.GetData(map.get("LBS"));
+                lbs.SetActuator(preip+"setLBS0OFF",d);
+
+                offswitch.setVisibility(View.VISIBLE);
+                onswitch.setVisibility(View.INVISIBLE);
+                onlamp.post(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        ((AnimationDrawable) onlamp.getBackground()).stop();
+
+                    }
+                });
+                onlamp.setVisibility(View.INVISIBLE);
+
+            }
+        });
+
+        //motion detector
+        GetSendData md = new GetSendData();
+        d = md.GetData(map.get("MD"));
+
+        motion= (ImageView) findViewById(R.id.Rightonmotion);
+        if(d.equals("1")){
+
+            motion.post(new Runnable() {
+                @Override
+                public void run() {
+
+                    ((AnimationDrawable) motion.getBackground()).start();
+
+                }
+            });
+            motion.setVisibility(View.VISIBLE);
+
+        }
+        else {
+            motion.post(new Runnable() {
+                @Override
+                public void run() {
+
+                    ((AnimationDrawable) motion.getBackground()).stop();
+
+                }
+            });
+            motion.setVisibility(View.INVISIBLE);
+        }
+
+        //watt meter
+        data= (TextView) findViewById(R.id.textwattmeter1);
+
+        GetSendData wm = new GetSendData();
+        d = wm.GetData(map.get("WM"));
+        data.setText(d);
+
+        //gas
+        data= (TextView) findViewById(R.id.textsmoke);
+
+        GetSendData g = new GetSendData();
+        d = g.GetData(map.get("G"));
+        data.setText(d);
+
+
+    }
+});
+        }
+        } catch (InterruptedException e) {
+        }
+        }
+        };
+        t.start();
+
+
     }
 }

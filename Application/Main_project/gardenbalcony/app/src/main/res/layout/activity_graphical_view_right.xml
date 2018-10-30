@@ -82,6 +82,51 @@ android:layout_height="fill_parent"
                             android:layout_marginTop="620dp"
                             android:visibility="invisible"
                             />
+
+                        <ImageButton
+                            android:id="@+id/Rightmist_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/animated_mist"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="622dp"
+                            android:layout_marginTop="0dp" />
+
+                        <ImageView
+                            android:id="@+id/Rightmist1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/animated_mist"
+                            android:visibility="invisible"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="622dp"
+                            android:layout_marginTop="0dp" />
+
+
+
+                        <ImageButton
+                            android:id="@+id/Rightmist_btn2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/animated_mist"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="1422dp"
+                            android:layout_marginTop="0dp" />
+
+                        <ImageView
+                            android:id="@+id/Rightmist2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/animated_mist"
+                            android:visibility="invisible"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="1422dp"
+                            android:layout_marginTop="0dp" />
+
                         <TextView
                             android:id="@+id/Righttextfloormoisture"
                             android:layout_width="wrap_content"
@@ -566,7 +611,7 @@ android:layout_height="fill_parent"
 
 
                         <ImageView
-                            android:id="@+id/offlamp"
+                            android:id="@+id/Rightofflamp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/off_lamp"
@@ -576,7 +621,7 @@ android:layout_height="fill_parent"
                             android:layout_marginTop="132dp" />
 
                         <ImageView
-                            android:id="@+id/onlamp"
+                            android:id="@+id/Rightonlamp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/animated_light"
@@ -587,7 +632,7 @@ android:layout_height="fill_parent"
                             android:layout_marginTop="132dp" />
 
                         <ImageButton
-                            android:id="@+id/on_switch"
+                            android:id="@+id/Righton_switch"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:visibility="invisible"
@@ -597,7 +642,7 @@ android:layout_height="fill_parent"
                             android:layout_marginLeft="1770dp"
                             android:layout_marginTop="250dp" />
                         <ImageButton
-                            android:id="@+id/off_switch"
+                            android:id="@+id/Rightoff_switch"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:srcCompat="@drawable/switch_off"
@@ -607,7 +652,7 @@ android:layout_height="fill_parent"
                             android:layout_marginTop="250dp" />
 
                         <ImageView
-                            android:id="@+id/offmotion"
+                            android:id="@+id/Rightoffmotion"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/off"
@@ -618,7 +663,7 @@ android:layout_height="fill_parent"
                             />
 
                         <ImageView
-                            android:id="@+id/onmotion"
+                            android:id="@+id/Rightonmotion"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/motion_detection"
@@ -672,7 +717,7 @@ android:layout_height="fill_parent"
                             android:textColor="#000000"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            android:layout_marginLeft="1810dp"
+                            android:layout_marginLeft="1833dp"
                             android:layout_marginTop="12dp"
                             android:textSize="15dp"
                             />
