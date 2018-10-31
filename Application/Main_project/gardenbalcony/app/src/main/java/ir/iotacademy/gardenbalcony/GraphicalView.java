@@ -35,7 +35,7 @@ public class GraphicalView extends AppCompatActivity {
     String d,d1;
 
     String preUrl="http://thingtalk.ir/channels/";
-    String preip="http://10.1.248.33:5050/";
+    String preip="http://10.1.248.34:5050/actuators/";
     Map<String,String> map=new HashMap<String, String>();
 
     // private GyroscopeObserver gyroscopeObserver;
@@ -45,10 +45,8 @@ public class GraphicalView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graphical_view);
 
-
-
         go_to_the_right_position = (ImageButton) findViewById(R.id.go_right);
-        background = (ConstraintLayout) findViewById(R.id.backgounrd);
+
 
         go_to_the_right_position.setOnClickListener(new View.OnClickListener() {
 
@@ -94,16 +92,35 @@ public class GraphicalView extends AppCompatActivity {
         map.put("MD", preUrl + "749/feed.json?key=V197BB4SL21A2IKG&results=1");
         //watt meter
         map.put("WM", preUrl + "753/feed.json?key=OUAV3VIB076Y5UO0&results=1");
+        //water level
+        map.put("WL", preUrl + "742/feed.json?key=WGWJ660WN7V9394D&results=1");
+//        Thread t = new Thread() {
+//
+//            @Override
+//            public void run() {
+//                try {
+//                    while (!isInterrupted()) {
+//                        Thread.sleep(6000);
+//                        runOnUiThread(new Runnable() {
+//                            @Override
+//                            public void run() {
 
-        //T0
+
+//
+//        //Temperature
         data = (TextView) findViewById(R.id.temperature);
         GetSendData t0 = new GetSendData();
         data.setText(t0.GetData(map.get("T0")) + "°C");
-        //H0
+
+
+        //Humidity
         data = (TextView) findViewById(R.id.humidity);
         GetSendData h0 = new GetSendData();
         data.setText(h0.GetData(map.get("H0")) + "%");
-        //V
+
+
+
+        //Vegetables
         data = (TextView) findViewById(R.id.textveg1);
         GetSendData sm0 = new GetSendData();
         d = sm0.GetData(map.get("SM0"));
@@ -212,7 +229,7 @@ public class GraphicalView extends AppCompatActivity {
             plant.setVisibility(View.INVISIBLE);
         }
 
-        //F
+        //Flowers
         data = (TextView) findViewById(R.id.textflower1);
         GetSendData sm8 = new GetSendData();
         d = sm8.GetData(map.get("SM8"));
@@ -374,7 +391,7 @@ public class GraphicalView extends AppCompatActivity {
 
         //watering
         GetSendData ts = new GetSendData();
-        d1 = pr.GetData(map.get("TS"));
+        d1 = pr.GetData(map.get("WL"));
 
         //flower
         GetSendData psf = new GetSendData();
@@ -386,7 +403,7 @@ public class GraphicalView extends AppCompatActivity {
         wf3 = (ImageView) findViewById(R.id.waterf3);
         wf4 = (ImageView) findViewById(R.id.waterf4);
         wf5 = (ImageView) findViewById(R.id.waterf5);
-        if (d.equals("1") && d1.equals("1")) {
+        if (d.equals("1") && Integer.parseInt(d1)>5) {
             wf1.post(new Runnable() {
                 @Override
                 public void run() {
@@ -469,7 +486,7 @@ public class GraphicalView extends AppCompatActivity {
         wv3 = (ImageView) findViewById(R.id.waterv3);
         wv4 = (ImageView) findViewById(R.id.waterv4);
 
-        if (d.equals("1") && d1.equals("1")) {
+        if (d.equals("1") && Integer.parseInt(d1)>5) {
             wv1.post(new Runnable() {
                 @Override
                 public void run() {
@@ -535,11 +552,11 @@ public class GraphicalView extends AppCompatActivity {
         data = (TextView) findViewById(R.id.textfloormoisture);
         GetSendData fh = new GetSendData();
         d = fh.GetData(map.get("FH0"));
-        data.setText(d+"%");
+        data.setText("");
 
         puddle= (ImageView) findViewById(R.id.puddlewater);
 
-        if(Integer.parseInt(d)>20){
+        if(Integer.parseInt(d)==1){
             puddle.setVisibility(View.VISIBLE);
         }
         else
@@ -549,8 +566,7 @@ public class GraphicalView extends AppCompatActivity {
 
         //top pump status
 
-        GetSendData pst = new GetSendData();
-        d = pst.GetData(map.get("PST"));
+
 
         mistbtn = (ImageButton) findViewById(R.id.mist_btn);
 
@@ -558,7 +574,13 @@ public class GraphicalView extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View v) {
-                if (!(((AnimationDrawable) mistbtn.getBackground()).isRunning()) && !(((AnimationDrawable) mistbtn2.getBackground()).isRunning())&&d1.equals("0")&&d.equals("0")) {
+
+                GetSendData pst = new GetSendData();
+                d = pst.GetData(map.get("PST"));
+                if (!(((AnimationDrawable) mistbtn.getBackground()).isRunning()) && !(((AnimationDrawable) mistbtn2.getBackground()).isRunning())&&Integer.parseInt(d1)>5&&Integer.parseInt(d)==0) {
+
+
+                    pst.SetActuator(preip+"setPS2ON",d);
 
                     mistbtn.post(new Runnable() {
                         @Override
@@ -574,7 +596,11 @@ public class GraphicalView extends AppCompatActivity {
                     });
 
                 } else {
+
+
+                    pst.SetActuator(preip+"setPS2OFF",d);
                     mistbtn.post(new Runnable() {
+
                         @Override
                         public void run() {
                             ((AnimationDrawable) mistbtn.getBackground()).stop();
@@ -602,7 +628,11 @@ public class GraphicalView extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View v) {
-                if (!(((AnimationDrawable) mistbtn.getBackground()).isRunning()) && !(((AnimationDrawable) mistbtn2.getBackground()).isRunning())&&d1.equals("0")&&d.equals("0")) {
+                GetSendData pst = new GetSendData();
+                d = pst.GetData(map.get("PST"));
+                if (!(((AnimationDrawable) mistbtn.getBackground()).isRunning()) && !(((AnimationDrawable) mistbtn2.getBackground()).isRunning())&&Integer.parseInt(d1)>5&&Integer.parseInt(d)==0) {
+
+                    pst.SetActuator(preip+"setPS2ON",d);
 
                     mistbtn.post(new Runnable() {
                         @Override
@@ -618,6 +648,8 @@ public class GraphicalView extends AppCompatActivity {
                     });
 
                 } else {
+
+                    pst.SetActuator(preip+"setPS2OFF",d);
                     mistbtn.post(new Runnable() {
                         @Override
                         public void run() {
@@ -641,8 +673,7 @@ public class GraphicalView extends AppCompatActivity {
         });
 
         //lamp status
-        GetSendData lbs = new GetSendData();
-        d = lbs.GetData(map.get("LBS"));
+
 
 
 
@@ -657,12 +688,12 @@ public class GraphicalView extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                background.setBackgroundResource(R.drawable.night);
-                Intent intent = new Intent(GraphicalView.this, Middle_View.class);
-                startActivity(intent);
+                GetSendData lbs = new GetSendData();
+                d = lbs.GetData(map.get("LBS"));
 
+                if (onlamp.getVisibility() == View.INVISIBLE && onswitch.getVisibility() == View.INVISIBLE&&Integer.parseInt(d)==0 ) {
 
-                if (onlamp.getVisibility() == View.INVISIBLE && onswitch.getVisibility() == View.INVISIBLE ) {
+                    lbs.SetActuator(preip+"setLBS0ON",d);
 
                     onswitch.setVisibility(View.VISIBLE);
                     offswitch.setVisibility(View.INVISIBLE);
@@ -683,6 +714,9 @@ public class GraphicalView extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                GetSendData lbs = new GetSendData();
+                d = lbs.GetData(map.get("LBS"));
+                lbs.SetActuator(preip+"setLBS0OFF",d);
 
                 offswitch.setVisibility(View.VISIBLE);
                 onswitch.setVisibility(View.INVISIBLE);
@@ -730,11 +764,11 @@ public class GraphicalView extends AppCompatActivity {
         }
 
         //watt meter
-        data= (TextView) findViewById(R.id.textwattmeter);
+        data= (TextView) findViewById(R.id.textwattmeter1);
 
         GetSendData wm = new GetSendData();
-        d = wm.GetData(map.get("MD"));
-        data.setText(d+"watt");
+        d = wm.GetData(map.get("WM"));
+        data.setText(d);
 
         //gas
         data= (TextView) findViewById(R.id.textsmoke);
@@ -742,6 +776,15 @@ public class GraphicalView extends AppCompatActivity {
         GetSendData g = new GetSendData();
         d = g.GetData(map.get("G"));
         data.setText(d);
+
+//                            }
+//                        });
+//                    }
+//                } catch (InterruptedException e) {
+//                }
+//            }
+//        };
+//        t.start();
     }
 }
 

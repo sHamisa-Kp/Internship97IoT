@@ -118,7 +118,7 @@ float: left;
     height: 100%;
 }
 #SMofFlwrBackgroundImage{
-    background: url(../img/SMoFflwr.jpg);
+    background-image: url(../img/SMoFflwr.jpg);
     background-size: 100%;
     height: 100%;
 }
@@ -194,7 +194,7 @@ float: left;
 }
 
 #foggNozzleStatus {
-    height: 30px;
+    height: 45px;
     float: right;
     visibility: visible;
     position: relative;
@@ -202,7 +202,7 @@ float: left;
 }
 
 #pumpStatusOfVegs {
-    height: 30px;
+    height: 60px;
     float: right;
     visibility: visible;
     position: relative;
@@ -210,7 +210,7 @@ float: left;
 }
 
 #pumpStatusOfFlwrs {
-    height: 30px;
+    height: 60px;
     float: right;
     visibility: visible;
     position: relative;

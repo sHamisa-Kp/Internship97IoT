@@ -5,53 +5,227 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ir.iotacademy.gardenbalcony.MainActivity">
+    tools:context="ir.iotacademy.gardenbalcony.MainActivity"
+    android:background="#272727">
 
-    <!-- <android.support.design.widget.TextInputEditText
-         android:layout_height="wrap_content"
-         android:layout_width="match_parent">
-     </android.support.design.widget.TextInputEditText> -->
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true">
+        <HorizontalScrollView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
 
 
-    <EditText
-        android:id="@+id/etEmail"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:hint="@string/prompt_email"
-        android:layout_marginTop="95dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_centerInParent="true"
+    android:layout_gravity="center"
 
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:hint="@string/prompt_password"
-        android:layout_below="@+id/etEmail"
-        android:layout_alignLeft="@+id/etEmail"
-        android:layout_alignStart="@+id/etEmail" />
 
-    <Button
-        android:id="@+id/submit"
+    >
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/graphical"
+        android:layout_width="362dp"
+        android:layout_height="90dp"
+        app:cardBackgroundColor="#b6e8e4"
+android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                app:srcCompat="@drawable/flowers" />
+
+
+            <TextView
+                android:id="@+id/graphicalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:text="Graphical View"
+                android:textSize="25dp" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                app:srcCompat="@drawable/plant" />
+
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/value"
+        android:layout_width="362dp"
+        android:layout_height="90dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+
+        app:cardBackgroundColor="#f4e186"
+
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                app:srcCompat="@drawable/value_dashboard" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="30dp"
+                android:text="Value Dashboard"
+                android:textSize="25dp" />
+
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+            android:id="@+id/hybrid"
+            android:layout_width="362dp"
+            android:layout_height="90dp"
+            app:cardBackgroundColor="#87d960"
+
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+
+
+            >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                app:srcCompat="@drawable/mixed_dashboard" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="30dp"
+                android:text="Hybrid Dashboard"
+                android:textSize="25dp" />
+
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        android:id="@+id/charts"
+        android:layout_width="362dp"
+        android:layout_height="90dp"
+
+        android:layout_marginLeft="5dp"
+
+        android:layout_marginTop="10dp"
+        app:cardBackgroundColor="#c189ec"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                app:srcCompat="@drawable/charts" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="30dp"
+            android:text="Chart Dashboard"
+            android:textSize="25dp" />
+
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:id="@+id/error"
+            android:layout_width="362dp"
+            android:layout_height="90dp"
+            app:cardBackgroundColor="#ffb3b5"
+
+
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/hybrid_dashboard"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Error Dashboard"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="30dp"
+                android:textSize="25dp"/>
+
+
+
+</LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+
+    <ImageButton
+        android:id="@+id/notification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="submit"
-        android:layout_marginTop="47dp"
-        android:layout_below="@+id/etPassword"
-        android:layout_centerHorizontal="true"
-        android:shadowColor="@color/colorPrimary" />
+        android:background="@drawable/notification"
 
-    <Button
-        android:id="@+id/go_signup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/submit"
-        android:layout_alignStart="@+id/submit"
-        android:layout_below="@+id/submit"
-        android:layout_marginTop="25dp"
-        android:text="sign up" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        />
+</LinearLayout>
+    </HorizontalScrollView>
+    </ScrollView>
 </RelativeLayout>

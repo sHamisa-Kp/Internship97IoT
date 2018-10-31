@@ -12,19 +12,19 @@
         android:title="Value Dashboard" />
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_notifications1"
         android:icon="@drawable/chart_dashboard"
         android:title="@string/title_notifications" />
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_notifications2"
         android:icon="@drawable/mixed_dashboard"
         android:title="TS" />
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_notifications3"
         android:icon="@drawable/error_dashboard"
         android:title="error view" />
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_notifications4"
         android:icon="@drawable/notification"
         android:title="notification" />
 
