@@ -122,11 +122,16 @@ h3 {
     height: 100%;
 }
 
-#temperatureText {
+.moveUP {
+    position: relative;
+    bottom: 170px;
+}
+
+/*#temperatureText {
     float: right;
     color: black;
     font-size: 6em; 
-}
+}*/
 
 #temperatureGauge {;
 }
@@ -164,7 +169,22 @@ h3 {
     visibility: hidden;
 }
 
-#SMofFlwr {
+#pumpStatusOfVegs {
+    height: 70px;
+    float: right;
+    visibility: visible;
+    position: relative; 
+    right: 3%;
+    bottom: 15px;
+/*    height: 30%;
+    float: right;
+    visibility: visible;
+    position: absolute;
+    bottom: 0.25%; 
+    right: 3%;*/
+}
+
+#SMofFlwrBackgroundImage {
     background: url(../img/SMoFflwr.jpg);
     background-size: cover;
     height: 100%;
@@ -177,6 +197,21 @@ h3 {
     float: right;
     bottom: 10px;
     visibility: hidden;
+}
+
+#pumpStatusOfFlwrs {
+    height: 70px;
+    float: right;
+    visibility: visible;
+    position: relative; 
+    right: 3%;
+    bottom: 15px;
+/*    height: 30%;
+    float: right;
+    visibility: visible;
+    position: absolute;
+    top: 20%; 
+    right: 3%;*/
 }
 
 #waterLevelBackGroundImage {
@@ -193,31 +228,20 @@ h3 {
     visibility: hidden;
 }
 
-/*.svgcenter {
-    display: block;
-    position: relative;
-    top: 10%;
-    left: 30%;
-}*/
-
 .svgcenter {
-    display: block;
-    margin-left: 50px;
-    margin-right: auto;
-    margin-top: auto;
-    margin-bottom: auto;
+    width: 150px;
+    height: 150px;
     position: relative;
-    top: 15%;
-    left: 20%;
+    top: 3%;
+    left: 25%;
 }
 
 #waterTapStatus {
     height: 40px;
-    float: right;
     visibility: visible;
     position: relative;
-    bottom: 10%;
-    right: 5%;
+    top: 3%;
+    left: 35%;
 }
 
 #photoresistorBackGroundImage {
@@ -226,12 +250,17 @@ h3 {
     height: 100%;
 }
 
+.moveDownPhr {
+    position: relative;
+    top: 20px;
+}
+
 .rightDownIMG {
     margin-top: 10%;
     display:inline-block;
     float: right;
     position: relative;
-    right: 3%;
+    right: 6%;
 }
 
 .errorImage { /*PhotoresistorErrorImage*/
@@ -268,11 +297,6 @@ h3 {
     visibility: hidden;
 }
 
-svg {
-    width: 40%;
-    height: 40%
-}
-
 .highcharts-background { /*poshte tamame guage haye highchart background dare va baraye az beyn bordanesh in class ro qarar dadam*/
     fill: none;
     margin: 0 auto;
@@ -289,11 +313,15 @@ svg {
 
 .gaugeHolder { 
     position: relative;
+<<<<<<< HEAD
     left: 25%;
+=======
+    left: 20%;      
+>>>>>>> master
 /*    float: right;
     visibility: visible;
-    position: relative;
-    margin-bottom: 50%;*/
+    position: relative;*/
+    /*margin-bottom: 50%;*/
 }
 
 #rainSensorBackgroundImage {
@@ -309,6 +337,23 @@ svg {
     bottom: 10px;
     visibility: hidden;
 }
+
+.moveDownRain {
+    position: relative;
+    top: 20%;
+    left: 40%;   
+}
+ #rainStatus {
+    position: relative;
+    top: 30%;
+    left: 39%;    
+ }
+
+ .moveDownGas {
+    position: relative;
+    top: 10%;
+    left: 35%;    
+ }
 
 #gasBackgroundImage {
     background-image: url('');

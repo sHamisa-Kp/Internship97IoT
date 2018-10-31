@@ -91,7 +91,7 @@ for(let i = 0; i < smVegChannel.SM.length; i++) {
     soilmoistureError.push(false);
 }
 
-setInterval(smVegUpdateThePage, updateInterval);
+setInterval(smVegUpdateThePage, 3000);
 
 // let sum = 0;
 // let num = 0;

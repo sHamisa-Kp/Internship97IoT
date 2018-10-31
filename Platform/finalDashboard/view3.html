@@ -29,6 +29,8 @@
 
     <script src="./Highcharts/code/modules/solid-gauge.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+
 </head>
 <body>
 
@@ -80,9 +82,13 @@ function closeNav() {
 			<h3 class="tileHeading">Temperature</h3>
 			<img id="temperatureErrorImage" src="../finalDashboard/img/error.png">
 		</div>
-		<div class="tile-content" id="temperatureBackGroundImage">			
-			<canvas id ="temperatureGauge"></canvas>
-			<p id="temperatureText"></p>
+		<div class="tile-content" id="temperatureBackGroundImage">
+			<div>		
+				<canvas id ="temperatureGauge"></canvas>
+			</div>
+			<span>
+				<p id="temperatureText" class="font textabsolute moveUP" class="center" align="right"></p>
+			</span>
 		</div>
 	</div>
 
@@ -100,7 +106,7 @@ function closeNav() {
 			</span>
 			<div>
 				<span>
-					<!-- <img id="pumpStatusOfVegs" src="img/X.png"> -->
+					<img id="pumpStatusOfVegs" src="img/drip-on.png">
 				</span>	
 			</div>
 		</div>
@@ -113,7 +119,7 @@ function closeNav() {
 			<h3 class="tileHeading">SoilMoisture of Flowers</h3>
 			<img id="soilmoistureFlwrErrorImage" src="../finalDashboard/img/error.png">
 		</div>
-		<div class="tile-content" id="SMofFlwr">
+		<div class="tile-content" id="SMofFlwrBackgroundImage">
 			<div class="center" id='chartHolder'>
 				<meter id="myFlwrSmMeter" class="center meterabsolute" value="0" min="0" max="100">21%</meter>
 			</div>
@@ -122,7 +128,7 @@ function closeNav() {
 			</span>	
 			<div>
 				<span>
-					<!-- <img id="pumpStatusOfFlwrs" src="img/X.png"> -->
+					<img id="pumpStatusOfFlwrs" src="img/drip-on.png">
 				</span>	
 			</div>	
 		</div>
@@ -134,14 +140,14 @@ function closeNav() {
 			<img id="waterLevelErrorImage" src="../img/error.png">
 		</div>
 		<div class="tile-content" id="waterLevelBackGroundImage">
-			<div class="svgcenter">
-				<svg id="fillgauge2" width="400" height="400"></svg>
-			</div>
-			<div>
+
+				<svg class="svgcenter" id="fillgauge2" width="150" height="150"></svg>
+
+
 				<span>
 					<img id="waterTapStatus" src="img/watertap-on-v2.png">
 				</span>	
-			</div>
+
 		</div>		
 	</div>
 
@@ -160,10 +166,10 @@ function closeNav() {
 			<img id="photoresistorErrorImage" class="errorImage" src="../finalDashboard/img/error.png">
 		</div>
 		<div class="tile-content" id="photoresistorBackGroundImage" style="width: 321.391px; height: 158px;">
-			<p id="photoresistorText" class="font" align="right" style="margin-top: 0;">0%</p>
+			<p id="photoresistorText" class="font textabsolute moveDownPhr" align="right" style="margin-top: 0;">0%</p>
 			<div class="rightDownIMG">
-				<img id="lightbulb1" src="img/lightbulbOff.png" height="30px">
-				<img id="lightbulb2" src="img/lightbulbOff.png" height="30px">
+				<img id="lightbulb1" src="img/lightbulb-off.png" height="50px"><!--lightBulb of left balc(class room)-->
+				<img id="lightbulb2" src="img/lightbulb-off.png" height="50px"><!--lightBulb of right balc(dr's room)-->
 			</div>
 		</div>		
 	</div>
@@ -173,8 +179,8 @@ function closeNav() {
 			<h3 class="tileHeading">MOTION DETECTOR</h3>
 		</div>
 		<div class="tile-content" id="mdBackgroundImage">
-			<img id="motionDetectionStatus1" src="img/motionOff.png">
-			<img id="motionDetectionStatus2" src="img/motionOff.png">
+			<img id="motionDetectionStatus2" src="img/mdIcon-off.png"><!-- md of right balc(dr's room) -->
+			<img id="motionDetectionStatus1" src="img/mdIcon-off.png"><!--md of left balc(class room)-->			
 		</div>
 	</div>
 
@@ -184,7 +190,7 @@ function closeNav() {
 			<img id="wattmeterErrorImage" src="img/error.png">
 		</div>
 		<div class="tile-content" id="wattmeterBackgroundImage">
-			<div id="container" class="gaugeHolder" style="width:400px; height:400px;"></div>
+			<div id="container" class="gaugeHolder" style="width:200px; height:190px; bottom: 13px;"></div>
 		</div>
 	</div>
 
@@ -194,8 +200,8 @@ function closeNav() {
 			<img id="rainSensorErrorImage" src="img/error.png">
 		</div>
 		<div class="tile-content" id="rainSensorBackgroundImage">
-			<p id="rainSensorText" class="font center" style="margin-top: 0;">0%</p>
-			<img id="rainStatus" src="img/dryIcon.png" style="height: 80px;">
+			<p id="rainSensorText" class="font textabsolute moveDownRain" style="margin-top: 0;">0%</p>
+			<img id="rainStatus" src="img/dryFloor.png" style="height: 80px;">
 		</div>
 	</div>
 
@@ -206,8 +212,8 @@ function closeNav() {
 		</div>
 		<div class="tile-content" id="gasBackgroundImage">
 			<span>
-				<p id="gasStatus" class="font center" style="color: white; margin-top: 0;">Clean</p>
-				<p id="gasText" class="font center" style="color: white;">0ppm</p>
+				<p id="gasStatus" class="font moveDownGas" style="color: white; margin-top: 0;">Clean</p>
+				<p id="gasText" class="font moveDownGas" style="color: white;">0ppm</p>
 			</span>
 		</div>
 	</div>
@@ -258,7 +264,7 @@ function closeNav() {
 
 <script src="./js/averageOfPH-flwr.js"></script>
 
-<!-- <script src="./js/status.js"></script> -->
+<script src="./js/status.js"></script>
 
 <script src="./js/chart.js" type="text/javascript"></script>
 
