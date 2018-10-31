@@ -132,7 +132,7 @@ function closeNav() {
 
 		<!-- first row, first column -->
 		<div class="col col_1_of_4"> <!-- Humidity -->
-			<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px; top: 10px; left: 10px;">
+			<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px;">
 				<div class="tile-header">
 					<h3 class="tileHeading">Humidity</h3>
 					<img id="humidityErrorImage" src="img/error.png">
@@ -158,7 +158,7 @@ function closeNav() {
 
 		<!-- Temperature -->
 		<div class="col col_1_of_4"> <!-- first row, second column -->
-			<div class="tile highlighter-tile" id="temperatureTile" style="width: 138px; height: 115px; top: 10px; left: 10px;">
+			<div class="tile highlighter-tile" id="temperatureTile" style="width: 138px; height: 115px;">
 				<div class="tile-header">
 					<h3 class="tileHeading">Temperature</h3>
 					<img id="temperatureErrorImage" class="errorImage" src="img/error.png">
@@ -174,7 +174,7 @@ function closeNav() {
 
 		<!-- Soilmoisture Of Vegetables -->
 		<div class="col col_1_of_4"> <!-- first row, third column -->
-			<div class="tile" style="width: 138px; height: 115px; top: 10px; left: 10px;">
+			<div class="tile" style="width: 138px; height: 115px;">
 				<div class="tile-header">
 					<h3 class="tileHeading">SoilMoisture of vegetables</h3>
 					<img id="soilmoistureVegErrorImage" src="img/error.png">
@@ -204,7 +204,7 @@ function closeNav() {
 
 		<!-- Soilmoisture Of Flowers -->
 		<div class="col col_1_of_4"> <!-- first row, fourth column -->
-			<div class="tile highlighter-tile" id="" style="width: 308px; height: 184px; top: 10px; left: 10px;">
+			<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px;">
 				<div class="tile-header">
 					<h3 class="tileHeading">SoilMoisture of Flowers</h3>
 					<img id="soilmoistureFlwrErrorImage" src="img/error.png">
@@ -235,7 +235,7 @@ function closeNav() {
 
 		<!-- Water Level -->
 		<div class="col col_1_of_4"> <!-- second row first column -->
-			<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px; top: 10px; left: 10px;">
+			<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px;">
 				<div class="tile-header">
 					<h3 class="tileHeading">Water Level</h3>
 					<img id="waterLevelErrorImage" src="img/error.png">
@@ -243,7 +243,7 @@ function closeNav() {
 
 				<div class="tile-content" id="waterLevelBackGroundImage">
 					<div class="svgcenter">
-						<svg id="fillgauge2" width="200" height="200"></svg>
+						<svg id="fillgauge2" width="180%" height="180%"></svg>
 					</div>
 					<div>
 						<span>
@@ -277,17 +277,19 @@ function closeNav() {
 
 			<!-- photoresistor -->
 			<div class="col col_1_of_4"> <!-- second row second column -->
-				<div class="tile highlighter-tile" id="photoresistorTile" style="width: 138px; height: 115px; top: 10px; left: 10px;">
+				<div class="tile highlighter-tile" id="photoresistorTile" style="width: 138px; height: 115px;">
 					<div class="tile-header">
 						<h3 class="tileHeading">Photoresistor</h3>
 						<img id="photoresistorErrorImage" class="errorImage" src="img/error.png">
 					</div>
 
 					<div class="tile-content" id="photoresistorBackGroundImage" style="height: 100%;">
-						<p id="photoresistorText" class="font" align="right">0%</p>
+						<div>
+							<p id="photoresistorText" class="font textabsolute" align="right">0%</p>
+						</div>
 						<div class="rightDownIMG">
-							<img id="lightbulb1" src="img/lightbulbOff.png" height="30px">
-							<img id="lightbulb2" src="img/lightbulbOff.png" height="30px">
+							<img id="lightbulb1" src="img/lightbulb-off.png" height="50px"> <!--lightBulb of left balc(class room)-->
+							 <img id="lightbulb2" src="img/lightbulb-off.png" height="50px"><!--lightBulb of right balc(dr's room)-->
 						</div>
 					</div>
 				</div>
@@ -295,21 +297,21 @@ function closeNav() {
 
 			<!-- motion detector -->
 			<div class="col col_1_of_4"> <!-- second row third column -->
-				<div class="tile highlighter-tile" style="width: 138px; height: 115px; top: 10px; left: 10px;">
+				<div class="tile highlighter-tile" style="width: 138px; height: 115px;">
 					<div class="tile-header">
 						<h3>motion detector</h3>
 					</div>
 
 					<div class="tile-content" id="mdBackgroundImage">
-						<img id="motionDetectionStatus1" src="img/motionOff.png">
-						<img id="motionDetectionStatus2" src="img/motionOff.png">						
+						<img id="motionDetectionStatus1" src="img/mdIcon-off.png"><!--md of left balc(class room)-->
+						<img id="motionDetectionStatus2" src="img/mdIcon-off.png"><!--md of right balc(dr's room)-->						
 					</div>
 				</div>
 			</div>
 
 			<!-- watt meter -->
 			<div class="col col_1_of_4"> <!-- second row fourth column -->
-				<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px; top: 10px; left: 10px;">
+				<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px;">
 					<div class="tile-header">
 						<h3 class="tileHeading">watt meter</h3>
 						<img id="wattmeterErrorImage" src="img/error.png">
@@ -327,7 +329,7 @@ function closeNav() {
 
 			<!-- rain sensor -->
 			<div class="col col_1_of_4"> <!-- third row first column -->
-				<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px; top: 10px; left: 10px;">
+				<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px;">
 					<div class="tile-header">
 						<h3 class="tileHeading">rain sensor</h3>
 						<img id="rainSensorErrorImage" src="img/error.png">
@@ -335,14 +337,14 @@ function closeNav() {
 
 					<div class="tile-content" id="rainSensorBackgroundImage">
 						<p id="rainSensorText" class="font">0%</p>
-						<img id="rainStatus" src="img/dryIcon.png" style="height: 80px;"> 
+						<img id="rainStatus" src="img/dryFloor.png" style="height: 80px;"> 
 					</div>
 				</div>
 			</div>
 
 			<!-- Gas -->
 			<div class="col col_1_of_4"> <!-- third row second column -->
-				<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px; top: 10px; left: 10px;">
+				<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px;">
 					<div class="tile-header">
 						<h3 class="tileHeading">Gas</h3>
 						<img id="gasErrorImage" src="img/error.png">
@@ -357,14 +359,14 @@ function closeNav() {
 
 			<!-- PH of vegetables -->
 			<div class="col col_1_of_4"> <!-- third row, third column -->
-				<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px; top: 10px; left: 10px;">
+				<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px;">
 					<div class="tile-header">
 						<h3 class="tileHeading">PH of vegetables</h3>
 						<img id="PhVegErrorImage" src="img/error.png">
 					</div>
 
 					<div class="tile-content" id="phVegBackGroundImage">
-						<div class="center" id="chartHolder" style="width: 600px; height: 400px; margin: 0 auto">
+						<div class="center" id="chartHolder">
 							<meter id="phVegMeter" class="center meterabsolute" value="0" min="0" max="14" align="left"></meter>
 							<!-- <div id="container-speed" style="width: 300px; height: 200px; float: left;"></div> -->
 						</div>	
@@ -379,7 +381,7 @@ function closeNav() {
 
 			<!-- PH of flowers -->
 			<div class="col col_1_of_4"> <!-- third row, fourth column -->
-				<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px; top: 10px; left: 10px;">
+				<div class="tile highlighter-tile" id="" style="width: 138px; height: 115px;">
 					<div class="tile-header">
 						<h3 class="tileHeading">PH of flowers</h3>
 						<img id="PhFlwrErrorImage" src="img/error.png">

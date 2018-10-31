@@ -5,139 +5,76 @@ humidityChart.addEventListener("click", function(){
 	var canvas = document.querySelector(".chartPlace");
 	canvas.getAttribute("id");
 	canvas.setAttribute("id", "h");
-	// const humidityChannel = {
-	// 	'H': [{'id': '669', 'apiKey': '7TPW8OQOGN1EMURD'},
-	// 	{'id': '721', 'apiKey': 'YV8JRH910ZJZQN1I'}]
-	// };
 
-	// const humidityErrorValue = {
-	// 	'H': {'min': 30, 'max': 55}
-	// };
+		
+	let chartdata=new Array;
+ 	chartdata=[[],[]];
+	let last=new Array;
+	let j;
+	let min=10;
+	let max=70;
+	let a=chartdata.length;
+	let colors=['#00ff00','#006400','#00c800','#2faf2f','#47b247','#64af64','#80b780','#156315','#3e6b3e','#003d00','#264c26','#435b43','#003000','#053505','#112811','#364736','#06d168','#2fbc73','#034f28'];
+	let H=[{'id': '672', 'apiKey': 'B1JQYWFKX2PCRBYF'},
+	{'id': '721', 'apiKey': 'YV8JRH910ZJZQN1I'}];
+	let label=new Array();
+	let res=new Array();
 
-	// let humidityArray = [];
-	// let humidityError = [];
-	// for(let i = 0; i < humidityChannel.H.length; i++) {
-	// 	humidityError.push(false);
-	// }
+	function httpGetAsync(theUrl,j) {
+		let xmlHttp = new XMLHttpRequest();
+		xmlHttp.onreadystatechange = function() { 
+			if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+				var text=new Array;
+				text = JSON.parse(xmlHttp.responseText).feeds;
 
-	// function humidityHttpGetAsync(theUrl, callback, i) {
-	// 	let xmlHttp = new XMLHttpRequest();
-	// 	xmlHttp.onreadystatechange = function() { 
-	// 		if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
-	//             // callback(xmlHttp.responseText);
-	//             var text = new Array;
-	//             text = JSON.parse(xmlHttp.responseText).feeds;
-
-	//             for (let j = 0; j <= 19; j++) {
-	//             	var num = parseInt(text[j].field1);
-	//             	humidityArray[j].push(num);
-	//             }
-	//             for (let j = 0; j <= 19; j++) {
-	//             	var num = parseInt(text[j].field1);
-	//             	if(num < humidityErrorValue.H.min || num  > humidityErrorValue.H.max) {
-	//             		humidityError[i] = true;
-	//             	} else {
-	//             		humidityError[i] = false;
-	//             	}	
-	//             }
-
- //        	}
- //    	};
-	//     xmlHttp.open("GET", theUrl, true); // true for asynchronous 
-	//     xmlHttp.send(null);
-	// }
-
-	// function humidityUpdateThePage() {
-	// 	for(let i = 0; i < humidityChannel.H.length; i++) {
-	// 		humidityHttpGetAsync("http://thingtalk.ir/channels/" + humidityChannel.H[i].id + 
-	// 			"/feed.json?key=" + humidityChannel.H[i].apiKey+"&results=20", function(){}, i);
-	// 	}
-	// }
-	// function updateLable(){
-	// 	httpGetAsyncLabel("http://thingtalk.ir/channels/721/feed.json?key=YV8JRH910ZJZQN1I&results=20");
-	// }
-	
-
-	// function httpGetAsyncLabel(theUrl) {
-	// 	let xmlHttp = new XMLHttpRequest();
-	// 	xmlHttp.onreadystatechange = function() { 
-	// 		if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
-	// 			var text=new Array;
-	// 			text = JSON.parse(xmlHttp.responseText).feeds;
-	// 			for(let i=0;i<=19;i++){
-	// 				label.push(text[i].created_at)
-	// 				res.push(label[i].slice(11,19));
-	// 			}; console.log(res);
-
-	// 		};
-	// 	};
-	// 	xmlHttp.open("GET", theUrl, true);
-	// 	xmlHttp.send(null);
-	// };
-	// setInterval(humidityUpdateThePage, 3000);
-	// setInterval(humidityCalculateAverage, 3000);
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	function doIt(){	
-		let chartdata=new Array;
-		chartdata=[[],[]];
-		let last=new Array;
-		let j;
-		let min=10;
-		let max=70;
-		let a=chartdata.length;
-		let colors=['#00ff00','#006400','#00c800','#2faf2f','#47b247','#64af64','#80b780','#156315','#3e6b3e','#003d00','#264c26','#435b43','#003000','#053505','#112811','#364736','#06d168','#2fbc73','#034f28'];
-		let H=[{'id': '672', 'apiKey': 'B1JQYWFKX2PCRBYF'},
-		{'id': '721', 'apiKey': 'YV8JRH910ZJZQN1I'}];
-
-
-		function httpGetAsync(theUrl,j) {
-			let xmlHttp = new XMLHttpRequest();
-			xmlHttp.onreadystatechange = function() { 
-				if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
-					var text=new Array;
-					text = JSON.parse(xmlHttp.responseText).feeds;
-
-					for(let i=0;i<=19;i++){
-						chartdata[j].push(parseInt(text[i].field1))
-					};	
-					let a=chartdata[j][19];
-					if(a<min || a>max){
-						colors[j]='red';
-					};
+				for(let i=0;i<=19;i++){
+					chartdata[j].push(parseInt(text[i].field1))
+				};	
+				let a=chartdata[j][19];
+				if(a<min || a>max){
+					colors[j]='red';
 				};
+				console.log(chartdata);
+				return chartdata;
+				drawChart();
 			};
-			xmlHttp.open("GET", theUrl, true);
-			
-			xmlHttp.send(null);
 		};
+		xmlHttp.open("GET", theUrl, true);		
+		xmlHttp.send(null);
+	};
 
-		function httpGetAsyncLabel(theUrl) {
-			let xmlHttp = new XMLHttpRequest();
-			xmlHttp.onreadystatechange = function() { 
-				if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
-					var text=new Array;
-					text = JSON.parse(xmlHttp.responseText).feeds;
-					for(let i=0;i<=19;i++){
-						label.push(text[i].created_at)
-						res.push(label[i].slice(11,19));
-					}; console.log(res);
-
+	function httpGetAsyncLabel(theUrl) {
+		let xmlHttp = new XMLHttpRequest();
+		xmlHttp.open("GET", theUrl, true);
+		xmlHttp.send(null);
+		xmlHttp.onreadystatechange = function() { 
+			if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+				var text=new Array;
+				text = JSON.parse(xmlHttp.responseText).feeds;
+				for(let i=0;i<=19;i++){
+					label.push(text[i].created_at)
+					res[i]=(label[i].slice(11,19));
 				};
-			};
-			xmlHttp.open("GET", theUrl, true);
-			xmlHttp.send(null);
+				console.log(res);
+				return res;
+			}
 		};
+	};
 
-		let label=new Array();
-		let res=new Array();
+	function humidityUpdateLable(){
 		httpGetAsyncLabel("http://thingtalk.ir/channels/721/feed.json?key=YV8JRH910ZJZQN1I&results=20");
+	}
 
+	function humidityUpdateChart(){
 		for(j=0;j<a;j++) 
 		{
 			httpGetAsync("http://thingtalk.ir/channels/"+H[j].id+"/feed.json?key="+H[j].apiKey+"&results=20",j);
 		};
+	}
 
+	function drawChart(){
 		setTimeout(function(){
+			console.log("functionworking!!!");
 			var onechart = 
 			{
 				labels: res,
@@ -171,9 +108,12 @@ humidityChart.addEventListener("click", function(){
 					}
 				}
 			});
-		},3000);
-	};
-	setInterval(doIt,3000);
+		},3000);	
+	}
+	
+	setInterval(humidityUpdateLable,3000);
+	setInterval(humidityUpdateChart,3000);
+	// setInterval(drawChart,3000);
 });
 
 //this is for temperature chart
