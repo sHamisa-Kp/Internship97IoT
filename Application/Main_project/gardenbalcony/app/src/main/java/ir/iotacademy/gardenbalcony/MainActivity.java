@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity  {
                 //GetSendData t0 = new GetSendData();
                 //map.put("T0", preUrl + "629/feed.json?key=G7KHR97UPN9OC5AC&results=1");
                 //if(t0.GetData(map.get("T0")) != "No") {
-                    Intent intent = new Intent(MainActivity.this, GraphicalView.class);
+                    Intent intent = new Intent(MainActivity.this, GraphicalViewRight.class);
                     startActivity(intent);
                 //}
                 //else {

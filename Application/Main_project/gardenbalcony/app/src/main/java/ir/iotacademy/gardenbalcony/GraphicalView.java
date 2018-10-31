@@ -94,9 +94,20 @@ public class GraphicalView extends AppCompatActivity {
         map.put("WM", preUrl + "753/feed.json?key=OUAV3VIB076Y5UO0&results=1");
         //water level
         map.put("WL", preUrl + "742/feed.json?key=WGWJ660WN7V9394D&results=1");
+//        Thread t = new Thread() {
+//
+//            @Override
+//            public void run() {
+//                try {
+//                    while (!isInterrupted()) {
+//                        Thread.sleep(6000);
+//                        runOnUiThread(new Runnable() {
+//                            @Override
+//                            public void run() {
 
 
-        //Temperature
+//
+//        //Temperature
         data = (TextView) findViewById(R.id.temperature);
         GetSendData t0 = new GetSendData();
         data.setText(t0.GetData(map.get("T0")) + "°C");
@@ -831,6 +842,15 @@ public class GraphicalView extends AppCompatActivity {
         GetSendData g = new GetSendData();
         d = g.GetData(map.get("G"));
         data.setText(d);
+
+//                            }
+//                        });
+//                    }
+//                } catch (InterruptedException e) {
+//                }
+//            }
+//        };
+//        t.start();
     }
 }
 
