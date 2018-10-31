@@ -34,7 +34,7 @@ public class GraphicalViewRight extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graphical_view_right);
-        ImageButton goMidd = (ImageButton) findViewById(R.id.go_middle_from_right);
+        //ImageButton goMidd = (ImageButton) findViewById(R.id.go_middle_from_right);
 
         //weather
         map.put("T0", preUrl + "720/feed.json?key=6P4WUZHZZDR6U0TX&results=1");
@@ -72,13 +72,14 @@ public class GraphicalViewRight extends AppCompatActivity {
         map.put("WL", preUrl + "742/feed.json?key=WGWJ660WN7V9394D&results=1");
 
 
-        goMidd.setOnClickListener(new View.OnClickListener() {
+       /* goMidd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(GraphicalViewRight.this, Middle_View.class);
                 startActivity(intent);
             }
         });
+        */
 //
 //        Thread t = new Thread() {
 //

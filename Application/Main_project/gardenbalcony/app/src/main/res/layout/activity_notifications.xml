@@ -1,72 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:background="#272727">
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity"
+        tools:context=".Notifications"
         android:background="#272727">
 
         <android.support.v7.widget.CardView
 
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:layout_marginBottom="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:background="#272727"
-            >
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:visibility="visible">
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="1698dp"
+            <LinearLayout
+                android:id="@+id/background"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
                 android:background="#272727"
-               >
+                android:orientation="vertical">
+
 
                 <FrameLayout
-                    android:id="@+id/minlight"
+                    android:id="@+id/minweatherhumidity"
                     android:layout_width="match_parent"
                     android:layout_height="125dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:layout_marginTop="14dp"
+                    android:background="#ffffd4"
+
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:background="#ffffd4"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginRight="10dp"
-                    android:layout_alignLeft="@+id/maxlight"
-                    android:layout_alignStart="@+id/maxlight">
+                    android:visibility="gone"
+
+                    >
 
                     <TextView
-                        android:id="@+id/tvminlight"
+                        android:id="@+id/tvminhumidity"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginRight="30dp"
-                        android:layout_marginLeft="80dp"
                         android:layout_marginBottom="10dp"
-                        />
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginTop="30dp" />
 
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_marginTop="23dp"
-                        android:src="@drawable/cloudy"/>
+                        android:src="@drawable/humidity_low" />
 
                     <ImageButton
-                        android:id="@+id/canselminlight"
+                        android:id="@+id/canselminhumidity"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="3dp"
                         android:layout_gravity="right"
-                        android:src="@drawable/cancel"
+                        android:layout_marginRight="3dp"
+                        android:layout_marginTop="5dp"
                         android:background="#00ffffff"
-                        android:visibility="invisible"/>
+                        android:src="@drawable/cancel" />
 
                     <!--<ImageButton
                         android:id="@+id/canselminlight"
@@ -80,128 +81,122 @@
 
 
                 <FrameLayout
-                    android:id="@+id/maxlight"
+                    android:id="@+id/maxweatherhumidity"
                     android:layout_width="match_parent"
                     android:layout_height="125dp"
+                    android:layout_below="@+id/minlight"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
                     android:background="#ffffd4"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_below="@+id/minlight"
-                    >
+                    android:visibility="gone">
 
                     <TextView
-                        android:id="@+id/tvmaxlight"
+                        android:id="@+id/tvmaxhumidity"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginRight="30dp"
-                        android:layout_marginLeft="80dp"
                         android:layout_marginBottom="10dp"
-                        />
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginTop="30dp" />
 
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_marginTop="23dp"
-                        android:src="@drawable/sun"/>
+                        android:src="@drawable/humidity_high" />
 
                     <ImageButton
-                        android:id="@+id/canselmaxlight"
+                        android:id="@+id/canselmaxhumidity"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="3dp"
                         android:layout_gravity="right"
-                        android:src="@drawable/cancel"
+                        android:layout_marginRight="3dp"
+                        android:layout_marginTop="5dp"
                         android:background="#00ffffff"
-                        android:visibility="invisible"/>
+                        android:src="@drawable/cancel" />
 
                 </FrameLayout>
 
                 <FrameLayout
-                    android:id="@+id/minairhumidity"
+                    android:id="@+id/maxairtemperature"
                     android:layout_width="match_parent"
                     android:layout_height="125dp"
-                    android:background="#bde4fc"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
                     android:layout_below="@+id/maxlight"
-                    >
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
+                    android:background="#bde4fc"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <TextView
-                        android:id="@+id/tvminairhumidity"
+                        android:id="@+id/tvmintemperature"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginRight="30dp"
-                        android:layout_marginLeft="80dp"
                         android:layout_marginBottom="10dp"
-                        />
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginTop="30dp" />
 
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_marginTop="23dp"
-                        android:src="@drawable/minairhumidity"/>
+                        android:src="@drawable/minairhumidity" />
 
                     <ImageButton
-                        android:id="@+id/canselmaxairhumidity"
+                        android:id="@+id/canselmaxairtemperature"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_gravity="right"
                         android:layout_marginRight="3dp"
                         android:layout_marginTop="5dp"
                         android:background="#00ffffff"
-                        android:src="@drawable/cancel"
-                        android:visibility="invisible"/>
+                        android:src="@drawable/cancel" />
 
                 </FrameLayout>
 
                 <FrameLayout
-                    android:id="@+id/maxairhumidity"
+                    android:id="@+id/minairtemperature"
                     android:layout_width="match_parent"
                     android:layout_height="125dp"
+                    android:layout_below="@+id/minairhumidity"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
                     android:background="#bde4fc"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_below="@+id/minairhumidity"
-                    >
+                    android:visibility="gone">
 
                     <TextView
-                        android:id="@+id/tvmaxairhumidity"
+                        android:id="@+id/tvmaxtemperature"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginRight="30dp"
-                        android:layout_marginLeft="80dp"
                         android:layout_marginBottom="10dp"
-                        />
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginTop="30dp" />
 
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_marginTop="23dp"
-                        android:src="@drawable/maxairhumidity"/>
+                        android:src="@drawable/maxairhumidity" />
 
                     <ImageButton
-                        android:id="@+id/canselminairhumidity"
+                        android:id="@+id/canselminairtemperature"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="3dp"
                         android:layout_gravity="right"
-                        android:src="@drawable/cancel"
+                        android:layout_marginRight="3dp"
+                        android:layout_marginTop="5dp"
                         android:background="#00ffffff"
-                        android:visibility="invisible"/>
+                        android:src="@drawable/cancel" />
 
                 </FrameLayout>
 
@@ -209,30 +204,29 @@
                     android:id="@+id/minsoilmoisture_flower"
                     android:layout_width="match_parent"
                     android:layout_height="125dp"
+                    android:layout_below="@+id/maxairhumidity"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
                     android:background="#f5e0c4"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_below="@+id/maxairhumidity"
-                    >
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/tvminsoilmoisture_flower"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginRight="30dp"
-                        android:layout_marginLeft="80dp"
                         android:layout_marginBottom="10dp"
-                        />
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginTop="30dp" />
 
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_marginTop="23dp"
-                        android:src="@drawable/flower2"/>
+                        android:src="@drawable/flower2" />
 
                     <ImageButton
                         android:id="@+id/canselminsoilmoisture_flower"
@@ -250,40 +244,39 @@
                     android:id="@+id/maxsoilmoisture_flower"
                     android:layout_width="match_parent"
                     android:layout_height="125dp"
+                    android:layout_below="@+id/minsoilmoisture_flower"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
                     android:background="#f7e9d5"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_below="@+id/minsoilmoisture_flower"
-                    >
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/tvmaxsoilmoisture_flower"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginRight="30dp"
-                        android:layout_marginLeft="80dp"
                         android:layout_marginBottom="10dp"
-                        />
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginTop="30dp" />
 
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_marginTop="23dp"
-                        android:src="@drawable/flower1"/>
+                        android:src="@drawable/flower1" />
 
                     <ImageButton
                         android:id="@+id/canselmaxsoilmoisture_flower"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="3dp"
                         android:layout_gravity="right"
-                        android:src="@drawable/cancel"
-                        android:background="#00ffffff"/>
+                        android:layout_marginRight="3dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#00ffffff"
+                        android:src="@drawable/cancel" />
 
                 </FrameLayout>
 
@@ -291,40 +284,39 @@
                     android:id="@+id/minsoilmoisture_veg"
                     android:layout_width="match_parent"
                     android:layout_height="125dp"
+                    android:layout_below="@+id/maxsoilmoisture_flower"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
                     android:background="#f5e0c4"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_below="@+id/maxsoilmoisture_flower"
-                    >
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/tvminsoilmoisture_veg"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginRight="30dp"
-                        android:layout_marginLeft="80dp"
                         android:layout_marginBottom="10dp"
-                        />
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginTop="30dp" />
 
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_marginTop="23dp"
-                        android:src="@drawable/veg2"/>
+                        android:src="@drawable/veg2" />
 
                     <ImageButton
                         android:id="@+id/canselminsoilmoisture_veg"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="3dp"
                         android:layout_gravity="right"
-                        android:src="@drawable/cancel"
-                        android:background="#00ffffff"/>
+                        android:layout_marginRight="3dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#00ffffff"
+                        android:src="@drawable/cancel" />
 
                 </FrameLayout>
 
@@ -332,40 +324,39 @@
                     android:id="@+id/maxsoilmoisture_veg"
                     android:layout_width="match_parent"
                     android:layout_height="125dp"
+                    android:layout_below="@+id/minsoilmoisture_veg"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
                     android:background="#f7e9d5"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_below="@+id/minsoilmoisture_veg"
-                    >
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/tvmaxsoilmoisture_veg"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginRight="30dp"
-                        android:layout_marginLeft="80dp"
                         android:layout_marginBottom="10dp"
-                        />
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginTop="30dp" />
 
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_marginTop="23dp"
-                        android:src="@drawable/veg1"/>
+                        android:src="@drawable/veg1" />
 
                     <ImageButton
                         android:id="@+id/canselmaxsoilmoisture_veg"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="3dp"
                         android:layout_gravity="right"
-                        android:src="@drawable/cancel"
-                        android:background="#00ffffff"/>
+                        android:layout_marginRight="3dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#00ffffff"
+                        android:src="@drawable/cancel" />
 
                 </FrameLayout>
 
@@ -373,40 +364,39 @@
                     android:id="@+id/gas"
                     android:layout_width="match_parent"
                     android:layout_height="125dp"
+                    android:layout_below="@+id/maxsoilmoisture_veg"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
                     android:background="#dfe4e4"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_below="@+id/maxsoilmoisture_veg"
-                    >
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/tvgas"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginRight="30dp"
-                        android:layout_marginLeft="80dp"
                         android:layout_marginBottom="10dp"
-                        />
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginTop="30dp" />
 
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_marginTop="23dp"
-                        android:src="@drawable/co2"/>
+                        android:src="@drawable/smoke" />
 
                     <ImageButton
                         android:id="@+id/canselgas"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="3dp"
                         android:layout_gravity="right"
-                        android:src="@drawable/cancel"
-                        android:background="#00ffffff"/>
+                        android:layout_marginRight="3dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#00ffffff"
+                        android:src="@drawable/cancel" />
 
                 </FrameLayout>
 
@@ -414,40 +404,40 @@
                     android:id="@+id/floormoisture"
                     android:layout_width="match_parent"
                     android:layout_height="125dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
                     android:background="#d7f9fd"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_below="@+id/gas"
+                    android:visibility="gone"
+
                     >
 
                     <TextView
                         android:id="@+id/tvfloormoisture"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginRight="30dp"
-                        android:layout_marginLeft="80dp"
                         android:layout_marginBottom="10dp"
-                        />
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginTop="30dp" />
 
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_marginTop="30dp"
-                        android:src="@drawable/floormoisture"/>
+                        android:src="@drawable/puddle" />
 
                     <ImageButton
                         android:id="@+id/canselfloormoisture"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="3dp"
                         android:layout_gravity="right"
-                        android:src="@drawable/cancel"
-                        android:background="#00ffffff"/>
+                        android:layout_marginRight="3dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#00ffffff"
+                        android:src="@drawable/cancel" />
 
                 </FrameLayout>
 
@@ -455,85 +445,170 @@
                     android:id="@+id/motiondetect"
                     android:layout_width="match_parent"
                     android:layout_height="125dp"
+                    android:layout_below="@+id/floormoisture"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
                     android:background="#ddf9da"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_below="@+id/floormoisture"
-                    >
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/tvmotiondetect"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginRight="30dp"
-                        android:layout_marginLeft="80dp"
                         android:layout_marginBottom="10dp"
-                        />
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginTop="30dp" />
 
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_marginTop="30dp"
-                        android:src="@drawable/motiondetect"/>
+                        android:src="@drawable/on2_md" />
 
                     <ImageButton
                         android:id="@+id/canselmotiondetect"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="3dp"
                         android:layout_gravity="right"
-                        android:src="@drawable/cancel"
-                        android:background="#00ffffff"/>
+                        android:layout_marginRight="3dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#00ffffff"
+                        android:src="@drawable/cancel" />
 
                 </FrameLayout>
 
                 <FrameLayout
-                    android:id="@+id/level"
+                    android:id="@+id/highlevel"
                     android:layout_width="match_parent"
                     android:layout_height="125dp"
+                    android:layout_below="@+id/motiondetect"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
                     android:background="#eee3ff"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="15dp"
-                    android:layout_below="@+id/motiondetect"
-                    >
+                    android:visibility="gone">
 
                     <TextView
-                        android:id="@+id/tvlevel"
+                        android:id="@+id/tvhighlevel"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginRight="30dp"
-                        android:layout_marginLeft="80dp"
                         android:layout_marginBottom="10dp"
-                        />
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginTop="30dp" />
 
                     <ImageView
+                        android:id="@+id/imageView3"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_marginTop="30dp"
-                        android:src="@drawable/waterlevel"/>
+                        android:src="@drawable/source_error_notif_f" />
 
                     <ImageButton
-                        android:id="@+id/cansellevel"
+                        android:id="@+id/canselhighsourcelevel"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="3dp"
                         android:layout_gravity="right"
-                        android:src="@drawable/cancel"
-                        android:background="#00ffffff"/>
+                        android:layout_marginRight="3dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#00ffffff"
+                        android:src="@drawable/cancel" />
+
 
                 </FrameLayout>
-            </RelativeLayout>
+
+                <FrameLayout
+                    android:id="@+id/lowlevel"
+                    android:layout_width="match_parent"
+                    android:layout_height="125dp"
+
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
+                    android:background="#eee3ff"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/tvlowlevel"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginTop="30dp" />
+
+                    <ImageView
+
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="30dp"
+                        android:src="@drawable/source_error" />
+
+                    <ImageButton
+                        android:id="@+id/cansellowsourcelevel"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="3dp"
+                        android:layout_marginTop="30dp"
+                        android:background="#00ffffff"
+                        android:src="@drawable/cancel" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/lamponday"
+                    android:layout_width="match_parent"
+                    android:layout_height="125dp"
+                    android:visibility="gone"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
+                    android:background="#eee3ff"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvlampon"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginTop="30dp" />
+
+                    <ImageButton
+                        android:id="@+id/canselonlamp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="3dp"
+                        android:layout_marginTop="30dp"
+                        android:background="#00ffffff"
+                        android:src="@drawable/cancel" />
+
+                    <ImageView
+
+                        android:id="@+id/imageView4"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="30dp"
+                        android:src="@drawable/light_bulb_error" />
+
+                </FrameLayout>
+
+            </LinearLayout>
 
         </android.support.v7.widget.CardView>
 
