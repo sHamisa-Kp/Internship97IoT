@@ -79,17 +79,17 @@ public class GraphicalViewRight extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        Thread t = new Thread() {
-
-            @Override
-            public void run() {
-                try {
-                    while (!isInterrupted()) {
-                        Thread.sleep(6000);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
+//
+//        Thread t = new Thread() {
+//
+//            @Override
+//            public void run() {
+//                try {
+//                    while (!isInterrupted()) {
+//                        Thread.sleep(6000);
+//                        runOnUiThread(new Runnable() {
+//                            @Override
+//                            public void run() {
 
 
         //Temperature
@@ -358,19 +358,19 @@ public class GraphicalViewRight extends AppCompatActivity {
         Calendar c = Calendar.getInstance();
         int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
         background = (ConstraintLayout) findViewById(R.id.Rightbackgounrd);
-//
-//        if (timeOfDay >= 17 || timeOfDay < 6 && Integer.parseInt(d) < 300) {
-//            background.setBackgroundResource(R.drawable.night_right);
-//        }
-//         else if (timeOfDay < 17 && timeOfDay >= 6 && Integer.parseInt(d) > 300) {
-//             background.setBackgroundResource(R.drawable.cloudy_right);
-//        }
-//        else if (timeOfDay < 17 && timeOfDay >= 6 && Integer.parseInt(d) < 300) {
-//              background.setBackgroundResource(R.drawable.cloudy_right);
-//        }
-//         else {
-//            background.setBackgroundResource(R.drawable.rightbalcony);
-//        }
+
+        if (timeOfDay >= 17 || timeOfDay < 6 && Integer.parseInt(d) < 300) {
+            background.setBackgroundResource(R.drawable.night_right);
+        }
+         else if (timeOfDay < 17 && timeOfDay >= 6 && Integer.parseInt(d) > 300) {
+             background.setBackgroundResource(R.drawable.cloudy_right);
+        }
+        else if (timeOfDay < 17 && timeOfDay >= 6 && Integer.parseInt(d) < 300) {
+              background.setBackgroundResource(R.drawable.sunny_right);
+        }
+         else {
+            background.setBackgroundResource(R.drawable.rightbalcony);
+        }
 
         //watering
         GetSendData ts = new GetSendData();
@@ -760,15 +760,15 @@ public class GraphicalViewRight extends AppCompatActivity {
         d = g.GetData(map.get("G"));
         data.setText(d);
 
-
-    }
-});
-        }
-        } catch (InterruptedException e) {
-        }
-        }
-        };
-        t.start();
+//
+//    }
+//});
+//        }
+//        } catch (InterruptedException e) {
+//        }
+//        }
+//        };
+//        t.start();
 
 
     }
