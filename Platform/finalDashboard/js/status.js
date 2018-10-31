@@ -1,5 +1,9 @@
 const statusChannel = {
-	// Pump Status (Vegetables, Flowers, TOP, Fogg)
+<<<<<<< Updated upstream
+	// Pump Status (Vegetables, Flowers, Fogg)
+=======
+	// Pump Status (Vegetables, Flowers, TOP(Fogg))
+>>>>>>> Stashed changes
    	'PS': [{'id': '671', 'apiKey': 'XAKAVEUUJQ9GZGMT'},
    	{'id': '744', 'apiKey': 'PD74MGJ9RFR4YMHK'},
    	{'id': '750', 'apiKey': 'FGGX36CLKXBW2BN4'}],
@@ -20,35 +24,28 @@ function pumpStatusHttpGetAsync(theUrl, callback, i) {
             if(num === 0) {
             	switch(i) {
             		case 0:
-            		document.querySelector("#pumpStatusOfVegs").src = "img/X.png";
+            		document.querySelector("#pumpStatusOfVegs").src = "img/drip-off.png";
                     break;
             		case 1:
-            		document.querySelector("#pumpStatusOfFlwrs").src = "img/X.png";
+            		document.querySelector("#pumpStatusOfFlwrs").src = "img/drip-off.png";
                     break;
             		case 2:
-            		document.querySelector("#waterTopStatus").src = "img/watertap-off.png";
-                    break;
-            		case 3:
-            		document.querySelector("#foggNozzleStatus").src = "img/fognozzle2-off-v2.png";
+                    document.querySelector("#foggNozzleStatus").src = "img/fognozzle2-off-v2.png";
+            		// document.querySelector("#waterTapStatus").src = "img/watertap-off.png";
                     break;
             	}
             }
             if (num === 1) {
             	switch(i) {
             		case 0:
-            		document.querySelector("#pumpStatusOfVegs").src = "img/X.png";
+            		document.querySelector("#pumpStatusOfVegs").src = "img/drip-on.png";
                     break;
             		case 1:
-					document.querySelector("#pumpStatusOfFlwrs").src = "img/X.png";
+					document.querySelector("#pumpStatusOfFlwrs").src = "img/drip-on.png";
                     break;
             		case 2:
-					document.querySelector("#waterTopStatus").src = "img/watertap-on-v2.png";
+					document.querySelector("#foggNozzleStatus").src = "img/fognozzle2-off-v2.png";
                     break;
-            		case 3:
-            		document.querySelector("#foggNozzleStatus").src = "img/fognozzle2-on.png";
-                    break;            		        	
-        		}
-
             }
         }
     };
