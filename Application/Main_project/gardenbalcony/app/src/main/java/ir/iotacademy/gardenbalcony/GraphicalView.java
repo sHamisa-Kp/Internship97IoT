@@ -21,6 +21,8 @@ import java.util.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
 
 import static ir.iotacademy.gardenbalcony.R.drawable.day;
 import static ir.iotacademy.gardenbalcony.R.drawable.drop;
@@ -43,8 +45,8 @@ public class GraphicalView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_graphical_view);
 
+        setContentView(R.layout.activity_graphical_view);
       /*  go_to_the_right_position = (ImageButton) findViewById(R.id.go_right);
 
 
@@ -59,6 +61,9 @@ public class GraphicalView extends AppCompatActivity {
             }
         });
         */
+
+
+
 
 
         //weather
@@ -107,8 +112,9 @@ public class GraphicalView extends AppCompatActivity {
 //                            public void run() {
 
 
-//
-//        //Temperature
+
+
+       //Temperature
         data = (TextView) findViewById(R.id.temperature);
         GetSendData t0 = new GetSendData();
         data.setText(t0.GetData(map.get("T0")) + "°C");
@@ -852,6 +858,10 @@ public class GraphicalView extends AppCompatActivity {
 //            }
 //        };
 //        t.start();
+
+
+
+
     }
 }
 

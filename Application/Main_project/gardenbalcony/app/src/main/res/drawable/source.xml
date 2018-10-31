@@ -6,10 +6,10 @@
 
     <item
         android:drawable="@drawable/source_error"
-        android:duration="80"></item>
+        android:duration="250"></item>
     <item
         android:drawable="@drawable/source6"
-        android:duration="80"></item>
+        android:duration="250"></item>
 
 
 </animation-list>
