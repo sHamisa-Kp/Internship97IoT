@@ -313,7 +313,11 @@ h3 {
 
 .gaugeHolder { 
     position: relative;
+<<<<<<< HEAD
+    left: 25%;
+=======
     left: 20%;      
+>>>>>>> master
 /*    float: right;
     visibility: visible;
     position: relative;*/
