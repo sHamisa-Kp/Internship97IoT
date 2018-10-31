@@ -93,4 +93,4 @@ for(let i = 0; i < smFlwrChannel.SM.length; i++) {
     flwrsoilmoistureError.push(false);
 }
 
-setInterval(smFlwrUpdateThePage, updateInterval);
+setInterval(smFlwrUpdateThePage, 3000);
