@@ -48,7 +48,7 @@ android:layout_height="fill_parent"
                         android:layout_height="676dp"
                         android:background="@drawable/night_right">
 
-                        <ImageButton
+                 <!--       <ImageButton
                             android:layout_width="wrap_content"
                             android:id="@+id/go_middle_from_right"
                             android:layout_height="wrap_content"
@@ -59,7 +59,7 @@ android:layout_height="fill_parent"
                             android:layout_marginLeft="168dp"
                             android:layout_marginTop="380dp"
                             android:rotation="-10"
-                            />
+                            /> !-->
 
                         <ImageView
                             android:id="@+id/Rightfloormoisture"

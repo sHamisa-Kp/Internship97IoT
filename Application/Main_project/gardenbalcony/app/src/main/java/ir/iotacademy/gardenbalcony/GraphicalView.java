@@ -45,7 +45,7 @@ public class GraphicalView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graphical_view);
 
-        go_to_the_right_position = (ImageButton) findViewById(R.id.go_right);
+      /*  go_to_the_right_position = (ImageButton) findViewById(R.id.go_right);
 
 
         go_to_the_right_position.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +58,7 @@ public class GraphicalView extends AppCompatActivity {
 
             }
         });
+        */
 
 
         //weather

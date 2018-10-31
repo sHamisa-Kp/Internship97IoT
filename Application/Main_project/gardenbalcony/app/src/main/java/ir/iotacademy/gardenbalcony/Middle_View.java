@@ -18,8 +18,8 @@ public class Middle_View extends AppCompatActivity {
         final ImageView source1,source2,source3,source4,source5,source6;
         int wl;
 
-        goRight = (ImageButton) findViewById(R.id.go_right2);
-        goLeft = (ImageButton) findViewById(R.id.go_left);
+       /* goRight = (ImageButton) findViewById(R.id.go_right2);
+        goLeft = (ImageButton) findViewById(R.id.go_left);*/
 
         source6= (ImageView) findViewById(R.id.source6);
         source5= (ImageView) findViewById(R.id.source5);
@@ -103,7 +103,7 @@ public class Middle_View extends AppCompatActivity {
 
             }
         }
-        goRight.setOnClickListener(new View.OnClickListener() {
+     /*   goRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Middle_View.this, GraphicalViewRight.class);
@@ -117,7 +117,7 @@ public class Middle_View extends AppCompatActivity {
                 Intent intent = new Intent(Middle_View.this, GraphicalView.class);
                 startActivity(intent);
             }
-        });
+        });*/
     }
 
 

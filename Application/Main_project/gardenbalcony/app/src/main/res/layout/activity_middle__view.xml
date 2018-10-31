@@ -91,7 +91,7 @@
                 android:layout_marginTop="190dp"
                 android:visibility="invisible"/>
 
-        <ImageButton
+   <!--     <ImageButton
             android:id="@+id/go_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -113,7 +113,7 @@
             android:background="@null"
             android:layout_marginTop="50dp"
             android:src="@drawable/right_arrow"
-            />
+            />!-->
 
     </android.support.constraint.ConstraintLayout>
         </HorizontalScrollView>

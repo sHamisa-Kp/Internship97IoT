@@ -567,7 +567,7 @@ android:layout_height="fill_parent"
                             android:layout_marginTop="535dp" />
 
 
-                        <ImageButton
+                    <!--    <ImageButton
                             android:id="@+id/go_right"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -577,6 +577,7 @@ android:layout_height="fill_parent"
                             app:layout_constraintTop_toTopOf="parent"
                             android:layout_marginLeft="1540dp"
                             android:layout_marginTop="300dp" />
+                            !-->
 
                         <TextView
                             android:layout_width="wrap_content"
