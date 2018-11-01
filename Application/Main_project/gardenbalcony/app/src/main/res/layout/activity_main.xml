@@ -165,7 +165,7 @@ android:layout_marginLeft="5dp"
                 android:id="@+id/imageView212"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
                 app:srcCompat="@drawable/flowers" />
 

@@ -2,15 +2,18 @@ package ir.iotacademy.gardenbalcony;
 
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -27,9 +30,13 @@ public class MainActivity extends AppCompatActivity  {
     TextView NIC;
 
 
+<<<<<<< Updated upstream
+=======
     String preUrl="http://thingtalk.ir/channels/";
     String preip="http://10.1.248.34:5050/actuators/";
     Map<String,String> map=new HashMap<String, String>();
+    boolean connected = false;
+>>>>>>> Stashed changes
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,33 +163,43 @@ public class MainActivity extends AppCompatActivity  {
                 startActivity(intent);
             }
         });
-
-
-        NIC= (TextView) findViewById(R.id.internet);
-
-        if(!isNetworkAvailable()){
-            background.setVisibility(View.GONE);
-            NIC.setVisibility(View.VISIBLE);
-
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+            connected = true;
         }
-
-
+        else
+            connected = false;
 
 
 
     }
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+
+
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        // put your code here...
+        Graphical_view_right= (CardView) findViewById(R.id.graphicalright);
+
+        if(connected == false){
+               // Toast.makeText(MainActivity.this, "You must have internet access", Toast.LENGTH_LONG).show();
+            AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+            alertDialog.setTitle("No Wi-Fi");
+            alertDialog.setMessage("You must have internet access to continue");
+            alertDialog.setIcon(R.drawable.wifi);
+//            alertDialog.requestWindowFeature(Window.FEATURE_LEFT_ICON);
+//            alertDialog.setFeatureDrawableResource(Window.FEATURE_LEFT_ICON, R.drawable.avatar);
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            alertDialog.show();
+          //  Graphical_view_right.setEnabled(false);
+        }
     }
-
-
-
-
-
-
-
-
 }
