@@ -30,13 +30,12 @@ public class MainActivity extends AppCompatActivity  {
     TextView NIC;
 
 
-<<<<<<< Updated upstream
-=======
+
     String preUrl="http://thingtalk.ir/channels/";
     String preip="http://10.1.248.34:5050/actuators/";
     Map<String,String> map=new HashMap<String, String>();
     boolean connected = false;
->>>>>>> Stashed changes
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

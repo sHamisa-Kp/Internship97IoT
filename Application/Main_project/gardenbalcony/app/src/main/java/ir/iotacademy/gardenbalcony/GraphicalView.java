@@ -23,6 +23,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -33,12 +34,11 @@ import java.util.*;
 
 import java.util.HashMap;
 import java.util.Map;
-<<<<<<< Updated upstream
+
 import java.util.logging.Handler;
 import java.util.logging.LogRecord;
-=======
+
 import java.util.concurrent.ExecutionException;
->>>>>>> Stashed changes
 
 import static ir.iotacademy.gardenbalcony.R.drawable.day;
 import static ir.iotacademy.gardenbalcony.R.drawable.drop;
@@ -53,7 +53,7 @@ public class GraphicalView extends AppCompatActivity {
     datafm0, datawm, datag;
     String d,d1;
     int water_level = 0;
-    int up_pump_status = 0;
+    int up_pump_status =0, lamp_status=0;
     String preUrl="http://thingtalk.ir/channels/";
     String preip="http://10.1.248.34:5050/actuators/";
     Map<String,String> map=new HashMap<String, String>();
@@ -79,15 +79,9 @@ public class GraphicalView extends AppCompatActivity {
             }
         });
         */
-<<<<<<< Updated upstream
 
-
-
-
-
-=======
        final  RequestQueue queue = Volley.newRequestQueue(getApplicationContext());//final  RequestQueue queueveg = Volley.newRequestQueue(getApplicationContext());
->>>>>>> Stashed changes
+
         //weather
         map.put("T0", preUrl + "629/feed.json?key=G7KHR97UPN9OC5AC&results=1");
         map.put("H0", preUrl + "669/feed.json?key=7TPW8OQOGN1EMURD&results=1");
@@ -132,25 +126,25 @@ public class GraphicalView extends AppCompatActivity {
 //                        runOnUiThread(new Runnable() {
 //                            @Override
 //                            public void run() {
-<<<<<<< Updated upstream
-
-
-
-
-       //Temperature
-        data = (TextView) findViewById(R.id.temperature);
-        GetSendData t0 = new GetSendData();
-        data.setText(t0.GetData(map.get("T0")) + "°C");
-
-
-        //Humidity
-        data = (TextView) findViewById(R.id.humidity);
-        GetSendData h0 = new GetSendData();
-        data.setText(h0.GetData(map.get("H0")) + "%");
-=======
+//<<<<<<< Updated upstream
 //
->>>>>>> Stashed changes
-
+//
+//
+//
+//       //Temperature
+//        data = (TextView) findViewById(R.id.temperature);
+//        GetSendData t0 = new GetSendData();
+//        data.setText(t0.GetData(map.get("T0")) + "°C");
+//
+//
+//        //Humidity
+//        data = (TextView) findViewById(R.id.humidity);
+//        GetSendData h0 = new GetSendData();
+//        data.setText(h0.GetData(map.get("H0")) + "%");
+//=======
+////
+//>>>>>>> Stashed changes
+//
 //
         datat = (TextView) findViewById(R.id.temperature);
         datah = (TextView) findViewById(R.id.humidity);
@@ -179,6 +173,12 @@ public class GraphicalView extends AppCompatActivity {
         mistbtn = (ImageButton) findViewById(R.id.mist_btn);
         datawm = (TextView) findViewById(R.id.textwattmeter1);
         datag = (TextView) findViewById(R.id.textsmoke);
+        onlamp = (ImageView) findViewById(R.id.onlamp);
+        offlamp = (ImageView) findViewById(R.id.offlamp);
+        onswitch = (ImageButton) findViewById(R.id.on_switch);
+        offswitch = (ImageButton) findViewById(R.id.off_switch);
+        motion= (ImageView) findViewById(R.id.onmotion);
+
 
 
 
@@ -982,7 +982,7 @@ public class GraphicalView extends AppCompatActivity {
                                 serial = serial.substring(0, serial.indexOf('.'));
                             }
                             int num = Integer.parseInt(serial) + 1;
-
+                            datafm0.setText(serial);
                             if(num == 1){
                                 puddle.setVisibility(View.VISIBLE);
                             }
@@ -1081,7 +1081,7 @@ public class GraphicalView extends AppCompatActivity {
 
                 //GetSendData pst = new GetSendData();
                 //d = pst.GetData(map.get("PST"));
-                if (!(((AnimationDrawable) mistbtn.getBackground()).isRunning()) && !(((AnimationDrawable) mistbtn2.getBackground()).isRunning())&& water_level > 5 && up_pump_status==0) {
+                if (!(((AnimationDrawable) mistbtn.getBackground()).isRunning()) && !(((AnimationDrawable) mistbtn2.getBackground()).isRunning())){//&& water_level > 5 && up_pump_status==0) {
 
                     //pst.SetActuator(preip+"setPS2ON",d);
 
@@ -1097,6 +1097,46 @@ public class GraphicalView extends AppCompatActivity {
                             ((AnimationDrawable) mistbtn2.getBackground()).start();
                         }
                     });
+
+                    StringRequest postRequest = new StringRequest(Request.Method.POST, preip+"setPS2ON",
+                            new Response.Listener<String>()
+                            {
+                                @Override
+                                public void onResponse(String response) {
+                                    // response
+                                  //  Log.d("Response", response);
+                                    Toast.makeText(GraphicalView.this, "pump is on", Toast.LENGTH_SHORT).show();
+                                }
+                            },
+                            new Response.ErrorListener()
+                            {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    // error
+                                    //    Log.d("Error.Response", response);
+                                    Toast.makeText(GraphicalView.this, "can't connect to pump", Toast.LENGTH_SHORT).show();
+                                    mistbtn.post(new Runnable() {
+
+                                        @Override
+                                        public void run() {
+                                            ((AnimationDrawable) mistbtn.getBackground()).stop();
+                                        }
+                                    });
+                                    mistbtn.setVisibility(View.INVISIBLE);
+                                    mistbtn.setVisibility(View.VISIBLE);
+                                    mistbtn2.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            ((AnimationDrawable) mistbtn2.getBackground()).stop();
+                                        }
+                                    });
+                                    mistbtn2.setVisibility(View.INVISIBLE);
+                                    mistbtn2.setVisibility(View.VISIBLE);
+                                }
+                            }
+                    );
+                    queue.add(postRequest);
+
 
                 } else {
 
@@ -1119,6 +1159,41 @@ public class GraphicalView extends AppCompatActivity {
                     });
                     mistbtn2.setVisibility(View.INVISIBLE);
                     mistbtn2.setVisibility(View.VISIBLE);
+                    StringRequest postRequest = new StringRequest(Request.Method.POST, preip+"setPS2OFF",
+                            new Response.Listener<String>()
+                            {
+                                @Override
+                                public void onResponse(String response) {
+                                    // response
+                                    //  Log.d("Response", response);
+                                    Toast.makeText(GraphicalView.this, "pump is off", Toast.LENGTH_SHORT).show();
+
+                                }
+                            },
+                            new Response.ErrorListener()
+                            {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    // error
+                                    //    Log.d("Error.Response", response);
+                                    Toast.makeText(GraphicalView.this, "can't connect to pump", Toast.LENGTH_SHORT).show();
+                                    mistbtn.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            ((AnimationDrawable) mistbtn.getBackground()).start();
+                                        }
+                                    });
+                                    mistbtn2.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            ((AnimationDrawable) mistbtn2.getBackground()).start();
+                                        }
+                                    });
+
+                                }
+                            }
+                    );
+                    queue.add(postRequest);
                 }
             }
         });
@@ -1146,6 +1221,44 @@ public class GraphicalView extends AppCompatActivity {
                             ((AnimationDrawable) mistbtn2.getBackground()).start();
                         }
                     });
+                    StringRequest postRequestPSon = new StringRequest(Request.Method.POST, preip+"setPS2ON",
+                            new Response.Listener<String>()
+                            {
+                                @Override
+                                public void onResponse(String response) {
+                                    // response
+                                    //  Log.d("Response", response);
+                                    Toast.makeText(GraphicalView.this, "pump is on", Toast.LENGTH_SHORT).show();
+                                }
+                            },
+                            new Response.ErrorListener()
+                            {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    // error
+                                    //    Log.d("Error.Response", response);
+                                    Toast.makeText(GraphicalView.this, "can't connect to pump", Toast.LENGTH_SHORT).show();
+                                    mistbtn.post(new Runnable() {
+
+                                        @Override
+                                        public void run() {
+                                            ((AnimationDrawable) mistbtn.getBackground()).stop();
+                                        }
+                                    });
+                                    mistbtn.setVisibility(View.INVISIBLE);
+                                    mistbtn.setVisibility(View.VISIBLE);
+                                    mistbtn2.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            ((AnimationDrawable) mistbtn2.getBackground()).stop();
+                                        }
+                                    });
+                                    mistbtn2.setVisibility(View.INVISIBLE);
+                                    mistbtn2.setVisibility(View.VISIBLE);
+                                }
+                            }
+                    );
+                    queue.add(postRequestPSon);
 
                 } else {
 
@@ -1166,6 +1279,58 @@ public class GraphicalView extends AppCompatActivity {
                     });
                     mistbtn2.setVisibility(View.INVISIBLE);
                     mistbtn2.setVisibility(View.VISIBLE);
+                    mistbtn.post(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            ((AnimationDrawable) mistbtn.getBackground()).stop();
+                        }
+                    });
+                    mistbtn.setVisibility(View.INVISIBLE);
+                    mistbtn.setVisibility(View.VISIBLE);
+                    mistbtn2.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            ((AnimationDrawable) mistbtn2.getBackground()).stop();
+                        }
+                    });
+                    mistbtn2.setVisibility(View.INVISIBLE);
+                    mistbtn2.setVisibility(View.VISIBLE);
+                    StringRequest postRequestPSoff = new StringRequest(Request.Method.POST, preip+"setPS2OFF",
+                            new Response.Listener<String>()
+                            {
+                                @Override
+                                public void onResponse(String response) {
+                                    // response
+                                    //  Log.d("Response", response);
+                                    Toast.makeText(GraphicalView.this, "pump is off", Toast.LENGTH_SHORT).show();
+
+                                }
+                            },
+                            new Response.ErrorListener()
+                            {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    // error
+                                    //    Log.d("Error.Response", response);
+                                    Toast.makeText(GraphicalView.this, "can't connect to pump", Toast.LENGTH_SHORT).show();
+                                    mistbtn.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            ((AnimationDrawable) mistbtn.getBackground()).start();
+                                        }
+                                    });
+                                    mistbtn2.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            ((AnimationDrawable) mistbtn2.getBackground()).start();
+                                        }
+                                    });
+
+                                }
+                            }
+                    );
+                    queue.add(postRequestPSoff);
 
 
                 }
@@ -1173,124 +1338,200 @@ public class GraphicalView extends AppCompatActivity {
         });
 //
 //        //lamp status
-//
-//
-//
-//
-//        onlamp = (ImageView) findViewById(R.id.onlamp);
-//        offlamp = (ImageView) findViewById(R.id.offlamp);
-//        onswitch = (ImageButton) findViewById(R.id.on_switch);
-//        offswitch = (ImageButton) findViewById(R.id.off_switch);
-//
-//        GetSendData lbs = new GetSendData();
-//        d = lbs.GetData(map.get("LBS"));
-//        if(Integer.parseInt(d)==1){
-//
-//            onswitch.setVisibility(View.VISIBLE);
-//            offswitch.setVisibility(View.INVISIBLE);
-//            onlamp.setVisibility(View.VISIBLE);
-//            onlamp.post(new Runnable() {
-//                @Override
-//                public void run() {
-//
-//                    ((AnimationDrawable) onlamp.getBackground()).start();
-//
-//                }
-//            });
-//        }
-//        if(Integer.parseInt(d)==0){
-//            offswitch.setVisibility(View.VISIBLE);
-//            onswitch.setVisibility(View.INVISIBLE);
-//            onlamp.post(new Runnable() {
-//                @Override
-//                public void run() {
-//
-//                    ((AnimationDrawable) onlamp.getBackground()).stop();
-//
-//                }
-//            });
-//            onlamp.setVisibility(View.INVISIBLE);
-//        }
-//
-//        offswitch.setOnClickListener(new View.OnClickListener() {
-//
-//
-//            @Override
-//            public void onClick(View v) {
-//                GetSendData lbs = new GetSendData();
-//                d = lbs.GetData(map.get("LBS"));
-//
-//                if (onlamp.getVisibility() == View.INVISIBLE && onswitch.getVisibility() == View.INVISIBLE&&Integer.parseInt(d)==0 ) {
-//
-//                    lbs.SetActuator(preip+"setLBS0ON",d);
-//
-//                    onswitch.setVisibility(View.VISIBLE);
-//                    offswitch.setVisibility(View.INVISIBLE);
-//                    onlamp.setVisibility(View.VISIBLE);
-//                    onlamp.post(new Runnable() {
-//                        @Override
-//                        public void run() {
-//
-//                            ((AnimationDrawable) onlamp.getBackground()).start();
-//
-//                        }
-//                    });
-//
-//                }}
-//
-//        });
-//        onswitch.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                GetSendData lbs = new GetSendData();
-//                d = lbs.GetData(map.get("LBS"));
-//                lbs.SetActuator(preip+"setLBS0OFF",d);
-//
-//                offswitch.setVisibility(View.VISIBLE);
-//                onswitch.setVisibility(View.INVISIBLE);
-//                onlamp.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//
-//                        ((AnimationDrawable) onlamp.getBackground()).stop();
-//
-//                    }
-//                });
-//                onlamp.setVisibility(View.INVISIBLE);
-//
-//            }
-//        });
-//
-//        //motion detector
-//        GetSendData md = new GetSendData();
-//        d = md.GetData(map.get("MD"));
-//
-//        motion= (ImageView) findViewById(R.id.onmotion);
-//        if(d.equals("1")){
-//
-//            motion.post(new Runnable() {
-//                @Override
-//                public void run() {
-//
-//                    ((AnimationDrawable) motion.getBackground()).start();
-//
-//                }
-//            });
-//            motion.setVisibility(View.VISIBLE);
-//
-//        }
-//        else {
-//            motion.post(new Runnable() {
-//                @Override
-//                public void run() {
-//
-//                    ((AnimationDrawable) motion.getBackground()).stop();
-//
-//                }
-//            });
-//            motion.setVisibility(View.INVISIBLE);
-//        }
+
+        JsonObjectRequest getRequestlbs = new JsonObjectRequest(Request.Method.GET, map.get("LBS"), null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray array = response.getJSONArray("feeds");
+                            JSONObject data = array.getJSONObject(0);
+                            String serial = data.getString("field1");
+                            if (serial.indexOf('.') != -1) {
+                                serial = serial.substring(0, serial.indexOf('.'));
+                            }
+                            int num = Integer.parseInt(serial);
+                            lamp_status = num;
+                            if(num == 1){
+                                onswitch.setVisibility(View.VISIBLE);
+                                offswitch.setVisibility(View.INVISIBLE);
+                                onlamp.setVisibility(View.VISIBLE);
+                                onlamp.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                        ((AnimationDrawable) onlamp.getBackground()).start();
+
+                                    }
+                                });
+                            }
+                            if(num == 0){
+                                offswitch.setVisibility(View.VISIBLE);
+                                onswitch.setVisibility(View.INVISIBLE);
+                                onlamp.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                        ((AnimationDrawable) onlamp.getBackground()).stop();
+
+                                    }
+                                });
+                                onlamp.setVisibility(View.INVISIBLE);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                ,
+                new Response.ErrorListener()
+                {
+                    @Override public void onErrorResponse(VolleyError error) {
+                        //Toast.makeText(GraphicalView.this, "Connection Problem", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );queue.add(getRequestlbs);
+
+
+        offswitch.setOnClickListener(new View.OnClickListener() {
+
+
+            @Override
+            public void onClick(View v) {
+
+                if (onlamp.getVisibility() == View.INVISIBLE && onswitch.getVisibility() == View.INVISIBLE && lamp_status == 0 ) {
+
+                    onswitch.setVisibility(View.VISIBLE);
+                    offswitch.setVisibility(View.INVISIBLE);
+                    onlamp.setVisibility(View.VISIBLE);
+                    onlamp.post(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            ((AnimationDrawable) onlamp.getBackground()).start();
+
+                        }
+                    });
+                    StringRequest postRequestLBSON = new StringRequest(Request.Method.POST, preip +"setLBS0ON",
+                            new Response.Listener<String>()
+                            {
+                                @Override
+                                public void onResponse(String response) {
+                                    // response
+                                 //   Log.d("Response", response);
+                                    Toast.makeText(GraphicalView.this,"Lamp is on", Toast.LENGTH_SHORT).show();
+                                }
+                            },
+                            new Response.ErrorListener()
+                            {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    // error
+                                Toast.makeText(GraphicalView.this,"problem turning the lamp on", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                    );
+                    queue.add(postRequestLBSON);
+
+                }}
+
+        });
+        onswitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                GetSendData lbs = new GetSendData();
+                d = lbs.GetData(map.get("LBS"));
+                lbs.SetActuator(preip+"setLBS0OFF",d);
+
+                offswitch.setVisibility(View.VISIBLE);
+                onswitch.setVisibility(View.INVISIBLE);
+                onlamp.post(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        ((AnimationDrawable) onlamp.getBackground()).stop();
+
+                    }
+                });
+                onlamp.setVisibility(View.INVISIBLE);
+                StringRequest postRequestLBSoff = new StringRequest(Request.Method.POST, preip + "setLBS0OFF",
+                        new Response.Listener<String>()
+                        {
+                            @Override
+                            public void onResponse(String response) {
+                                // response
+                                Toast.makeText(GraphicalView.this,"Lamp is off", Toast.LENGTH_SHORT).show();
+
+                            }
+                        },
+                        new Response.ErrorListener()
+                        {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                // error
+                                Toast.makeText(GraphicalView.this,"problem turning the lamp off", Toast.LENGTH_SHORT).show();
+
+                            }
+                        }
+                );
+                queue.add(postRequestLBSoff);
+            }
+        });
+
+        //motion detector
+        GetSendData md = new GetSendData();
+        d = md.GetData(map.get("MD"));
+        JsonObjectRequest getRequestmd = new JsonObjectRequest(Request.Method.GET, map.get("MD"), null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray array = response.getJSONArray("feeds");
+                            JSONObject data = array.getJSONObject(0);
+                            String serial = data.getString("field1");
+                            if (serial.indexOf('.') != -1) {
+                                serial = serial.substring(0, serial.indexOf('.'));
+                            }
+                            int num = Integer.parseInt(serial);
+                            if(serial.equals("1")){
+
+                                motion.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                        ((AnimationDrawable) motion.getBackground()).start();
+
+                                    }
+                                });
+                                motion.setVisibility(View.VISIBLE);
+
+                            }
+                            else {
+                                motion.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                        ((AnimationDrawable) motion.getBackground()).stop();
+
+                                    }
+                                });
+                                motion.setVisibility(View.INVISIBLE);
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                ,
+                new Response.ErrorListener()
+                {
+                    @Override public void onErrorResponse(VolleyError error) {
+                    }
+                }
+        );queue.add(getRequestmd);
+
 
         //watt meter
         JsonObjectRequest getRequestwm = new JsonObjectRequest(Request.Method.GET, map.get("WM"), null,
