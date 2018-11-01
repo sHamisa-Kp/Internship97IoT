@@ -10,8 +10,8 @@ app = Flask(__name__)
 
 currentValuesOfVariables = {
     'PS': [None, None, None],
-    'LBS': [None, None],
-    'TS': [None],
+    'LBS': [0, 1],
+    'TS': [0],
     'SM': [None for i in range(18)],
     'T': [None, None],
     'H': [None, None],
@@ -19,16 +19,16 @@ currentValuesOfVariables = {
     'PH': [None for i in range(18)],
     'WL': [None],
     'PhR': [None, None],
-    'GS': [None, None],
+    'G': [None, None],
     'MD': [None, None],
     'WM': [None]
 }
 
 thresholdsOfSensors = {
-    'H': {'min': 40, 'max': 60},
-    'PhR': {'min': 300, 'max': 350},
-    'SM': {'minV': 50, 'maxV': 80, 'minF': 50, 'maxF': 80},
-    'WL': {'min': 0.1, 'max': 0.9}
+    'H': {'min': 40, 'max': 50},
+    'PhR': {'min': 300, 'max': 350},  # < 350: LIGHT; > 350: DARK;
+    'SM': {'minV': 50, 'maxV': 70, 'minF': 50, 'maxF': 70},
+    'WL': {'min': 0.3, 'max': 0.8}
 }
 
 apiKeys = {
@@ -113,6 +113,7 @@ apiKeys = {
 
     # WattMeter
     'WM': [{'id': '753', 'apiKey': 'OUAV3VIB076Y5UO0'}]}
+
 
 ser = serial.Serial(
     port='/dev/ttyAMA0',
@@ -214,10 +215,12 @@ def automateTasks(inputData):
             ser.write('setLBS1OFF\n'.encode('ascii'))
 
     elif dataType == 'WL':
-        if data < thresholdsOfSensors[dataType]['min'] and currentValuesOfVariables['TS'][0] == 0:
+        if data < thresholdsOfSensors[dataType]['min'] and (currentValuesOfVariables['TS'][0] == 0 or
+                                                            currentValuesOfVariables['TS'][0] is None):
             print('automateTasks: setTS0ON')
             ser.write('setTS0ON\n'.encode('ascii'))
-        elif data > thresholdsOfSensors[dataType]['max'] and currentValuesOfVariables['TS'][0] == 1:
+        elif data > thresholdsOfSensors[dataType]['max'] and (currentValuesOfVariables['TS'][0] == 1 or
+                                                              currentValuesOfVariables['TS'][0] is None):
             print('automateTasks: setTS0OFF')
             ser.write('setTS0OFF\n'.encode('ascii'))
 
@@ -264,50 +267,144 @@ def automateTasks(inputData):
                 ser.write('setPS1OFF\n'.encode('ascii'))
 
 
+def automateTasksPC(inputData):
+    dataType = inputData['dataType']
+
+    if dataType in ['PS', 'LBS', 'TS']:  # Actuators -> return
+        return
+    nodeNumber = int(inputData['nodeNumber'])
+    data = float(inputData['data'])
+
+    if dataType != 'SM':
+        average = 0
+        counter = 0
+        for V in currentValuesOfVariables[dataType]:
+            if V is not None:
+                average += V
+                counter += 1
+        if counter == 0:
+            return
+        average /= counter
+        data = average
+
+    if dataType == 'H':
+        if data < thresholdsOfSensors[dataType]['min'] and currentValuesOfVariables['PS'][2] == 0:
+            print('automateTasks: setPS2ON')
+        elif data > thresholdsOfSensors[dataType]['max'] and currentValuesOfVariables['PS'][2] == 1:
+            print('automateTasks: setPS2OFF')
+
+    elif dataType == 'PhR':
+        if data > thresholdsOfSensors[dataType]['max'] and (currentValuesOfVariables['LBS'][0] == 0 or
+                                                            currentValuesOfVariables['LBS'][1] == 0):
+            print('automateTasks: setLBS0ON')
+            print('automateTasks: setLBS1ON')
+        elif data < thresholdsOfSensors[dataType]['min'] and (currentValuesOfVariables['LBS'][0] == 1 or
+                                                              currentValuesOfVariables['LBS'][1] == 1):
+            print('automateTasks: setLBS0OFF')
+            print('automateTasks: setLBS1OFF')
+
+    elif dataType == 'WL':
+        if data < thresholdsOfSensors[dataType]['min'] and (currentValuesOfVariables['TS'][0] == 0 or
+                                                            currentValuesOfVariables['TS'][0] is None):
+            print('automateTasks: setTS0ON')
+        elif data > thresholdsOfSensors[dataType]['max'] and (currentValuesOfVariables['TS'][0] == 1 or
+                                                              currentValuesOfVariables['TS'][0] is None):
+            print('automateTasks: setTS0OFF')
+
+    elif dataType == 'SM':
+        if nodeNumber <= 7:
+            average = 0
+            counter = 0
+            for i in range(0, 8):
+                V = currentValuesOfVariables[dataType][i]
+                if V is not None:
+                    average += V
+                    counter += 1
+
+            if counter == 0:
+                return
+            average /= counter
+            data = average
+
+            if data < thresholdsOfSensors[dataType]['minV'] and currentValuesOfVariables['PS'][0] == 0:
+                print('automateTasks: setPS0ON')
+            elif data > thresholdsOfSensors[dataType]['maxV'] and currentValuesOfVariables['PS'][0] == 1:
+                print('automateTasks: setPS0OFF')
+        else:
+            average = 0
+            counter = 0
+            for i in range(8, 18):
+                V = currentValuesOfVariables[dataType][i]
+                if V is not None:
+                    average += V
+                    counter += 1
+
+            if counter == 0:
+                return
+            average /= counter
+            data = average
+
+            if data < thresholdsOfSensors[dataType]['minF'] and currentValuesOfVariables['PS'][1] == 0:
+                print('automateTasks: setPS1ON')
+            elif data > thresholdsOfSensors[dataType]['maxF'] and currentValuesOfVariables['PS'][1] == 1:
+                print('automateTasks: setPS1OFF')
+
+
 def sendData(inputData):
-    # try:
     updateCurrentValuesOfVariables(inputData)
     automateTasks(inputData)
+    # automateTasksPC(inputData)
 
     payload = {'api_key': apiKeys[inputData["dataType"]][int(inputData["nodeNumber"])]['apiKey'],
                'field1': inputData["data"]}
-    r = requests.post("http://thingtalk.ir/update", data=payload)
-    print("Data sent! ")
-    print(r.status_code, r.reason)
-    print("r.text: " + r.text)
-    print("--------------------------------------------------")
-    if r.status_code == 200 and r.text != '0':
-        return True
-    return False
-    # except:
-    #     print("Connection Error... Thingtalk is kidding us :(")
-    #     return False
+    try:
+        r = requests.post("http://thingtalk.ir/update", data=payload)
+        print("PAYLOAD:")
+        print(payload)
+        print("Data sent! ")
+        print(r.status_code, r.reason)
+        print("r.text: " + r.text)
+        print("--------------------------------------------------")
+        if r.status_code == 200 and r.text != '0':
+            return True
+        return False
+    except Exception as e:
+        print("Thingtalk Problem!")
+        print(e)
 
 
 def serialReadThread():
     print("Now Raspberry pi is ready :)")
     while True:
         if ser.inWaiting() > 0:
-            print(datetime.datetime.now())
-            inputBin = ser.readline()
+            try:
+                print(datetime.datetime.now())
+                inputBin = ser.readline()
 
-            inputStr = zigbeeDataToString(inputBin)
-            print("inputStr: " + inputStr)
-            inputData = stringToDataHandler(inputStr)
-            print("inputData: ")
-            print(inputData)
-            sendData(inputData)
+                inputStr = zigbeeDataToString(inputBin)
+                print("inputStr: " + inputStr)
+                inputData = stringToDataHandler(inputStr)
 
-        ### TEST THREAD WORKING ###
-        # print("Enter 1 or 0:")
-        # num = input()
-        # ser.write(num.encode('ascii'))
+                print("inputData: ")
+                print(inputData)
+                sendData(inputData)
+            except Exception as e:
+                print(e)
+    # print("Now Raspberry pi is ready :)")
+    # while True:
+    #     try:
+    #         print(datetime.datetime.now())
+    #         print("Your TX: ")
+    #         inputStr = input()
+    #         print("inputStr: " + inputStr)
+    #         inputData = stringToDataHandler(inputStr)
+    #
+    #         print("inputData: ")
+    #         print(inputData)
+    #         sendData(inputData)
+    #     except Exception as e:
+    #         print(e)
 
-
-# GPIO.setmode(GPIO.BOARD)
-# pumpPin = 40
-# GPIO.setup(pumpPin, GPIO.OUT)
-# GPIO.output(pumpPin, GPIO.HIGH)
 
 thread = Thread(target=serialReadThread)
 thread.start()
