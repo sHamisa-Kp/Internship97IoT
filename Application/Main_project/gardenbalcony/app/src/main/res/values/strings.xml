@@ -25,4 +25,5 @@
     <string name="title_activity_mixed_dashboard">MixedDashboard</string>
     <string name="title_activity_notifications">Notifications</string>
     <string name="title_activity_hi">Hi</string>
+    <string name="precentage_mark">%</string>
 </resources>

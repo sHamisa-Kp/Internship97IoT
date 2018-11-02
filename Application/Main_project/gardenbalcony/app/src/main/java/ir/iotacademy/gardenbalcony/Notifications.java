@@ -225,7 +225,7 @@ public class Notifications extends AppCompatActivity {
         });
 
         if (data<5){
-            createNotificationHighWaterLevel();
+            createNotificationLowWaterLevel();
             tvlowsourcelevel.setText("the water source will be empty soon!");
             lowsourcelevel.setVisibility(View.VISIBLE);
         }

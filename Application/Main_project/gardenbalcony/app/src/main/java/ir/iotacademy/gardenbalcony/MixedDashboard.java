@@ -16,17 +16,18 @@ import android.widget.TextView;
 public class MixedDashboard extends AppCompatActivity {
     public static final String WEBSITE_ADDRESS = "website_address";
 
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_just_value);
+        WebView dashboard = (WebView) findViewById(R.id.webdashboard);
+        dashboard.getSettings().setJavaScriptEnabled(true);
+        dashboard.getSettings().setBuiltInZoomControls(true);
+        dashboard.setWebChromeClient(new WebChromeClient());
+        dashboard.loadUrl("file:///android_asset/www/view3.html");
 
-        String url = getIntent().getStringExtra(WEBSITE_ADDRESS);
-        if (url == null || url.isEmpty()) finish();
-
-        setContentView(R.layout.activity_mixed_dashboard);
-        WebView webView = (WebView) findViewById(R.id.nyc_poi_webview);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl(url);
     }
 }

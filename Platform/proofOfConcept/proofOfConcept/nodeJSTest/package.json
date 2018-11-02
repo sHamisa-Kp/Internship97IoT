@@ -1,0 +1,20 @@
+{
+  "name": "nodejstest",
+  "dependencies": {
+    "delay": "^3.0.0",
+    "express": "^4.16.3",
+    "request": "^2.88.0",
+    "request-json": "^0.6.3",
+    "xmlhttprequest": "^1.8.0"
+  },
+  "version": "1.0.0",
+  "main": "nodeTest.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

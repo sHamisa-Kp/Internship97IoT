@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>error view</title>
+	<link rel="stylesheet" type="text/css" href="view4.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+    <div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="../finalDashboard/value.html">Graphical view</a>
+  <a href="../view2/mychart.html">Chart view</a>
+  <a href="../finalDashboard/view3.html">Combined view</a>
+  <a href="view4.html">Error view</a>
+</div>
+
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
+<div class="tiles-grid">
+
+    <div data-role="tile" data-size="large" style="background-color: #25282d;" class="tile-large" data-role-tile="true">
+        <div class="tile-header">
+    	   <h3>SoilMoisture</h3>
+        </div>
+        <div class="tile-content">
+        	 <button id="btn0" class="circle width-40px">0</button>
+        	 <button id="btn1" class="circle width-40px">1</button>
+        	 <button id="btn2" class="circle width-40px">2</button>
+        	 <button id="btn3" class="circle width-40px">3</button>
+        	 <button id="btn4" class="circle width-40px">4</button>
+        	 <button id="btn5" class="circle width-40px">5</button>
+        	 <button id="btn6" class="circle width-40px">6</button>
+        	 <button id="btn7" class="circle width-40px">7</button>
+        	 <button id="btn8" class="circle width-40px">8</button>
+        	 <button id="btn9" class="circle width-40px">9</button>
+        	 <button id="btn10" class="circle width-40px">10</button>
+        	 <button id="btn11" class="circle width-40px">11</button>
+        	 <button id="btn12" class="circle width-40px">12</button>
+        	 <button id="btn13" class="circle width-40px">13</button>
+        	 <button id="btn14" class="circle width-40px">14</button>
+        	 <button id="btn15" class="circle width-40px">15</button>
+        	 <button id="btn16" class="circle width-40px">16</button>
+        	 <button id="btn17" class="circle width-40px">17</button>
+        </div>
+    </div>
+    <div data-role="tile" data-size="large" style="background-color: #25282d" class="tile-large" data-role-tile="true">
+        <div class="tile-header">
+        <h3>Temperature</h3>
+        </div>
+    <div class="tile-content">
+    	<button id="btn18" class="circle width-40px">0</button>
+    	<button id="btn19" class="circle width-40px">1</button>
+    </div>
+    </div> 
+    <div data-role="tile" data-size="large" style="background-color: #25282d" class="tile-large" data-role-tile="true">
+        <div class="tile-header">
+    	<h3>Humidity</h3>
+        </div>
+        <div class="tile-content">
+    	<button id="btn20" class="circle width-40px">0</button>
+    	<button id="btn21" class="circle width-40px">1</button>
+    </div>
+    </div>
+    <div data-role="tile" data-size="large" style="background-color: #25282d" class="tile-large" data-role-tile="true">
+        <div class="tile-header">
+    	<h3>Floor Humidity</h3>
+        </div>
+        <div class="tile-content">
+    	<button id="btn22" class="circle width-40px">0</button>
+    	<button id="btn23" class="circle width-40px">1</button>
+    </div>
+    </div>
+    <div data-role="tile" data-size="large" style="background-color: #25282d" class="tile-large" data-role-tile="true">
+        <div class="tile-header">
+    	<h3>PH</h3>
+        </div>
+        <div class="tile-content">
+    	<button id="btn24" class="circle width-40px">0</button>
+    	<button id="btn25" class="circle width-40px">1</button>
+    	<button id="btn26" class="circle width-40px">2</button>
+    	<button id="btn27" class="circle width-40px">3</button>
+    	<button id="btn28" class="circle width-40px">4</button>
+    	<button id="btn29" class="circle width-40px">5</button>
+    	<button id="btn30" class="circle width-40px">6</button>
+    	<button id="btn31" class="circle width-40px">7</button>
+    	<button id="btn32" class="circle width-40px">8</button>
+    	<button id="btn33" class="circle width-40px">9</button>
+    	<button id="btn34" class="circle width-40px">10</button>
+    	<button id="btn35" class="circle width-40px">11</button>
+    	<button id="btn36" class="circle width-40px">12</button>
+    	<button id="btn37" class="circle width-40px">13</button>
+    	<button id="btn38" class="circle width-40px">14</button>
+    	<button id="btn39" class="circle width-40px">15</button>
+    	<button id="btn40" class="circle width-40px">16</button>
+    	<button id="btn41" class="circle width-40px">17</button>
+
+        </div>
+    </div>
+</div>
+<br>
+
+<div class="tiles-grid">
+    <div data-role="tile" data-size="large" style="background-color: #25282d" class="tile-large" data-role-tile="true">
+        <div class="tile-header">
+    	<h3>Water Level</h3>
+        </div>
+        <div class="tile-content">
+    	<button id="btn42" class="circle width-40px">0</button>
+    </div>
+    </div>
+    <div data-role="tile" data-size="large" style="background-color: #25282d" class="tile-large" data-role-tile="true">
+        <div class="tile-header">
+    	<h3>Photo Resistor</h3>
+        </div>
+        <div class="tile-content">
+    	<button id="btn43" class="circle width-40px">0</button>
+    	<button id="btn44" class="circle width-40px">1</button>
+    </div>
+    </div>
+    <div data-role="tile" data-size="large" style="background-color: #25282d" class="tile-large" data-role-tile="true">
+        <div class="tile-header">
+    	<h3>Pump Status</h3>
+        </div>
+        <div class="tile-content">
+    	<button id="btn45" class="circle width-40px font-size-13px">Veg</button>
+    	<button id="btn46" class="circle width-40px font-size-13px">Flwr</button>
+    	<button id="btn47" class="circle width-40px font-size-13px">Top</button>
+    </div>
+    </div>
+    <div data-role="tile" data-size="large" style="background-color: #25282d" class="tile-large" data-role-tile="true">
+        <div class="tile-header">
+    	<h3>Light Bulb Status</h3>
+        </div>
+        <div class="tile-content">
+    	<button id="btn48" class="circle width-40px">0</button>
+    	<button id="btn49" class="circle width-40px">1</button>
+    </div>
+    </div>
+    <div data-role="tile" data-size="large" style="background-color: #25282d" class="tile-large" data-role-tile="true">
+        <div class="tile-header">
+    	<h3>Gas</h3>
+        </div>
+        <div class="tile-content">
+    	<button id="btn50" class="circle width-40px">0</button>
+    	<button id="btn51" class="circle width-40px">1</button>
+    </div>
+    </div>
+</div>
+<br>
+
+<div class="tiles-grid">
+<div data-role="tile" data-size="large" style="background-color: #25282d" class="tile-large" data-role-tile="true">
+    <div class="tile-header">
+	<h3>Tap Status</h3>
+    </div>
+    <div class="tile-content">
+    	<button id="btn52" class="circle width-40px">0</button>
+    </div>
+</div>
+<div data-role="tile" data-size="large" style="background-color: #25282d" class="tile-large" data-role-tile="true">
+    <div class="tile-header">
+	<h3>Motion Detector</h3>
+    </div>
+    <div class="tile-content">
+    	<button id="btn53" class="circle width-40px">0</button>
+    	<button id="btn54" class="circle width-40px">1</button>
+    </div>
+</div>
+<div data-role="tile" data-size="large" style="background-color: #25282d" class="tile-large" data-role-tile="true">
+    <div class="tile-header">
+	<h3>WattMeter</h3>
+    </div>
+    <div class="tile-content">
+    	<button id="btn55" class="circle width-40px">0</button>
+    </div>
+</div>
+
+</div>
+
+<script type="text/javascript" src="soilMoisture.js"></script>
+<script type="text/javascript" src="temperature.js"></script>
+<script type="text/javascript" src="humidity.js"></script>
+<script type="text/javascript" src="floorHumidity.js"></script>
+<script type="text/javascript" src="ph.js"></script>
+<script type="text/javascript" src="waterLevel.js"></script>
+<script type="text/javascript" src="photoResistor.js"></script>
+<script type="text/javascript" src="pumpStatus.js"></script>
+<script type="text/javascript" src="lightBulbStatus.js"></script>
+<script type="text/javascript" src="gas.js"></script>
+<script type="text/javascript" src="tapStatus.js"></script>
+<script type="text/javascript" src="motionDetector.js"></script>
+
+</body>
+</html>

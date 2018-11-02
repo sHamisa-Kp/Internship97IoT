@@ -16,6 +16,7 @@ public class ErrorDashboard extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_just_value);
         WebView dashboard = (WebView) findViewById(R.id.webdashboard);
