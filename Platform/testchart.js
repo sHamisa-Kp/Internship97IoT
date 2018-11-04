@@ -1,4 +1,3 @@
-console.log("hey there!!")
 const smvChannel = {
 	// SoilMoisture (Vegetables: 0-7, Flowers: 8-17)
 	'SM': [{'id': '670', 'apiKey': 'LUJ9D21E177HESAW'},
@@ -18,13 +17,9 @@ let vegSMArray = new Array;
 vegSMArray = [[],[],[],[],[],[],[],[]];
 let temp = new Array;
 temp = [[],[],[],[],[],[],[],[]];
-let vegSMError = [];
-for(let j = 0; j < smvChannel.SM.length; j++) {
-    vegSMError.push(false);
-}
 let count = 0;
 let time = new Array();
-let colors = ['#9505f2','#f285b2','#f78340','#efef07','#85adf2','#85f2ea','#9cf285','#f00585','#f2b685','#f29585','#bcbbba'];
+let colors = ['#ba2898','#f285b2','#f78340','#efef07','#85adf2','#85f2ea','#9cf285','#f00585','#f2b685','#f29585','#bcbbba'];
 
 function smvHttpGetAsync(theUrl, callback, j) {
     let xmlHttp = new XMLHttpRequest();
@@ -32,20 +27,20 @@ function smvHttpGetAsync(theUrl, callback, j) {
         if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
             var text = new Array;
             text = JSON.parse(xmlHttp.responseText).feeds;
+
             if (count <= 7) {
-	            for(let i = 0; i <= 19; i++) {
-	                vegSMArray[j].push(parseInt(text[i].field1));
-	            };
-	            count += 1;
-            }
+            	for(let i = 0; i <= 19; i++) {
+                	vegSMArray[j].push(parseInt(text[i].field1));
+            	};
+            } count += 1;            
+
             if (count > 7) {
             	let vegSMArray = new Array;
             	vegSMArray = [[],[],[],[],[],[],[],[]];
             	for(let i = 0; i <= 19; i++) {
             		vegSMArray[j].push(parseInt(text[i].field1));
             	}
-            	count += 1;
-            }
+        	} 
             // for(let j = 0; j <= 7; j++) {
             // 	for(let i = 0; i <= 19; i++)
             // 		vegSMArray[j].forEach(function(elem) {
@@ -54,11 +49,14 @@ function smvHttpGetAsync(theUrl, callback, j) {
             // 			}
             // 		});
             // }
-            console.log(vegSMArray);
-            // newValueRecognizer(vegSMArray);
-			setValueForChart();	       	
-        }
-    };
+
+        	if (vegSMArray[j] != temp[j]) {
+				setValueForChart();
+				temp[j] = vegSMArray[j];
+			}
+			console.log(vegSMArray);
+		}	       	
+    }      
     xmlHttp.open("GET", theUrl, true); // true for asynchronous
     xmlHttp.send(null);
 }
@@ -85,18 +83,6 @@ function yAxisValues(theUrl) {
     	}
     }
 }
-
-// function newValueRecognizer(vegSMArray) {
-// 	for (var j = 0; j <= 7; j++) {
-// 		for (var i = 0; i <= 19; i++)
-// 			vegSMArray.forEach(function(elem){
-// 				if (elem != temp[j][i]) {
-// 					setValueForChart();
-// 				}
-// 			});		
-// 	}
-// 	temp = vegSMArray;
-// }
 
 function setValueForChart() {
 	 var onechart = 
