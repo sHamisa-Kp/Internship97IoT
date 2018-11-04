@@ -55,8 +55,8 @@ function smvHttpGetAsync(theUrl, callback, j) {
             // 		});
             // }
             console.log(vegSMArray);
-            newValueRecognizer(vegSMArray);
-			// setValueForChart();	       	
+            // newValueRecognizer(vegSMArray);
+			setValueForChart();	       	
         }
     };
     xmlHttp.open("GET", theUrl, true); // true for asynchronous
@@ -86,18 +86,17 @@ function yAxisValues(theUrl) {
     }
 }
 
-function newValueRecognizer(vegSMArray) {
-	for (var j = 0; j <= 7; j++) {
-		for (var i = 0; i <= 19; i++)
-			vegSMArray.forEach(function(elem){
-				if (elem !== temp[j][i]) {
-					setValueForChart();
-				}
-			});		
-	}
-	temp = vegSMArray;
-}
-console.log(vegSMArray);
+// function newValueRecognizer(vegSMArray) {
+// 	for (var j = 0; j <= 7; j++) {
+// 		for (var i = 0; i <= 19; i++)
+// 			vegSMArray.forEach(function(elem){
+// 				if (elem != temp[j][i]) {
+// 					setValueForChart();
+// 				}
+// 			});		
+// 	}
+// 	temp = vegSMArray;
+// }
 
 function setValueForChart() {
 	 var onechart = 
@@ -155,4 +154,4 @@ function smvUpdateTile(onechart) {
 
 setInterval(smvUpdateThePage, 3000);
 setInterval(yAxisValues("http://thingtalk.ir/channels/706/feed.json?key=WQFB2JIGRVXDIAR4&results=20"), 3000);
-// setInterval(setValueForChart, 3000);
+// setInterval(newValueRecognizer(vegSMArray), 3000);
