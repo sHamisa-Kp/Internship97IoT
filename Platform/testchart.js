@@ -16,49 +16,50 @@ const smvErrorValue = {
 
 let vegSMArray = new Array;
 vegSMArray = [[],[],[],[],[],[],[],[]];
+let temp = new Array;
+temp = [[],[],[],[],[],[],[],[]];
 let vegSMError = [];
 for(let j = 0; j < smvChannel.SM.length; j++) {
     vegSMError.push(false);
 }
+let count = 0;
 let time = new Array();
-let date = new Array;
-let colors=['#9505f2','#f285b2','#f78340','#8785f2','#85adf2','#85f2ea','#9cf285','#f00585','#f2b685','#f29585','#bcbbba'];
+let colors = ['#9505f2','#f285b2','#f78340','#efef07','#85adf2','#85f2ea','#9cf285','#f00585','#f2b685','#f29585','#bcbbba'];
 
 function smvHttpGetAsync(theUrl, callback, j) {
-	console.log("First func is working");
     let xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() { 
         if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
-        	console.log("everything is ok!");
-            // callback(xmlHttp.responseText);
-            var text=new Array;
+            var text = new Array;
             text = JSON.parse(xmlHttp.responseText).feeds;
-            for(let i=0;i<=19;i++){
-                vegSMArray[j].push(parseInt(text[i].field1));
-                // date[j]=(text[i].created_at.slice(0,9) + '' + text[i].created_at.slice(11,19));
-            };
-            date = yAxisValues("http://thingtalk.ir/channels/706/feed.json?key=WQFB2JIGRVXDIAR4&results=20");
-            console.log(date);
-            var onechart = 
-            {
-            	labels: date,
-            	datasets: []
-            };
-            for(let j=0;j<=7;j++){
-            	var Data={
-            		label:'sensor'+ (j+1),
-            		data:vegSMArray[j],
-            		borderWidth: 1,
-            		fill:false,
-            		borderColor:colors[j]
-            	};
-        	}
-        	onechart.datasets.push(Data);
-            smvUpdateTile(onechart);
+            if (count <= 7) {
+	            for(let i = 0; i <= 19; i++) {
+	                vegSMArray[j].push(parseInt(text[i].field1));
+	            };
+	            count += 1;
+            }
+            if (count > 7) {
+            	let vegSMArray = new Array;
+            	vegSMArray = [[],[],[],[],[],[],[],[]];
+            	for(let i = 0; i <= 19; i++) {
+            		vegSMArray[j].push(parseInt(text[i].field1));
+            	}
+            	count += 1;
+            }
+            // for(let j = 0; j <= 7; j++) {
+            // 	for(let i = 0; i <= 19; i++)
+            // 		vegSMArray[j].forEach(function(elem) {
+            // 			if (elem < smvErrorValue.SM.min || elem > smvErrorValue.SM.max) {            				
+            // 				colors[j] = 'red';
+            // 			}
+            // 		});
+            // }
+            console.log(vegSMArray);
+            newValueRecognizer(vegSMArray);
+			// setValueForChart();	       	
         }
-        else {console.log("xml req have trouble :(");}
     };
-    xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous
     xmlHttp.send(null);
 }
 
@@ -70,7 +71,6 @@ function smvUpdateThePage() {
 }
 
 function yAxisValues(theUrl) {
-	console.log("yAxisValues calling correctly!!");
 	let xmlHttp = new XMLHttpRequest();
     xmlHttp.open("GET", theUrl, true); // true for asynchronous 
     xmlHttp.send(null);
@@ -78,18 +78,46 @@ function yAxisValues(theUrl) {
     	if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
     		var y = new Array();
     		y = JSON.parse(xmlHttp.responseText).feeds;
-    		for(let i=0;i<=19;i++){
-    			time.push(y[i].created_at.slice(0,9) + '' + y[i].created_at.slice(11,19));
-    			// label.push(text[i].created_at)
-    			// res.push(label[i].slice(11,19));
+    		for(let i = 0; i <= 19; i++) {
+    			time[i] = (y[i].created_at.slice(11,19));
     		};
     		console.log(time);
-    		return time;
-
     	}
     }
-    // return time;	
 }
+
+function newValueRecognizer(vegSMArray) {
+	for (var j = 0; j <= 7; j++) {
+		for (var i = 0; i <= 19; i++)
+			vegSMArray.forEach(function(elem){
+				if (elem !== temp[j][i]) {
+					setValueForChart();
+				}
+			});		
+	}
+	temp = vegSMArray;
+}
+console.log(vegSMArray);
+
+function setValueForChart() {
+	 var onechart = 
+        {
+            labels: time,
+            datasets: []
+        };
+
+	for(let j = 0; j <= 7; j++) {	
+		var Data={
+			label:'sensor'+ (j+1),
+			data:vegSMArray[j],
+			borderWidth: 1,
+			fill:false,
+			borderColor:colors[j]
+		};
+		onechart.datasets.push(Data);		
+	} 
+	smvUpdateTile(onechart);	
+};
 
 function smvUpdateTile(onechart) {
 	var ctx = document.getElementById('myChart');
@@ -100,15 +128,18 @@ function smvUpdateTile(onechart) {
 	    // The data for our dataset
 	    data: onechart,
 	    // {
-	    // 	labels: date,
+	    // 	labels: time,
 	    // 	datasets: [{
-	    // 		label: "My First dataset",
-	    // 		backgroundColor: 'rgba(255, 99, 132,0)',
-	    // 		borderColor: 'rgb(255, 0, 0)',
+	    // 		label: myLabel,
 	    // 		data: vegSMArray,
+	    // 		borderColor: myBorderColor,
+	    // 		borderWidth: 1,
+	    // 		fill: false,
+	    // 		// backgroundColor: 'rgba(255, 99, 132,0)',
+	    // 		// borderColor: 'rgb(255, 0, 0)',
+	    		
 	    // 	}]
 	    // },
-
 	    // Configuration options go here
 	    options: {
 	    	legend:{
@@ -122,4 +153,6 @@ function smvUpdateTile(onechart) {
 	});
 }
 
-setInterval(smvUpdateThePage,3000);
+setInterval(smvUpdateThePage, 3000);
+setInterval(yAxisValues("http://thingtalk.ir/channels/706/feed.json?key=WQFB2JIGRVXDIAR4&results=20"), 3000);
+// setInterval(setValueForChart, 3000);

@@ -188,7 +188,7 @@ function updateTemperatureTile(average) {
 		backgroundImage.style.backgroundImage = 'url("img/coldTemp.jpg")';
 
 	} else if(average >= 20 && average < 30) {
-		backgroundImage.style.backgroundImage = 'url("img/normTemp2.jpg")';
+		backgroundImage.style.backgroundImage = 'url("img/normTemp.jpg")';
 
 	} else if(average >= 30) {
 		backgroundImage.style.backgroundImage = 'url("img/hotWeather2.jpg")';
