@@ -1440,10 +1440,6 @@ public class GraphicalView extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                GetSendData lbs = new GetSendData();
-                d = lbs.GetData(map.get("LBS"));
-                lbs.SetActuator(preip+"setLBS0OFF",d);
-
                 offswitch.setVisibility(View.VISIBLE);
                 onswitch.setVisibility(View.INVISIBLE);
                 onlamp.post(new Runnable() {
@@ -1480,8 +1476,8 @@ public class GraphicalView extends AppCompatActivity {
         });
 
         //motion detector
-        GetSendData md = new GetSendData();
-        d = md.GetData(map.get("MD"));
+      //  GetSendData md = new GetSendData();
+        //d = md.GetData(map.get("MD"));
         JsonObjectRequest getRequestmd = new JsonObjectRequest(Request.Method.GET, map.get("MD"), null,
                 new Response.Listener<JSONObject>() {
                     @Override
