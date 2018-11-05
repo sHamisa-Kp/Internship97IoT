@@ -74,7 +74,7 @@ const channel = {
   // Tap Status (Water Tap)
   'TS': [{'id': '748', 'apiKey': 'A1079N4WNZESIRFC'}],
 
-  // Motion Detector
+  // Motion Detector // channel 749 for left balc(class room) // channel 752 for right balc(dr's room)
   'MD': [{'id': '749', 'apiKey': 'V197BB4SL21A2IKG'},
   {'id': '752', 'apiKey': 'ZCLT56CFVCG7DU50'}],
 

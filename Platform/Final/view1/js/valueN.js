@@ -65,7 +65,7 @@ const channel = {
 	{'id': '744', 'apiKey': 'PD74MGJ9RFR4YMHK'},
 	{'id': '750', 'apiKey': 'FGGX36CLKXBW2BN4'}],
 
-	// Light Bulb Status
+	// Light Bulb Status // channel 745 for left balc(class room) // channel 746 for right balc(dr's room)
 	'LBS': [{'id': '745', 'apiKey': '2ZRJZIFPTQF79NOH'},
 	{'id': '746', 'apiKey': '17J1AKN992YL3HUX'}],
 
@@ -76,7 +76,7 @@ const channel = {
 	// Tap Status (Water Tap)
 	'TS': [{'id': '748', 'apiKey': 'A1079N4WNZESIRFC'}],
 
-	// Motion Detector
+	// Motion Detector // channel 749 for left balc(class room) // channel 752 for right balc(dr's room)
 	'MD': [{'id': '749', 'apiKey': 'V197BB4SL21A2IKG'},
 	{'id': '752', 'apiKey': 'ZCLT56CFVCG7DU50'}],
 

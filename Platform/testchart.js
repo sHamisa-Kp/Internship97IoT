@@ -62,11 +62,16 @@ function smvHttpGetAsync(theUrl, callback, j) {
 }
 
 function smvUpdateThePage() {
+	console.log("this is working correctly");
     for(let j = 0; j < smvChannel.SM.length; j++) {
         smvHttpGetAsync("http://thingtalk.ir/channels/" + smvChannel.SM[j].id + 
             "/feeds.json?key=" + smvChannel.SM[j].apiKey + "&results=20", function(){}, j);
     }
 }
+
+// function smvUpdateTime() {
+// 	yAxisValues("http://thingtalk.ir/channels/706/feed.json?key=WQFB2JIGRVXDIAR4&results=20");
+// }
 
 function yAxisValues(theUrl) {
 	let xmlHttp = new XMLHttpRequest();
@@ -97,7 +102,8 @@ function setValueForChart() {
 			data:vegSMArray[j],
 			borderWidth: 1,
 			fill:false,
-			borderColor:colors[j]
+			borderColor:colors[j],
+			borderWidth: 1.3
 		};
 		onechart.datasets.push(Data);		
 	} 
