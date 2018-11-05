@@ -23,7 +23,10 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+<<<<<<< HEAD
 import com.android.volley.toolbox.StringRequest;
+=======
+>>>>>>> master
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -34,9 +37,16 @@ import java.util.*;
 
 import java.util.HashMap;
 import java.util.Map;
+<<<<<<< HEAD
 
+=======
+<<<<<<< Updated upstream
+>>>>>>> master
 import java.util.logging.Handler;
 import java.util.logging.LogRecord;
+=======
+import java.util.concurrent.ExecutionException;
+>>>>>>> Stashed changes
 
 import java.util.concurrent.ExecutionException;
 
@@ -53,7 +63,11 @@ public class GraphicalView extends AppCompatActivity {
     datafm0, datawm, datag;
     String d,d1;
     int water_level = 0;
+<<<<<<< HEAD
     int up_pump_status =0, lamp_status=0;
+=======
+    int up_pump_status = 0;
+>>>>>>> master
     String preUrl="http://thingtalk.ir/channels/";
     String preip="http://10.1.248.34:5050/actuators/";
     Map<String,String> map=new HashMap<String, String>();
@@ -79,9 +93,13 @@ public class GraphicalView extends AppCompatActivity {
             }
         });
         */
+<<<<<<< Updated upstream
 
        final  RequestQueue queue = Volley.newRequestQueue(getApplicationContext());//final  RequestQueue queueveg = Volley.newRequestQueue(getApplicationContext());
 
+=======
+       final  RequestQueue queue = Volley.newRequestQueue(getApplicationContext());//final  RequestQueue queueveg = Volley.newRequestQueue(getApplicationContext());
+>>>>>>> Stashed changes
         //weather
         map.put("T0", preUrl + "629/feed.json?key=G7KHR97UPN9OC5AC&results=1");
         map.put("H0", preUrl + "669/feed.json?key=7TPW8OQOGN1EMURD&results=1");
@@ -126,6 +144,7 @@ public class GraphicalView extends AppCompatActivity {
 //                        runOnUiThread(new Runnable() {
 //                            @Override
 //                            public void run() {
+<<<<<<< HEAD
 //<<<<<<< Updated upstream
 //
 //
@@ -178,7 +197,89 @@ public class GraphicalView extends AppCompatActivity {
         onswitch = (ImageButton) findViewById(R.id.on_switch);
         offswitch = (ImageButton) findViewById(R.id.off_switch);
         motion= (ImageView) findViewById(R.id.onmotion);
+=======
+<<<<<<< Updated upstream
+>>>>>>> master
 
+
+
+
+<<<<<<< HEAD
+
+        //Temperature
+
+        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, map.get("T0"), null,
+                 new Response.Listener<JSONObject>() {
+                     @Override
+                     public void onResponse(JSONObject response) {
+                         try {
+                             JSONArray array = response.getJSONArray("feeds");
+                             JSONObject data = array.getJSONObject(0);
+                             String serial = data.getString("field1");
+                             if(serial.indexOf('.') != -1 )
+                             {
+                                 serial = serial.substring(0, serial.indexOf('.'));
+                             }
+                             int num = Integer.parseInt(serial)+1;
+                             datat.setText(serial + "°C");
+                         }
+                         catch (JSONException e) {
+                             e.printStackTrace();
+                         }
+                     }
+                 }
+                ,
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(GraphicalView.this, "Connection Problem", Toast.LENGTH_SHORT).show();
+
+                    }
+
+=======
+       //Temperature
+        data = (TextView) findViewById(R.id.temperature);
+        GetSendData t0 = new GetSendData();
+        data.setText(t0.GetData(map.get("T0")) + "°C");
+
+
+        //Humidity
+        data = (TextView) findViewById(R.id.humidity);
+        GetSendData h0 = new GetSendData();
+        data.setText(h0.GetData(map.get("H0")) + "%");
+=======
+//
+>>>>>>> Stashed changes
+
+//
+        datat = (TextView) findViewById(R.id.temperature);
+        datah = (TextView) findViewById(R.id.humidity);
+        dataveg1 = (TextView) findViewById(R.id.textveg1);
+        dataveg2 = (TextView) findViewById(R.id.textveg2);
+        dataveg3 = (TextView) findViewById(R.id.textveg3);
+        dataveg4 = (TextView) findViewById(R.id.textveg4);
+        dataf1 = (TextView) findViewById(R.id.textflower1);
+        dataf2 = (TextView) findViewById(R.id.textflower2);
+        dataf3 = (TextView) findViewById(R.id.textflower3);
+        dataf4 = (TextView) findViewById(R.id.textflower4);
+        dataf5 = (TextView) findViewById(R.id.textflower5);
+        datapr = (TextView) findViewById(R.id.textbrightness);
+        wf1 = (ImageView) findViewById(R.id.waterf1);
+        wf2 = (ImageView) findViewById(R.id.waterf2);
+        wf3 = (ImageView) findViewById(R.id.waterf3);
+        wf4 = (ImageView) findViewById(R.id.waterf4);
+        wf5 = (ImageView) findViewById(R.id.waterf5);
+        wv1 = (ImageView) findViewById(R.id.waterv1);
+        wv2 = (ImageView) findViewById(R.id.waterv2);
+        wv3 = (ImageView) findViewById(R.id.waterv3);
+        wv4 = (ImageView) findViewById(R.id.waterv4);
+        datafm0 = (TextView) findViewById(R.id.textfloormoisture);
+        puddle= (ImageView) findViewById(R.id.puddlewater);
+        mistbtn2 = (ImageButton) findViewById(R.id.mist_btn2);
+        mistbtn = (ImageButton) findViewById(R.id.mist_btn);
+        datawm = (TextView) findViewById(R.id.textwattmeter1);
+        datag = (TextView) findViewById(R.id.textsmoke);
 
 
 
@@ -214,6 +315,7 @@ public class GraphicalView extends AppCompatActivity {
 
                     }
 
+>>>>>>> master
                 }
         );
                                 queue.add(getRequest);
@@ -982,7 +1084,11 @@ public class GraphicalView extends AppCompatActivity {
                                 serial = serial.substring(0, serial.indexOf('.'));
                             }
                             int num = Integer.parseInt(serial) + 1;
+<<<<<<< HEAD
                             datafm0.setText(serial);
+=======
+
+>>>>>>> master
                             if(num == 1){
                                 puddle.setVisibility(View.VISIBLE);
                             }
@@ -1081,7 +1187,11 @@ public class GraphicalView extends AppCompatActivity {
 
                 //GetSendData pst = new GetSendData();
                 //d = pst.GetData(map.get("PST"));
+<<<<<<< HEAD
                 if (!(((AnimationDrawable) mistbtn.getBackground()).isRunning()) && !(((AnimationDrawable) mistbtn2.getBackground()).isRunning())){//&& water_level > 5 && up_pump_status==0) {
+=======
+                if (!(((AnimationDrawable) mistbtn.getBackground()).isRunning()) && !(((AnimationDrawable) mistbtn2.getBackground()).isRunning())&& water_level > 5 && up_pump_status==0) {
+>>>>>>> master
 
                     //pst.SetActuator(preip+"setPS2ON",d);
 
@@ -1159,6 +1269,7 @@ public class GraphicalView extends AppCompatActivity {
                     });
                     mistbtn2.setVisibility(View.INVISIBLE);
                     mistbtn2.setVisibility(View.VISIBLE);
+<<<<<<< HEAD
                     StringRequest postRequest = new StringRequest(Request.Method.POST, preip+"setPS2OFF",
                             new Response.Listener<String>()
                             {
@@ -1194,6 +1305,8 @@ public class GraphicalView extends AppCompatActivity {
                             }
                     );
                     queue.add(postRequest);
+=======
+>>>>>>> master
                 }
             }
         });
@@ -1338,8 +1451,132 @@ public class GraphicalView extends AppCompatActivity {
         });
 //
 //        //lamp status
+<<<<<<< HEAD
 
         JsonObjectRequest getRequestlbs = new JsonObjectRequest(Request.Method.GET, map.get("LBS"), null,
+=======
+//
+//
+//
+//
+//        onlamp = (ImageView) findViewById(R.id.onlamp);
+//        offlamp = (ImageView) findViewById(R.id.offlamp);
+//        onswitch = (ImageButton) findViewById(R.id.on_switch);
+//        offswitch = (ImageButton) findViewById(R.id.off_switch);
+//
+//        GetSendData lbs = new GetSendData();
+//        d = lbs.GetData(map.get("LBS"));
+//        if(Integer.parseInt(d)==1){
+//
+//            onswitch.setVisibility(View.VISIBLE);
+//            offswitch.setVisibility(View.INVISIBLE);
+//            onlamp.setVisibility(View.VISIBLE);
+//            onlamp.post(new Runnable() {
+//                @Override
+//                public void run() {
+//
+//                    ((AnimationDrawable) onlamp.getBackground()).start();
+//
+//                }
+//            });
+//        }
+//        if(Integer.parseInt(d)==0){
+//            offswitch.setVisibility(View.VISIBLE);
+//            onswitch.setVisibility(View.INVISIBLE);
+//            onlamp.post(new Runnable() {
+//                @Override
+//                public void run() {
+//
+//                    ((AnimationDrawable) onlamp.getBackground()).stop();
+//
+//                }
+//            });
+//            onlamp.setVisibility(View.INVISIBLE);
+//        }
+//
+//        offswitch.setOnClickListener(new View.OnClickListener() {
+//
+//
+//            @Override
+//            public void onClick(View v) {
+//                GetSendData lbs = new GetSendData();
+//                d = lbs.GetData(map.get("LBS"));
+//
+//                if (onlamp.getVisibility() == View.INVISIBLE && onswitch.getVisibility() == View.INVISIBLE&&Integer.parseInt(d)==0 ) {
+//
+//                    lbs.SetActuator(preip+"setLBS0ON",d);
+//
+//                    onswitch.setVisibility(View.VISIBLE);
+//                    offswitch.setVisibility(View.INVISIBLE);
+//                    onlamp.setVisibility(View.VISIBLE);
+//                    onlamp.post(new Runnable() {
+//                        @Override
+//                        public void run() {
+//
+//                            ((AnimationDrawable) onlamp.getBackground()).start();
+//
+//                        }
+//                    });
+//
+//                }}
+//
+//        });
+//        onswitch.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                GetSendData lbs = new GetSendData();
+//                d = lbs.GetData(map.get("LBS"));
+//                lbs.SetActuator(preip+"setLBS0OFF",d);
+//
+//                offswitch.setVisibility(View.VISIBLE);
+//                onswitch.setVisibility(View.INVISIBLE);
+//                onlamp.post(new Runnable() {
+//                    @Override
+//                    public void run() {
+//
+//                        ((AnimationDrawable) onlamp.getBackground()).stop();
+//
+//                    }
+//                });
+//                onlamp.setVisibility(View.INVISIBLE);
+//
+//            }
+//        });
+//
+//        //motion detector
+//        GetSendData md = new GetSendData();
+//        d = md.GetData(map.get("MD"));
+//
+//        motion= (ImageView) findViewById(R.id.onmotion);
+//        if(d.equals("1")){
+//
+//            motion.post(new Runnable() {
+//                @Override
+//                public void run() {
+//
+//                    ((AnimationDrawable) motion.getBackground()).start();
+//
+//                }
+//            });
+//            motion.setVisibility(View.VISIBLE);
+//
+//        }
+//        else {
+//            motion.post(new Runnable() {
+//                @Override
+//                public void run() {
+//
+//                    ((AnimationDrawable) motion.getBackground()).stop();
+//
+//                }
+//            });
+//            motion.setVisibility(View.INVISIBLE);
+//        }
+
+        //watt meter
+        JsonObjectRequest getRequestwm = new JsonObjectRequest(Request.Method.GET, map.get("WM"), null,
+>>>>>>> master
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -1351,6 +1588,7 @@ public class GraphicalView extends AppCompatActivity {
                                 serial = serial.substring(0, serial.indexOf('.'));
                             }
                             int num = Integer.parseInt(serial);
+<<<<<<< HEAD
                             lamp_status = num;
                             if(num == 1){
                                 onswitch.setVisibility(View.VISIBLE);
@@ -1378,6 +1616,9 @@ public class GraphicalView extends AppCompatActivity {
                                 });
                                 onlamp.setVisibility(View.INVISIBLE);
                             }
+=======
+                            datawm.setText(serial);
+>>>>>>> master
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -1387,6 +1628,7 @@ public class GraphicalView extends AppCompatActivity {
                 new Response.ErrorListener()
                 {
                     @Override public void onErrorResponse(VolleyError error) {
+<<<<<<< HEAD
                         //Toast.makeText(GraphicalView.this, "Connection Problem", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -1443,12 +1685,33 @@ public class GraphicalView extends AppCompatActivity {
                 offswitch.setVisibility(View.VISIBLE);
                 onswitch.setVisibility(View.INVISIBLE);
                 onlamp.post(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        ((AnimationDrawable) onlamp.getBackground()).stop();
-
+=======
+                        Toast.makeText(GraphicalView.this, "Connection Problem", Toast.LENGTH_SHORT).show();
                     }
+                }
+        );queue.add(getRequestwm);
+
+
+        //gas
+        JsonObjectRequest getRequestg = new JsonObjectRequest(Request.Method.GET, map.get("G"), null,
+                new Response.Listener<JSONObject>() {
+>>>>>>> master
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray array = response.getJSONArray("feeds");
+                            JSONObject data = array.getJSONObject(0);
+                            String serial = data.getString("field1");
+                            if (serial.indexOf('.') != -1) {
+                                serial = serial.substring(0, serial.indexOf('.'));
+                            }
+                            int num = Integer.parseInt(serial);
+                            datag.setText(serial);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+<<<<<<< HEAD
                 });
                 onlamp.setVisibility(View.INVISIBLE);
                 StringRequest postRequestLBSoff = new StringRequest(Request.Method.POST, preip + "setLBS0OFF",
@@ -1519,11 +1782,14 @@ public class GraphicalView extends AppCompatActivity {
                             e.printStackTrace();
                         }
                     }
+=======
+>>>>>>> master
                 }
                 ,
                 new Response.ErrorListener()
                 {
                     @Override public void onErrorResponse(VolleyError error) {
+<<<<<<< HEAD
                     }
                 }
         );queue.add(getRequestmd);
@@ -1584,6 +1850,11 @@ public class GraphicalView extends AppCompatActivity {
                         Toast.makeText(GraphicalView.this, "Connection Problem", Toast.LENGTH_SHORT).show();
                     }
                 }
+=======
+                        Toast.makeText(GraphicalView.this, "Connection Problem", Toast.LENGTH_SHORT).show();
+                    }
+                }
+>>>>>>> master
         );queue.add(getRequestg);
 
 
