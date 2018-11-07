@@ -23,10 +23,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-<<<<<<< HEAD
 import com.android.volley.toolbox.StringRequest;
-=======
->>>>>>> master
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -37,16 +34,9 @@ import java.util.*;
 
 import java.util.HashMap;
 import java.util.Map;
-<<<<<<< HEAD
 
-=======
-<<<<<<< Updated upstream
->>>>>>> master
 import java.util.logging.Handler;
 import java.util.logging.LogRecord;
-=======
-import java.util.concurrent.ExecutionException;
->>>>>>> Stashed changes
 
 import java.util.concurrent.ExecutionException;
 
@@ -60,14 +50,10 @@ public class GraphicalView extends AppCompatActivity {
     ImageButton onswitch,offswitch,mistbtn,mistbtn2,go_to_the_right_position,plant;
     ConstraintLayout background;
     TextView datat, datah, dataveg1, dataveg2, dataveg3, dataveg4, dataf1, dataf2, dataf3, dataf4, dataf5, datapr,
-    datafm0, datawm, datag;
+            datafm0, datawm, datag;
     String d,d1;
     int water_level = 0;
-<<<<<<< HEAD
     int up_pump_status =0, lamp_status=0;
-=======
-    int up_pump_status = 0;
->>>>>>> master
     String preUrl="http://thingtalk.ir/channels/";
     String preip="http://10.1.248.34:5050/actuators/";
     Map<String,String> map=new HashMap<String, String>();
@@ -93,13 +79,9 @@ public class GraphicalView extends AppCompatActivity {
             }
         });
         */
-<<<<<<< Updated upstream
 
-       final  RequestQueue queue = Volley.newRequestQueue(getApplicationContext());//final  RequestQueue queueveg = Volley.newRequestQueue(getApplicationContext());
+        final  RequestQueue queue = Volley.newRequestQueue(getApplicationContext());//final  RequestQueue queueveg = Volley.newRequestQueue(getApplicationContext());
 
-=======
-       final  RequestQueue queue = Volley.newRequestQueue(getApplicationContext());//final  RequestQueue queueveg = Volley.newRequestQueue(getApplicationContext());
->>>>>>> Stashed changes
         //weather
         map.put("T0", preUrl + "629/feed.json?key=G7KHR97UPN9OC5AC&results=1");
         map.put("H0", preUrl + "669/feed.json?key=7TPW8OQOGN1EMURD&results=1");
@@ -144,7 +126,6 @@ public class GraphicalView extends AppCompatActivity {
 //                        runOnUiThread(new Runnable() {
 //                            @Override
 //                            public void run() {
-<<<<<<< HEAD
 //<<<<<<< Updated upstream
 //
 //
@@ -197,37 +178,33 @@ public class GraphicalView extends AppCompatActivity {
         onswitch = (ImageButton) findViewById(R.id.on_switch);
         offswitch = (ImageButton) findViewById(R.id.off_switch);
         motion= (ImageView) findViewById(R.id.onmotion);
-=======
-<<<<<<< Updated upstream
->>>>>>> master
 
 
 
 
-<<<<<<< HEAD
 
         //Temperature
 
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, map.get("T0"), null,
-                 new Response.Listener<JSONObject>() {
-                     @Override
-                     public void onResponse(JSONObject response) {
-                         try {
-                             JSONArray array = response.getJSONArray("feeds");
-                             JSONObject data = array.getJSONObject(0);
-                             String serial = data.getString("field1");
-                             if(serial.indexOf('.') != -1 )
-                             {
-                                 serial = serial.substring(0, serial.indexOf('.'));
-                             }
-                             int num = Integer.parseInt(serial)+1;
-                             datat.setText(serial + "°C");
-                         }
-                         catch (JSONException e) {
-                             e.printStackTrace();
-                         }
-                     }
-                 }
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray array = response.getJSONArray("feeds");
+                            JSONObject data = array.getJSONObject(0);
+                            String serial = data.getString("field1");
+                            if(serial.indexOf('.') != -1 )
+                            {
+                                serial = serial.substring(0, serial.indexOf('.'));
+                            }
+                            int num = Integer.parseInt(serial)+1;
+                            datat.setText(serial + "°C");
+                        }
+                        catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
                 ,
                 new Response.ErrorListener()
                 {
@@ -237,109 +214,30 @@ public class GraphicalView extends AppCompatActivity {
 
                     }
 
-=======
-       //Temperature
-        data = (TextView) findViewById(R.id.temperature);
-        GetSendData t0 = new GetSendData();
-        data.setText(t0.GetData(map.get("T0")) + "°C");
-
-
-        //Humidity
-        data = (TextView) findViewById(R.id.humidity);
-        GetSendData h0 = new GetSendData();
-        data.setText(h0.GetData(map.get("H0")) + "%");
-=======
-//
->>>>>>> Stashed changes
-
-//
-        datat = (TextView) findViewById(R.id.temperature);
-        datah = (TextView) findViewById(R.id.humidity);
-        dataveg1 = (TextView) findViewById(R.id.textveg1);
-        dataveg2 = (TextView) findViewById(R.id.textveg2);
-        dataveg3 = (TextView) findViewById(R.id.textveg3);
-        dataveg4 = (TextView) findViewById(R.id.textveg4);
-        dataf1 = (TextView) findViewById(R.id.textflower1);
-        dataf2 = (TextView) findViewById(R.id.textflower2);
-        dataf3 = (TextView) findViewById(R.id.textflower3);
-        dataf4 = (TextView) findViewById(R.id.textflower4);
-        dataf5 = (TextView) findViewById(R.id.textflower5);
-        datapr = (TextView) findViewById(R.id.textbrightness);
-        wf1 = (ImageView) findViewById(R.id.waterf1);
-        wf2 = (ImageView) findViewById(R.id.waterf2);
-        wf3 = (ImageView) findViewById(R.id.waterf3);
-        wf4 = (ImageView) findViewById(R.id.waterf4);
-        wf5 = (ImageView) findViewById(R.id.waterf5);
-        wv1 = (ImageView) findViewById(R.id.waterv1);
-        wv2 = (ImageView) findViewById(R.id.waterv2);
-        wv3 = (ImageView) findViewById(R.id.waterv3);
-        wv4 = (ImageView) findViewById(R.id.waterv4);
-        datafm0 = (TextView) findViewById(R.id.textfloormoisture);
-        puddle= (ImageView) findViewById(R.id.puddlewater);
-        mistbtn2 = (ImageButton) findViewById(R.id.mist_btn2);
-        mistbtn = (ImageButton) findViewById(R.id.mist_btn);
-        datawm = (TextView) findViewById(R.id.textwattmeter1);
-        datag = (TextView) findViewById(R.id.textsmoke);
-
-
-
-
-        //Temperature
-
-        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, map.get("T0"), null,
-                 new Response.Listener<JSONObject>() {
-                     @Override
-                     public void onResponse(JSONObject response) {
-                         try {
-                             JSONArray array = response.getJSONArray("feeds");
-                             JSONObject data = array.getJSONObject(0);
-                             String serial = data.getString("field1");
-                             if(serial.indexOf('.') != -1 )
-                             {
-                                 serial = serial.substring(0, serial.indexOf('.'));
-                             }
-                             int num = Integer.parseInt(serial)+1;
-                             datat.setText(serial + "°C");
-                         }
-                         catch (JSONException e) {
-                             e.printStackTrace();
-                         }
-                     }
-                 }
-                ,
-                new Response.ErrorListener()
-                {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(GraphicalView.this, "Connection Problem", Toast.LENGTH_SHORT).show();
-
-                    }
-
->>>>>>> master
                 }
         );
-                                queue.add(getRequest);
+        queue.add(getRequest);
 // humedity
         JsonObjectRequest getRequest2 = new JsonObjectRequest(Request.Method.GET, map.get("H0"), null,
-            new Response.Listener<JSONObject>() {
-               @Override
-              public void onResponse(JSONObject response) {
-                   try {
-                       JSONArray array = response.getJSONArray("feeds");
-                       JSONObject data = array.getJSONObject(0);
-                       String serial = data.getString("field1");
-                       if(serial.indexOf('.') != -1 )
-                       {
-                           serial = serial.substring(0, serial.indexOf('.'));
-                       }
-                       int num = Integer.parseInt(serial)+1;
-                       datah.setText(serial + "%");
-                   }
-                   catch (JSONException e) {
-                       e.printStackTrace();
-                   }
-               }
-            }
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray array = response.getJSONArray("feeds");
+                            JSONObject data = array.getJSONObject(0);
+                            String serial = data.getString("field1");
+                            if(serial.indexOf('.') != -1 )
+                            {
+                                serial = serial.substring(0, serial.indexOf('.'));
+                            }
+                            int num = Integer.parseInt(serial)+1;
+                            datah.setText(serial + "%");
+                        }
+                        catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
                 ,
                 new Response.ErrorListener()
                 {
@@ -351,210 +249,210 @@ public class GraphicalView extends AppCompatActivity {
         );queue.add(getRequest2);
 
 
-    JsonObjectRequest getRequestveg1 = new JsonObjectRequest(Request.Method.GET, map.get("SM0"), null,
-            new Response.Listener<JSONObject>() {
-                 @Override
-                 public void onResponse(JSONObject response) {
-                     try {
-                         JSONArray array = response.getJSONArray("feeds");
-                         JSONObject data = array.getJSONObject(0);
-                         String serial = data.getString("field1");
-                         if(serial.indexOf('.') != -1 )
-                         {
-                             serial = serial.substring(0, serial.indexOf('.'));
-                         }
-                         int num = Integer.parseInt(serial)+1;
-                         dataveg1.setText(serial + "%");
-                         plant = (ImageButton) findViewById(R.id.veg1);
-                         plant.setVisibility(View.VISIBLE);
-                         thirsty0 = (ImageView) findViewById(R.id.thirstyveg1);
-                         thirsty0.post(new Runnable() {
-                             @Override
-                             public void run() {
-                                 ((AnimationDrawable) thirsty0.getBackground()).stop();
-                             }
-                         });
-
-                         if (num < 50) {
-
-                             thirsty0.setVisibility(View.VISIBLE);
-                             thirsty0.post(new Runnable() {
-                                 @Override
-                                 public void run() {
-                                     ((AnimationDrawable) thirsty0.getBackground()).start();
-                                 }
-                             });
-                             plant = (ImageButton) findViewById(R.id.veg1);
-                             plant.setVisibility(View.INVISIBLE);
-                         }
-
-                     }
-                     catch (JSONException e) {
-                         e.printStackTrace();
-                     }
-                 }
-            }
-            ,
-            new Response.ErrorListener()
-            {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(GraphicalView.this, "Connection Problem", Toast.LENGTH_SHORT).show();
-                }
-            }
-    );queue.add(getRequestveg1);
-
-
-    JsonObjectRequest getRequestveg2 = new JsonObjectRequest(Request.Method.GET, map.get("SM1"), null,
-            new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    try {
-                        JSONArray array = response.getJSONArray("feeds");
-                        JSONObject data = array.getJSONObject(0);
-                        String serial = data.getString("field1");
-                        if(serial.indexOf('.') != -1 )
-                        {
-                            serial = serial.substring(0, serial.indexOf('.'));
-                        }
-                        int num = Integer.parseInt(serial)+1;
-                        dataveg2.setText(serial + "%");
-                        plant = (ImageButton) findViewById(R.id.veg2);
-                        plant.setVisibility(View.VISIBLE);
-                        thirsty1 = (ImageView) findViewById(R.id.thirstyveg2);
-                        thirsty1.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                ((AnimationDrawable) thirsty1.getBackground()).stop();
+        JsonObjectRequest getRequestveg1 = new JsonObjectRequest(Request.Method.GET, map.get("SM0"), null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray array = response.getJSONArray("feeds");
+                            JSONObject data = array.getJSONObject(0);
+                            String serial = data.getString("field1");
+                            if(serial.indexOf('.') != -1 )
+                            {
+                                serial = serial.substring(0, serial.indexOf('.'));
                             }
-                        });
-                        if (num < 50) {
-                            thirsty1.setVisibility(View.VISIBLE);
+                            int num = Integer.parseInt(serial)+1;
+                            dataveg1.setText(serial + "%");
+                            plant = (ImageButton) findViewById(R.id.veg1);
+                            plant.setVisibility(View.VISIBLE);
+                            thirsty0 = (ImageView) findViewById(R.id.thirstyveg1);
+                            thirsty0.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    ((AnimationDrawable) thirsty0.getBackground()).stop();
+                                }
+                            });
+
+                            if (num < 50) {
+
+                                thirsty0.setVisibility(View.VISIBLE);
+                                thirsty0.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        ((AnimationDrawable) thirsty0.getBackground()).start();
+                                    }
+                                });
+                                plant = (ImageButton) findViewById(R.id.veg1);
+                                plant.setVisibility(View.INVISIBLE);
+                            }
+
+                        }
+                        catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                ,
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(GraphicalView.this, "Connection Problem", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );queue.add(getRequestveg1);
+
+
+        JsonObjectRequest getRequestveg2 = new JsonObjectRequest(Request.Method.GET, map.get("SM1"), null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray array = response.getJSONArray("feeds");
+                            JSONObject data = array.getJSONObject(0);
+                            String serial = data.getString("field1");
+                            if(serial.indexOf('.') != -1 )
+                            {
+                                serial = serial.substring(0, serial.indexOf('.'));
+                            }
+                            int num = Integer.parseInt(serial)+1;
+                            dataveg2.setText(serial + "%");
+                            plant = (ImageButton) findViewById(R.id.veg2);
+                            plant.setVisibility(View.VISIBLE);
+                            thirsty1 = (ImageView) findViewById(R.id.thirstyveg2);
                             thirsty1.post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    ((AnimationDrawable) thirsty1.getBackground()).start();
+                                    ((AnimationDrawable) thirsty1.getBackground()).stop();
                                 }
                             });
-                            plant = (ImageButton) findViewById(R.id.veg2);
-                            plant.setVisibility(View.INVISIBLE);
-                        }
-                    }
-                    catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-            ,
-            new Response.ErrorListener()
-            {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(GraphicalView.this, "Connection Problem", Toast.LENGTH_SHORT).show();
-                }
-            }
-    );queue.add(getRequestveg2);
-
-
-    JsonObjectRequest getRequestveg3 = new JsonObjectRequest(Request.Method.GET, map.get("SM2"), null,
-            new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    try {
-                        JSONArray array = response.getJSONArray("feeds");
-                        JSONObject data = array.getJSONObject(0);
-                        String serial = data.getString("field1");
-                        if(serial.indexOf('.') != -1 )
-                        {
-                            serial = serial.substring(0, serial.indexOf('.'));
-                        }
-                        int num = Integer.parseInt(serial)+1;
-                        dataveg3.setText(serial + "%");
-                        plant = (ImageButton) findViewById(R.id.veg3);
-                        plant.setVisibility(View.VISIBLE);
-                        thirsty2 = (ImageView) findViewById(R.id.thirstyveg3);
-                        thirsty2.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                ((AnimationDrawable) thirsty2.getBackground()).stop();
+                            if (num < 50) {
+                                thirsty1.setVisibility(View.VISIBLE);
+                                thirsty1.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        ((AnimationDrawable) thirsty1.getBackground()).start();
+                                    }
+                                });
+                                plant = (ImageButton) findViewById(R.id.veg2);
+                                plant.setVisibility(View.INVISIBLE);
                             }
-                        });
-                        if (num < 50) {
-                            thirsty2.setVisibility(View.VISIBLE);
+                        }
+                        catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                ,
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(GraphicalView.this, "Connection Problem", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );queue.add(getRequestveg2);
+
+
+        JsonObjectRequest getRequestveg3 = new JsonObjectRequest(Request.Method.GET, map.get("SM2"), null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray array = response.getJSONArray("feeds");
+                            JSONObject data = array.getJSONObject(0);
+                            String serial = data.getString("field1");
+                            if(serial.indexOf('.') != -1 )
+                            {
+                                serial = serial.substring(0, serial.indexOf('.'));
+                            }
+                            int num = Integer.parseInt(serial)+1;
+                            dataveg3.setText(serial + "%");
+                            plant = (ImageButton) findViewById(R.id.veg3);
+                            plant.setVisibility(View.VISIBLE);
+                            thirsty2 = (ImageView) findViewById(R.id.thirstyveg3);
                             thirsty2.post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    ((AnimationDrawable) thirsty2.getBackground()).start();
+                                    ((AnimationDrawable) thirsty2.getBackground()).stop();
                                 }
                             });
-                            plant = (ImageButton) findViewById(R.id.veg3);
-                            plant.setVisibility(View.INVISIBLE);
-                        }
-                    }
-                    catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-            ,
-            new Response.ErrorListener()
-            {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(GraphicalView.this, "Connection Problem", Toast.LENGTH_SHORT).show();
-                }
-            }
-    );queue.add(getRequestveg3);
-
-
-    JsonObjectRequest getRequestveg4 = new JsonObjectRequest(Request.Method.GET, map.get("SM3"), null,
-            new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    try {
-                        JSONArray array = response.getJSONArray("feeds");
-                        JSONObject data = array.getJSONObject(0);
-                        String serial = data.getString("field1");
-                        if(serial.indexOf('.') != -1 )
-                        {
-                            serial = serial.substring(0, serial.indexOf('.'));
-                        }
-                        int num = Integer.parseInt(serial)+1;
-                        dataveg4.setText(serial + "%");
-                        plant = (ImageButton) findViewById(R.id.veg4);
-                        plant.setVisibility(View.VISIBLE);
-                        thirsty3 = (ImageView) findViewById(R.id.thirstyveg4);
-                        thirsty3.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                ((AnimationDrawable) thirsty3.getBackground()).stop();
+                            if (num < 50) {
+                                thirsty2.setVisibility(View.VISIBLE);
+                                thirsty2.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        ((AnimationDrawable) thirsty2.getBackground()).start();
+                                    }
+                                });
+                                plant = (ImageButton) findViewById(R.id.veg3);
+                                plant.setVisibility(View.INVISIBLE);
                             }
-                        });
-                        if (num < 50) {
-                            thirsty3.setVisibility(View.VISIBLE);
+                        }
+                        catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                ,
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(GraphicalView.this, "Connection Problem", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );queue.add(getRequestveg3);
+
+
+        JsonObjectRequest getRequestveg4 = new JsonObjectRequest(Request.Method.GET, map.get("SM3"), null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray array = response.getJSONArray("feeds");
+                            JSONObject data = array.getJSONObject(0);
+                            String serial = data.getString("field1");
+                            if(serial.indexOf('.') != -1 )
+                            {
+                                serial = serial.substring(0, serial.indexOf('.'));
+                            }
+                            int num = Integer.parseInt(serial)+1;
+                            dataveg4.setText(serial + "%");
+                            plant = (ImageButton) findViewById(R.id.veg4);
+                            plant.setVisibility(View.VISIBLE);
+                            thirsty3 = (ImageView) findViewById(R.id.thirstyveg4);
                             thirsty3.post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    ((AnimationDrawable) thirsty3.getBackground()).start();
+                                    ((AnimationDrawable) thirsty3.getBackground()).stop();
                                 }
                             });
-                            plant = (ImageButton) findViewById(R.id.veg4);
-                            plant.setVisibility(View.INVISIBLE);
+                            if (num < 50) {
+                                thirsty3.setVisibility(View.VISIBLE);
+                                thirsty3.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        ((AnimationDrawable) thirsty3.getBackground()).start();
+                                    }
+                                });
+                                plant = (ImageButton) findViewById(R.id.veg4);
+                                plant.setVisibility(View.INVISIBLE);
+                            }
+                        }
+                        catch (JSONException e) {
+                            e.printStackTrace();
                         }
                     }
-                    catch (JSONException e) {
-                        e.printStackTrace();
+                }
+                ,
+                new Response.ErrorListener()
+                {
+                    @Override public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(GraphicalView.this, "Connection Problem", Toast.LENGTH_SHORT).show();
                     }
                 }
-            }
-            ,
-            new Response.ErrorListener()
-            {
-                @Override public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(GraphicalView.this, "Connection Problem", Toast.LENGTH_SHORT).show();
-                }
-            }
-    );queue.add(getRequestveg4);
+        );queue.add(getRequestveg4);
 
 
         // Flowers
@@ -706,7 +604,7 @@ public class GraphicalView extends AppCompatActivity {
                     }
                 }
         );queue.add(getRequestf3);
-    // flower4
+        // flower4
         JsonObjectRequest getRequestf4 = new JsonObjectRequest(Request.Method.GET, map.get("SM11"), null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -863,7 +761,7 @@ public class GraphicalView extends AppCompatActivity {
                                 serial = serial.substring(0, serial.indexOf('.'));
                             }
                             int num = Integer.parseInt(serial);
-                         water_level = num;
+                            water_level = num;
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -1084,11 +982,7 @@ public class GraphicalView extends AppCompatActivity {
                                 serial = serial.substring(0, serial.indexOf('.'));
                             }
                             int num = Integer.parseInt(serial) + 1;
-<<<<<<< HEAD
                             datafm0.setText(serial);
-=======
-
->>>>>>> master
                             if(num == 1){
                                 puddle.setVisibility(View.VISIBLE);
                             }
@@ -1122,7 +1016,7 @@ public class GraphicalView extends AppCompatActivity {
                                 serial = serial.substring(0, serial.indexOf('.'));
                             }
                             int num = Integer.parseInt(serial);
-                                up_pump_status = num;
+                            up_pump_status = num;
                             if(water_level > 5 && up_pump_status == 1){
                                 mistbtn.post(new Runnable() {
                                     @Override
@@ -1187,11 +1081,7 @@ public class GraphicalView extends AppCompatActivity {
 
                 //GetSendData pst = new GetSendData();
                 //d = pst.GetData(map.get("PST"));
-<<<<<<< HEAD
                 if (!(((AnimationDrawable) mistbtn.getBackground()).isRunning()) && !(((AnimationDrawable) mistbtn2.getBackground()).isRunning())){//&& water_level > 5 && up_pump_status==0) {
-=======
-                if (!(((AnimationDrawable) mistbtn.getBackground()).isRunning()) && !(((AnimationDrawable) mistbtn2.getBackground()).isRunning())&& water_level > 5 && up_pump_status==0) {
->>>>>>> master
 
                     //pst.SetActuator(preip+"setPS2ON",d);
 
@@ -1214,7 +1104,7 @@ public class GraphicalView extends AppCompatActivity {
                                 @Override
                                 public void onResponse(String response) {
                                     // response
-                                  //  Log.d("Response", response);
+                                    //  Log.d("Response", response);
                                     Toast.makeText(GraphicalView.this, "pump is on", Toast.LENGTH_SHORT).show();
                                 }
                             },
@@ -1251,7 +1141,7 @@ public class GraphicalView extends AppCompatActivity {
                 } else {
 
 
-                 //   pst.SetActuator(preip+"setPS2OFF",d);
+                    //   pst.SetActuator(preip+"setPS2OFF",d);
                     mistbtn.post(new Runnable() {
 
                         @Override
@@ -1269,7 +1159,6 @@ public class GraphicalView extends AppCompatActivity {
                     });
                     mistbtn2.setVisibility(View.INVISIBLE);
                     mistbtn2.setVisibility(View.VISIBLE);
-<<<<<<< HEAD
                     StringRequest postRequest = new StringRequest(Request.Method.POST, preip+"setPS2OFF",
                             new Response.Listener<String>()
                             {
@@ -1305,8 +1194,6 @@ public class GraphicalView extends AppCompatActivity {
                             }
                     );
                     queue.add(postRequest);
-=======
->>>>>>> master
                 }
             }
         });
@@ -1317,8 +1204,8 @@ public class GraphicalView extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View v) {
-             //   GetSendData pst = new GetSendData();
-           //     d = pst.GetData(map.get("PST"));
+                //   GetSendData pst = new GetSendData();
+                //     d = pst.GetData(map.get("PST"));
                 if (!(((AnimationDrawable) mistbtn.getBackground()).isRunning()) && !(((AnimationDrawable) mistbtn2.getBackground()).isRunning()) ) {
 
                     //     pst.SetActuator(preip+"setPS2ON",d)
@@ -1451,132 +1338,8 @@ public class GraphicalView extends AppCompatActivity {
         });
 //
 //        //lamp status
-<<<<<<< HEAD
 
         JsonObjectRequest getRequestlbs = new JsonObjectRequest(Request.Method.GET, map.get("LBS"), null,
-=======
-//
-//
-//
-//
-//        onlamp = (ImageView) findViewById(R.id.onlamp);
-//        offlamp = (ImageView) findViewById(R.id.offlamp);
-//        onswitch = (ImageButton) findViewById(R.id.on_switch);
-//        offswitch = (ImageButton) findViewById(R.id.off_switch);
-//
-//        GetSendData lbs = new GetSendData();
-//        d = lbs.GetData(map.get("LBS"));
-//        if(Integer.parseInt(d)==1){
-//
-//            onswitch.setVisibility(View.VISIBLE);
-//            offswitch.setVisibility(View.INVISIBLE);
-//            onlamp.setVisibility(View.VISIBLE);
-//            onlamp.post(new Runnable() {
-//                @Override
-//                public void run() {
-//
-//                    ((AnimationDrawable) onlamp.getBackground()).start();
-//
-//                }
-//            });
-//        }
-//        if(Integer.parseInt(d)==0){
-//            offswitch.setVisibility(View.VISIBLE);
-//            onswitch.setVisibility(View.INVISIBLE);
-//            onlamp.post(new Runnable() {
-//                @Override
-//                public void run() {
-//
-//                    ((AnimationDrawable) onlamp.getBackground()).stop();
-//
-//                }
-//            });
-//            onlamp.setVisibility(View.INVISIBLE);
-//        }
-//
-//        offswitch.setOnClickListener(new View.OnClickListener() {
-//
-//
-//            @Override
-//            public void onClick(View v) {
-//                GetSendData lbs = new GetSendData();
-//                d = lbs.GetData(map.get("LBS"));
-//
-//                if (onlamp.getVisibility() == View.INVISIBLE && onswitch.getVisibility() == View.INVISIBLE&&Integer.parseInt(d)==0 ) {
-//
-//                    lbs.SetActuator(preip+"setLBS0ON",d);
-//
-//                    onswitch.setVisibility(View.VISIBLE);
-//                    offswitch.setVisibility(View.INVISIBLE);
-//                    onlamp.setVisibility(View.VISIBLE);
-//                    onlamp.post(new Runnable() {
-//                        @Override
-//                        public void run() {
-//
-//                            ((AnimationDrawable) onlamp.getBackground()).start();
-//
-//                        }
-//                    });
-//
-//                }}
-//
-//        });
-//        onswitch.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                GetSendData lbs = new GetSendData();
-//                d = lbs.GetData(map.get("LBS"));
-//                lbs.SetActuator(preip+"setLBS0OFF",d);
-//
-//                offswitch.setVisibility(View.VISIBLE);
-//                onswitch.setVisibility(View.INVISIBLE);
-//                onlamp.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//
-//                        ((AnimationDrawable) onlamp.getBackground()).stop();
-//
-//                    }
-//                });
-//                onlamp.setVisibility(View.INVISIBLE);
-//
-//            }
-//        });
-//
-//        //motion detector
-//        GetSendData md = new GetSendData();
-//        d = md.GetData(map.get("MD"));
-//
-//        motion= (ImageView) findViewById(R.id.onmotion);
-//        if(d.equals("1")){
-//
-//            motion.post(new Runnable() {
-//                @Override
-//                public void run() {
-//
-//                    ((AnimationDrawable) motion.getBackground()).start();
-//
-//                }
-//            });
-//            motion.setVisibility(View.VISIBLE);
-//
-//        }
-//        else {
-//            motion.post(new Runnable() {
-//                @Override
-//                public void run() {
-//
-//                    ((AnimationDrawable) motion.getBackground()).stop();
-//
-//                }
-//            });
-//            motion.setVisibility(View.INVISIBLE);
-//        }
-
-        //watt meter
-        JsonObjectRequest getRequestwm = new JsonObjectRequest(Request.Method.GET, map.get("WM"), null,
->>>>>>> master
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -1588,7 +1351,6 @@ public class GraphicalView extends AppCompatActivity {
                                 serial = serial.substring(0, serial.indexOf('.'));
                             }
                             int num = Integer.parseInt(serial);
-<<<<<<< HEAD
                             lamp_status = num;
                             if(num == 1){
                                 onswitch.setVisibility(View.VISIBLE);
@@ -1616,9 +1378,6 @@ public class GraphicalView extends AppCompatActivity {
                                 });
                                 onlamp.setVisibility(View.INVISIBLE);
                             }
-=======
-                            datawm.setText(serial);
->>>>>>> master
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -1628,7 +1387,6 @@ public class GraphicalView extends AppCompatActivity {
                 new Response.ErrorListener()
                 {
                     @Override public void onErrorResponse(VolleyError error) {
-<<<<<<< HEAD
                         //Toast.makeText(GraphicalView.this, "Connection Problem", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -1660,7 +1418,7 @@ public class GraphicalView extends AppCompatActivity {
                                 @Override
                                 public void onResponse(String response) {
                                     // response
-                                 //   Log.d("Response", response);
+                                    //   Log.d("Response", response);
                                     Toast.makeText(GraphicalView.this,"Lamp is on", Toast.LENGTH_SHORT).show();
                                 }
                             },
@@ -1669,7 +1427,7 @@ public class GraphicalView extends AppCompatActivity {
                                 @Override
                                 public void onErrorResponse(VolleyError error) {
                                     // error
-                                Toast.makeText(GraphicalView.this,"problem turning the lamp on", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(GraphicalView.this,"problem turning the lamp on", Toast.LENGTH_SHORT).show();
                                 }
                             }
                     );
@@ -1685,33 +1443,12 @@ public class GraphicalView extends AppCompatActivity {
                 offswitch.setVisibility(View.VISIBLE);
                 onswitch.setVisibility(View.INVISIBLE);
                 onlamp.post(new Runnable() {
-=======
-                        Toast.makeText(GraphicalView.this, "Connection Problem", Toast.LENGTH_SHORT).show();
-                    }
-                }
-        );queue.add(getRequestwm);
-
-
-        //gas
-        JsonObjectRequest getRequestg = new JsonObjectRequest(Request.Method.GET, map.get("G"), null,
-                new Response.Listener<JSONObject>() {
->>>>>>> master
                     @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            JSONArray array = response.getJSONArray("feeds");
-                            JSONObject data = array.getJSONObject(0);
-                            String serial = data.getString("field1");
-                            if (serial.indexOf('.') != -1) {
-                                serial = serial.substring(0, serial.indexOf('.'));
-                            }
-                            int num = Integer.parseInt(serial);
-                            datag.setText(serial);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                    public void run() {
+
+                        ((AnimationDrawable) onlamp.getBackground()).stop();
+
                     }
-<<<<<<< HEAD
                 });
                 onlamp.setVisibility(View.INVISIBLE);
                 StringRequest postRequestLBSoff = new StringRequest(Request.Method.POST, preip + "setLBS0OFF",
@@ -1739,7 +1476,7 @@ public class GraphicalView extends AppCompatActivity {
         });
 
         //motion detector
-      //  GetSendData md = new GetSendData();
+        //  GetSendData md = new GetSendData();
         //d = md.GetData(map.get("MD"));
         JsonObjectRequest getRequestmd = new JsonObjectRequest(Request.Method.GET, map.get("MD"), null,
                 new Response.Listener<JSONObject>() {
@@ -1782,14 +1519,11 @@ public class GraphicalView extends AppCompatActivity {
                             e.printStackTrace();
                         }
                     }
-=======
->>>>>>> master
                 }
                 ,
                 new Response.ErrorListener()
                 {
                     @Override public void onErrorResponse(VolleyError error) {
-<<<<<<< HEAD
                     }
                 }
         );queue.add(getRequestmd);
@@ -1850,11 +1584,6 @@ public class GraphicalView extends AppCompatActivity {
                         Toast.makeText(GraphicalView.this, "Connection Problem", Toast.LENGTH_SHORT).show();
                     }
                 }
-=======
-                        Toast.makeText(GraphicalView.this, "Connection Problem", Toast.LENGTH_SHORT).show();
-                    }
-                }
->>>>>>> master
         );queue.add(getRequestg);
 
 
