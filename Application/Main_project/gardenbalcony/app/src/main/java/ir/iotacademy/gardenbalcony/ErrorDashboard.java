@@ -16,7 +16,6 @@ public class ErrorDashboard extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_just_value);
         WebView dashboard = (WebView) findViewById(R.id.webdashboard);
@@ -24,7 +23,6 @@ public class ErrorDashboard extends AppCompatActivity {
         dashboard.getSettings().setBuiltInZoomControls(true);
         dashboard.setWebChromeClient(new WebChromeClient());
         dashboard.loadUrl("file:///android_asset/www/View4/view4.html");
-
     }
 
 }

@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Layout;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -47,13 +49,13 @@ import static ir.iotacademy.gardenbalcony.R.drawable.mist_off;
 public class GraphicalView extends AppCompatActivity {
     Button test;
     ImageView onlamp,offlamp,mist,thirsty0,thirsty1,thirsty2,thirsty3,thirsty8,thirsty9,thirsty10,thirsty11,thirsty12,wf1,wf2,wf3,wf4,wf5,wv1,wv2,wv3,wv4,puddle,motion;
-    ImageButton onswitch,offswitch,mistbtn,mistbtn2,go_to_the_right_position,plant;
+    ImageButton onswitch,offswitch,mistbtn,mistbtn2,go_to_the_right_position,plant, faucet, flower_faucet;
     ConstraintLayout background;
     TextView datat, datah, dataveg1, dataveg2, dataveg3, dataveg4, dataf1, dataf2, dataf3, dataf4, dataf5, datapr,
             datafm0, datawm, datag, datasun;
     String d,d1;
     int water_level = 0;
-    int up_pump_status =0, lamp_status=0;
+    int up_pump_status =0, lamp_status=0, psv = 0, psf = 0;
     String preUrl="http://thingtalk.ir/channels/";
     String preip="http://10.1.248.34:5050/actuators/";
     Map<String,String> map=new HashMap<String, String>();
@@ -179,8 +181,8 @@ public class GraphicalView extends AppCompatActivity {
         offswitch = (ImageButton) findViewById(R.id.off_switch);
         motion= (ImageView) findViewById(R.id.onmotion);
         datasun = (TextView) findViewById(R.id.textsunset);
-
-
+        faucet = (ImageButton) findViewById(R.id.left_faucet);
+        flower_faucet = (ImageButton) findViewById(R.id.left_faucet_flowers);
         //sunset
         final String url = "https://api.sunrise-sunset.org/json?lat=35.6892&lng=51.3890&date=today";
         JsonObjectRequest getsunset = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -821,7 +823,7 @@ public class GraphicalView extends AppCompatActivity {
                             if (serial.indexOf('.') != -1) {
                                 serial = serial.substring(0, serial.indexOf('.'));
                             }
-                            int num = Integer.parseInt(serial) + 1;
+                             psf = Integer.parseInt(serial);
 
                             if (serial.equals("1") && water_level > 5) {
                                 wf1.post(new Runnable() {
@@ -910,6 +912,65 @@ public class GraphicalView extends AppCompatActivity {
                     }
                 }
         );queue.add(getRequestpsf);
+// flower faucet
+        flower_faucet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (water_level <= 5) {
+                    Toast.makeText(GraphicalView.this, "Not enough water in tanker", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (psf == 0) {
+                        Animation rotation = AnimationUtils.loadAnimation(GraphicalView.this, R.anim.rotation);
+                        flower_faucet.startAnimation(rotation);
+
+                        StringRequest postRequestpsf = new StringRequest(Request.Method.POST, preip + "setPS0ON",
+                                new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+                                        // response
+                                        //  Log.d("Response", response);
+                                        Toast.makeText(GraphicalView.this, "pump is on", Toast.LENGTH_SHORT).show();
+                                    }
+                                },
+                                new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        // error
+                                        //    Log.d("Error.Response", response);
+                                        Toast.makeText(GraphicalView.this, "can't connect to pump" + Integer.toString(psf), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                        );
+                        queue.add(postRequestpsf);
+
+                    } else if (psf == 1) {
+                        Animation rotation = AnimationUtils.loadAnimation(GraphicalView.this, R.anim.close_rotation);
+                        flower_faucet.startAnimation(rotation);
+                        StringRequest postRequestpsfoff = new StringRequest(Request.Method.POST, preip + "setPS0OFF",
+                                new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+                                        // response
+                                        //  Log.d("Response", response);
+                                        Toast.makeText(GraphicalView.this, "pump is off", Toast.LENGTH_SHORT).show();
+                                    }
+                                },
+                                new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        // error
+                                        //    Log.d("Error.Response", response);
+                                        Toast.makeText(GraphicalView.this, "can't connect to pump " + Integer.toString(psv), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                        );
+                        queue.add(postRequestpsfoff);
+                    }
+                }
+            }
+        });
+
+
 
         JsonObjectRequest getRequestpsv = new JsonObjectRequest(Request.Method.GET, map.get("PSV"), null,
                 new Response.Listener<JSONObject>() {
@@ -922,7 +983,7 @@ public class GraphicalView extends AppCompatActivity {
                             if (serial.indexOf('.') != -1) {
                                 serial = serial.substring(0, serial.indexOf('.'));
                             }
-                            int num = Integer.parseInt(serial) + 1;
+                             psv = Integer.parseInt(serial);
 
                             if (serial.equals("1") &&  water_level > 5) {
                                 wv1.post(new Runnable() {
@@ -998,6 +1059,63 @@ public class GraphicalView extends AppCompatActivity {
                     }
                 }
         );queue.add(getRequestpsv);
+
+        // vegtable faucet
+        faucet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(water_level <= 5){ Toast.makeText(GraphicalView.this, "Not enough water in tanker", Toast.LENGTH_SHORT).show();}
+                else {
+                    if (psv == 0) {
+                        Animation rotation = AnimationUtils.loadAnimation(GraphicalView.this, R.anim.rotation);
+                        faucet.startAnimation(rotation);
+
+                        StringRequest postRequestpsv = new StringRequest(Request.Method.POST, preip + "setPS1ON",
+                                new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+                                        // response
+                                        //  Log.d("Response", response);
+                                        Toast.makeText(GraphicalView.this, "pump is on", Toast.LENGTH_SHORT).show();
+                                    }
+                                },
+                                new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        // error
+                                        //    Log.d("Error.Response", response);
+                                        Toast.makeText(GraphicalView.this, "can't connect to pump on" + Integer.toString(psv), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                        );
+                        queue.add(postRequestpsv);
+
+                    } else if (psv == 1) {
+                        Animation rotation = AnimationUtils.loadAnimation(GraphicalView.this, R.anim.close_rotation);
+                        faucet.startAnimation(rotation);
+                        StringRequest postRequestpsvoff = new StringRequest(Request.Method.POST, preip + "setPS1OFF",
+                                new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+                                        // response
+                                        //  Log.d("Response", response);
+                                        Toast.makeText(GraphicalView.this, "pump is off", Toast.LENGTH_SHORT).show();
+                                    }
+                                },
+                                new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        // error
+                                        //    Log.d("Error.Response", response);
+                                        Toast.makeText(GraphicalView.this, "can't connect to pump off" + Integer.toString(psv), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                        );
+                        queue.add(postRequestpsvoff);
+                    }
+                }
+            }
+        });
 
 
 //        //floor humidity
@@ -1112,122 +1230,121 @@ public class GraphicalView extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View v) {
+                if(water_level <= 5){ Toast.makeText(GraphicalView.this, "Not enough water in tanker", Toast.LENGTH_SHORT).show();}
+                else {
 
-                //GetSendData pst = new GetSendData();
-                //d = pst.GetData(map.get("PST"));
-                if (!(((AnimationDrawable) mistbtn.getBackground()).isRunning()) && !(((AnimationDrawable) mistbtn2.getBackground()).isRunning())){//&& water_level > 5 && up_pump_status==0) {
+                    //GetSendData pst = new GetSendData();
+                    //d = pst.GetData(map.get("PST"));
+                    if (!(((AnimationDrawable) mistbtn.getBackground()).isRunning()) && !(((AnimationDrawable) mistbtn2.getBackground()).isRunning())) {//&& water_level > 5 && up_pump_status==0) {
 
-                    //pst.SetActuator(preip+"setPS2ON",d);
+                        //pst.SetActuator(preip+"setPS2ON",d);
 
-                    mistbtn.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            ((AnimationDrawable) mistbtn.getBackground()).start();
-                        }
-                    });
-                    mistbtn2.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            ((AnimationDrawable) mistbtn2.getBackground()).start();
-                        }
-                    });
-
-                    StringRequest postRequest = new StringRequest(Request.Method.POST, preip+"setPS2ON",
-                            new Response.Listener<String>()
-                            {
-                                @Override
-                                public void onResponse(String response) {
-                                    // response
-                                    //  Log.d("Response", response);
-                                    Toast.makeText(GraphicalView.this, "pump is on", Toast.LENGTH_SHORT).show();
-                                }
-                            },
-                            new Response.ErrorListener()
-                            {
-                                @Override
-                                public void onErrorResponse(VolleyError error) {
-                                    // error
-                                    //    Log.d("Error.Response", response);
-                                    Toast.makeText(GraphicalView.this, "can't connect to pump", Toast.LENGTH_SHORT).show();
-                                    mistbtn.post(new Runnable() {
-
-                                        @Override
-                                        public void run() {
-                                            ((AnimationDrawable) mistbtn.getBackground()).stop();
-                                        }
-                                    });
-                                    mistbtn.setVisibility(View.INVISIBLE);
-                                    mistbtn.setVisibility(View.VISIBLE);
-                                    mistbtn2.post(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            ((AnimationDrawable) mistbtn2.getBackground()).stop();
-                                        }
-                                    });
-                                    mistbtn2.setVisibility(View.INVISIBLE);
-                                    mistbtn2.setVisibility(View.VISIBLE);
-                                }
+                        mistbtn.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                ((AnimationDrawable) mistbtn.getBackground()).start();
                             }
-                    );
-                    queue.add(postRequest);
-
-
-                } else {
-
-
-                    //   pst.SetActuator(preip+"setPS2OFF",d);
-                    mistbtn.post(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            ((AnimationDrawable) mistbtn.getBackground()).stop();
-                        }
-                    });
-                    mistbtn.setVisibility(View.INVISIBLE);
-                    mistbtn.setVisibility(View.VISIBLE);
-                    mistbtn2.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            ((AnimationDrawable) mistbtn2.getBackground()).stop();
-                        }
-                    });
-                    mistbtn2.setVisibility(View.INVISIBLE);
-                    mistbtn2.setVisibility(View.VISIBLE);
-                    StringRequest postRequest = new StringRequest(Request.Method.POST, preip+"setPS2OFF",
-                            new Response.Listener<String>()
-                            {
-                                @Override
-                                public void onResponse(String response) {
-                                    // response
-                                    //  Log.d("Response", response);
-                                    Toast.makeText(GraphicalView.this, "pump is off", Toast.LENGTH_SHORT).show();
-
-                                }
-                            },
-                            new Response.ErrorListener()
-                            {
-                                @Override
-                                public void onErrorResponse(VolleyError error) {
-                                    // error
-                                    //    Log.d("Error.Response", response);
-                                    Toast.makeText(GraphicalView.this, "can't connect to pump", Toast.LENGTH_SHORT).show();
-                                    mistbtn.post(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            ((AnimationDrawable) mistbtn.getBackground()).start();
-                                        }
-                                    });
-                                    mistbtn2.post(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            ((AnimationDrawable) mistbtn2.getBackground()).start();
-                                        }
-                                    });
-
-                                }
+                        });
+                        mistbtn2.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                ((AnimationDrawable) mistbtn2.getBackground()).start();
                             }
-                    );
-                    queue.add(postRequest);
+                        });
+
+                        StringRequest postRequest = new StringRequest(Request.Method.POST, preip + "setPS2ON",
+                                new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+                                        // response
+                                        //  Log.d("Response", response);
+                                        Toast.makeText(GraphicalView.this, "pump is on", Toast.LENGTH_SHORT).show();
+                                    }
+                                },
+                                new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        // error
+                                        //    Log.d("Error.Response", response);
+                                        Toast.makeText(GraphicalView.this, "can't connect to pump", Toast.LENGTH_SHORT).show();
+                                        mistbtn.post(new Runnable() {
+
+                                            @Override
+                                            public void run() {
+                                                ((AnimationDrawable) mistbtn.getBackground()).stop();
+                                            }
+                                        });
+                                        mistbtn.setVisibility(View.INVISIBLE);
+                                        mistbtn.setVisibility(View.VISIBLE);
+                                        mistbtn2.post(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                ((AnimationDrawable) mistbtn2.getBackground()).stop();
+                                            }
+                                        });
+                                        mistbtn2.setVisibility(View.INVISIBLE);
+                                        mistbtn2.setVisibility(View.VISIBLE);
+                                    }
+                                }
+                        );
+                        queue.add(postRequest);
+
+
+                    } else {
+
+
+                        //   pst.SetActuator(preip+"setPS2OFF",d);
+                        mistbtn.post(new Runnable() {
+
+                            @Override
+                            public void run() {
+                                ((AnimationDrawable) mistbtn.getBackground()).stop();
+                            }
+                        });
+                        mistbtn.setVisibility(View.INVISIBLE);
+                        mistbtn.setVisibility(View.VISIBLE);
+                        mistbtn2.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                ((AnimationDrawable) mistbtn2.getBackground()).stop();
+                            }
+                        });
+                        mistbtn2.setVisibility(View.INVISIBLE);
+                        mistbtn2.setVisibility(View.VISIBLE);
+                        StringRequest postRequest = new StringRequest(Request.Method.POST, preip + "setPS2OFF",
+                                new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+                                        // response
+                                        //  Log.d("Response", response);
+                                        Toast.makeText(GraphicalView.this, "pump is off", Toast.LENGTH_SHORT).show();
+
+                                    }
+                                },
+                                new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        // error
+                                        //    Log.d("Error.Response", response);
+                                        Toast.makeText(GraphicalView.this, "can't connect to pump", Toast.LENGTH_SHORT).show();
+                                        mistbtn.post(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                ((AnimationDrawable) mistbtn.getBackground()).start();
+                                            }
+                                        });
+                                        mistbtn2.post(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                ((AnimationDrawable) mistbtn2.getBackground()).start();
+                                            }
+                                        });
+
+                                    }
+                                }
+                        );
+                        queue.add(postRequest);
+                    }
                 }
             }
         });
@@ -1238,6 +1355,8 @@ public class GraphicalView extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View v) {
+                if(water_level <= 5){ Toast.makeText(GraphicalView.this, "Not enough water in tanker", Toast.LENGTH_SHORT).show();}
+                else {
                 //   GetSendData pst = new GetSendData();
                 //     d = pst.GetData(map.get("PST"));
                 if (!(((AnimationDrawable) mistbtn.getBackground()).isRunning()) && !(((AnimationDrawable) mistbtn2.getBackground()).isRunning()) ) {
@@ -1330,9 +1449,8 @@ public class GraphicalView extends AppCompatActivity {
                     });
                     mistbtn2.setVisibility(View.INVISIBLE);
                     mistbtn2.setVisibility(View.VISIBLE);
-                    StringRequest postRequestPSoff = new StringRequest(Request.Method.POST, preip+"setPS2OFF",
-                            new Response.Listener<String>()
-                            {
+                    StringRequest postRequestPSoff = new StringRequest(Request.Method.POST, preip + "setPS2OFF",
+                            new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
                                     // response
@@ -1341,8 +1459,7 @@ public class GraphicalView extends AppCompatActivity {
 
                                 }
                             },
-                            new Response.ErrorListener()
-                            {
+                            new Response.ErrorListener() {
                                 @Override
                                 public void onErrorResponse(VolleyError error) {
                                     // error
@@ -1366,7 +1483,7 @@ public class GraphicalView extends AppCompatActivity {
                     );
                     queue.add(postRequestPSoff);
 
-
+                }
                 }
             }
         });
@@ -1629,7 +1746,6 @@ public class GraphicalView extends AppCompatActivity {
 //            }
 //        };
 //        t.start();
-
 
 
 
