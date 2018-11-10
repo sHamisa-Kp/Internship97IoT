@@ -1,380 +1,204 @@
 package ir.iotacademy.gardenbalcony;
 
-import android.annotation.SuppressLint;
+
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.util.Log;
+import android.support.v7.widget.CardView;
+
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
+import android.view.Window;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
-import org.json.JSONException;
-
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
-
-
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity  {
-    boolean x;
-    private static final String TAG = "EmailPassword";
 
-    private EditText email_et;
-    private  EditText password_et;
-    private Button submit_btn;
-    private Button go_for_signup;
+    private CardView Graphical_view_right,Graphical_view_left,Graphical_view_middle,chart_dashboard,Value_dashboard,Hybrid_dashboard,Error_dashboard;
+    private ImageButton notif;
+    TextView NIC;
 
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
+
+    String preUrl="http://thingtalk.ir/channels/";
+    String preip="http://10.1.248.34:5050/actuators/";
+    Map<String,String> map=new HashMap<String, String>();
+    boolean connected = false;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        email_et= (EditText) findViewById(R.id.etEmail);
-        password_et= (EditText) findViewById(R.id.etPassword);
-        submit_btn= (Button) findViewById(R.id.submit);
-        go_for_signup= (Button) findViewById(R.id.go_signup);
+        Graphical_view_right= (CardView) findViewById(R.id.graphicalright);
+        final TextView Text = (TextView) findViewById(R.id.graphicalText);
+        LinearLayout background= (LinearLayout) findViewById(R.id.backgounrd);
 
-
-
-        mAuth=FirebaseAuth.getInstance();
-
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                } else {
-                    // User is signed out
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
-                }
-                // ...
-            }
-        };
-
-        go_for_signup.setOnClickListener(new View.OnClickListener() {
+        Graphical_view_right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, JustValue.class);
+                //GetSendData t0 = new GetSendData();
+                //map.put("T0", preUrl + "629/feed.json?key=G7KHR97UPN9OC5AC&results=1");
+                //if(t0.GetData(map.get("T0")) != "No") {
+                    Intent intent = new Intent(MainActivity.this, GraphicalViewRight.class);
+                    startActivity(intent);
+                //}
+                //else {
+       //             Toast toast = Toast.makeText(MainActivity.this, "Can not access the sever", Toast.LENGTH_LONG);
+               // Text.setText("No internet access");
+                //}
+            }
+        });
+
+        Graphical_view_middle= (CardView) findViewById(R.id.graphicalmiddle);
+
+
+        Graphical_view_middle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //GetSendData t0 = new GetSendData();
+                //map.put("T0", preUrl + "629/feed.json?key=G7KHR97UPN9OC5AC&results=1");
+                //if(t0.GetData(map.get("T0")) != "No") {
+                Intent intent = new Intent(MainActivity.this, Middle_View.class);
                 startActivity(intent);
-
-             // startSignUp();
+                //}
+                //else {
+                //             Toast toast = Toast.makeText(MainActivity.this, "Can not access the sever", Toast.LENGTH_LONG);
+                // Text.setText("No internet access");
+                //}
             }
         });
 
-        submit_btn.setOnClickListener(new View.OnClickListener() {
+        Graphical_view_left= (CardView) findViewById(R.id.graphicalleft);
+
+
+        Graphical_view_left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                x=true;
-                startSignIn();
+<<<<<<< HEAD
+                Intent intent = new Intent(MainActivity.this, JustValue.class);
+=======
+                //GetSendData t0 = new GetSendData();
+                //map.put("T0", preUrl + "629/feed.json?key=G7KHR97UPN9OC5AC&results=1");
+                //if(t0.GetData(map.get("T0")) != "No") {
+                Intent intent = new Intent(MainActivity.this, GraphicalView.class);
+>>>>>>> master
+                startActivity(intent);
+                //}
+                //else {
+                //             Toast toast = Toast.makeText(MainActivity.this, "Can not access the sever", Toast.LENGTH_LONG);
+                // Text.setText("No internet access");
+                //}
+            }
+        });
+        Value_dashboard= (CardView) findViewById(R.id.value);
 
+        Value_dashboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,JustValue.class);
+                startActivity(intent);
             }
         });
 
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
+        chart_dashboard= (CardView) findViewById(R.id.charts);
+
+       chart_dashboard.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    // User is signed in
-                    //Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                    updateUI(user);
-
-                }/* else {
-                    // User is signed out
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
-                }*/
-                // ...
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ChartDashboard.class);
+                startActivity(intent);
             }
-        };
+        });
 
+        Hybrid_dashboard= (CardView) findViewById(R.id.hybrid);
+
+        Hybrid_dashboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, MixedDashboard.class);
+//                startActivity(intent);
+
+                Intent i = new Intent(MainActivity.this, MixedDashboard.class);
+                i.putExtra(MixedDashboard.WEBSITE_ADDRESS, "https://themesdesign.in/upcube/layouts/vertical/index.html");
+                startActivity(i);
+            }
+        });
+
+        Error_dashboard= (CardView) findViewById(R.id.error);
+
+        Error_dashboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ErrorDashboard.class);
+                startActivity(intent);
+            }
+        });
+
+        chart_dashboard= (CardView) findViewById(R.id.charts);
+
+        chart_dashboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ChartDashboard.class);
+                startActivity(intent);
+            }
+        });
+
+
+        notif= (ImageButton) findViewById(R.id.notification);
+        notif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, New_Notification.class);
+                startActivity(intent);
+            }
+        });
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+            connected = true;
+        }
+        else
+            connected = false;
     }
+
 
 
     @Override
-    public void onStart() {
-        super.onStart();
-        mAuth.addAuthStateListener(mAuthListener);
-    }
+    public void onResume(){
+        super.onResume();
+        // put your code here...
+        Graphical_view_right= (CardView) findViewById(R.id.graphicalright);
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (mAuthListener != null) {
-            mAuth.removeAuthStateListener(mAuthListener);
-        }
-    }
-
-    private void updateUI(FirebaseUser user) {
-        if (user != null) {
-
-            Intent intent = new Intent(MainActivity.this, Home.class);
-            startActivity(intent);
-
-        }
-    }
-
-    private void startSignUp() {
-
-        String email = email_et.getText().toString().trim();
-        String password = password_et.getText().toString().trim();
-
-        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-
-            Toast.makeText(MainActivity.this, "fields are empty", Toast.LENGTH_LONG).show();
-        } else {
-            mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
-
-                            // If sign in fails, display a message to the user. If sign in succeeds
-                            // the auth state listener will be notified and logic to handle the
-                            // signed in user can be handled in the listener.
-                            if (!task.isSuccessful()) {
-                                Toast.makeText(MainActivity.this, "autho failed", Toast.LENGTH_SHORT).show();
-                            }
-
-                            // ...
+        if(connected == false){
+               // Toast.makeText(MainActivity.this, "You must have internet access", Toast.LENGTH_LONG).show();
+            AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+            alertDialog.setTitle("No Wi-Fi");
+            alertDialog.setMessage("You must have internet access to continue");
+            alertDialog.setIcon(R.drawable.wifi);
+//            alertDialog.requestWindowFeature(Window.FEATURE_LEFT_ICON);
+//            alertDialog.setFeatureDrawableResource(Window.FEATURE_LEFT_ICON, R.drawable.avatar);
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
                         }
                     });
+            alertDialog.show();
+          //  Graphical_view_right.setEnabled(false);
         }
     }
-    private void startSignIn(){
-        String email=email_et.getText().toString().trim();
-        String password=password_et.getText().toString().trim();
-
-        if(TextUtils.isEmpty(email)||TextUtils.isEmpty(password)){
-
-            Toast.makeText(MainActivity.this,"fields are empty",Toast.LENGTH_LONG).show();
-        }
-        else {
-
-
-
-            mAuth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this,new OnCompleteListener<AuthResult>() {
-
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-
-                    x=task.isSuccessful();
-                    if (!task.isSuccessful()) {
-
-
-                       // Log.w(TAG, "signInWithEmail:failure", task.getException());
-                        Toast.makeText(MainActivity.this, "sign in problem!", Toast.LENGTH_SHORT).show();
-                        updateUI(null);
-
-                    }
-                    else{
-                        Toast.makeText(MainActivity.this, "else", Toast.LENGTH_SHORT).show();
-                        //Log.d(TAG, "signInWithEmail:success");
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        updateUI(user);
-                    }
-                }
-
-            });
-        }
-    }
-
-   /* private boolean submitForm() throws ParseException, JSONException {
-        if (validateUser()&&validateEmail()&&validatePassword()&&validateRepassword()) {
-            //Toast.makeText(MainActivity.this, "Invalid input!", Toast.LENGTH_SHORT).show();
-            // return false;
-
-
-            if ((inputPass.getText().toString().equals(inputRepass.getText().toString())) && checkBox.isChecked()) {
-                Toast.makeText(MainActivity.this, "SignUp successfully", Toast.LENGTH_SHORT).show();
-
-                ////////////////////  Function to send information to platform ////////////////////////
-
-                String url_user = "http://thingtalk.ir/update?key=48A91L1B0NQRPR3I&field1=" + inputUser.getText();
-                try {
-                    new HttpPostRequest().execute(url_user).get();
-                } catch (InterruptedException | ExecutionException e) {
-                    e.printStackTrace();
-                }
-
-                String url_pass = "http://thingtalk.ir/update?key=OXFGAZT46L7TY4RP&field1=" + inputPass.getText();
-                try {
-                    new HttpPostRequest().execute(url_pass).get();
-                } catch (InterruptedException | ExecutionException e) {
-                    e.printStackTrace();
-                }
-
-                String url_repass = "http://thingtalk.ir/update?key=QEE72RTX5W28YGO7&field1=" + inputRepass.getText();
-                try {
-                    new HttpPostRequest().execute(url_repass).get();
-                } catch (InterruptedException | ExecutionException e) {
-                    e.printStackTrace();
-                }
-
-                String url_email = "http://thingtalk.ir/update?key=X1I8YN8DQ696PUB4&field1=" + inputEmail.getText();
-                try {
-                    new HttpPostRequest().execute(url_email).get();
-                } catch (InterruptedException | ExecutionException e) {
-                    e.printStackTrace();
-                }
-                return true;
-            } else {
-                Toast.makeText(this, "Please confirm and check again your information", Toast.LENGTH_LONG).show();
-                return false;
-            }
-        }
-        else{
-                Toast.makeText(MainActivity.this, "Invalid input!", Toast.LENGTH_SHORT).show();
-            return false;
-            }
-
-    }
-
-    private boolean check_beUnique(String input) throws ParseException, JSONException {
-        ArrayList usrs=new ArrayList<String>();
-        ArrayList emls=new ArrayList<String>();
-        int same;
-        switch (input){
-            case "username":
-                usrs=data.get_data("username",null);
-                same=0;
-                for(int i=0;i<usrs.size();i++){
-                    if(usrs.get(i).equals(inputUser.getText()))
-                        same++;
-                }
-                return same == 0;
-
-            case "email":
-                emls=data.get_data("email",null);
-                same=0;
-                for(int i=0;i<usrs.size();i++){
-                    if(emls.get(i).equals(inputEmail.getText()))
-                        same++;
-                }
-                return same == 0;
-            default:return  false;
-
-        }
-    }
-
-////////////////////////// methods/////////////////////////////////////
-
-    private boolean validateUser() throws ParseException, JSONException {
-        if (inputUser.getText().toString().trim().equals("")|| !check_beUnique("username")) {
-            requestFocus(inputUser);
-            return false;
-        } else {
-
-        }
-        return true;
-    }
-
-    private boolean validateEmail() throws ParseException, JSONException {
-        String email = inputEmail.getText().toString().trim();
-        if (email.equals("") || !isValidEmail(email) || !check_beUnique("email")) {
-            requestFocus(inputEmail);
-            return false;
-        } else {
-
-        }
-        return true;
-    }
-
-    private boolean validatePassword() {
-        if (inputPass.getText().toString().trim().equals("")) {
-            requestFocus(inputPass);
-            return false;
-        } else {
-
-        }
-        return true;
-    }
-
-    private boolean validateRepassword() {
-        if (inputRepass.getText().toString().trim().equals("")) {
-            requestFocus(inputRepass);
-            return false;
-        } else {
-
-        }
-        return true;
-    }
-
-    private static boolean isValidEmail(String email){
-        return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
-    }
-
-    private void requestFocus(View view){
-        if (view.requestFocus()){
-            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
-        }
-    }
-
-    private class MyTextWatcher implements TextWatcher {
-
-        private View view;
-        private MyTextWatcher(View view){
-            this.view = view;
-        }
-
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-          /*  switch (view.getId()){
-                case R.id.et_username :
-                    try {
-                        validateUser();
-                    } catch (ParseException | JSONException e) {
-                        e.printStackTrace();
-                    }
-                    break;
-
-                case R.id.et_email :
-                    try {
-                        validateEmail();
-                    } catch (ParseException | JSONException e) {
-                        e.printStackTrace();
-                    }
-                    break;
-
-                case R.id.et_pass :
-                    validatePassword();
-                    break;
-
-                case R.id.et_repass :
-                    validateRepassword();
-                    break;
-
-            }
-        }
-    } here*/
 }

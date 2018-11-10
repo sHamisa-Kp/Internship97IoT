@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    android:background="#272727"
+    tools:context="ir.iotacademy.gardenbalcony.Middle_View">
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       >
+        <HorizontalScrollView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+        <android.support.constraint.ConstraintLayout
+        android:id="@+id/backgounrd"
+        android:layout_width="385dp"
+        android:layout_height="570dp"
+        android:background="@drawable/middle"
+        android:layout_centerInParent="true"
+            android:layout_marginTop="1dp"
+            android:layout_gravity="center">
+
+
+        <ImageView
+            android:id="@+id/source1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/source1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="190dp"
+            android:visibility="invisible"/>
+            <ImageView
+                android:id="@+id/source2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/source2"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="190dp"
+                android:visibility="invisible"/>
+            <ImageView
+                android:id="@+id/source3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/source3"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="190dp"
+                android:visibility="invisible"/>
+            <ImageView
+                android:id="@+id/source4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/source4"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="190dp"
+                android:visibility="invisible"/>
+            <ImageView
+                android:id="@+id/source5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/source5"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="190dp"
+                android:visibility="invisible"/>
+            <ImageView
+                android:id="@+id/source6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/source"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="190dp"
+                android:visibility="invisible"/>
+
+   <!--     <ImageButton
+            android:id="@+id/go_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:background="@null"
+            android:layout_marginTop="50dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/left_arrow"
+            />
+        <ImageButton
+            android:id="@+id/go_right2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="290dp"
+            android:background="@null"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/right_arrow"
+            />!-->
+
+    </android.support.constraint.ConstraintLayout>
+        </HorizontalScrollView>
+    </ScrollView>
+
+</RelativeLayout>

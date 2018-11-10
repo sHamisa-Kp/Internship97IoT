@@ -25,6 +25,9 @@ function smVegHttpGetAsync(theUrl, callback, i) {
             } else {
                 soilmoistureError[i] = false;
             }
+            if (i === (smVegChannel.SM.length) - 1) {
+                smVegCalculateAverage(soilmoistureArray);
+            }
         }
     };
     xmlHttp.open("GET", theUrl, true); // true for asynchronous 
@@ -39,7 +42,7 @@ function smVegUpdateThePage() {
     }
 }
 
-function smVegCalculateAverage() {
+function smVegCalculateAverage(soilmoistureArray) {
     let sum = 0;
     soilmoistureArray.forEach(function(elem) {
         sum += elem;
@@ -88,8 +91,7 @@ for(let i = 0; i < smVegChannel.SM.length; i++) {
     soilmoistureError.push(false);
 }
 
-setInterval(smVegUpdateThePage, updateInterval);
-setInterval(smVegCalculateAverage, updateInterval);
+setInterval(smVegUpdateThePage, 3000);
 
 // let sum = 0;
 // let num = 0;
