@@ -8,6 +8,16 @@ import datetime
 
 app = Flask(__name__)
 
+ser = serial.Serial(
+    # port='/dev/ttyAMA0',
+    port='/dev/ttyUSB0',
+    baudrate=38400,
+    parity=serial.PARITY_NONE,
+    stopbits=serial.STOPBITS_ONE,
+    bytesize=serial.EIGHTBITS,
+    timeout=0.1
+)
+
 currentValuesOfVariables = {
     'PS': [None, None, None],
     'LBS': [0, 1],
@@ -115,16 +125,6 @@ apiKeys = {
     'WM': [{'id': '753', 'apiKey': 'OUAV3VIB076Y5UO0'}]}
 
 
-ser = serial.Serial(
-    port='/dev/ttyAMA0',
-    baudrate=38400,
-    parity=serial.PARITY_NONE,
-    stopbits=serial.STOPBITS_ONE,
-    bytesize=serial.EIGHTBITS,
-    timeout=1
-)
-
-
 @app.route("/actuators/<command>")
 def pumpControl(command):
     if not command.startswith('set'):
@@ -136,21 +136,26 @@ def pumpControl(command):
         if command[3:].startswith(dT):
             if command[len(dT) + 1 + 3:] == 'ON' or command[len(dT) + 1 + 3:] == 'OFF':
                 if int(command[len(dT) + 3]) < len(apiKeys[dT]):
-                    ser.write((command + "\n").encode('ascii'))
+                    zigbeeSerialWrite(command)
                     print("This Text has been sent to Arduino: ", command)
                     return command
 
     return "NOT FOUND", 404
 
 
+def zigbeeSerialWrite(s):
+    binaryC = b"\xFD" + bytes([len(s)]) + b"\x3C\xB8" + s.encode('utf-8')
+    ser.write(binaryC)
+
+
 def zigbeeDataToString(inputBin):
-    inputStr = inputBin.decode('ascii')
+    inputStr = inputBin[4:-2].decode('ascii') + "\n\n"
     return inputStr
 
 
 def stringToData(inputStr, dataType):
-    nodeNumber = inputStr[len(dataType): inputStr.find('=') - 1]
-    return {'dataType': dataType, 'data': inputStr[len(dataType + nodeNumber + ' = '):-2], 'nodeNumber': nodeNumber}
+    nodeNumber = inputStr[len(dataType): inputStr.find('=')]
+    return {'dataType': dataType, 'data': inputStr[len(dataType + nodeNumber + '='):-2], 'nodeNumber': nodeNumber}
 
 
 def stringToDataHandler(inputStr):
@@ -193,123 +198,38 @@ def automateTasks(inputData):
         data = average
 
     if dataType == 'H':
-        if data < thresholdsOfSensors[dataType]['min'] and currentValuesOfVariables['PS'][2] == 0:
+        if data < thresholdsOfSensors[dataType]['min'] and (currentValuesOfVariables['PS'][2] == 0 or
+                                                            currentValuesOfVariables['PS'][2] is None):
             print('automateTasks: setPS2ON')
-            ser.write('setPS2ON\n'.encode('ascii'))
-        elif data > thresholdsOfSensors[dataType]['max'] and currentValuesOfVariables['PS'][2] == 1:
+            zigbeeSerialWrite('setPS2ON')
+        elif data > thresholdsOfSensors[dataType]['max'] and (currentValuesOfVariables['PS'][2] == 1 or
+                                                              currentValuesOfVariables['PS'][2] is None):
             print('automateTasks: setPS2OFF')
-            ser.write('setPS2OFF\n'.encode('ascii'))
-
-    elif dataType == 'PhR':
-        if data < thresholdsOfSensors[dataType]['min'] and (currentValuesOfVariables['LBS'][0] == 0 or
-                                                            currentValuesOfVariables['LBS'][1] == 0):
-            print('automateTasks: setLBS0ON')
-            ser.write('setLBS0ON\n'.encode('ascii'))
-            print('automateTasks: setLBS1ON')
-            ser.write('setLBS1ON\n'.encode('ascii'))
-        elif data > thresholdsOfSensors[dataType]['max'] and (currentValuesOfVariables['LBS'][0] == 1 or
-                                                              currentValuesOfVariables['LBS'][1] == 1):
-            print('automateTasks: setLBS0OFF')
-            ser.write('setLBS0OFF\n'.encode('ascii'))
-            print('automateTasks: setLBS1OFF')
-            ser.write('setLBS1OFF\n'.encode('ascii'))
-
-    elif dataType == 'WL':
-        if data < thresholdsOfSensors[dataType]['min'] and (currentValuesOfVariables['TS'][0] == 0 or
-                                                            currentValuesOfVariables['TS'][0] is None):
-            print('automateTasks: setTS0ON')
-            ser.write('setTS0ON\n'.encode('ascii'))
-        elif data > thresholdsOfSensors[dataType]['max'] and (currentValuesOfVariables['TS'][0] == 1 or
-                                                              currentValuesOfVariables['TS'][0] is None):
-            print('automateTasks: setTS0OFF')
-            ser.write('setTS0OFF\n'.encode('ascii'))
-
-    elif dataType == 'SM':
-        if nodeNumber <= 7:
-            average = 0
-            counter = 0
-            for i in range(0, 8):
-                V = currentValuesOfVariables[dataType][i]
-                if V is not None:
-                    average += V
-                    counter += 1
-
-            if counter == 0:
-                return
-            average /= counter
-            data = average
-
-            if data < thresholdsOfSensors[dataType]['minV'] and currentValuesOfVariables['PS'][0] == 0:
-                print('automateTasks: setPS0ON')
-                ser.write('setPS0ON\n'.encode('ascii'))
-            elif data > thresholdsOfSensors[dataType]['maxV'] and currentValuesOfVariables['PS'][0] == 1:
-                print('automateTasks: setPS0OFF')
-                ser.write('setPS0OFF\n'.encode('ascii'))
-        else:
-            average = 0
-            counter = 0
-            for i in range(8, 18):
-                V = currentValuesOfVariables[dataType][i]
-                if V is not None:
-                    average += V
-                    counter += 1
-
-            if counter == 0:
-                return
-            average /= counter
-            data = average
-
-            if data < thresholdsOfSensors[dataType]['minF'] and currentValuesOfVariables['PS'][1] == 0:
-                print('automateTasks: setPS1ON')
-                ser.write('setPS1ON\n'.encode('ascii'))
-            elif data > thresholdsOfSensors[dataType]['maxF'] and currentValuesOfVariables['PS'][1] == 1:
-                print('automateTasks: setPS1OFF')
-                ser.write('setPS1OFF\n'.encode('ascii'))
-
-
-def automateTasksPC(inputData):
-    dataType = inputData['dataType']
-
-    if dataType in ['PS', 'LBS', 'TS']:  # Actuators -> return
-        return
-    nodeNumber = int(inputData['nodeNumber'])
-    data = float(inputData['data'])
-
-    if dataType != 'SM':
-        average = 0
-        counter = 0
-        for V in currentValuesOfVariables[dataType]:
-            if V is not None:
-                average += V
-                counter += 1
-        if counter == 0:
-            return
-        average /= counter
-        data = average
-
-    if dataType == 'H':
-        if data < thresholdsOfSensors[dataType]['min'] and currentValuesOfVariables['PS'][2] == 0:
-            print('automateTasks: setPS2ON')
-        elif data > thresholdsOfSensors[dataType]['max'] and currentValuesOfVariables['PS'][2] == 1:
-            print('automateTasks: setPS2OFF')
+            zigbeeSerialWrite('setPS2OFF')
 
     elif dataType == 'PhR':
         if data > thresholdsOfSensors[dataType]['max'] and (currentValuesOfVariables['LBS'][0] == 0 or
                                                             currentValuesOfVariables['LBS'][1] == 0):
             print('automateTasks: setLBS0ON')
+            zigbeeSerialWrite('setLBS0ON')
             print('automateTasks: setLBS1ON')
+            zigbeeSerialWrite('setLBS1ON')
         elif data < thresholdsOfSensors[dataType]['min'] and (currentValuesOfVariables['LBS'][0] == 1 or
                                                               currentValuesOfVariables['LBS'][1] == 1):
             print('automateTasks: setLBS0OFF')
+            zigbeeSerialWrite('setLBS0OFF')
             print('automateTasks: setLBS1OFF')
+            zigbeeSerialWrite('setLBS1OFF')
 
     elif dataType == 'WL':
         if data < thresholdsOfSensors[dataType]['min'] and (currentValuesOfVariables['TS'][0] == 0 or
                                                             currentValuesOfVariables['TS'][0] is None):
             print('automateTasks: setTS0ON')
+            zigbeeSerialWrite('setTS0ON')
         elif data > thresholdsOfSensors[dataType]['max'] and (currentValuesOfVariables['TS'][0] == 1 or
                                                               currentValuesOfVariables['TS'][0] is None):
             print('automateTasks: setTS0OFF')
+            zigbeeSerialWrite('setTS0OFF')
 
     elif dataType == 'SM':
         if nodeNumber <= 7:
@@ -326,10 +246,14 @@ def automateTasksPC(inputData):
             average /= counter
             data = average
 
-            if data < thresholdsOfSensors[dataType]['minV'] and currentValuesOfVariables['PS'][0] == 0:
+            if data < thresholdsOfSensors[dataType]['minV'] and (currentValuesOfVariables['PS'][0] == 0 or
+                                                                 currentValuesOfVariables['PS'][0] is None):
                 print('automateTasks: setPS0ON')
-            elif data > thresholdsOfSensors[dataType]['maxV'] and currentValuesOfVariables['PS'][0] == 1:
+                zigbeeSerialWrite('setPS0ON')
+            elif data > thresholdsOfSensors[dataType]['maxV'] and (currentValuesOfVariables['PS'][0] == 1 or
+                                                                   currentValuesOfVariables['PS'][0] is None):
                 print('automateTasks: setPS0OFF')
+                zigbeeSerialWrite('setPS0OFF')
         else:
             average = 0
             counter = 0
@@ -344,27 +268,29 @@ def automateTasksPC(inputData):
             average /= counter
             data = average
 
-            if data < thresholdsOfSensors[dataType]['minF'] and currentValuesOfVariables['PS'][1] == 0:
+            if data < thresholdsOfSensors[dataType]['minF'] and (currentValuesOfVariables['PS'][1] == 0 or
+                                                                 currentValuesOfVariables['PS'][1] is None):
                 print('automateTasks: setPS1ON')
-            elif data > thresholdsOfSensors[dataType]['maxF'] and currentValuesOfVariables['PS'][1] == 1:
+                zigbeeSerialWrite('setPS1ON')
+            elif data > thresholdsOfSensors[dataType]['maxF'] and (currentValuesOfVariables['PS'][1] == 1 or
+                                                                   currentValuesOfVariables['PS'][1] is None):
                 print('automateTasks: setPS1OFF')
+                zigbeeSerialWrite("setPS1OFF")
 
 
 def sendData(inputData):
     updateCurrentValuesOfVariables(inputData)
     automateTasks(inputData)
-    # automateTasksPC(inputData)
 
     payload = {'api_key': apiKeys[inputData["dataType"]][int(inputData["nodeNumber"])]['apiKey'],
                'field1': inputData["data"]}
     try:
         r = requests.post("http://thingtalk.ir/update", data=payload)
-        print("PAYLOAD:")
+        print("PAYLOAD: ", end='')
         print(payload)
         print("Data sent! ")
         print(r.status_code, r.reason)
         print("r.text: " + r.text)
-        print("--------------------------------------------------")
         if r.status_code == 200 and r.text != '0':
             return True
         return False
@@ -375,35 +301,26 @@ def sendData(inputData):
 
 def serialReadThread():
     print("Now Raspberry pi is ready :)")
+    # zigbeeSerialWrite("setPS0ON")
+
     while True:
         if ser.inWaiting() > 0:
             try:
-                print(datetime.datetime.now())
                 inputBin = ser.readline()
-
+                print("-------------------------------------")
+                print(datetime.datetime.now())
+                print("inputBin: ", end='')
+                print(inputBin)
                 inputStr = zigbeeDataToString(inputBin)
-                print("inputStr: " + inputStr)
+
+                print("inputStr: " + inputStr, end='')
                 inputData = stringToDataHandler(inputStr)
 
-                print("inputData: ")
+                print("inputData: ", end='')
                 print(inputData)
                 sendData(inputData)
             except Exception as e:
                 print(e)
-    # print("Now Raspberry pi is ready :)")
-    # while True:
-    #     try:
-    #         print(datetime.datetime.now())
-    #         print("Your TX: ")
-    #         inputStr = input()
-    #         print("inputStr: " + inputStr)
-    #         inputData = stringToDataHandler(inputStr)
-    #
-    #         print("inputData: ")
-    #         print(inputData)
-    #         sendData(inputData)
-    #     except Exception as e:
-    #         print(e)
 
 
 thread = Thread(target=serialReadThread)
