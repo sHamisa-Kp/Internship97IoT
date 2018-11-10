@@ -24,7 +24,7 @@ const channel = {
   {'id': '720', 'apiKey': '6P4WUZHZZDR6U0TX'}],
 
   // Humidity
-  'H': [{'id': '672', 'apiKey': 'B1JQYWFKX2PCRBYF'},
+  'H': [{'id': '672', 'apiKey': '7TPW8OQOGN1EMURD'},
   {'id': '721', 'apiKey': 'YV8JRH910ZJZQN1I'}],
 
   // Floor Humidity
