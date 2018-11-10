@@ -30,6 +30,14 @@ public class MainActivity extends AppCompatActivity  {
     TextView NIC;
 
 
+<<<<<<< Updated upstream
+=======
+    String preUrl="http://thingtalk.ir/channels/";
+    String preip="http://10.1.248.34:5050/actuators/";
+    Map<String,String> map=new HashMap<String, String>();
+    boolean connected = false;
+>>>>>>> Stashed changes
+
     String preUrl="http://thingtalk.ir/channels/";
     String preip="http://10.1.248.34:5050/actuators/";
     Map<String,String> map=new HashMap<String, String>();
@@ -157,7 +165,7 @@ public class MainActivity extends AppCompatActivity  {
         notif.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, New_Notification.class);
+                Intent intent = new Intent(MainActivity.this, Notifications.class);
                 startActivity(intent);
             }
         });
@@ -169,6 +177,15 @@ public class MainActivity extends AppCompatActivity  {
         }
         else
             connected = false;
+<<<<<<< HEAD
+
+
+
+=======
+
+
+
+>>>>>>> master
     }
 
 

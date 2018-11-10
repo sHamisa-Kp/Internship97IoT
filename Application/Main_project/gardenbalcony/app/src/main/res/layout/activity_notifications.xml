@@ -134,7 +134,7 @@
                     android:visibility="gone">
 
                     <TextView
-                        android:id="@+id/tvmintemperature"
+                        android:id="@+id/tvmaxtemperature"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="10dp"
@@ -174,7 +174,7 @@
                     android:visibility="gone">
 
                     <TextView
-                        android:id="@+id/tvmaxtemperature"
+                        android:id="@+id/tvmintemperature"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="10dp"
@@ -509,7 +509,7 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_marginTop="30dp"
-                        android:src="@drawable/source_error_notif_f" />
+                        android:src="@drawable/source_error_empty_notif" />
 
                     <ImageButton
                         android:id="@+id/canselhighsourcelevel"

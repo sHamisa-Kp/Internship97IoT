@@ -1,8 +1,11 @@
 const statusChannel = {
-	// Pump Status (Vegetables, Flowers, TOP, Fogg)
+	// Pump Status (Vegetables, Flowers, TOP(Fogg))
    	'PS': [{'id': '671', 'apiKey': 'XAKAVEUUJQ9GZGMT'},
    	{'id': '744', 'apiKey': 'PD74MGJ9RFR4YMHK'},
    	{'id': '750', 'apiKey': 'FGGX36CLKXBW2BN4'}],
+
+    // Tap Status (Water Tap)
+    'TS': [{'id': '748', 'apiKey': 'A1079N4WNZESIRFC'}],
 
     // Light Bulb Status
     'LBS': [{'id': '745', 'apiKey': '2ZRJZIFPTQF79NOH'},
@@ -20,35 +23,29 @@ function pumpStatusHttpGetAsync(theUrl, callback, i) {
             if(num === 0) {
             	switch(i) {
             		case 0:
-            		document.querySelector("#pumpStatusOfVegs").src = "img/X.png";
+            		document.querySelector("#pumpStatusOfVegs").src = "img/drip-off.png";
                     break;
             		case 1:
-            		document.querySelector("#pumpStatusOfFlwrs").src = "img/X.png";
+            		document.querySelector("#pumpStatusOfFlwrs").src = "img/drip-off.png";
                     break;
             		case 2:
-            		document.querySelector("#waterTopStatus").src = "img/watertap-off.png";
-                    break;
-            		case 3:
-            		document.querySelector("#foggNozzleStatus").src = "img/fognozzle2-off-v2.png";
+                    document.querySelector("#foggNozzleStatus").src = "img/fog-off.png";
+            		// document.querySelector("#waterTapStatus").src = "img/watertap-off.png";
                     break;
             	}
             }
             if (num === 1) {
             	switch(i) {
             		case 0:
-            		document.querySelector("#pumpStatusOfVegs").src = "img/X.png";
+            		document.querySelector("#pumpStatusOfVegs").src = "img/drip-on.png";
                     break;
             		case 1:
-					document.querySelector("#pumpStatusOfFlwrs").src = "img/X.png";
+					document.querySelector("#pumpStatusOfFlwrs").src = "img/drip-on.png";
                     break;
             		case 2:
-					document.querySelector("#waterTopStatus").src = "img/watertap-on-v2.png";
+					document.querySelector("#foggNozzleStatus").src = "img/fognozzle2-on.png";
                     break;
-            		case 3:
-            		document.querySelector("#foggNozzleStatus").src = "img/fognozzle2-on.png";
-                    break;            		        	
-        		}
-
+                }
             }
         }
     };
@@ -56,7 +53,7 @@ function pumpStatusHttpGetAsync(theUrl, callback, i) {
     xmlHttp.send(null);
 }
 
-function LBStatusHttpGetAsync(theUrl, callback, i) {
+function tapStatusHttpGetAsync(theUrl, callback, i) {
     let xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() { 
         if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
@@ -65,25 +62,10 @@ function LBStatusHttpGetAsync(theUrl, callback, i) {
             let num = parseInt(text);
             console.log(num);
             if(num === 0) {
-                switch(i) {
-                    case 0:
-                    document.querySelector("#lightbulbStatus1").src = "img/X.png"; //lightbulbStatus1 is for Dr's balconey
-                    break;
-                    case 1:
-                    document.querySelector("#lightbulbStatus2").src = "img/X.png"; //lightbulbStatus2 is for conferenceroom's balconey
-                    break;
-                }
+                    document.querySelector("#waterTapStatus").src = "img/watertap-off.png";
             }
             if (num === 1) {
-                switch(i) {
-                    case 0:
-                    document.querySelector("#lightbulbStatus1").src = "img/X.png"; //lightbulbStatus1 is for Dr's balconey
-                    break;
-                    case 1:
-                    document.querySelector("#lightbulbStatus2").src = "img/X.png"; //lightbulbStatus2 is for conferenceroom's balconey
-                    break;                              
-                }
-
+                    document.querySelector("#waterTapStatus").src = "img/watertap-on-v2.png"; 
             }
         }
     };
@@ -98,12 +80,12 @@ function pumpStatusUpdateThePage() {
 	}
 }
 
-function LBStatusUpdateThePage() {
-    for(let i = 0; i < statusChannel.LBS.length; i++) {
-        LBStatusHttpGetAsync("http://thingtalk.ir/channels/" + statusChannel.LBS[i].id + 
-            "/feeds/last.json?key=" + statusChannel.LBS[i].apiKey, function(){}, i);
+function tapStatusUpdateThePage() {
+    for(let i = 0; i < statusChannel.TS.length; i++) {
+        tapStatusHttpGetAsync("http://thingtalk.ir/channels/" + statusChannel.TS[i].id + 
+            "/feeds/last.json?key=" + statusChannel.TS[i].apiKey, function(){}, i);
     }
 }
 
 setInterval(pumpStatusUpdateThePage, 3000);
-setInterval(LBStatusUpdateThePage, 3000);
+setInterval(tapStatusUpdateThePage, 3000);

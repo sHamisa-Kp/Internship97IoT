@@ -43,6 +43,7 @@
         <activity android:name=".Middle_View" />
         <activity android:name=".GraphicalViewRight" />
         <activity android:name=".ErrorDashboard" />
+        <activity android:name=".New_Notification"></activity>
     </application>
 
 </manifest>
