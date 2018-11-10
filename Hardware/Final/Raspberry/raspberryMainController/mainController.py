@@ -3,14 +3,13 @@ from threading import Thread
 from flask import Flask
 import serial
 import requests
-# import RPi.GPIO as GPIO
 import datetime
 
 app = Flask(__name__)
 
 ser = serial.Serial(
-    # port='/dev/ttyAMA0',
-    port='/dev/ttyUSB0',
+    port='/dev/ttyAMA0',
+    # port='/dev/ttyUSB0',
     baudrate=38400,
     parity=serial.PARITY_NONE,
     stopbits=serial.STOPBITS_ONE,
@@ -20,7 +19,7 @@ ser = serial.Serial(
 
 currentValuesOfVariables = {
     'PS': [None, None, None],
-    'LBS': [0, 1],
+    'LBS': [None, None],
     'TS': [0],
     'SM': [None for i in range(18)],
     'T': [None, None],
@@ -67,7 +66,7 @@ apiKeys = {
           {'id': '720', 'apiKey': '6P4WUZHZZDR6U0TX'}],
 
     # Humidity
-    'H': [{'id': '672', 'apiKey': 'B1JQYWFKX2PCRBYF'},
+    'H': [{'id': '672', 'apiKey': '7TPW8OQOGN1EMURD'},
           {'id': '721', 'apiKey': 'YV8JRH910ZJZQN1I'}],
 
     # Floor Humidity
@@ -144,7 +143,7 @@ def pumpControl(command):
 
 
 def zigbeeSerialWrite(s):
-    binaryC = b"\xFD" + bytes([len(s)]) + b"\x3C\xB8" + s.encode('utf-8')
+    binaryC = b"\xFD" + bytes([len(s)]) + b"\x54\x53" + s.encode('utf-8')
     ser.write(binaryC)
 
 
@@ -208,18 +207,23 @@ def automateTasks(inputData):
             zigbeeSerialWrite('setPS2OFF')
 
     elif dataType == 'PhR':
-        if data > thresholdsOfSensors[dataType]['max'] and (currentValuesOfVariables['LBS'][0] == 0 or
-                                                            currentValuesOfVariables['LBS'][1] == 0):
+        if data > thresholdsOfSensors[dataType]['max']:
+          if currentValuesOfVariables['LBS'][0] == 0 or currentValuesOfVariables['LBS'][0] == None:
             print('automateTasks: setLBS0ON')
             zigbeeSerialWrite('setLBS0ON')
+
+          elif currentValuesOfVariables['LBS'][1] == 0 or currentValuesOfVariables['LBS'][1] == None:
             print('automateTasks: setLBS1ON')
             zigbeeSerialWrite('setLBS1ON')
-        elif data < thresholdsOfSensors[dataType]['min'] and (currentValuesOfVariables['LBS'][0] == 1 or
-                                                              currentValuesOfVariables['LBS'][1] == 1):
-            print('automateTasks: setLBS0OFF')
-            zigbeeSerialWrite('setLBS0OFF')
-            print('automateTasks: setLBS1OFF')
-            zigbeeSerialWrite('setLBS1OFF')
+
+        elif data < thresholdsOfSensors[dataType]['min']:
+            if currentValuesOfVariables['LBS'][0] == 1 or currentValuesOfVariables['LBS'][0] == None:
+              print('automateTasks: setLBS0OFF')
+              zigbeeSerialWrite('setLBS0OFF')
+
+            elif currentValuesOfVariables['LBS'][1] == 1 or currentValuesOfVariables['LBS'][1] == None:
+              print('automateTasks: setLBS1OFF')
+              zigbeeSerialWrite('setLBS1OFF')
 
     elif dataType == 'WL':
         if data < thresholdsOfSensors[dataType]['min'] and (currentValuesOfVariables['TS'][0] == 0 or
