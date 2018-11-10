@@ -50,7 +50,7 @@ public class GraphicalView extends AppCompatActivity {
     ImageButton onswitch,offswitch,mistbtn,mistbtn2,go_to_the_right_position,plant;
     ConstraintLayout background;
     TextView datat, datah, dataveg1, dataveg2, dataveg3, dataveg4, dataf1, dataf2, dataf3, dataf4, dataf5, datapr,
-            datafm0, datawm, datag;
+            datafm0, datawm, datag, datasun;
     String d,d1;
     int water_level = 0;
     int up_pump_status =0, lamp_status=0;
@@ -178,10 +178,44 @@ public class GraphicalView extends AppCompatActivity {
         onswitch = (ImageButton) findViewById(R.id.on_switch);
         offswitch = (ImageButton) findViewById(R.id.off_switch);
         motion= (ImageView) findViewById(R.id.onmotion);
+        datasun = (TextView) findViewById(R.id.textsunset);
 
 
+        //sunset
+        final String url = "https://api.sunrise-sunset.org/json?lat=35.6892&lng=51.3890&date=today";
+        JsonObjectRequest getsunset = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            //JSONArray array = response.getJSONArray("results");
+                            JSONObject data = response.getJSONObject("results");
+                            String sunset = data.getString("sunset");
+                            String sunrise = data.getString("sunrise");
+//                            if(serial.indexOf('.') != -1 )
+//                            {
+//                                serial = serial.substring(0, serial.indexOf('.'));
+//                            }
+//                            int num = Integer.parseInt(serial)+1;
+                            datasun.setText(sunset + sunrise);
+                        }
+                        catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                ,
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                      //  Toast.makeText(GraphicalView.this, "Connection Problem", Toast.LENGTH_SHORT).show();
+                    datasun.setText("error");
+                    }
 
-
+                }
+        );
+        queue.add(getsunset);
 
         //Temperature
 
@@ -1586,7 +1620,7 @@ public class GraphicalView extends AppCompatActivity {
                 }
         );queue.add(getRequestg);
 
-
+//
 //                            }
 //                        });
 //                    }
