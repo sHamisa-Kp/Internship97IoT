@@ -64,7 +64,7 @@ function smFlwrUpdateSoilmoistureTile(average) {
 
     var pic = document.querySelector("#SMofFlwrBackgroundImage");
     if(average < 20) {  //dry          
-            pic.style.backgroundImage = 'url("img/dryFlwrSoil.jpg")';
+            pic.style.backgroundImage = 'url("img/dryFlwrSoil.jpeg")';
             
         }else if(20 <= average && average <= 30) { //normal
             pic.style.backgroundImage = 'url("img/smOfFlwr3.jpg")';
@@ -93,4 +93,4 @@ for(let i = 0; i < smFlwrChannel.SM.length; i++) {
     flwrsoilmoistureError.push(false);
 }
 
-setInterval(smFlwrUpdateThePage, updateInterval);
+setInterval(smFlwrUpdateThePage, 3000);

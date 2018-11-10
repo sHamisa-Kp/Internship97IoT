@@ -188,7 +188,7 @@ function updateTemperatureTile(average) {
 		backgroundImage.style.backgroundImage = 'url("img/coldTemp.jpg")';
 
 	} else if(average >= 20 && average < 30) {
-		backgroundImage.style.backgroundImage = 'url("img/normTemp.jpg")';
+		backgroundImage.style.backgroundImage = 'url("img/normTemp2.jpg")';
 
 	} else if(average >= 30) {
 		backgroundImage.style.backgroundImage = 'url("img/hotWeather2.jpg")';
@@ -210,7 +210,7 @@ function updateTemperatureTile(average) {
 }
 
 function updatePhotoresistorTile(average) {
-	document.getElementById('photoresistorText').textContent = average.toPrecision(3) + "%";
+	document.getElementById('photoresistorText').textContent = "%" + average.toPrecision(3);
 
 	let backgroundImage = document.getElementById('photoresistorBackGroundImage');
 	if(average < 33) {
@@ -237,35 +237,35 @@ function updatePhotoresistorTile(average) {
 		photoresistorErrorImage.style.visibility = 'hidden';
 	}
 
-	/* LBS */
+	/* LBS */ //lightBulb of left balc(class room)
 	let lightbulb1 = document.getElementById('lightbulb1');
 	if(lightBulbArray[0] === 1) {
-		lightbulb1.src = "img/lightbulbOn.png";
+		lightbulb1.src = "img/lightbulb-on.png";
 	} else if (lightBulbArray[0] === 0) {
-		lightbulb1.src = "img/lightbulbOff.png";
+		lightbulb1.src = "img/lightbulb-off.png";
 	}
-
+	//lightBulb of right balc(dr's room)
 	let lightbulb2 = document.getElementById('lightbulb2');
 	if(lightBulbArray[1] === 1) {
-		lightbulb2.src = "img/lightbulbOn.png";
+		lightbulb2.src = "img/lightbulb-on.png";
 	} else if (lightBulbArray[1] === 0) {
-		lightbulb2.src = "img/lightbulbOff.png";
+		lightbulb2.src = "img/lightbulb-off.png";
 	}
 }
 
 function updateMotionDetectorTile() {
 	let motionDetectionStatus1 = document.getElementById('motionDetectionStatus1');
 	if(motionDetectorArray[0] === 1) {
-		motionDetectionStatus1.src = "img/motionOn.png";
+		motionDetectionStatus1.src = "img/mdIcon-on.png";
 	} else if (motionDetectorArray[0] === 0) {
-		motionDetectionStatus1.src = "img/motionOff.png";
+		motionDetectionStatus1.src = "img/mdIcon-off.png";
 	}
 
 	let motionDetectionStatus2 = document.getElementById('motionDetectionStatus2');
 	if(motionDetectorArray[1] === 1) {
-		motionDetectionStatus2.src = "img/motionOn.png";
+		motionDetectionStatus2.src = "img/mdIcon-on.png";
 	} else if (motionDetectorArray[1] === 0) {
-		motionDetectionStatus2.src = "img/motionOff.png";
+		motionDetectionStatus2.src = "img/mdIcon-off.png";
 	}
 }
 
@@ -276,10 +276,10 @@ function updateRainSensorTile(average) {
 	let rainStatus = document.getElementById('rainStatus');
 	if(average < 75) {
 		backgroundImage.style.backgroundImage = 'url("img/dryWood.jpg")';
-		rainStatus.src = "img/dryIcon.png";
+		rainStatus.src = "img/dryFloor.png";
 	} else if(average >= 75) {
 		backgroundImage.style.backgroundImage = 'url("img/wetWood.jpg")';
-		rainStatus.src = "img/wetIcon.png";
+		rainStatus.src = "img/wetFloor.png";
 	} 
 
 	rainSensorErrorImage = document.getElementById('rainSensorErrorImage');

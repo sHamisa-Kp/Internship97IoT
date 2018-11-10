@@ -4,14 +4,14 @@ body {
   /*1c1d1f*/
   background: '#919191';
   font-family: Helvetica Neue, Arial, sans-serif;
-  text-align: center;
+  text-align: left;
 }
 
 .wrapper {
   border: 0px solid white;
   background-color:#424242;
   /*#25282d*/
-  float: right;
+  float: left;
   max-width: 800px;
   margin: 50px auto;
   margin:5px 5px 5px 5px;
@@ -23,7 +23,7 @@ body {
   border-radius: 3px;
   float: left;
   padding: 5px;
-  margin-right: 5px;
+  margin-left: 5px;
   margin:5px 5px 5px 5px;
 }
 
