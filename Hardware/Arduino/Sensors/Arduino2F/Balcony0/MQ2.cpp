@@ -6,9 +6,6 @@ MQ2::MQ2(int pin) {
 }
 void MQ2::begin(){
     Ro = MQCalibration();
-    Serial.print("Ro: ");
-    Serial.print(Ro);
-    Serial.println(" kohm");
 }
 
 float* MQ2::read(bool print){
