@@ -4,6 +4,8 @@ important points {
 	2F: means a node which has connected to 2 flowers
 	3F: means a node which has connected to 3 flowers
 	4G: means a node which has connected to 4 grasses
+	MidB: Relays node
+
 
 	/* Balcony */
 	0: left balcony
@@ -41,6 +43,8 @@ important points {
 		Balcony0: FH0
 		Balcony1: FH1
 	}
+
+	WL0: Water Level (ultrasonic)
 
 }
 
@@ -124,4 +128,20 @@ Node:4G:1 {
 		D4: Power Supply for Soil Moisture
 		D5: Power Supply for Soil Moisture
 	}
-}-
+}
+
+/* MidBalcony */
+
+Node:MidB {
+	port {
+		D3: relay1Pin
+		D4: relay2Pin
+		D5: relay3Pin
+		D6: relay4Pin
+		D7: relay5Pin
+		D8: relay6Pin
+		//for Ultrasonic Sensor
+		D13: trigPin
+		D12: echoPin
+	}
+}
