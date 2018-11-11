@@ -8,7 +8,6 @@ const unsigned long firstDelay = 350L * oneSecond;
 int SM04{A0};
 int SM05{A1};
 int SM06{A2};
-
 int SM07{A3};
 
 int Count[20];

@@ -1,1 +1,127 @@
-Arduino 
+important points {
+
+	/* Nodes */
+	2F: means a node which has connected to 2 flowers
+	3F: means a node which has connected to 3 flowers
+	4G: means a node which has connected to 4 grasses
+
+	/* Balcony */
+	0: left balcony
+	1: right balcony
+
+
+	/* Sensors */ 
+	SM: Soil Moisture {
+		The number of soil moistures is 18, so they are indexed from 0 to 17
+	} 
+
+	G: Gas Sensor {
+		Balcony0: G0
+		Balcony1: G1
+	}
+
+	MD: Motion Detection {
+		Balcony0: MD0
+		Balcony1: MD1
+	}
+
+	T0: temperature & Humidity {
+		Balcony0: T0
+		Balcony1: T1
+	}
+
+
+	PhR0: Photo Resistor {
+		Balcony0: PhR0
+		Balcony1: PhR1
+	}
+
+
+	FH0: Floor Humidity {
+		Balcony0: FH0
+		Balcony1: FH1
+	}
+
+}
+
+/* Balcony[0] */
+
+Node:2F:0 {
+	port {
+		A0: SM8
+		A1: SM9
+		A3: G0
+		D8: MD0
+		D7: RelayInput (for Motion Detector)
+		D2: Power Supply for Soil Moisture
+		D3: Power Supply for Soil Moisture
+	}
+}
+
+Node:3F:0 {
+	port {
+		A0: SM10
+		A1: SM11
+		A2: SM12
+		A3: T0
+		A4: PhR0
+		A5: FH0
+		D2: Power Supply for Soil Moisture
+		D3: Power Supply for Soil Moisture
+		D4: Power Supply for Soil Moisture
+	}
+}
+
+Node:4G:0 {
+	port {
+		A0: SM0
+		A1: SM1
+		A2: SM2
+		A3: SM3
+		D2: Power Supply for Soil Moisture
+		D3: Power Supply for Soil Moisture
+		D4: Power Supply for Soil Moisture
+		D5: Power Supply for Soil Moisture
+	}
+}
+
+/* Balcony[1] */
+
+Node:2F:1 {
+	port {
+		A0: SM13
+		A1: SM14
+		A3: G1
+		D8: MD1
+		D7: RelayInput (for Motion Detector)
+		D2: Power Supply for Soil Moisture
+		D3: Power Supply for Soil Moisture
+	}
+}
+
+Node:3F:1 {
+	port {
+		A0: SM15
+		A1: SM16
+		A2: SM17
+		A3: T1
+		A4: PhR1
+		A5: FH1
+		D2: Power Supply for Soil Moisture
+		D3: Power Supply for Soil Moisture
+		D4: Power Supply for Soil Moisture
+	}
+}
+
+Node:4G:1 {
+	port {
+		A0: SM4
+		A1: SM5
+		A2: SM6
+		A3: SM7
+		D2: Power Supply for Soil Moisture
+		D3: Power Supply for Soil Moisture
+		D4: Power Supply for Soil Moisture
+		D5: Power Supply for Soil Moisture
+	}
+}-
