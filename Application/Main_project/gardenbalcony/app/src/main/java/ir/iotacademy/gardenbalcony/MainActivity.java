@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         Graphical_view_right= (CardView) findViewById(R.id.graphicalright);
         final TextView Text = (TextView) findViewById(R.id.graphicalText);
         LinearLayout background= (LinearLayout) findViewById(R.id.backgounrd);
@@ -51,12 +50,12 @@ public class MainActivity extends AppCompatActivity  {
                 //GetSendData t0 = new GetSendData();
                 //map.put("T0", preUrl + "629/feed.json?key=G7KHR97UPN9OC5AC&results=1");
                 //if(t0.GetData(map.get("T0")) != "No") {
-                    Intent intent = new Intent(MainActivity.this, GraphicalViewRight.class);
-                    startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, GraphicalViewRight.class);
+                startActivity(intent);
                 //}
                 //else {
-       //             Toast toast = Toast.makeText(MainActivity.this, "Can not access the sever", Toast.LENGTH_LONG);
-               // Text.setText("No internet access");
+                //             Toast toast = Toast.makeText(MainActivity.this, "Can not access the sever", Toast.LENGTH_LONG);
+                // Text.setText("No internet access");
                 //}
             }
         });
@@ -86,14 +85,10 @@ public class MainActivity extends AppCompatActivity  {
         Graphical_view_left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-<<<<<<< HEAD
-                Intent intent = new Intent(MainActivity.this, JustValue.class);
-=======
                 //GetSendData t0 = new GetSendData();
                 //map.put("T0", preUrl + "629/feed.json?key=G7KHR97UPN9OC5AC&results=1");
                 //if(t0.GetData(map.get("T0")) != "No") {
                 Intent intent = new Intent(MainActivity.this, GraphicalView.class);
->>>>>>> master
                 startActivity(intent);
                 //}
                 //else {
@@ -114,7 +109,7 @@ public class MainActivity extends AppCompatActivity  {
 
         chart_dashboard= (CardView) findViewById(R.id.charts);
 
-       chart_dashboard.setOnClickListener(new View.OnClickListener() {
+        chart_dashboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ChartDashboard.class);
@@ -184,7 +179,7 @@ public class MainActivity extends AppCompatActivity  {
         Graphical_view_right= (CardView) findViewById(R.id.graphicalright);
 
         if(connected == false){
-               // Toast.makeText(MainActivity.this, "You must have internet access", Toast.LENGTH_LONG).show();
+            // Toast.makeText(MainActivity.this, "You must have internet access", Toast.LENGTH_LONG).show();
             AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
             alertDialog.setTitle("No Wi-Fi");
             alertDialog.setMessage("You must have internet access to continue");
@@ -198,7 +193,7 @@ public class MainActivity extends AppCompatActivity  {
                         }
                     });
             alertDialog.show();
-          //  Graphical_view_right.setEnabled(false);
+            //  Graphical_view_right.setEnabled(false);
         }
     }
 }
