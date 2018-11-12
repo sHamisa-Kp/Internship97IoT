@@ -1258,7 +1258,7 @@ fhChart.addEventListener("click", function(){
 	};
 
 	function UpdateFhTile(onechart) {
-		var ctx = document.getElementById('fh');
+		var ctx = document.getElementById('fh1');
 		var chart = new Chart(ctx, {
 		    // The type of chart we want to create
 		    type: 'line',
