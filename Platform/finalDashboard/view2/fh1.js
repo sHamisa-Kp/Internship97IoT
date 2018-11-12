@@ -41,7 +41,7 @@ function fhHttpGetAsync(theUrl, callback, j) {
             	for(let i = 0; i <= 19; i++)
             		fhArray[j].forEach(function(elem) {
             			if (elem < fhErrorValue.FH.min || elem > fhErrorValue.FH.max) {            				
-            				colors[j] = 'red';
+            				fhcolors[j] = 'red';
             			}
             		});
             }
@@ -93,7 +93,7 @@ function setValueForFhChart() {
 			data:fhArray[j],
 			borderWidth: 1,
 			fill:false,
-			borderColor:colors[j]
+			borderColor: fhcolors[j]
 		};
 		onechart.datasets.push(Data);		
 	} 
