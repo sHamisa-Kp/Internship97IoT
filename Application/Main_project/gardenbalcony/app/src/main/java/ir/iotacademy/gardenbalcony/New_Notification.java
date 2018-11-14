@@ -778,20 +778,12 @@ public class New_Notification extends AppCompatActivity {
                 viewHolder.button2.setImageResource(R.drawable.flower2_notif);
 //                viewHolder.relativeLayout.setBackgroundColor(R.color.colorAccent);
             }
-
-
-
-
-
-
-
         }
 
         @Override
         public int getItemCount() {
             return cards == null ? 0 : cards.size();
         }
-
         public class ViewHolder extends RecyclerView.ViewHolder {
             private TextView title;
             private ImageButton button1;
@@ -939,7 +931,7 @@ public class New_Notification extends AppCompatActivity {
             NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             notification.flags = Notification.FLAG_AUTO_CANCEL;
 
-            notificationManager.notify(0, notification);
+            notificationManager.notify(1, notification);
         }
     }
 // ****** floormoisture notif **********
@@ -960,7 +952,7 @@ public class New_Notification extends AppCompatActivity {
             NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             notification.flags = Notification.FLAG_AUTO_CANCEL;
 
-            notificationManager.notify(0, notification);
+            notificationManager.notify(1, notification);
         }
         if (where == 1) {
             Notification notification = new Notification.Builder(this)
@@ -974,7 +966,7 @@ public class New_Notification extends AppCompatActivity {
             NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             notification.flags = Notification.FLAG_AUTO_CANCEL;
 
-            notificationManager.notify(0, notification);
+            notificationManager.notify(2, notification);
         }
     }
 
@@ -996,7 +988,7 @@ public class New_Notification extends AppCompatActivity {
             NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             notification.flags = Notification.FLAG_AUTO_CANCEL;
 
-            notificationManager.notify(0, notification);
+            notificationManager.notify(3, notification);
         }
         if (where == 1) {
             Notification notification = new Notification.Builder(this)
@@ -1010,7 +1002,7 @@ public class New_Notification extends AppCompatActivity {
             NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             notification.flags = Notification.FLAG_AUTO_CANCEL;
 
-            notificationManager.notify(0, notification);
+            notificationManager.notify(4, notification);
         }
     }
 
@@ -1031,7 +1023,7 @@ public class New_Notification extends AppCompatActivity {
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notification.flags = Notification.FLAG_AUTO_CANCEL;
 
-        notificationManager.notify(0, notification);
+        notificationManager.notify(5, notification);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -1049,7 +1041,7 @@ public class New_Notification extends AppCompatActivity {
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notification.flags = Notification.FLAG_AUTO_CANCEL;
 
-        notificationManager.notify(0, notification);
+        notificationManager.notify(6, notification);
     }
 
     // *************** weather humidity notif **********
@@ -1068,7 +1060,7 @@ public class New_Notification extends AppCompatActivity {
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notification.flags = Notification.FLAG_AUTO_CANCEL;
 
-        notificationManager.notify(0, notification);
+        notificationManager.notify(7, notification);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -1086,7 +1078,7 @@ public class New_Notification extends AppCompatActivity {
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notification.flags = Notification.FLAG_AUTO_CANCEL;
 
-        notificationManager.notify(0, notification);
+        notificationManager.notify(8, notification);
     }
 
 
@@ -1107,7 +1099,7 @@ public class New_Notification extends AppCompatActivity {
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notification.flags = Notification.FLAG_AUTO_CANCEL;
 
-        notificationManager.notify(0, notification);
+        notificationManager.notify(9 + which, notification);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -1125,7 +1117,7 @@ public class New_Notification extends AppCompatActivity {
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notification.flags = Notification.FLAG_AUTO_CANCEL;
 
-        notificationManager.notify(0, notification);
+        notificationManager.notify(9 + which, notification);
     }
 
     //flowers
@@ -1145,7 +1137,7 @@ public class New_Notification extends AppCompatActivity {
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notification.flags = Notification.FLAG_AUTO_CANCEL;
 
-        notificationManager.notify(0, notification);
+        notificationManager.notify( 17 + which, notification);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -1163,7 +1155,7 @@ public class New_Notification extends AppCompatActivity {
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notification.flags = Notification.FLAG_AUTO_CANCEL;
 
-        notificationManager.notify(0, notification);
+        notificationManager.notify(17 + which, notification);
     }
 }
 
