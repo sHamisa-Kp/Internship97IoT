@@ -7,16 +7,31 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Middle_View extends AppCompatActivity {
-
+    int wl;
+    TextView tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_middle__view);
         ImageButton goLeft,goRight;
         final ImageView source1,source2,source3,source4,source5,source6;
-        int wl;
+
+
 
        /* goRight = (ImageButton) findViewById(R.id.go_right2);
         goLeft = (ImageButton) findViewById(R.id.go_left);*/
@@ -27,10 +42,39 @@ public class Middle_View extends AppCompatActivity {
         source3= (ImageView) findViewById(R.id.source3);
         source2= (ImageView) findViewById(R.id.source2);
         source1= (ImageView) findViewById(R.id.source1);
+        tv= (TextView) findViewById(R.id.textvieww1);// GetSendData WL = new GetSendData();
+        final RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, "http://thingtalk.ir/channels/742/feed.json?key=WGWJ660WN7V9394D&results=1", null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray array = response.getJSONArray("feeds");
+                            JSONObject data = array.getJSONObject(0);
+                            String serial = data.getString("field1");
+                            if (serial.indexOf('.') != -1) {
+                                serial = serial.substring(0, serial.indexOf('.'));
+                            }
+                            wl = Integer.parseInt(serial);
+                            tv.setText(serial+"%");
 
-        GetSendData WL = new GetSendData();
-        wl=Integer.parseInt(WL.GetData("http://thingtalk.ir/channels/742/feed.json?key=WGWJ660WN7V9394D&results=1"));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                ,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(Middle_View.this, "Connection Problem", Toast.LENGTH_SHORT).show();
 
+                    }
+
+
+                }
+        );
+        queue.add(getRequest);
 
         if(wl<=5){
             source6.setVisibility(View.VISIBLE);
