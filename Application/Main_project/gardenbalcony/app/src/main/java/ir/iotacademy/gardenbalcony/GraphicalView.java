@@ -67,7 +67,7 @@ public class GraphicalView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_graphical_view);
-      /*  go_to_the_right_position = (ImageButton) findViewById(R.id.go_right);
+        go_to_the_right_position = (ImageButton) findViewById(R.id.go_right);
 
 
         go_to_the_right_position.setOnClickListener(new View.OnClickListener() {
@@ -75,12 +75,12 @@ public class GraphicalView extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(GraphicalView.this, Middle_View.class);
+                Intent intent = new Intent(GraphicalView.this, GraphicalViewRight.class);
                 startActivity(intent);
 
             }
         });
-        */
+
 
         final  RequestQueue queue = Volley.newRequestQueue(getApplicationContext());//final  RequestQueue queueveg = Volley.newRequestQueue(getApplicationContext());
 
@@ -180,44 +180,44 @@ public class GraphicalView extends AppCompatActivity {
         onswitch = (ImageButton) findViewById(R.id.on_switch);
         offswitch = (ImageButton) findViewById(R.id.off_switch);
         motion= (ImageView) findViewById(R.id.onmotion);
-        datasun = (TextView) findViewById(R.id.textsunset);
+     //   datasun = (TextView) findViewById(R.id.textsunset);
         faucet = (ImageButton) findViewById(R.id.left_faucet);
         flower_faucet = (ImageButton) findViewById(R.id.left_faucet_flowers);
         //sunset
-        final String url = "https://api.sunrise-sunset.org/json?lat=35.6892&lng=51.3890&date=today";
-        JsonObjectRequest getsunset = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            //JSONArray array = response.getJSONArray("results");
-                            JSONObject data = response.getJSONObject("results");
-                            String sunset = data.getString("sunset");
-                            String sunrise = data.getString("sunrise");
-//                            if(serial.indexOf('.') != -1 )
-//                            {
-//                                serial = serial.substring(0, serial.indexOf('.'));
-//                            }
-//                            int num = Integer.parseInt(serial)+1;
-                            datasun.setText(sunset + sunrise);
-                        }
-                        catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-                ,
-                new Response.ErrorListener()
-                {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                      //  Toast.makeText(GraphicalView.this, "Connection Problem", Toast.LENGTH_SHORT).show();
-                    datasun.setText("error");
-                    }
-
-                }
-        );
-        queue.add(getsunset);
+//        final String url = "https://api.sunrise-sunset.org/json?lat=35.6892&lng=51.3890&date=today";
+//        JsonObjectRequest getsunset = new JsonObjectRequest(Request.Method.GET, url, null,
+//                new Response.Listener<JSONObject>() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        try {
+//                            //JSONArray array = response.getJSONArray("results");
+//                            JSONObject data = response.getJSONObject("results");
+//                            String sunset = data.getString("sunset");
+//                            String sunrise = data.getString("sunrise");
+////                            if(serial.indexOf('.') != -1 )
+////                            {
+////                                serial = serial.substring(0, serial.indexOf('.'));
+////                            }
+////                            int num = Integer.parseInt(serial)+1;
+//                            datasun.setText(sunset + sunrise);
+//                        }
+//                        catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                }
+//                ,
+//                new Response.ErrorListener()
+//                {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                      //  Toast.makeText(GraphicalView.this, "Connection Problem", Toast.LENGTH_SHORT).show();
+//                    datasun.setText("error");
+//                    }
+//
+//                }
+//        );
+//        queue.add(getsunset);
 
         //Temperature
 
@@ -1133,9 +1133,9 @@ public class GraphicalView extends AppCompatActivity {
                             if (serial.indexOf('.') != -1) {
                                 serial = serial.substring(0, serial.indexOf('.'));
                             }
-                            int num = Integer.parseInt(serial) + 1;
+                            int num = Integer.parseInt(serial);
                             datafm0.setText(serial);
-                            if(num == 1){
+                            if(num < 400){
                                 puddle.setVisibility(View.VISIBLE);
                             }
                             else

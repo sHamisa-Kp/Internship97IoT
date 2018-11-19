@@ -519,18 +519,18 @@ android:layout_height="fill_parent"
                             android:layout_marginLeft="1170dp"
                             android:layout_marginTop="530dp" />
 
-                        <TextView
-                            android:id="@+id/textsunset"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="sunset"
-                            android:textColor="#000000"
-                            app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:layout_marginLeft="180dp"
-                            android:layout_marginTop="12dp"
-                            android:textSize="15dp"
-                            />
+                        <!--<TextView-->
+                            <!--android:id="@+id/textsunset"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="sunset"-->
+                            <!--android:textColor="#000000"-->
+                            <!--app:layout_constraintLeft_toLeftOf="parent"-->
+                            <!--app:layout_constraintTop_toTopOf="parent"-->
+                            <!--android:layout_marginLeft="180dp"-->
+                            <!--android:layout_marginTop="12dp"-->
+                            <!--android:textSize="15dp"-->
+                            <!--/>-->
 
                         <ImageButton
                             android:id="@+id/veg4"
@@ -579,7 +579,7 @@ android:layout_height="fill_parent"
                             android:layout_marginTop="535dp" />
 
 
-                    <!--    <ImageButton
+                        <ImageButton
                             android:id="@+id/go_right"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -589,7 +589,6 @@ android:layout_height="fill_parent"
                             app:layout_constraintTop_toTopOf="parent"
                             android:layout_marginLeft="1540dp"
                             android:layout_marginTop="300dp" />
-                            !-->
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -768,7 +767,7 @@ android:layout_height="fill_parent"
                             android:layout_height="wrap_content"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            android:src="@drawable/round_faucet"
+                            android:src="@drawable/round_faucet2"
                             android:id="@+id/left_faucet"
                             android:background="@null"
                             android:layout_marginLeft="1680dp"
@@ -779,7 +778,7 @@ android:layout_height="fill_parent"
                             android:layout_height="wrap_content"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            android:src="@drawable/round_faucet"
+                            android:src="@drawable/round_faucet2"
                             android:id="@+id/left_faucet_flowers"
                             android:background="@null"
                             android:layout_marginLeft="610dp"

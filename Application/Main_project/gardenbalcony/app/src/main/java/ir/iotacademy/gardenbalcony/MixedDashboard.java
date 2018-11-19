@@ -15,8 +15,6 @@ import android.widget.TextView;
 
 public class MixedDashboard extends AppCompatActivity {
     public static final String WEBSITE_ADDRESS = "website_address";
-
-
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +26,5 @@ public class MixedDashboard extends AppCompatActivity {
         dashboard.getSettings().setBuiltInZoomControls(true);
         dashboard.setWebChromeClient(new WebChromeClient());
         dashboard.loadUrl("file:///android_asset/www/view3.html");
-
     }
 }

@@ -48,7 +48,7 @@ android:layout_height="fill_parent"
                         android:layout_height="676dp"
                         android:background="@drawable/night_right">
 
-                 <!--       <ImageButton
+                       <ImageButton
                             android:layout_width="wrap_content"
                             android:id="@+id/go_middle_from_right"
                             android:layout_height="wrap_content"
@@ -59,7 +59,7 @@ android:layout_height="fill_parent"
                             android:layout_marginLeft="168dp"
                             android:layout_marginTop="380dp"
                             android:rotation="-10"
-                            /> !-->
+                            />
 
                         <ImageView
                             android:id="@+id/Rightfloormoisture"
@@ -734,6 +734,31 @@ android:layout_height="fill_parent"
                             android:layout_marginTop="-12dp"
                             android:textSize="15dp"
                             />
+                           <ImageButton
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               app:layout_constraintLeft_toLeftOf="parent"
+                               app:layout_constraintTop_toTopOf="parent"
+                               android:src="@drawable/round_faucet"
+                               android:id="@+id/left_faucet"
+                               android:background="@null"
+                               android:layout_marginLeft="180dp"
+                               android:layout_marginTop="396dp"
+                               />
+
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:src="@drawable/round_faucet"
+                            android:id="@+id/left_faucet_flowers"
+                            android:background="@null"
+                            android:layout_marginLeft="1360dp"
+                            android:layout_marginTop="380dp"
+                            />
+
+
 
 
                     </android.support.constraint.ConstraintLayout>

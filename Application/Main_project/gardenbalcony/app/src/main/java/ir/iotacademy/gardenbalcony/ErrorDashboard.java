@@ -24,5 +24,4 @@ public class ErrorDashboard extends AppCompatActivity {
         dashboard.setWebChromeClient(new WebChromeClient());
         dashboard.loadUrl("file:///android_asset/www/View4/view4.html");
     }
-
 }
